@@ -13,6 +13,8 @@
 ```mermaid
 classDiagram
 
+direction LR
+
 Cliente "*" --o "1" Portal: Tiene
 Cliente "1" -- "*" Mascota: Tiene
 Mascota "*" --o "1" Portal: Tiene
