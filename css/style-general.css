@@ -131,7 +131,7 @@ nav button {
 }
 
 footer {
-  background-color: aquamarine;
+  background-color: #a9e0db;
 }
 
 footer > div {
@@ -143,6 +143,12 @@ footer > div {
   align-items: center;
   justify-content: space-between;
 }  
+#logo {
+  width: 200px;
+  height: auto;
+  margin-left: 70px;
+  margin-top: 70px;
+}
 
 footer > div * {
   flex-grow: 1;
@@ -398,7 +404,7 @@ footer > div * {
 .tarjeta {
   background: #f5f5f5;
   padding: 10px; /* Reducimos padding */
-  border-left: 5px solid aquamarine;
+  border-left: 5px solid #a9e0db;
   border-radius: 8px;
   margin-bottom: 10px; /* Menos espacio entre tarjetas */
   position: relative;
@@ -437,7 +443,7 @@ footer > div * {
 
 
 #sobre-nosotros-img {
-  width: 350px;
+  width: 370px;
   max-width: 450px;
   border-radius: 10px;
   justify-self: center; /* Centra la imagen en su celda */
