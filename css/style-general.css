@@ -1,78 +1,213 @@
-/* Archivo de estilo general para toda la web */
-
-@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap');
+/*
+  Archivo general para definir reglas o estilos generales a todo el servicio web
+  Se declara para no repetir reglas o estilos en todos los demas archivos .css
+*/
+/* Tipografia: 'Atkinson Hyperlegible Next' */
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap');
 @import url('https://fonts.cdnfonts.com/css/pp-neue-montreal');
 
-html, body {
-  margin: 0;
-  padding: 0;
+html, 
+body {
+  margin: 0px;
+  padding: 0px;
   width: 100%;
   height: 100%;
   font-family: "Atkinson Hyperlegible Next", serif;
   box-sizing: border-box;
 }
 
-/* Ajustes globales del logo */
-.logo img {
-  width: 100px; /* Ajustado a un tamaño más visible */
+header img {
+  width: 120px;
   height: auto;
-  margin-left: 15px;
+  margin-left: 30px;
 }
-
-/* Mejora en la navegación */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #054f31;
-  padding: 15px 30px;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-}
-
-.nav-links li {
-  display: inline;
-}
-
-.nav-links a {
-  color: white;
+a {
   text-decoration: none;
-  font-size: 16px;
-  padding: 10px 15px;
-  border-radius: 5px;
-  transition: background 0.3s ease;
+  color: black;
+  width: fit-content;
+  height: auto;
 }
 
-.nav-links a:hover {
-  background: rgba(255, 255, 255, 0.2);
+header {
+  padding: 25px 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-/* Botón principal */
+header button  {
+    background-color: #054f31 ; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 12px 20px; /* Relleno (más grande) */
+    cursor: pointer; /* Aparece como puntero */
+    border-radius: 10px; /* Bordes redondeados */
+    font-size: 15px; /* Tamaño del texto */
+    font-weight: normal; /* Poner el texto en negrita */
+    transition: all 0.3s ease; /* Transición suave para los efectos */
+    font-family: "Atkinson Hyperlegible Next", serif;
+  margin-right: 20px;
+}
+
 .boton_empezar {
-  background-color: #054f31;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  cursor: pointer;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: normal;
-  transition: all 0.3s ease;
+  background-color: #054f31 ; /* Color de fondo */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  padding: 12px 20px; /* Relleno (más grande) */
+  cursor: pointer; /* Aparece como puntero */
+  border-radius: 10px; /* Bordes redondeados */
+  font-size: 15px; /* Tamaño del texto */
+  font-weight: normal; /* Poner el texto en negrita */
+  transition: all 0.3s ease; /* Transición suave para los efectos */
   font-family: "Atkinson Hyperlegible Next", serif;
 }
 
-.boton_empezar:hover {
-  background-color: #033b24;
+
+header * {
+  flex-grow: 1;
 }
 
-/* Footer */
+nav {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.ir-otras-paginas {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 200px;
+}
+
+nav button {
+  margin: 50px;
+  width: fit-content;
+  height: auto;
+}
+
 footer {
-  background-color: #054f31;
-  color: white;
+  background-color: aquamarine;
+}
+
+footer > div {
+  margin: 25px 0px;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}  
+
+footer > div * {
+  flex-grow: 1;
+}
+
+#introduccion h1{
+  font-family: "PP Neue Montreal", serif;
+  font-size: 40px; /* Tamaño del texto */
+  font-weight: bold; /* Poner el texto en negrita */
+
+}
+
+/* hABLA CON NOSOTROS --------------------------------------------------*/
+
+#hablaconexperto_contenedor {
+  background-color: #EBF6FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Para centrar verticalmente el contenedor */
+}
+
+#hablaconexperto_recuadro {
+  width: 850px;
+  height: auto;
+  background-color: white;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  align-self: center;
+  border-radius: 20px;
+  display: flex; 
+  justify-content: space-between;
+  padding: 20px; 
+}
+
+#habla-con-experto {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#habla-con-experto h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-family: "PP Neue Montreal", serif;
+
+}
+
+#habla-con-experto ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#habla-con-experto ul li {
+  margin-bottom: 10px;
+}
+
+#hablaconexperto_recuadro img {
+  max-width: 400px; 
+  height: auto;
+}
+
+
+
+.logo {
+  margin: 5px 20px;
+}
+
+.contacto {
+  margin: 10px 20px;
+}
+
+.contacto > * {
+  display: block;
+}
+
+.copyright {
   text-align: center;
-  padding: 20px;
+}
+
+.sobrenosotros_id{
+  display: flex;
+}
+
+/* Servicios */
+
+#servicios_contenedor {
+  display: flex;
+  text-align: justify;
+}
+
+#servicios_recuadro {
+  width: 30px;
+  margin-top: 100px;
+  text-align: center;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  display: flex; /* Se utiliza flexbox para alinear el contenido dentro del recuadro */
+  flex-direction: column;
+}
+
+#servicios_recuadro h2 {
+  font-family: "PP Neue Montreal", serif;
+  font-size: 40px; /* Tamaño del texto */
+  font-weight: normal; /* tipo de negrilla normal */
 }

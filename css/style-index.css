@@ -1,94 +1,104 @@
-/* Archivo de estilo propio de la pagina index.html */
-
 @import url("style-general.css");
 
-/* Estilos para la navegación */
-
-
-nav {
+section#introduccion {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  background: #054f31;
-  padding: 15px 30px;
+  font-size: 1.2rem;
+  margin: 45px 0px;
 }
 
-.logo {
+section#introduccion article {
+  background-color: rgb(218, 216, 216);
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#servicios_contenedor {
+  background-color: rgb(218, 216, 216);
+}
+
+#servicios_contenedor p {
+  font-size: 1.2rem;
+}
+
+#hablaconexperto_recuadro img {
+  margin: 20px;
+  border: 1px solid whitesmoke;
+  border-radius: 5%;
+}
+
+#tarjetas-servicio {
+  padding: 10px 100px;
+  width: 100%;
   display: flex;
-  justify-self: start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
 }
 
-.nav-links {
-  list-style: none;
+.tarjeta {
+  height: 150px;
+  width: 200px;
+  border: 1px solid none;
+  margin: 20px;
+  background-color: white;
+  border-radius: 25%;
+  padding: 25px;
   display: flex;
-  gap: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.nav-links li {
-  display: inline;
+.tarjeta img {
+  width: 45px;
+  height: 40px;
+  margin-right: 10px;
 }
 
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  transition: color 0.3s ease;
+.tarjeta span {
+  font-size: 1.25rem;
 }
 
-.nav-links a:hover {
-  color: #f8f9fa;
-}
-
-/* Estilos para la sección hero */
-.hero {
-  background: url("images/LandingPageFondo.png") center/cover no-repeat;
+.tarjeta a {
+  display: block;
+  height: fit-content;
+  width: 100%;
   text-align: center;
-  padding: 100px 20px;
-  color: white;
+  padding: 10px;
+  border: 1px solid none;
+  border-radius: 7px;
+  color: blue;
+  font-weight: 570;
+  background-color: rgb(178, 178, 253);
+  transition: color 0.37s ease-in-out, background 0.37s ease-in-out;
+}
+.tarjeta a:hover {
+  background-color: rgb(197, 197, 246);
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.hero h1 {
-  font-size: 48px;
-  font-weight: bold;
+.carrusel-container {
+  width: 500px; /* Ajustado al nuevo tamaño */
+  height: 350px;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 3px solid #054f31;
+  position: relative;
 }
 
-.hero p {
-  font-size: 20px;
-  margin-top: 10px;
+.carrusel {
+  display: flex;
+  width: 300%; /* 3 imágenes en una fila */
+  transition: transform 0.5s ease-in-out;
 }
 
-.hero button {
-  margin-top: 20px;
-  padding: 15px 25px;
-  font-size: 18px;
-}
-
-/* Estilos para secciones generales */
-.content {
-  padding: 50px 20px;
-  text-align: center;
-  background: #f8f9fa;
-}
-
-.content h2 {
-  font-size: 36px;
-  margin-bottom: 15px;
-}
-
-.content p {
-  font-size: 18px;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-/* Estilos para el footer */
-footer {
-  background: #054f31;
-  color: white;
-  text-align: center;
-  padding: 20px;
+.carrusel img {
+  width: 500px; /* Aumentado de 300px a 500px */
+  height: 350px; /* Ajustado proporcionalmente */
+  object-fit: cover;
 }

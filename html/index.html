@@ -1,56 +1,103 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Health Animals - Veterinaria</title>
   <link rel="stylesheet" href="../css/style-index.css">
+  <title>Health Animals</title>
 </head>
 <body>
   <header>
     <nav>
-      <div class="logo">
-        <a href="index.html"><img src="../images/logo.png" alt="Logo Health Animals"></a>
+      <div class="ir-inicio">
+        <a href="index.html">
+          <img src="../images/logo.png" alt="Logo Health Animals">
+        </a>
       </div>
-      <ul class="nav-links">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#experto">Habla con un Experto</a></li>
-        <li><a href="#nosotros">Nosotros</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
+      <div class="ir-otras-paginas">
+        <a href="sobre-nosotros.html">Sobre Nosotros</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="contacto.html">Contáctanos</a>
+      </div>
     </nav>
+    <button type="button" class="boton_empezar">Ingresar</button>
   </header>
-  
-  <section id="inicio" class="hero">
-    <h1>¡Tu mascota en las mejores manos!</h1>
-    <p>Brindamos atención profesional y cariñosa para que tu mascota tenga una vida saludable y feliz.</p>
-    <button>Agenda una cita</button>
-  </section>
-  
-  <section id="servicios" class="content">
-    <h2>Nuestros Servicios</h2>
-    <p>Ofrecemos chequeos, tratamientos especializados y urgencias para tu mascota.</p>
-  </section>
-  
-  <section id="experto" class="content">
-    <h2>Habla con un Experto</h2>
-    <p>Sesiones personalizadas con veterinarios para el bienestar de tu mascota.</p>
-  </section>
-  
-  <section id="nosotros" class="content">
-    <h2>Sobre Nosotros</h2>
-    <p>Nos dedicamos a ofrecer el mejor cuidado con un equipo profesional y un enfoque humano.</p>
-  </section>
-  
-  <section id="contacto" class="content">
-    <h2>Contacto</h2>
-    <p>Teléfono: 45634654564 | Correo: healthAnimals@healtAnimals.com</p>
-    <p>Horario de Atención: Lunes a Viernes de 8:00 AM - 6:00 PM</p>
-  </section>
-  
-  <footer>
-    <p>&copy; 2025 Health Animals. Todos los derechos reservados.</p>
-  </footer>
+  <main>
+    <section id="introduccion">
+      <article>
+        <h1>¡Tu mascota en las mejores manos!</h1>
+        <p>
+          En nuestra veterinaria, tu mascota es nuestra prioridad. Nos comprometemos a brindarles atención de<br>
+          calidad, con cariño y dedicacion, para asegurarnos de que disfruten de una vida saludable y feliz. 
+        </p>
+      </article>
+      <div class="carrusel-container">
+        <div class="carrusel">
+          <img src="../images/animales-1.jpg" alt="Animal Carrusel 1">
+          <img src="../images/animales-2.jpg" alt="Animal Carrusel 2">
+          <img src="../images/especialista-animales-1.png" alt="">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!--Sección   HABLA CON UN EXPERTO-->
+  <div id="hablaconexperto_contenedor">
+    <div id="hablaconexperto_recuadro">
+      <section id="habla-con-experto">
+        <h1>
+          Habla con un experto.<br>
+          Un Profesional de Salud Animal.
+        </h1>
+        <ul>
+          <li>
+            Asesoría y apoyo dedicados en todos los aspectos del cuidado
+            de tu mascota de la mano de un Guía especializado.
+          </li>
+          <li>
+            Sesiones 1 a 1 centradas en organizar la salud de tu mascota,
+            mejorar su bienestar y hacer avances reales en su cuidado.
+          </li>
+          <li>
+            Revisiones periódicas de progreso, consultas rápidas y
+            mensajes en cualquier momento.
+          </li>
+          <li>
+            Un plan claro para alcanzar los objetivos de salud de tu mascota
+            con pasos simples que tu Guía te ayudará a implementar.
+          </li>
+        </ul>
+        <button type="button" class="boton_empezar">Empezar</button>
+      </section>
+      <img src="../images/especialista-1.jpg" alt="LandPage 3-1">
+    </div>
+  </div>
+  <!-- Sección Servicios-->
+  <div id="servicios_contenedor">
+    <div id="servicios_recuadro">
+      <h2>
+        Nuestros servicios
+      </h2>
+      <p>
+        Cuidamos la salud y felicidad de tu mascota con atención profesional y
+        cariño. 
+        <br>Descubre nuestros servicios y bríndale el cuidado que se merece.
+      </p>
+      <section id="tarjetas-servicio">
+        <article class="tarjeta">
+          <img src="../images/logo-agendar-cita.svg" alt="Agendar Cita">
+          <span>Agendar Cita</span>
+          <a href="index.html">Conoce más</a>
+        </article>
+        <article class="tarjeta">
+          <img src="../images/logo-tratamiento.svg" alt="Ver tratamientos">
+          <span>Ver tratamientos</span>
+          <a href="index.html">Conoce más</a>
+        </article>
+      </section>
+      <button type="button" class="boton_empezar">Pregunta por ellos</button>
+    </div>
+  </div>
 </body>
+<script src="../javascript/index.js"></script>
 </html>
