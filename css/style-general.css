@@ -422,6 +422,8 @@ footer > div * {
   cursor: pointer;
   min-height: 50px; /* Hace la tarjeta más compacta */
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center; /* Centra el h3 verticalmente */
 }
 
