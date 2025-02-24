@@ -7,13 +7,18 @@
 </head>
 <body>
   <header>
-    <h1 th:text="${mascota.nombre}">Informacion de la mascota </h1>
+    <h1>Informacion de la mascota: <span th:text="${mascota.nombre}"></span></h1>
   </header>
   <main>
     <h2>Informacion:</h2>
+    <p>Nombre: <span th:text="${mascota.nombre}"></span></span></p>
+    <p>Raza: <span th:text="${mascota.raza}"></span></p>
+    <p>Edad: <span th:text="${mascota.edad}"></span></p>
+    <p>Peso: <span th:text="${mascota.peso}"></span></p>
+    <p>Enfermedad: <span th:text="${mascota.enfermedad} ? ${mascota.enfermedad} : 'Vacio'"></span></p>
+    <img th:src="${mascota.foto}" th:alt="'Foto Mascota ' + ${mascota.nombre}">
   </main>
   <footer>
-
   </footer>
 </body>
 </html>

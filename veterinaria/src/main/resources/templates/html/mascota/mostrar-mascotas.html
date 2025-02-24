@@ -27,8 +27,8 @@
           <td th:text="${mascota.raza}"></td>
           <td th:text="${mascota.edad}"></td>
           <td th:text="${mascota.peso}"></td>
-          <td th:text="${mascota.enfermedad}"></td>
-          <td th:text="${mascota.foto}"></td>
+          <td th:text="${mascota.enfermedad} ? ${mascota.enfermedad} : 'Vacio'"></td>
+          <td><img th:src="${mascota.foto}" th:alt="'Foto de ' + ${mascota.nombre}"></td>
         </tr>
       </tbody>
     </table>

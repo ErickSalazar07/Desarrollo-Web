@@ -31,7 +31,7 @@ public class ControladorMascota {
   // URL: http://localhost:8090/mascota/mostrar-mascota?id=1 
   @GetMapping("/mostrar-mascota")
   public String mostrarMascota(Model modelo, @RequestParam("id") Integer id) {
-    modelo.addAttribute("mascotas", mascotaServicio.searchById(id));
+    modelo.addAttribute("mascota", mascotaServicio.searchById(id));
     return "html/mascota/mostrar-mascota";
   }
 }
