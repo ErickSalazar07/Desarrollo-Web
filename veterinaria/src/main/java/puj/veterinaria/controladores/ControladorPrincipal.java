@@ -17,4 +17,9 @@ public class ControladorPrincipal {
   public String paginaIndex() {
     return "html/index";
   }
+
+  @GetMapping()
+  public 
+  List<String> animales = new ArrayList<>();
+
 }
