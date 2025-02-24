@@ -2,6 +2,9 @@ package puj.veterinaria.entidades;
 
 import java.util.List;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Mascota {
   private String nombre;
   private String raza;
