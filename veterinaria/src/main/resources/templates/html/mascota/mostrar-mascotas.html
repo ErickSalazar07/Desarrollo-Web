@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> <!-- URL para motor thymeleaf -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +22,14 @@
         </tr>
       </thead>
       <tbody>
+        <tr th:each="mascota: ${mascotas}">
+          <td th:text="${mascota.nombre}"></td>
+          <td th:text="${mascota.raza}"></td>
+          <td th:text="${mascota.edad}"></td>
+          <td th:text="${mascota.peso}"></td>
+          <td th:text="${mascota.enfermedad}"></td>
+          <td th:text="${mascota.foto}"></td>
+        </tr>
       </tbody>
     </table>
   </main>

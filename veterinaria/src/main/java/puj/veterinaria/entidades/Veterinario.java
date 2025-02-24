@@ -2,6 +2,7 @@ package puj.veterinaria.entidades;
 
 import java.util.List;
 
+// Entidades son un POJO (Plain Old Java Object)
 public class Veterinario {
   private String cedula;
   private String nombre;

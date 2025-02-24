@@ -2,9 +2,7 @@ package puj.veterinaria.entidades;
 
 import java.util.List;
 
-import jakarta.persistence.Entity;
-
-@Entity
+// Entidades son un POJO (Plain Old Java Object)
 public class Mascota {
   private String nombre;
   private String raza;
@@ -26,10 +24,10 @@ public class Mascota {
   }
 
 /*
-  Comportamiento
+Comportamiento
 */
 
-  /*
+/*
   Getters y Setters
 */
   public String getNombre() { return nombre; }

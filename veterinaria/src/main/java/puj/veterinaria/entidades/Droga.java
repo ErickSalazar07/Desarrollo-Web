@@ -1,5 +1,6 @@
 package puj.veterinaria.entidades;
 
+// Entidades son un POJO (Plain Old Java Object)
 public class Droga {
   private String nombre;
   private Integer precioCompra;

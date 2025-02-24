@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class ControladorPrincipal {
 
+  // URL: http://localhost:8090/
   @GetMapping("")
   public String paginaPrincipal() {
     return "html/index";
   }
 
+  // URL: http://localhost:8090/index.html
   @GetMapping("index.html")
   public String paginaIndex() {
     return "html/index";

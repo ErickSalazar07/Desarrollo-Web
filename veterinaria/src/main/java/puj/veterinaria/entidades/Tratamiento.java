@@ -2,6 +2,7 @@ package puj.veterinaria.entidades;
 
 import java.util.Date;
 
+// Entidades son un POJO (Plain Old Java Object)
 public class Tratamiento {
   private Droga drogaAsignada;
   private String id;
