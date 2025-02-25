@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.cdnfonts.com/css/pp-neue-montreal');
+
+body {
+    font-family: "PP Neue Montreal", serif;
+    background-image: url("../images/fondoTabla.png");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 25px;
+}
+
+main {
+    width: 80%;
+    max-width: 900px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: #7e7e7e;
+    color: white;
+}
+
+thead th {
+    padding: 12px;
+    font-size: 18px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background 0.3s;
+}
+
+tbody tr:hover {
+    background: #f1f1f1;
+}
+
+td {
+    padding: 12px;
+}
+
+main img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+footer img {
+    margin-top: 20px;
+    width: 150px;
+    height: auto;
+}
