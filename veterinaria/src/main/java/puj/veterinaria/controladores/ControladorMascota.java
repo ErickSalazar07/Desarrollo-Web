@@ -21,7 +21,7 @@ public class ControladorMascota {
 */
 
   // URL: http://localhost:8090/mascota/mostrar-mascotas
-  @GetMapping("/mostrar-mascotas")
+  @GetMapping("/mascotas")
   public String mostrarInfoMascotas(Model modelo) {
     modelo.addAttribute("mascotas", mascotaServicio.searchAll());
     return "html/mascota/mostrar-mascotas";
@@ -29,7 +29,7 @@ public class ControladorMascota {
   
   // ? Cambiar id por algun id dentro de los animales guardados en el repositorio
   // URL: http://localhost:8090/mascota/mostrar-mascota?id=1 
-  @GetMapping("/mostrar-mascota")
+  @GetMapping("/mascota")
   public String mostrarMascota(Model modelo, @RequestParam("id") Integer id) {
     modelo.addAttribute("mascota", mascotaServicio.searchById(id));
     return "html/mascota/mostrar-mascota";
