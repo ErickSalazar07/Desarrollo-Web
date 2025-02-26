@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style-mostrar-mascota.css">
   <title>Mostrar Mascota</title>
 </head>
 <body>
@@ -10,13 +11,23 @@
     <h1>Informacion de la mascota: <span th:text="${mascota.nombre}"></span></h1>
   </header>
   <main>
-    <h2>Informacion:</h2>
-    <p>Nombre: <span th:text="${mascota.nombre}"></span></span></p>
-    <p>Raza: <span th:text="${mascota.raza}"></span></p>
-    <p>Edad: <span th:text="${mascota.edad}"></span></p>
-    <p>Peso: <span th:text="${mascota.peso}"></span></p>
-    <p>Enfermedad: <span th:text="${mascota.enfermedad} ? ${mascota.enfermedad} : 'Vacio'"></span></p>
-    <img th:src="${mascota.foto}" th:alt="'Foto Mascota ' + ${mascota.nombre}">
+    <a class="btn btn-volver" th:href="@{/mascota/mostrar-mascotas}">Volver</a>
+    <div class="informacion-container" th:object="${mascota}">
+      <div class="campos">
+        <p>Nombre: <span th:text="*{nombre}"></span></p>
+        <p>Raza: <span th:text="*{raza}"></span></p>
+        <p>Edad: <span th:text="*{edad}"></span></p>
+        <p>Peso: <span th:text="*{peso}"></span></p>
+        <p>Enfermedad: <span th:text="*{enfermedad} != null ? *{enfermedad} : 'Vacio'"></span></p>
+        <p>Tratamientos: <span th:if="*{tratamientos == null or tratamientos.isEmpty()}">No hay Tratamientos</span></p>
+        <ul th:if="*{tratamientos != null and !tratamientos.isEmpty()}">
+          <li th:each="tratamiento: *{tratamientos}">
+            <span th:text="${tratamiento.nombreTratamiento}"></span>
+          </li>
+        </ul>
+      </div>
+      <img th:src="*{foto}" th:alt="'Foto Mascota ' + *{nombre}">
+    </div>
   </main>
   <footer>
   </footer>

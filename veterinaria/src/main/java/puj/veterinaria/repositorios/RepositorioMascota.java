@@ -1,25 +1,33 @@
 package puj.veterinaria.repositorios;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
 import puj.veterinaria.entidades.Mascota;
+import puj.veterinaria.entidades.Tratamiento;
 
 @Repository
 public class RepositorioMascota {
   Map<Integer,Mascota> baseDatosMascotas;
   public RepositorioMascota() {
+    // lista de tratamientienso 
+    List<Tratamiento> listaTratamientos = Arrays.asList(new Tratamiento("Antibioticos"),
+    new Tratamiento("Antiretrovirales"));
+
     baseDatosMascotas = new HashMap<>();
-    baseDatosMascotas.put(1, new Mascota("Pachini","Gato",5,4.5,"VIF",
-    "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/gato-pachini.jpg?raw=true",null));
-    baseDatosMascotas.put(2, new Mascota("Zeus","Perro",9,11.7,null,
-    "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/perro-zeus.jpg?raw=true",null));
-    baseDatosMascotas.put(3, new Mascota("Figaro","Perro",9,19.7,"Cataratas",
+    baseDatosMascotas.put(1, new Mascota(1, "Pachini","Gato",5,4.5,"VIF",
+    "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/gato-pachini.jpg?raw=true"
+    , listaTratamientos));
+    baseDatosMascotas.put(2, new Mascota(2, "Zeus","Perro",9,11.7,null,
+    "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/perro-zeus.jpg?raw=true", null));
+    baseDatosMascotas.put(3, new Mascota(3, "Figaro","Perro",9,19.7,"Cataratas",
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/perro-figaro.jpg?raw=true",null));
-    baseDatosMascotas.put(4, new Mascota("Lola","Gato",3,6.0,null,
+    baseDatosMascotas.put(4, new Mascota(4, "Lola","Gato",3,6.0,null,
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/gato-lola.jpg?raw=true",null));
   }
 

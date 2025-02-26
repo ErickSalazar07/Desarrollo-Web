@@ -10,6 +10,11 @@ public class Tratamiento {
   private Veterinario veterinarioEncargado;
   private Date fecha;
   
+  
+  public Tratamiento(String nombreTratamiento) {
+    this.nombreTratamiento = nombreTratamiento;
+  }
+
   public Tratamiento(Droga drogaAsignada, String id, String nombreTratamiento, Veterinario veterinarioEncargado,
       Date fecha) {
     this.drogaAsignada = drogaAsignada;

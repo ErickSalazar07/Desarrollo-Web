@@ -10,9 +10,9 @@
   <header>
   </header>
   <main>
+    <h1>Informacion de Animales</h1>
+    <a th:href="@{/}" class="btn btn-volver">Volver</a>
     <table>
-      <h1>Informacion de Animales</h1>
-
       <thead>
         <tr>
           <th>Nombre</th>
@@ -21,6 +21,7 @@
           <th>Peso</th>
           <th>Enfermedad</th>
           <th>Foto</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -31,6 +32,11 @@
           <td th:text="${mascota.peso}"></td>
           <td th:text="${mascota.enfermedad} ? ${mascota.enfermedad} : 'Vacio'"></td>
           <td><img th:src="${mascota.foto}" th:alt="'Foto de ' + ${mascota.nombre}"></td>
+          <td>
+            <a th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}" class="btn btn-ver-mascota">
+              Ver Mascota
+            </a>
+          </td>
         </tr>
       </tbody>
     </table>

@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import puj.veterinaria.servicios.IMascotaServicio;
 
@@ -29,8 +29,8 @@ public class ControladorMascota {
   
   // ? Cambiar id por algun id dentro de los animales guardados en el repositorio
   // URL: http://localhost:8090/mascota/mostrar-mascota?id=1 
-  @GetMapping("/mostrar-mascota")
-  public String mostrarMascota(Model modelo, @RequestParam("id") Integer id) {
+  @GetMapping("/mostrar-mascota/{id}")
+  public String mostrarMascota(Model modelo, @PathVariable("id") Integer id) {
     modelo.addAttribute("mascota", mascotaServicio.searchById(id));
     return "html/mascota/mostrar-mascota";
   }

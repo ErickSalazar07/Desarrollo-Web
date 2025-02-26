@@ -4,6 +4,7 @@ import java.util.List;
 
 // Entidades son un POJO (Plain Old Java Object)
 public class Mascota {
+  private Integer id;
   private String nombre;
   private String raza;
   private Integer edad;
@@ -12,8 +13,10 @@ public class Mascota {
   private String foto;
   private List<Tratamiento> tratamientos;
   
-  public Mascota(String nombre, String raza, Integer edad, Double peso, String enfermedad, String foto,
-        List<Tratamiento> tratamientos) {
+  public Mascota(Integer id, String nombre, String raza, Integer edad, Double peso,
+      String enfermedad, String foto, List<Tratamiento> tratamientos) {
+    
+    this.id = id;
     this.nombre = nombre;
     this.raza = raza;
     this.edad = edad;
@@ -24,12 +27,14 @@ public class Mascota {
   }
 
 /*
-Comportamiento
+  Comportamiento
 */
 
 /*
   Getters y Setters
 */
+  public Integer getId() { return id; }
+  public void setId(Integer id) { this.id = id; }
   public String getNombre() { return nombre; }
   public void setNombre(String nombre) { this.nombre = nombre; }
   public String getRaza() { return raza; }

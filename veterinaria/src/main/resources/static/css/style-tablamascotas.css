@@ -72,3 +72,24 @@ footer img {
     width: 150px;
     height: auto;
 }
+
+.btn {
+  border: 1px solid black;
+  border-radius: 13px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding: 5px;
+  color: black;
+  font-weight: 450;
+}
+
+.btn-volver {
+  background-color: rgb(246, 173, 173);
+  color: rgb(130, 4, 4);
+  align-self: flex-start;
+}
+
+.btn-ver-mascota {
+  background-color: #E090D7;
+  color: #900a8b;
+}

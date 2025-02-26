@@ -1,0 +1,66 @@
+
+html,
+body {
+  margin: 0;
+  background-image: url("../images/fondoTabla.png");
+}
+
+h1 {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.btn {
+  text-decoration: none;
+  margin: 30px;
+  padding: 5px;
+  color: black;
+  border: 1px solid black;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  width: 70px;
+}
+
+.btn-volver {
+  background-color: rgb(243, 168, 168);
+  color: rgb(136, 1, 1)
+}
+
+.informacion-container {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.informacion-container img {
+  height: auto;
+  width: 475px;
+  margin: 40px;
+  border: 1px solid white;
+  border-radius: 25px;
+}
+
+.campos {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  justify-self: start;
+  margin: 5px 25px;
+  font-size: 1.5rem;
+}
+
+.campos p {
+  width: fit-content;
+  font-weight: bold;
+}
+
+.campos span {
+  font-weight: lighter;
+}
+
+li {
+  margin: 10px 0px;
+}
