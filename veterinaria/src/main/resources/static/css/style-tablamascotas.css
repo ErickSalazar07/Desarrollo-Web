@@ -7,9 +7,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
-    flex-direction: column;
+    padding: 0;
+        flex-direction: column;
 }
 
 h1 {
@@ -62,15 +63,24 @@ main img {
     object-fit: cover;
 }
 
-footer {
-    margin-top: 20px;
-    text-align: center;
-}
 
-footer img {
-    margin-top: 20px;
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Separa los elementos a los extremos */
+    width: 100%;
+    padding: 10px;
+}
+header img {
+    margin-top: 0px;
     width: 150px;
     height: auto;
+    margin-bottom: 5px;
+    margin-left: 50px;
+}
+header button{
+    margin-right: 30px;
+
 }
 
 .btn {
@@ -84,12 +94,31 @@ footer img {
 }
 
 .btn-volver {
-  background-color: rgb(246, 173, 173);
-  color: rgb(130, 4, 4);
-  align-self: flex-start;
+    padding: 10px 30px;
+    background-color: #054f31;
+    color: white;
+    margin-right: 40px;
+}
+
+.btn-volver:hover {
+    padding: 10px 30px;
+    background-color: white;
+    color: #054f31;
+    border: 2px solid #054f31;
+    margin-right: 40px;
 }
 
 .btn-ver-mascota {
-  background-color: #E090D7;
-  color: #900a8b;
+border: 2px solid #054f31;
+  background-color: white;
+  color: #054f31;
+  padding: 10px 15px;
+  font-size: 15px;
 }
+
+.btn-ver-mascota:hover {
+      background-color: #054f31;
+      color: white;
+      padding: 10px 15px;
+      font-size: 15px;
+    }

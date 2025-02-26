@@ -8,28 +8,35 @@
 </head>
 <body>
   <header>
-    <h1>Informacion de la mascota: <span th:text="${mascota.nombre}"></span></h1>
+    <img src="/images/logo.png" alt="Logo Health Animals">
   </header>
   <main>
-    <a class="btn btn-volver" th:href="@{/mascota/mostrar-mascotas}">Volver</a>
     <div class="informacion-container" th:object="${mascota}">
       <div class="campos">
+<<<<<<< HEAD
         <p>Nombre: <span th:text="*{nombre}"></span></p>
         <p>Raza: <span th:text="*{raza}"></span></p>
         <p>Edad: <span th:text="*{edad} + ' años'"></span></p>
         <p>Peso: <span th:text="*{peso} + ' kg'"></span></p>
         <p>Enfermedad: <span th:text="*{enfermedad} != null ? *{enfermedad} : 'Vacio(no tiene)'"></span></p>
         <p>Tratamientos: <span th:if="*{tratamientos == null or tratamientos.isEmpty()}">No hay Tratamientos</span></p>
+=======
+        <p id="nombreAnimal"><span th:text="*{nombre}"></span></p>
+        <p><span id="negrilla">Raza:</span> <span th:text="*{raza}"></span></p>
+        <p><span id="negrilla">Edad: </span> <span th:text="*{edad}"></span></p>
+        <p><span id="negrilla">Peso: </span> <span th:text="*{peso}"></span></p>
+        <p><span id="negrilla">Enfermedad:</span> <span th:text="*{enfermedad} != null ? *{enfermedad} : 'Vacio'"></span></p>
+        <p><span id="negrilla">Tratamientos: </span> <span th:if="*{tratamientos == null or tratamientos.isEmpty()}">No hay Tratamientos</span></p>
+>>>>>>> d50b0ac (Correcion css mostar-mascotas mostrar-mascota)
         <ul th:if="*{tratamientos != null and !tratamientos.isEmpty()}">
           <li th:each="tratamiento: *{tratamientos}">
             <span th:text="${tratamiento.nombreTratamiento}"></span>
           </li>
         </ul>
+        <a class="btn btn-volver" th:href="@{/mascota/mascotas}">Volver</a>
       </div>
       <img th:src="*{foto}" th:alt="'Foto Mascota ' + *{nombre}">
     </div>
   </main>
-  <footer>
-  </footer>
 </body>
 </html>

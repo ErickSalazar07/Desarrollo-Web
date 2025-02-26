@@ -4,34 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style-tablamascotas.css">
-  <title>Mostrar Mascotas</title>
+  <title>Mascotas</title>
 </head>
 <body>
   <header>
+    <img src="/images/logo.png" alt="Logo Health Animals">
+    <a th:href="@{/}" class="btn btn-volver">Volver</a>
   </header>
   <main>
     <h1>Informacion de Animales</h1>
-    <a th:href="@{/}" class="btn btn-volver">Volver</a>
     <table>
       <thead>
         <tr>
+          <th>Foto</th>
           <th>Nombre</th>
           <th>Raza</th>
           <th>Edad</th>
           <th>Peso</th>
           <th>Enfermedad</th>
-          <th>Foto</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
         <tr th:each="mascota: ${mascotas}">
+          <td><img th:src="${mascota.foto}" th:alt="'Foto de ' + ${mascota.nombre}"></td>
           <td th:text="${mascota.nombre}"></td>
           <td th:text="${mascota.raza}"></td>
           <td th:text="${mascota.edad}"></td>
           <td th:text="${mascota.peso}"></td>
           <td th:text="${mascota.enfermedad} ? ${mascota.enfermedad} : 'Vacio'"></td>
-          <td><img th:src="${mascota.foto}" th:alt="'Foto de ' + ${mascota.nombre}"></td>
           <td>
             <a th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}" class="btn btn-ver-mascota">
               Ver Mascota
@@ -42,7 +43,6 @@
     </table>
   </main>
   <footer>
-    <img src="/images/logo.png" alt="Logo Health Animals">
   </footer>
 </body>
 </html>
