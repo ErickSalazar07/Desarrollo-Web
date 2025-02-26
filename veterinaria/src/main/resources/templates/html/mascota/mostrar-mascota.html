@@ -16,9 +16,9 @@
       <div class="campos">
         <p>Nombre: <span th:text="*{nombre}"></span></p>
         <p>Raza: <span th:text="*{raza}"></span></p>
-        <p>Edad: <span th:text="*{edad}"></span></p>
-        <p>Peso: <span th:text="*{peso}"></span></p>
-        <p>Enfermedad: <span th:text="*{enfermedad} != null ? *{enfermedad} : 'Vacio'"></span></p>
+        <p>Edad: <span th:text="*{edad} + ' años'"></span></p>
+        <p>Peso: <span th:text="*{peso} + ' kg'"></span></p>
+        <p>Enfermedad: <span th:text="*{enfermedad} != null ? *{enfermedad} : 'Vacio(no tiene)'"></span></p>
         <p>Tratamientos: <span th:if="*{tratamientos == null or tratamientos.isEmpty()}">No hay Tratamientos</span></p>
         <ul th:if="*{tratamientos != null and !tratamientos.isEmpty()}">
           <li th:each="tratamiento: *{tratamientos}">
