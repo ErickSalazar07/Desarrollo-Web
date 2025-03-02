@@ -20,8 +20,8 @@ public class ControladorMascota {
   Metodos @GetMapping
 */
 
-  // URL: http://localhost:8090/mascota/mostrar-mascotas
-  @GetMapping("/mostrar-mascotas")
+  // URL: http://localhost:8090/mascota/mascotas
+  @GetMapping("/mascotas")
   public String mostrarInfoMascotas(Model modelo) {
     modelo.addAttribute("mascotas", mascotaServicio.searchAll());
     return "html/mascota/mostrar-mascotas";

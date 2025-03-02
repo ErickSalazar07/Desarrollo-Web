@@ -13,21 +13,12 @@
   <main>
     <div class="informacion-container" th:object="${mascota}">
       <div class="campos">
-<<<<<<< HEAD
-        <p>Nombre: <span th:text="*{nombre}"></span></p>
-        <p>Raza: <span th:text="*{raza}"></span></p>
-        <p>Edad: <span th:text="*{edad} + ' años'"></span></p>
-        <p>Peso: <span th:text="*{peso} + ' kg'"></span></p>
-        <p>Enfermedad: <span th:text="*{enfermedad} != null ? *{enfermedad} : 'Vacio(no tiene)'"></span></p>
-        <p>Tratamientos: <span th:if="*{tratamientos == null or tratamientos.isEmpty()}">No hay Tratamientos</span></p>
-=======
         <p id="nombreAnimal"><span th:text="*{nombre}"></span></p>
         <p><span id="negrilla">Raza:</span> <span th:text="*{raza}"></span></p>
         <p><span id="negrilla">Edad: </span> <span th:text="*{edad}"></span></p>
         <p><span id="negrilla">Peso: </span> <span th:text="*{peso}"></span></p>
         <p><span id="negrilla">Enfermedad:</span> <span th:text="*{enfermedad} != null ? *{enfermedad} : 'Vacio'"></span></p>
         <p><span id="negrilla">Tratamientos: </span> <span th:if="*{tratamientos == null or tratamientos.isEmpty()}">No hay Tratamientos</span></p>
->>>>>>> d50b0ac (Correcion css mostar-mascotas mostrar-mascota)
         <ul th:if="*{tratamientos != null and !tratamientos.isEmpty()}">
           <li th:each="tratamiento: *{tratamientos}">
             <span th:text="${tratamiento.nombreTratamiento}"></span>
