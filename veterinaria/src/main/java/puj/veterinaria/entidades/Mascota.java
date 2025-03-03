@@ -13,6 +13,9 @@ public class Mascota {
   private String foto;
   private List<Tratamiento> tratamientos;
   
+  public Mascota() {}
+  
+  
   public Mascota(Integer id, String nombre) {
     this.id = id;
     this.nombre = nombre;
