@@ -21,23 +21,28 @@ public class ControladorCliente {
 
 // Metodos GetMapping
 
+  // URL: http://localhost:8090/cliente/
   @GetMapping("/")
   public String paginaInicioCliente() {
     return "redirect:/cliente/clientes";
   }
 
+  // URL: http://localhost:8090/cliente/clientes
   @GetMapping("/clientes")
   public String mostrarClientes(Model modelo) {
     modelo.addAttribute("clientes", clienteServicio.findAll());
     return "/html/cliente/mostrar-clientes";
   }
 
+  // ? Cambiar id por algun id dentro de los clientes guardados en el repositorio
+  // URL: http://localhost:8090/cliente/mostrar-cliente/1
   @GetMapping("/mostrar-cliente/{id}")
   public String mostrarCliente(Model modelo, @PathVariable("id") Integer id) {
     modelo.addAttribute("cliente", clienteServicio.findById(id));
     return "/html/cliente/mostrar-cliente";
   }
 
+  // URL: http://localhost:8090/cliente/add
   @GetMapping("/add")
   public String mostrarFormularioCrear(Model modelo) {
     Cliente cliente = new Cliente(null, null, null, null, null, null);
@@ -45,12 +50,16 @@ public class ControladorCliente {
     return "/html/cliente/crear-cliente";
   }
 
+  // ? Cambiar id por algun id dentro de los clientes guardados en el repositorio
+  // URL: http://localhost:8090/cliente/update/1
   @GetMapping("/update/{id}")
   public String mostrarFormularioActualizar(Model modelo, @PathVariable("id") Integer id) {
     modelo.addAttribute("cliente", clienteServicio.findById(id));
     return "/html/cliente/actualizar-cliente";
   }
 
+  // ? Cambiar id por algun id dentro de los clientes guardados en el repositorio
+  // URL: http://localhost:8090/cliente/delete/1
   @GetMapping("/delete/{id}")
   public String eliminarCliente(@PathVariable("id") Integer id) {
     clienteServicio.deleteById(id);
