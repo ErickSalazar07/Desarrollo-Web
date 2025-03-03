@@ -17,7 +17,8 @@
         <p><span id="negrilla">Raza:</span> <span th:text="*{raza}"></span></p>
         <p><span id="negrilla">Edad: </span> <span th:text="*{edad}"></span></p>
         <p><span id="negrilla">Peso: </span> <span th:text="*{peso}"></span></p>
-        <p><span id="negrilla">Enfermedad:</span> <span th:text="*{enfermedad} != null ? *{enfermedad} : 'Vacio'"></span></p>
+        <p><span id="negrilla">Enfermedad:</span> <span th:text="*{enfermedad != null and !enfermedad.equals('')} ?
+           *{enfermedad} : 'Vacio'"></span></p>
         <p><span id="negrilla">Tratamientos: </span> <span th:if="*{tratamientos == null or tratamientos.isEmpty()}">No hay Tratamientos</span></p>
         <ul th:if="*{tratamientos != null and !tratamientos.isEmpty()}">
           <li th:each="tratamiento: *{tratamientos}">

@@ -13,6 +13,11 @@ public class Mascota {
   private String foto;
   private List<Tratamiento> tratamientos;
   
+  public Mascota(Integer id, String nombre) {
+    this.id = id;
+    this.nombre = nombre;
+  }
+  
   public Mascota(Integer id, String nombre, String raza, Integer edad, Double peso,
       String enfermedad, String foto, List<Tratamiento> tratamientos) {
     

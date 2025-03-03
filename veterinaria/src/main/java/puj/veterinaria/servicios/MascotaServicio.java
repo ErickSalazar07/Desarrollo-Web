@@ -23,4 +23,19 @@ public class MascotaServicio implements IMascotaServicio {
   public Collection<Mascota> searchAll() {
     return repositorioMascota.findAll();
   }
+
+  @Override
+  public void deleteById(Integer id) {
+    repositorioMascota.deleteById(id);
+  }
+
+  @Override
+  public void updateMascota(Mascota mascota) {
+    repositorioMascota.updateMascota(mascota);
+  }
+
+  @Override
+  public void addMascota(Mascota mascota) {
+    repositorioMascota.addMascota(mascota);
+  }
 }

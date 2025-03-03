@@ -13,6 +13,9 @@
   </header>
   <main>
     <h1>Informacion de Animales</h1>
+    <section class="acciones">
+      <a type="button" class="btn" th:href="@{/mascota/add}">Agregar Mascota</a>
+    </section>
     <table>
       <thead>
         <tr>
@@ -23,6 +26,7 @@
           <th>Peso</th>
           <th>Enfermedad</th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -32,10 +36,18 @@
           <td th:text="${mascota.raza}"></td>
           <td th:text="${mascota.edad}"></td>
           <td th:text="${mascota.peso}"></td>
-          <td th:text="${mascota.enfermedad} ? ${mascota.enfermedad} : 'Vacio'"></td>
+          <td th:text="${mascota.enfermedad != null and !mascota.enfermedad.equals('')} ? 
+              ${mascota.enfermedad} : 'Vacio'"></td>
           <td>
-            <a th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}" class="btn btn-ver-mascota">
+            <a type="button" th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}"
+            class="btn btn-ver-mascota">
               Ver Mascota
+            </a>
+            <a type="button" th:href="@{/mascota/update/{id}(id=${mascota.id})}" class="btn">
+              Modificar
+            </a>
+            <a type="button" th:href="@{/mascota/delete/{id}(id=${mascota.id})}" class="btn">
+              Eliminar
             </a>
           </td>
         </tr>
