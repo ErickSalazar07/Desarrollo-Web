@@ -24,6 +24,11 @@ public class ClienteServicio implements IClienteServicio {
   }
 
   @Override
+  public Cliente findByCorreoAndCedula(String correo, String cedula) {
+    return repositorioCliente.findByCorreoAndCedula(correo, cedula);
+  }
+
+  @Override
   public void addCliente(Cliente cliente) {
     repositorioCliente.addCliente(cliente);
   }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import puj.veterinaria.entidades.Mascota;
+import puj.veterinaria.excepciones.NotFoundExceptionMascota;
 import puj.veterinaria.servicios.IMascotaServicio;
 
 @Controller
@@ -37,6 +38,12 @@ public class ControladorMascota {
   // URL: http://localhost:8090/mascota/mostrar-mascota/1 
   @GetMapping("/mostrar-mascota/{id}")
   public String mostrarMascota(Model modelo, @PathVariable("id") Integer id) {
+    Mascota mascota = mascotaServicio.searchById(id);
+
+    if(mascota == null) {
+      throw new NotFoundExceptionMascota(id);
+    }
+
     modelo.addAttribute("mascota", mascotaServicio.searchById(id));
     return "html/mascota/mostrar-mascota";
   }

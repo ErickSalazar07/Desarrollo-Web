@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style-login-cliente.css">
+  <title>Login Cliente</title>
+</head>
+<body>
+  <header>
+    <h1>Bienvenido</h1>
+  </header>
+  <main>
+    <img src="/images/logo.png" alt="Logo Health Animals">
+    <hr>
+    <section class="campos-login">
+      <form th:object="${cliente}" th:action="@{/cliente/login}" method="post">
+        <label for="correro">Correo</label>
+        <input th:field="*{correo}" type="email" id="correo" placeholder="Ingrese correo" required>
+        <label for="cedula">Cedula</label>
+        <input th:field="*{cedula}" type="number" id="cedula" placeholder="Ingrese cedula" required>
+        <button type="submit">Ingresar</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

@@ -18,15 +18,15 @@ public class RepositorioCliente {
     baseDatosCliente = new HashMap<>();
 
     baseDatosCliente.put(1, new Cliente(1,"18872435","Juan","juan@email.com",
-    3145194072L, Arrays.asList(new Mascota(1, "Pachini"),
-    new Mascota(2, "Zeus"))));
+    "3145194072", Arrays.asList(new Mascota(1),
+    new Mascota(2))));
     baseDatosCliente.put(2, new Cliente(2,"19812305","Pedro","pedro@email.com",
-    3045591094L, Arrays.asList(new Mascota(3, "Figaro"),
-    new Mascota(4, "Lola"))));
+    "3045591094", Arrays.asList(new Mascota(3),
+    new Mascota(4))));
     baseDatosCliente.put(3, new Cliente(3,"27082133","Luis","luis@email.com",
-    3944193373L,null));
+    "3944193373",null));
     baseDatosCliente.put(4, new Cliente(4,"17190115","Juliana","juli@email.com",
-    3305004013L,null));
+    "3305004013",null));
   }
 
   public Cliente findById(Integer id) {
@@ -35,6 +35,13 @@ public class RepositorioCliente {
 
   public Collection<Cliente> findAll() {
     return baseDatosCliente.values();
+  }
+
+  public Cliente findByCorreoAndCedula(String correo, String cedula) {
+    for(Cliente cliente: baseDatosCliente.values()) 
+      if(cliente.getCorreo().equals(correo) && cliente.getCedula().equals(cedula)) 
+        return cliente;
+    return null;
   }
 
   public void addCliente(Cliente cliente) {

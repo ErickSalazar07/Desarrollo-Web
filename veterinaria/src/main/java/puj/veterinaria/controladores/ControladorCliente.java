@@ -1,5 +1,8 @@
 package puj.veterinaria.controladores;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import puj.veterinaria.entidades.Cliente;
+import puj.veterinaria.entidades.Mascota;
+import puj.veterinaria.excepciones.NotFoundExceptionCliente;
 import puj.veterinaria.servicios.ClienteServicio;
+import puj.veterinaria.servicios.MascotaServicio;
 
 @Controller
 @RequestMapping("/cliente")
@@ -18,6 +24,8 @@ public class ControladorCliente {
 
   @Autowired
   ClienteServicio clienteServicio;
+  @Autowired
+  MascotaServicio mascotaServicio;
 
 // Metodos GetMapping
 
@@ -38,7 +46,17 @@ public class ControladorCliente {
   // URL: http://localhost:8090/cliente/mostrar-cliente/1
   @GetMapping("/mostrar-cliente/{id}")
   public String mostrarCliente(Model modelo, @PathVariable("id") Integer id) {
-    modelo.addAttribute("cliente", clienteServicio.findById(id));
+    List<Mascota> mascotasCliente = new ArrayList<Mascota>();
+    Cliente cliente = clienteServicio.findById(id);
+
+    for(Mascota mascota: cliente.getMascotas()) {
+      Mascota mascotaBuscar = mascotaServicio.searchById(mascota.getId());
+      if(mascotaBuscar != null)
+        mascotasCliente.add(mascotaBuscar);
+    }
+
+    cliente.setMascotas(mascotasCliente);
+    modelo.addAttribute("cliente", cliente);
     return "/html/cliente/mostrar-cliente";
   }
 
@@ -66,6 +84,13 @@ public class ControladorCliente {
     return "redirect:/cliente/clientes";
   }
 
+  @GetMapping("login")
+  public String loginCliente(Model modelo) {
+    Cliente clienteIngresar = new Cliente(null,null,null,null,null,null);
+    modelo.addAttribute("cliente", clienteIngresar);
+    return "html/cliente/login-cliente";
+  }
+
 // Metodos PostMapping
 
   @PostMapping("/agregar")
@@ -74,9 +99,19 @@ public class ControladorCliente {
     return "redirect:/cliente/clientes";
   }
 
-  @PostMapping("update/{id}")
+  @PostMapping("/update/{id}")
   public String actualizarCliente(@ModelAttribute("cliente") Cliente cliente, @PathVariable("id") Integer id) {
     clienteServicio.updateCliente(cliente);
     return "redirect:/cliente/clientes";
+  }
+
+  @PostMapping("/login")
+  public String loginCliente(@ModelAttribute("cliente") Cliente cliente) {
+    Cliente clienteBuscar = clienteServicio.findByCorreoAndCedula(cliente.getCorreo(), cliente.getCedula());
+    if(clienteBuscar == null) {
+      throw new NotFoundExceptionCliente(cliente);
+    }
+    
+    return "redirect:/cliente/mostrar-cliente/"+clienteBuscar.getId();
   }
 }
