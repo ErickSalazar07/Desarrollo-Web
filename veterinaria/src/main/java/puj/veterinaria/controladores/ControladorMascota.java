@@ -83,7 +83,7 @@ public class ControladorMascota {
   }
 
   @PostMapping("/update/{id}")
-  public String agregarMascota(@ModelAttribute("mascota") Mascota mascota, @PathVariable("id") int id) {
+  public String actualizarMascota(@ModelAttribute("mascota") Mascota mascota, @PathVariable("id") int id) {
     mascotaServicio.updateMascota(mascota);
     return "redirect:/mascota/mascotas";
   }

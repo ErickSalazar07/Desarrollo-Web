@@ -49,10 +49,12 @@ public class ControladorCliente {
     List<Mascota> mascotasCliente = new ArrayList<Mascota>();
     Cliente cliente = clienteServicio.findById(id);
 
-    for(Mascota mascota: cliente.getMascotas()) {
-      Mascota mascotaBuscar = mascotaServicio.searchById(mascota.getId());
-      if(mascotaBuscar != null)
-        mascotasCliente.add(mascotaBuscar);
+    if(cliente.getMascotas() != null) {
+      for(Mascota mascota: cliente.getMascotas()) {
+        Mascota mascotaBuscar = mascotaServicio.searchById(mascota.getId());
+        if(mascotaBuscar != null)
+          mascotasCliente.add(mascotaBuscar);
+      }
     }
 
     cliente.setMascotas(mascotasCliente);

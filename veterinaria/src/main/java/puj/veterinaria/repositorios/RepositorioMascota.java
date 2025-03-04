@@ -48,7 +48,7 @@ public class RepositorioMascota {
 
   public void addMascota(Mascota mascota) {
     // el tamaño nos dice el id actual, se busca el siguiente a ese
-    Integer idLibre = baseDatosMascotas.get(baseDatosMascotas.size()).getId()+1; 
+    Integer idLibre = baseDatosMascotas.keySet().stream().max(Integer::compareTo).orElse(0)+1; 
     mascota.setId(idLibre);
     baseDatosMascotas.put(idLibre,mascota);
   }
