@@ -17,7 +17,7 @@
         <p>Correo: <span th:text="*{correo}"></span></p>
         <p>Cedula: <span th:text="*{cedula}"></span></p>
         <p>Celular: <span th:text="*{celular}"></span></p>
-        <p>Mascotas: <span th:if="*{mascotas == null or mascotas.isEmpty()}">No hay mascotas</span></p>
+        <p>Mascotas: <span th:if="*{mascotas == null or mascotas.isEmpty()}">No tiene mascotas</span></p>
         <ul th:if="*{mascotas != null and !mascotas.isEmpty()}">
           <li th:each="mascota: *{mascotas}">
             <p>
