@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import puj.veterinaria.entidades.Cliente;
 import puj.veterinaria.entidades.Mascota;
 import puj.veterinaria.excepciones.NotFoundExceptionMascota;
 import puj.veterinaria.servicios.IClienteServicio;
@@ -82,6 +83,15 @@ public class ControladorMascota {
 
   @PostMapping("/agregar")
   public String agregarMascota(@ModelAttribute("mascota") Mascota mascota) {
+    // Buscar el cliente antes de asignarlo a la mascota
+    if (mascota.getCliente() != null && mascota.getCliente().getCedula() != null) {
+      Cliente clienteExistente = clienteServicio.findByCedula(mascota.getCliente().getCedula());
+      if (clienteExistente == null) 
+        // Manejar el caso en que el cliente no exista
+        return "redirect:/mascota/add?error=cliente_no_encontrado";
+      mascota.setCliente(clienteExistente);
+    }
+    
     mascotaServicio.addMascota(mascota);
     return "redirect:/mascota/mascotas";
   }

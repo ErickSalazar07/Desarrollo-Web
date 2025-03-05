@@ -46,15 +46,14 @@ public class ClienteServicio implements IClienteServicio {
   @Transactional
   @Override
   public Cliente updateCliente(Long id, Cliente nuevoCliente) {
-      Cliente cliente = repositorioCliente.findById(id)
-          .orElseThrow(() -> new RuntimeException("Cliente no encontrado con ID: " + id));
+    Cliente cliente = repositorioCliente.findById(id)
+        .orElseThrow(() -> new RuntimeException("Cliente no encontrado con ID: " + id));
 
-      cliente.setCedula(nuevoCliente.getCedula());
-      cliente.setNombre(nuevoCliente.getNombre());
-      cliente.setCorreo(nuevoCliente.getCorreo());
-      cliente.setCelular(nuevoCliente.getCelular());
+    cliente.setNombre(nuevoCliente.getNombre());
+    cliente.setCorreo(nuevoCliente.getCorreo());
+    cliente.setCelular(nuevoCliente.getCelular());
 
-      return repositorioCliente.save(cliente);
+    return repositorioCliente.save(cliente);
   }
 
 
