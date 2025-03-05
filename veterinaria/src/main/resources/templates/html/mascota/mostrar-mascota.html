@@ -19,12 +19,12 @@
         <p><span id="negrilla">Peso: </span> <span th:text="*{peso}"></span></p>
         <p><span id="negrilla">Enfermedad:</span> <span th:text="*{enfermedad != null and !enfermedad.equals('')} ?
            *{enfermedad} : 'Vacio'"></span></p>
-        <p><span id="negrilla">Tratamientos: </span> <span th:if="*{tratamientos == null or tratamientos.isEmpty()}">No hay Tratamientos</span></p>
+        <!-- <p><span id="negrilla">Tratamientos: </span> <span th:if="*{tratamientos == null or tratamientos.isEmpty()}">No hay Tratamientos</span></p>
         <ul th:if="*{tratamientos != null and !tratamientos.isEmpty()}">
           <li th:each="tratamiento: *{tratamientos}">
             <span th:text="${tratamiento.nombreTratamiento}"></span>
           </li>
-        </ul>
+        </ul> -->
         <a class="btn btn-volver" th:href="@{/mascota/mascotas}">Volver</a>
       </div>
       <img th:src="*{foto}" th:alt="'Foto Mascota ' + *{nombre}">

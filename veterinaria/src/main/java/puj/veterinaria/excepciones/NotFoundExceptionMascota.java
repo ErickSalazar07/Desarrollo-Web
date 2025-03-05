@@ -5,7 +5,7 @@ import puj.veterinaria.entidades.Mascota;
 public class NotFoundExceptionMascota extends RuntimeException {
   private String mensaje;
 
-  public NotFoundExceptionMascota(Integer id) {
+  public NotFoundExceptionMascota(Long id) {
     mensaje = "La mascota con ID: " + id;
     mensaje += "\nNO EXISTE";
   }

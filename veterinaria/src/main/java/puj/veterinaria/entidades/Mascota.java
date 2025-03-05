@@ -1,33 +1,39 @@
 package puj.veterinaria.entidades;
 
-import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 // Entidades son un POJO (Plain Old Java Object)
+@Entity
 public class Mascota {
-  private Integer id;
+  
+  @Id
+  @GeneratedValue
+  private Long id;
   private String nombre;
   private String raza;
   private Integer edad;
   private Double peso;
   private String enfermedad;
   private String foto;
-  private List<Tratamiento> tratamientos;
+
+  @ManyToOne
+  @JoinColumn(name = "cliente_cedula", referencedColumnName = "cedula") // usar cedula como foreign key
+  private Cliente cliente;
+  // private List<Tratamiento> tratamientos;
   
-  // public Mascota(Integer id) {
-  //   this.id = id;
-  // }
+  public Mascota() { }
   
-  public Mascota(Integer id, String nombre, String raza, Integer edad, Double peso,
-      String enfermedad, String foto, List<Tratamiento> tratamientos) {
-    
-    this.id = id;
+  public Mascota(String nombre, String raza, Integer edad, Double peso, String enfermedad, String foto) {
     this.nombre = nombre;
     this.raza = raza;
     this.edad = edad;
     this.peso = peso;
     this.enfermedad = enfermedad;
     this.foto = foto;
-    this.tratamientos = tratamientos;
   }
 
 /*
@@ -37,8 +43,8 @@ public class Mascota {
 /*
   Getters y Setters
 */
-  public Integer getId() { return id; }
-  public void setId(Integer id) { this.id = id; }
+  public Long getId() { return id; }
+  public void setId(Long id) { this.id = id; }
   public String getNombre() { return nombre; }
   public void setNombre(String nombre) { this.nombre = nombre; }
   public String getRaza() { return raza; }
@@ -51,6 +57,8 @@ public class Mascota {
   public void setEnfermedad(String enfermedad) { this.enfermedad = enfermedad; }
   public String getFoto() { return foto; }
   public void setFoto(String foto) { this.foto = foto; }
-  public List<Tratamiento> getTratamientos() { return tratamientos; }
-  public void setTratamientos(List<Tratamiento> tratamientos) { this.tratamientos = tratamientos; }
+  public Cliente getCliente() { return cliente; }
+  public void setCliente(Cliente cliente) { this.cliente = cliente; }
+  // public List<Tratamiento> getTratamientos() { return tratamientos; }
+  // public void setTratamientos(List<Tratamiento> tratamientos) { this.tratamientos = tratamientos; }
 }

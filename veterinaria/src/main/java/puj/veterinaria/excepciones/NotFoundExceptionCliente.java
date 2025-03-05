@@ -5,7 +5,7 @@ import puj.veterinaria.entidades.Cliente;
 public class NotFoundExceptionCliente extends RuntimeException {
   private String mensaje;
   
-  public NotFoundExceptionCliente(Integer id) {
+  public NotFoundExceptionCliente(long id) {
     mensaje = "El cliente con ID: "+id;
     mensaje += "\nNO EXISTE";
   }

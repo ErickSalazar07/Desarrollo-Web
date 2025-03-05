@@ -5,7 +5,9 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
 import puj.veterinaria.entidades.Mascota;
+import puj.veterinaria.repositorios.RepositorioCliente;
 import puj.veterinaria.repositorios.RepositorioMascota;
 
 @Service
@@ -14,9 +16,12 @@ public class MascotaServicio implements IMascotaServicio {
   @Autowired
   RepositorioMascota repositorioMascota;
 
+  @Autowired
+  RepositorioCliente repositorioCliente;
+
   @Override
-  public Mascota searchById(Integer id) {
-    return repositorioMascota.findById(id);
+  public Mascota searchById(Long id) {
+    return repositorioMascota.findById(id).get();
   }
 
   @Override
@@ -25,17 +30,28 @@ public class MascotaServicio implements IMascotaServicio {
   }
 
   @Override
-  public void deleteById(Integer id) {
+  public void deleteById(Long id) {
     repositorioMascota.deleteById(id);
   }
 
+  @Transactional
   @Override
-  public void updateMascota(Mascota mascota) {
-    repositorioMascota.updateMascota(mascota);
+  public Mascota updateMascota(Long id,Mascota nuevaMascota) {
+    Mascota mascota = repositorioMascota.findById(id).get();
+
+    mascota.setNombre(nuevaMascota.getNombre());
+    mascota.setRaza(nuevaMascota.getRaza());
+    mascota.setEdad(nuevaMascota.getEdad());
+    mascota.setPeso(nuevaMascota.getPeso());
+    mascota.setEnfermedad(nuevaMascota.getEnfermedad());
+    mascota.setFoto(nuevaMascota.getFoto());
+    mascota.setCliente(repositorioCliente.findByCedula(nuevaMascota.getCliente().getCedula())); // Si permites cambiar el cliente
+
+    return repositorioMascota.save(mascota);
   }
 
   @Override
   public void addMascota(Mascota mascota) {
-    repositorioMascota.addMascota(mascota);
+    repositorioMascota.save(mascota);
   }
 }

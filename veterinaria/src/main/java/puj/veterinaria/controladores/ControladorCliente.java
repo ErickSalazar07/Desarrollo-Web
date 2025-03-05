@@ -45,7 +45,7 @@ public class ControladorCliente {
   // ? Cambiar id por algun id dentro de los clientes guardados en el repositorio
   // URL: http://localhost:8090/cliente/mostrar-cliente/1
   @GetMapping("/mostrar-cliente/{id}")
-  public String mostrarCliente(Model modelo, @PathVariable("id") Integer id) {
+  public String mostrarCliente(Model modelo, @PathVariable("id") Long id) {
     List<Mascota> mascotasCliente = new ArrayList<Mascota>();
     Cliente cliente = clienteServicio.findById(id);
 
@@ -65,7 +65,7 @@ public class ControladorCliente {
   // URL: http://localhost:8090/cliente/add
   @GetMapping("/add")
   public String mostrarFormularioCrear(Model modelo) {
-    Cliente cliente = new Cliente(null, null, null, null, null, null);
+    Cliente cliente = new Cliente();
     modelo.addAttribute("cliente", cliente);
     return "/html/cliente/crear-cliente";
   }
@@ -73,7 +73,7 @@ public class ControladorCliente {
   // ? Cambiar id por algun id dentro de los clientes guardados en el repositorio
   // URL: http://localhost:8090/cliente/update/1
   @GetMapping("/update/{id}")
-  public String mostrarFormularioActualizar(Model modelo, @PathVariable("id") Integer id) {
+  public String mostrarFormularioActualizar(Model modelo, @PathVariable("id") Long id) {
     modelo.addAttribute("cliente", clienteServicio.findById(id));
     return "/html/cliente/actualizar-cliente";
   }
@@ -81,14 +81,14 @@ public class ControladorCliente {
   // ? Cambiar id por algun id dentro de los clientes guardados en el repositorio
   // URL: http://localhost:8090/cliente/delete/1
   @GetMapping("/delete/{id}")
-  public String eliminarCliente(@PathVariable("id") Integer id) {
+  public String eliminarCliente(@PathVariable("id") Long id) {
     clienteServicio.deleteById(id);
     return "redirect:/cliente/clientes";
   }
 
   @GetMapping("login")
   public String loginCliente(Model modelo) {
-    Cliente clienteIngresar = new Cliente(null,null,null,null,null,null);
+    Cliente clienteIngresar = new Cliente();
     modelo.addAttribute("cliente", clienteIngresar);
     return "html/cliente/login-cliente";
   }
@@ -102,8 +102,8 @@ public class ControladorCliente {
   }
 
   @PostMapping("/update/{id}")
-  public String actualizarCliente(@ModelAttribute("cliente") Cliente cliente, @PathVariable("id") Integer id) {
-    clienteServicio.updateCliente(cliente);
+  public String actualizarCliente(@ModelAttribute("cliente") Cliente cliente, @PathVariable("id") Long id) {
+    clienteServicio.updateCliente(id,cliente);
     return "redirect:/cliente/clientes";
   }
 
@@ -116,4 +116,4 @@ public class ControladorCliente {
     
     return "redirect:/cliente/mostrar-cliente/"+clienteBuscar.getId();
   }
-}
+} 

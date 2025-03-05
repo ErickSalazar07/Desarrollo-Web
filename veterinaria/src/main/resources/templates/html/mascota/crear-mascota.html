@@ -27,6 +27,8 @@
       <input th:field="*{enfermedad}" type="text" id="enfermedad" placeholder="Ingrese enfermedad">
       <label for="foto">Foto</label>
       <input th:field="*{foto}" type="text" id="foto" placeholder="Ingrese URL de foto" required>
+      <label for="cedula-cliente">Cedula Dueño</label>
+      <input th:field="*{cliente.cedula}" type="number" id="cedula-cliente" placeholder="Ingrese cedula del Dueño" requiered>
       <!-- TODO: Realizar tratamientos -->
       <button type="submit">Crear</button>
     </form>
