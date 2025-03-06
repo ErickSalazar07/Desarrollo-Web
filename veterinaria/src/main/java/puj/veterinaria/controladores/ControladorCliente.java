@@ -49,6 +49,8 @@ public class ControladorCliente {
     List<Mascota> mascotasCliente = new ArrayList<Mascota>();
     Cliente cliente = clienteServicio.findById(id);
 
+    if(cliente == null) throw new NotFoundExceptionCliente(cliente);
+
     if(cliente.getMascotas() != null) {
       for(Mascota mascota: cliente.getMascotas()) {
         Mascota mascotaBuscar = mascotaServicio.searchById(mascota.getId());

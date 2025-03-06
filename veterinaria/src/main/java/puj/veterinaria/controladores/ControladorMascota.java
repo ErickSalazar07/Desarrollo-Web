@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import puj.veterinaria.entidades.Cliente;
 import puj.veterinaria.entidades.Mascota;
+import puj.veterinaria.excepciones.NotFoundExceptionCliente;
 import puj.veterinaria.excepciones.NotFoundExceptionMascota;
 import puj.veterinaria.servicios.IClienteServicio;
 import puj.veterinaria.servicios.IMascotaServicio;
@@ -87,8 +88,8 @@ public class ControladorMascota {
     if (mascota.getCliente() != null && mascota.getCliente().getCedula() != null) {
       Cliente clienteExistente = clienteServicio.findByCedula(mascota.getCliente().getCedula());
       if (clienteExistente == null) 
+        throw new NotFoundExceptionCliente("No se encontro el cliente con cedula: "+mascota.getCliente().getCedula());
         // Manejar el caso en que el cliente no exista
-        return "redirect:/mascota/add?error=cliente_no_encontrado";
       mascota.setCliente(clienteExistente);
     }
     
@@ -99,9 +100,9 @@ public class ControladorMascota {
   @PostMapping("/update/{id}")
   public String actualizarMascota(@ModelAttribute("mascota") Mascota mascota, @PathVariable("id") Long id) {
 
-    if(clienteServicio.findByCedula(mascota.getCliente().getCedula()) == null) {
-      return "redirect:/mascota/update/"+id;
-    }
+    if(clienteServicio.findByCedula(mascota.getCliente().getCedula()) == null) 
+      throw new NotFoundExceptionCliente("No se encontro el cliente con cedula: "+mascota.getCliente().getCedula());
+    
 
     mascotaServicio.updateMascota(id,mascota);
     return "redirect:/mascota/mascotas";
