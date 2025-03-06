@@ -25,7 +25,7 @@
             <span th:text="${tratamiento.nombreTratamiento}"></span>
           </li>
         </ul> -->
-        <a class="btn btn-volver" th:href="@{/mascota/mascotas}">Volver</a>
+        <button class="btn btn-volver" onclick="window.history.back()">Volver</button>
       </div>
       <img th:src="*{foto}" th:alt="'Foto Mascota ' + *{nombre}">
     </div>
