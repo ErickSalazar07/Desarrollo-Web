@@ -37,6 +37,7 @@ main {
   width: 800px;
   text-align: left;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 30px;
@@ -46,6 +47,7 @@ main {
 .campos {
   flex: 1;
   padding-left: 20px;
+  width: 100%;
 }
 
 .campos p {
@@ -54,20 +56,78 @@ main {
   color: #333;
 }
 
+/* Estilo de la lista de mascotas */
 ul {
   list-style: none;
   padding: 0;
   font-size: 18px;
+  width: 100%;
 }
 
 ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #ececec;
   margin: 5px 0;
-  padding: 5px 8px;
-  border-radius: 5px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo para los nombres de los clientes */
+.mascota-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.foto-mascota {
+  width: 80px;  /* Tamaño fijo de la imagen */
+  height: 80px;
+  border-radius: 10px;
+  margin-right: 15px;
+  object-fit: cover;
+}
+
+.mascota-item p {
+  flex: 1;
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.mascota-item a {
+  font-size: 16px;
+  color: #054f31;
+  text-decoration: none;
+  background-color: #f8f8f8;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.mascota-item a:hover {
+  background-color: #054f31;
+  color: white;
+}
+
+.mascota-item .ver-mascota-btn {
+  margin-left: 15px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #054f31;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.mascota-item .ver-mascota-btn:hover {
+  background-color: #006f3f;
+}
+
+/* Estilo para el nombre del cliente */
 #nombreAnimal {
   font-family: "Atkinson Hyperlegible Next", serif;
   font-size: 50px;
@@ -85,27 +145,6 @@ header img {
   width: 160px;
   height: auto;
   margin-top: 20px;
-}
-
-/* Botón de volver */
-.btn-volver {
-  display: inline-block;
-  margin-top: 20px;
-  font-family: "PP Neue Montreal", serif;
-  padding: 13px 30px;
-  background-color: #054f31;
-  color: white;
-  text-decoration: none;
-  border-radius: 13px;
-  transition: background 0.3s;
-  text-align: center;
-}
-
-.btn-volver:hover {
-  background-color: #ffffff;
-  border-color: #054f31;
-  border: 2px solid #054f31;
-  color: #054f31;
 }
 
 /* Estilo del footer */
