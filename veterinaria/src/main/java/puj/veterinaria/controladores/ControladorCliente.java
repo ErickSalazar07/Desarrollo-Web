@@ -108,10 +108,11 @@ public class ControladorCliente {
   }
 
   @PostMapping("/login")
-  public String loginCliente(@ModelAttribute("cliente") Cliente cliente) {
+  public String loginCliente(@ModelAttribute("cliente") Cliente cliente, Model model) {
     Cliente clienteBuscar = clienteServicio.findByCorreoAndCedula(cliente.getCorreo(), cliente.getCedula());
     if(clienteBuscar == null) {
-      throw new NotFoundExceptionCliente(cliente);
+      model.addAttribute("error", "Datos incorrectos");
+      return "html/cliente/login-cliente";
     }
     
     return "redirect:/cliente/mostrar-cliente/"+clienteBuscar.getId();
