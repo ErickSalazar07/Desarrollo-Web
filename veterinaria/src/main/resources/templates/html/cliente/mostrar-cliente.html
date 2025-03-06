@@ -20,10 +20,15 @@
         <p>Mascotas: <span th:if="*{mascotas == null or mascotas.isEmpty()}">No tiene mascotas</span></p>
         <ul th:if="*{mascotas != null and !mascotas.isEmpty()}">
           <li th:each="mascota: *{mascotas}">
-            <p>
-              <span th:text="${mascota.nombre}"></span> <a
-              th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}">Ver Mascota</a>
-            </p>
+            <div class="mascota-item">
+              <!-- Foto de la mascota -->
+              <img th:src="@{${mascota.foto}}" alt="Foto de ${mascota.nombre}" class="foto-mascota" />
+              <!-- Nombre de la mascota -->
+              <p>
+                <span th:text="${mascota.nombre}"></span>
+                <a th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}">Ver Mascota</a>
+              </p>
+            </div>
           </li>
         </ul>
       </div>
