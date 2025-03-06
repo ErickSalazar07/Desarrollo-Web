@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/error/style-pagina-error-cliente.css">
   <title>Error Mascota</title>
 </head>
 <body>
-  <header>
+  <div class="error-container">
+    <div class="error-icon">&#9888;</div>
     <h1>Error Mascota</h1>
-  </header>
-  <main>
-    <h2>Mensaje Error</h2>
+    <h2>Ha ocurrido un problema</h2>
     <p th:text="${mensajeError}"></p>
-  </main>
-  <footer></footer>
+    <a th:href="@{/}" class="btn">Volver al inicio</a>
+  </div>
 </body>
 </html>

@@ -20,7 +20,11 @@ public class ClienteServicio implements IClienteServicio {
 
   @Override
   public Cliente findById(Long id) {
-    return repositorioCliente.findById(id).get();
+    try {
+      return repositorioCliente.findById(id).get();
+    } catch(Exception e) {
+      return null;
+    }
   }
 
   @Override

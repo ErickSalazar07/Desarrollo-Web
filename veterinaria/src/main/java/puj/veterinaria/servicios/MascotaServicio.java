@@ -21,7 +21,11 @@ public class MascotaServicio implements IMascotaServicio {
 
   @Override
   public Mascota searchById(Long id) {
-    return repositorioMascota.findById(id).get();
+    try {
+      return repositorioMascota.findById(id).get();
+    } catch(Exception e) {
+      return null;
+    }
   }
 
   @Override
