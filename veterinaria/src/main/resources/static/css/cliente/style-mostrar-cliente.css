@@ -118,3 +118,67 @@ footer {
   font-size: 14px;
   color: #666;
 }
+/* Estilo para la sección de mascotas */
+ul.mascotas {
+  list-style: none;
+  padding: 0;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+ul.mascotas li {
+  background-color: #f5f5f5; /* Color suave para el fondo */
+  margin: 10px 0;
+  padding: 15px 20px;
+  border-radius: 10px; /* Bordes redondeados */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Agregar sombra */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+ul.mascotas li:hover {
+  transform: translateY(-5px); /* Efecto de elevarse al pasar el ratón */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra más fuerte al pasar el ratón */
+}
+
+/* Estilo para los nombres de las mascotas */
+ul.mascotas li p {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0;
+  color: #333;
+  text-transform: capitalize; /* Poner la primera letra en mayúsculas */
+}
+
+/* Estilo para el enlace "Ver Mascota" */
+ul.mascotas li a {
+  text-decoration: none;
+  color: #054f31; /* Verde para el enlace */
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background-color: #e1f5e1; /* Fondo verde claro */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+ul.mascotas li a:hover {
+  background-color: #054f31; /* Fondo verde oscuro al pasar el ratón */
+  color: white; /* Texto blanco al pasar el ratón */
+}
+
+/* Estilo para las imágenes de las mascotas (si tienes imágenes de mascotas) */
+ul.mascotas li img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Bordes redondeados para las imágenes */
+  margin-right: 15px; /* Espaciado entre la imagen y el texto */
+  object-fit: cover; /* Asegura que la imagen no se deforme */
+}
+
+boton-ver-mascota {
+  height: 20px;
+  width: 50px;
+}

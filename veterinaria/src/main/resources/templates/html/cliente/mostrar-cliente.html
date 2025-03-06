@@ -18,12 +18,13 @@
         <p>Cedula: <span th:text="*{cedula}"></span></p>
         <p>Celular: <span th:text="*{celular}"></span></p>
         <p>Mascotas: <span th:if="*{mascotas == null or mascotas.isEmpty()}">No tiene mascotas</span></p>
-        <ul th:if="*{mascotas != null and !mascotas.isEmpty()}">
+        <ul th:if="*{mascotas != null and !mascotas.isEmpty()}" class="mascotas">
           <li th:each="mascota: *{mascotas}">
-            <p>
-              <span th:text="${mascota.nombre}"></span> <a
-              th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}">Ver Mascota</a>
-            </p>
+            <img th:src="@{${mascota.foto}}" alt="Imagen de mascota" />
+            <div>
+              <p th:text="${mascota.nombre}"></p><br>
+              <a id="boton-ver-mascota" th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}">Ver Mascota</a>
+            </div>
           </li>
         </ul>
       </div>
