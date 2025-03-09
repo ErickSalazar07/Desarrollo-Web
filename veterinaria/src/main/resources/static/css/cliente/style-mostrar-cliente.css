@@ -1,10 +1,11 @@
+/* Importar estilos generales y fuentes */
 @import url("../style-general.css");
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap');
 @import url('https://fonts.cdnfonts.com/css/pp-neue-montreal');
 
 body {
   background-image: url("../images/fondoTabla.png");
-  font-family: "PP Neue Montreal", serif;
+  font-family: "PP Neue Montreal", sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
@@ -13,7 +14,7 @@ body {
   min-height: 100vh;
 }
 
-/* Asegurar que el header está en la parte superior */
+/* Header */
 header {
   width: 100%;
   text-align: center;
@@ -28,7 +29,7 @@ header h1 {
   margin: 0;
 }
 
-/* Estilo del contenido principal */
+/* Contenido principal */
 main {
   background-color: white;
   padding: 30px;
@@ -43,7 +44,25 @@ main {
   margin-top: 30px;
 }
 
-/* Estilo de los campos de información */
+/* Botón Volver */
+.btn-volver {
+  background-color: #054f31;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.btn-volver:hover {
+  background-color: #006f3f;
+}
+
+/* Información de cliente */
 .campos {
   flex: 1;
   padding-left: 20px;
@@ -56,98 +75,75 @@ main {
   color: #333;
 }
 
-/* Estilo de la lista de mascotas */
-ul {
-  list-style: none;
-  padding: 0;
-  font-size: 18px;
+/* Sección de mascotas */
+.mascotas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra las tarjetas */
+  gap: 20px;
   width: 100%;
+  max-width: 800px;
+  padding: 0;
+  list-style: none;
 }
 
-ul li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #ececec;
-  margin: 5px 0;
+/* Tarjeta de cada mascota */
+.mascotas li {
+  background-color: #f5f5f5;
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.mascota-item {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  text-align: center;
+  width: calc(33.33% - 20px); /* 3 tarjetas por fila */
+  min-width: 220px;
 }
 
-.foto-mascota {
-  width: 80px;  /* Tamaño fijo de la imagen */
+.mascotas li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen de la mascota */
+.mascotas li img {
+  width: 80px;
   height: 80px;
-  border-radius: 10px;
-  margin-right: 15px;
+  border-radius: 50%;
   object-fit: cover;
+  margin-bottom: 10px;
 }
 
-.mascota-item p {
-  flex: 1;
-  margin: 0;
+/* Nombre de la mascota */
+.mascotas li p {
   font-size: 18px;
+  font-weight: bold;
   color: #333;
+  margin: 5px 3px;
+  padding-bottom: 8px;
 }
 
-.mascota-item a {
-  font-size: 16px;
-  color: #054f31;
+/* Botón "Ver Mascota" */
+.mascotas li a {
   text-decoration: none;
-  background-color: #f8f8f8;
-  padding: 8px 15px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.mascota-item a:hover {
-  background-color: #054f31;
   color: white;
-}
-
-.mascota-item .ver-mascota-btn {
-  margin-left: 15px;
-  font-size: 16px;
-  color: #fff;
+  font-size: 14px;
+  font-weight: normal; /* Peso más ligero */
+  padding: 8px 16px;
+  border-radius: 20px;
   background-color: #054f31;
-  padding: 8px 15px;
-  border-radius: 5px;
-  text-decoration: none;
+  font-family: "PP Neue Montreal", sans-serif; /* Mantiene la misma fuente */
   transition: background-color 0.3s ease;
+  margin-top: 10px;
 }
 
-.mascota-item .ver-mascota-btn:hover {
+.mascotas li a:hover {
   background-color: #006f3f;
 }
 
-/* Estilo para el nombre del cliente */
-#nombreAnimal {
-  font-family: "Atkinson Hyperlegible Next", serif;
-  font-size: 50px;
-  font-weight: bold;
-}
-
-/* Estilo para la imagen */
-img {
-  max-width: 400px;
-  height: auto;
-  border-radius: 10px;
-}
-
-header img {
-  width: 160px;
-  height: auto;
-  margin-top: 20px;
-}
-
-/* Estilo del footer */
+/* Footer */
 footer {
   width: 100%;
   text-align: center;
@@ -156,68 +152,4 @@ footer {
   background-color: #f8f8f8;
   font-size: 14px;
   color: #666;
-}
-/* Estilo para la sección de mascotas */
-ul.mascotas {
-  list-style: none;
-  padding: 0;
-  font-size: 18px;
-  margin-top: 20px;
-}
-
-ul.mascotas li {
-  background-color: #f5f5f5; /* Color suave para el fondo */
-  margin: 10px 0;
-  padding: 15px 20px;
-  border-radius: 10px; /* Bordes redondeados */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Agregar sombra */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-ul.mascotas li:hover {
-  transform: translateY(-5px); /* Efecto de elevarse al pasar el ratón */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra más fuerte al pasar el ratón */
-}
-
-/* Estilo para los nombres de las mascotas */
-ul.mascotas li p {
-  font-weight: bold;
-  font-size: 20px;
-  margin: 0;
-  color: #333;
-  text-transform: capitalize; /* Poner la primera letra en mayúsculas */
-}
-
-/* Estilo para el enlace "Ver Mascota" */
-ul.mascotas li a {
-  text-decoration: none;
-  color: #054f31; /* Verde para el enlace */
-  font-size: 16px;
-  font-weight: bold;
-  padding: 8px 16px;
-  border-radius: 20px;
-  background-color: #e1f5e1; /* Fondo verde claro */
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-ul.mascotas li a:hover {
-  background-color: #054f31; /* Fondo verde oscuro al pasar el ratón */
-  color: white; /* Texto blanco al pasar el ratón */
-}
-
-/* Estilo para las imágenes de las mascotas (si tienes imágenes de mascotas) */
-ul.mascotas li img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%; /* Bordes redondeados para las imágenes */
-  margin-right: 15px; /* Espaciado entre la imagen y el texto */
-  object-fit: cover; /* Asegura que la imagen no se deforme */
-}
-
-boton-ver-mascota {
-  height: 20px;
-  width: 50px;
 }
