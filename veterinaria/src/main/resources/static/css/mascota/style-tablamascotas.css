@@ -10,11 +10,26 @@ body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
-        flex-direction: column;
+    flex-direction: column;
 }
 
 h1 {
-    font-size: 25px;
+    font-family: "PP Neue Montreal", serif;
+    font-size: 30px;
+    margin-left: 80px;
+    margin-top: 15px;
+    text-align: left;
+    justify-content: left;
+    align-self: start;
+
+}
+
+#btn-inicial {
+    margin-left: 80px;
+    margin-bottom: 20px ;
+    align-self: start;
+    justify-content: left;
+
 }
 
 main {
@@ -30,11 +45,11 @@ main {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 1px;
 }
 
 thead {
-    background-color: #7e7e7e;
+    background-color: #969696;
     color: white;
 }
 
@@ -85,7 +100,7 @@ header button{
 
 .btn {
   border: 1px solid black;
-  border-radius: 13px;
+  border-radius: 50px;
   font-size: 1.2rem;
   text-decoration: none;
   padding: 5px;
@@ -109,7 +124,7 @@ header button{
 }
 
 .btn-ver-mascota, .btn {
-    border: 2px solid #054f31;
+    border: 1px solid #054f31;
   background-color: white;
   color: #054f31;
   padding: 10px 15px;

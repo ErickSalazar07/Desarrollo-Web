@@ -95,6 +95,10 @@ public class ControladorCliente {
     return "html/cliente/login-cliente";
   }
 
+  @GetMapping("dashboardVeterinario")
+  public String dashboard(Model modelo) {
+    return "html/cliente/dashboard-veterinario";
+  }
 // Metodos PostMapping
 
   @PostMapping("/agregar")

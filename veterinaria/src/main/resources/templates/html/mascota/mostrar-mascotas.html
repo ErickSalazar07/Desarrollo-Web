@@ -4,18 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/mascota/style-tablamascotas.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+
   <title>Mascotas</title>
 </head>
+<h1>Información de Mascotas</h1>
+<section id="btn-inicial"class="acciones">
+  <a type="button" class="btn" th:href="@{/mascota/add}">Agregar Mascota</a>
+</section>
 <body>
-  <header>
-    <img src="/images/logo.png" alt="Logo Health Animals">
-    <button onclick="window.history.back()" class="btn btn-volver">Volver</button>
-  </header>
+
+
   <main>
-    <h1>Informacion de Animales</h1>
-    <section class="acciones">
-      <a type="button" class="btn" th:href="@{/mascota/add}">Agregar Mascota</a>
-    </section>
+
     <table>
       <thead>
         <tr>
@@ -39,15 +40,14 @@
           <td th:text="${mascota.enfermedad != null and !mascota.enfermedad.equals('')} ? 
               ${mascota.enfermedad} : 'Vacio'"></td>
           <td>
-            <a type="button" th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}"
-            class="btn btn-ver-mascota">
-              Ver Mascota
+            <a type="button" th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}" class="btn btn-ver-mascota">
+              <i class='bx bxs-show'></i>
             </a>
             <a type="button" th:href="@{/mascota/update/{id}(id=${mascota.id})}" class="btn">
-              Modificar
+              <i class='bx bx-edit'></i>
             </a>
             <a type="button" th:href="@{/mascota/delete/{id}(id=${mascota.id})}" class="btn">
-              Eliminar
+              <i class='bx bx-trash' ></i>
             </a>
           </td>
         </tr>
