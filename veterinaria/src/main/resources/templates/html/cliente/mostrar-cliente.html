@@ -12,6 +12,7 @@
   </header>
   <main>
     <section class="informacion" th:object="${cliente}">
+      <button class="btn btn-volver" onclick="window.history.back()">Volver</button>
       <div class="campos">
         <p>Nombre: <span th:text="*{nombre}"></span></p>
         <p>Correo: <span th:text="*{correo}"></span></p>
@@ -22,7 +23,7 @@
           <li th:each="mascota: *{mascotas}">
             <img th:src="@{${mascota.foto}}" alt="Imagen de mascota" />
             <div>
-              <p th:text="${mascota.nombre}"></p><br>
+              <p th:text="${mascota.nombre}"></p>
               <a id="boton-ver-mascota" th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}">Ver Mascota</a>
             </div>
           </li>
