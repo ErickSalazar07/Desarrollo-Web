@@ -127,14 +127,17 @@ header button{
     border: 1px solid #054f31;
   background-color: white;
   color: #054f31;
-  padding: 10px 15px;
+  padding: 10px 10px;
   font-size: 15px;
-  margin-left: 10px;
+  text-align: center;
+  margin-left: 5px;
 }   
 
 .btn-ver-mascota:hover, .btn:hover  {
       background-color: #054f31;
       color: white;
-      padding: 10px 15px;
+      padding: 10px 10px;
       font-size: 15px;
-    }
+      text-align: center;
+      margin-left: 5px;
+}

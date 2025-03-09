@@ -1,4 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+html, body {
+  overflow-x: hidden; /* Evita el desplazamiento horizontal */
+  width: 100%;
+}
+
+
+
+.dashboard {
+  width: 100vw; /* Ajusta la anchura del dashboard al viewport */
+}
+
+iframe {
+  width: calc(100vw - 80px); /* Ajusta el ancho del iframe para que no sobrepase la pantalla */
+}
+
+header {
+  width: 100%;
+  max-width: 100vw; /* Evita que el header sea más grande que la pantalla */
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -96,4 +117,19 @@ iframe {
     height: 100vh;
     border: none;
     margin-left: 80px;
+}
+
+/* Contenedor del logo */
+.logo-container {
+  position: absolute;
+  top: 20px;
+  right: 85px;
+  width: 60px;
+  height: 60px;
+}
+
+/* Imagen del logo */
+.logo {
+  width: 110px;
+  height: auto;
 }
