@@ -32,7 +32,7 @@ public class DatabaseInit implements ApplicationRunner {
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/gato-lola.jpg?raw=true",true));
     repositorioMascota.save(new Mascota("Atenea","Perro",3,4.5,"Virus Rabia",
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/perro-atenea.jpg?raw=true",true));
-
+/* 
     //50 Perros:
     repositorioMascota.save(new Mascota("Max", "Perro", 2, 5.3, null,
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/p1.png?raw=true",true));
@@ -239,7 +239,7 @@ repositorioMascota.save(new Mascota("Copito", "Gato", 5, 4.8, "Virus de la Rabia
 repositorioMascota.save(new Mascota("Felina", "Gato", 4, 4.5, "Infección Urinaria", 
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/25g.png?raw=true",true));
 
-
+*/
 
 
 
