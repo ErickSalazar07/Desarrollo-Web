@@ -1,23 +1,20 @@
 # Índice de Secciones
 
-1. [Proyecto Desarrollo Web](#proyecto-desarrollo-web)  
-2. [Veterinaria](#veterinaria)  
-3. [Integrantes](#integrantes)  
-4. [Introducción del Proyecto](#introducción-del-proyecto)  
-5. [Estructura del Sitio Web](#estructura-del-sitio-web)  
+1. [Integrantes](#integrantes)  
+2. [Introducción del Proyecto](#introducción-del-proyecto)  
+3. [Estructura del Sitio Web](#estructura-del-sitio-web)  
    - [Landing Page](#landing-page)  
    - [Información de los Profesionales de la Veterinaria](#información-de-los-profesionales-de-la-veterinaria)  
    - [Información de la Veterinaria](#información-de-la-veterinaria)  
-6. [Iniciar Sesión](#iniciar-sesión)  
-7. [CRUD Mascotas](#crud-mascotas)  
+4. [Iniciar Sesión](#iniciar-sesión)  
+5. [CRUD Mascotas](#crud-mascotas)  
    - [Información Detallada de la Mascota](#información-detallada-de-la-mascota)  
    - [Actualizar Información de la Mascota](#actualizar-información-de-la-mascota)  
-8. [CRUD Clientes](#crud-clientes)  
+6. [CRUD Clientes](#crud-clientes)  
    - [Información Detallada del Cliente](#información-detallada-del-cliente)  
    - [Actualizar Información del Cliente](#actualizar-información-del-cliente)  
-9. [Diagrama de Clases](#diagrama-de-clases)  
-
-10. [Diagrama Entidad Relacion](#diagrama-entidad-relacion)
+7. [Diagrama de Clases](#diagrama-de-clases)  
+8. [Diagrama Entidad Relacion](#diagrama-entidad-relacion)
 
 ---
 
@@ -25,20 +22,20 @@
 
 ## Veterinaria
 
-## Integrantes:
+## [Integrantes](#índice-de-secciones):  
 
 - **Erick Salazar Suarez**  
 - **Juan Eduardo Diaz Rojas**  
 - **David Cuadros Astro**  
 
-## Introducción del proyecto  
+## [Introducción del proyecto](#índice-de-secciones)  
 Este proyecto consiste en el desarrollo de un sitio web diseñado para optimizar la gestión de una veterinaria, permitiéndole llevar un registro detallado de sus clientes, las mascotas que atienden y los tratamientos aplicados a cada una. Además, el sistema facilita la administración del personal veterinario, asegurando un control eficiente sobre los empleados y sus funciones dentro del establecimiento. Como complemento, la plataforma incluye un **dashboard interactivo** que presenta los indicadores y resultados más relevantes para la veterinaria, proporcionando una visión clara y en tiempo real del desempeño del negocio, la frecuencia de atención, los tratamientos más aplicados y otros datos clave que contribuyen a la toma de decisiones estratégicas.  
 
 Asimismo, el sitio web ofrece información sobre la veterinaria, incluyendo una sección de **"Quiénes somos"**, donde se detalla la misión y visión del establecimiento, perfiles de los profesionales que trabajan en el equipo y un apartado de contacto para facilitar la comunicación con los clientes.  
 
 ---
 
-## **Estructura del Sitio Web**  
+## [**Estructura del Sitio Web**](#índice-de-secciones)  
 
 ### **Landing Page**  
 ![Imagen inicial](https://github.com/ErickSalazar07/Web/blob/main/imagenes/imagenes-funcionalidad/imagen_bienvenida.png?raw=true)  
@@ -53,7 +50,7 @@ La página de bienvenida del sitio presenta el logo de la veterinaria junto con 
 
 ---
 
-## **Iniciar sesión**  
+## [**Iniciar sesión**](#índice-de-secciones)  
 ![Imagen iniciar_sesion](https://github.com/ErickSalazar07/Web/blob/main/imagenes/imagenes-funcionalidad/imagen-iniciar-sesion.png?raw=true)  
 
 El inicio de sesión requiere un **correo electrónico y una cédula**. En caso de que los datos no estén registrados en el sitio, se mostrará un mensaje en pantalla indicando que la información es incorrecta.  
@@ -62,7 +59,7 @@ El inicio de sesión requiere un **correo electrónico y una cédula**. En caso 
 
 ---
 
-## **CRUD Mascotas**  
+## [**CRUD Mascotas**](#índice-de-secciones)  
 ![Imagen crud_mascota](https://github.com/ErickSalazar07/Web/blob/main/imagenes/imagenes-funcionalidad/imagen-crud-mascota%20(1).png?raw=true)  
 
 Al hacer clic en el botón **"Ver Mascotas"** en el `index.html`, se despliega una página que muestra todas las mascotas registradas en el sitio junto con su información detallada, incluyendo **foto, nombre, edad, peso y enfermedad**.  
@@ -80,7 +77,7 @@ Además, la página cuenta con **tres botones de acción**:
 
 ---
 
-## **CRUD Clientes**  
+## [**CRUD Clientes**](#índice-de-secciones)  
 ![Imagen crud_clientes](https://github.com/ErickSalazar07/Web/blob/main/imagenes/imagenes-funcionalidad/imagen-crud-clientes.png?raw=true)  
 
 Al hacer clic en el botón **"Ver Clientes"** en el `index.html`, se despliega una página que muestra todos los clientes registrados en el sitio junto con su información detallada, incluyendo **nombre, email, cédula y celular**.  
@@ -100,10 +97,10 @@ En la información detallada del cliente se muestran sus **datos registrados y s
 
 ---
 
-## **Diagrama de Clases**  
+## [**Diagrama de Clases**](#índice-de-secciones)  
 ![Diagrama de clases](diagramas/diagrama-clases.png)  
 
 ---
 
-## **Diagrama Entidad-Relacion**
+## [**Diagrama Entidad-Relacion**](#índice-de-secciones)  
 ![Diagrama ER](diagramas/diagrama-entidad-relacion.png)
