@@ -1,3 +1,26 @@
+# Índice de Secciones
+
+1. [Proyecto Desarrollo Web](#proyecto-desarrollo-web)  
+2. [Veterinaria](#veterinaria)  
+3. [Integrantes](#integrantes)  
+4. [Introducción del Proyecto](#introducción-del-proyecto)  
+5. [Estructura del Sitio Web](#estructura-del-sitio-web)  
+   - [Landing Page](#landing-page)  
+   - [Información de los Profesionales de la Veterinaria](#información-de-los-profesionales-de-la-veterinaria)  
+   - [Información de la Veterinaria](#información-de-la-veterinaria)  
+6. [Iniciar Sesión](#iniciar-sesión)  
+7. [CRUD Mascotas](#crud-mascotas)  
+   - [Información Detallada de la Mascota](#información-detallada-de-la-mascota)  
+   - [Actualizar Información de la Mascota](#actualizar-información-de-la-mascota)  
+8. [CRUD Clientes](#crud-clientes)  
+   - [Información Detallada del Cliente](#información-detallada-del-cliente)  
+   - [Actualizar Información del Cliente](#actualizar-información-del-cliente)  
+9. [Diagrama de Clases](#diagrama-de-clases)  
+
+10. [Diagrama Entidad Relacion](#diagrama-entidad-relacion)
+
+---
+
 # Proyecto Desarrollo Web
 
 ## Veterinaria
@@ -17,7 +40,7 @@ Asimismo, el sitio web ofrece información sobre la veterinaria, incluyendo una 
 
 ## **Estructura del Sitio Web**  
 
-### **index.html**  
+### **Landing Page**  
 ![Imagen inicial](https://github.com/ErickSalazar07/Web/blob/main/imagenes/imagenes-funcionalidad/imagen_bienvenida.png?raw=true)  
 
 La página de bienvenida del sitio presenta el logo de la veterinaria junto con una serie de botones de acceso que permiten a los usuarios **iniciar sesión, registrarse y acceder directamente a la gestión de mascotas y clientes** a través del CRUD correspondiente. Además, incluye **tres botones de anclaje** que facilitan la navegación dentro de la misma página, redirigiendo a secciones específicas más abajo donde se muestra información detallada sobre la veterinaria, su misión y visión, así como los perfiles de los profesionales que forman parte del equipo.  
@@ -78,11 +101,9 @@ En la información detallada del cliente se muestran sus **datos registrados y s
 ---
 
 ## **Diagrama de Clases**  
-![Diagrama de clases](diagramas/Diagrama-Clases-Desarrollo-Web.png)  
+![Diagrama de clases](diagramas/diagrama-clases.png)  
 
+---
 
-
-   
-
-
-
+## **Diagrama Entidad-Relacion**
+![Diagrama ER](diagramas/diagrama-entidad-relacion.png)
