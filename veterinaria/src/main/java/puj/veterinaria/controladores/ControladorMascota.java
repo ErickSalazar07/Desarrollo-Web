@@ -28,6 +28,13 @@ public class ControladorMascota {
 
 // Metodos @GetMapping
 
+  // URL: http://localhost:8090/mascota
+  @GetMapping("")
+  public String paginaInicio() {
+    return "redirect:/mascota/mascotas";
+  }
+
+  // URL: http://localhost:8090/mascota/
   @GetMapping("/")
   public String paginaInicioMascota() {
     return "redirect:/mascota/mascotas";

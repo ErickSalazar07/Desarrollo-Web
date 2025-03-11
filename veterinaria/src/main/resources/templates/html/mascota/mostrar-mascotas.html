@@ -25,6 +25,7 @@
           <th>Edad</th>
           <th>Peso</th>
           <th>Enfermedad</th>
+          <th>Estado Activo</th>
           <th></th>
           <th></th>
         </tr>
@@ -37,7 +38,8 @@
           <td th:text="${mascota.edad}"></td>
           <td th:text="${mascota.peso}"></td>
           <td th:text="${mascota.enfermedad != null and !mascota.enfermedad.equals('')} ? 
-              ${mascota.enfermedad} : 'Vacio'"></td>
+          ${mascota.enfermedad} : 'Vacio'"></td>
+          <td th:text="${mascota.estadoActivo ? 'Si' : 'No'}"></td>
           <td>
             <a type="button" th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}" class="btn btn-ver-mascota">
               <i class='bx bxs-show'></i>

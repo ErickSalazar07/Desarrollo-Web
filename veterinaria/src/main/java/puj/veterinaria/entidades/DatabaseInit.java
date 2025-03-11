@@ -23,15 +23,15 @@ public class DatabaseInit implements ApplicationRunner {
   public void run(ApplicationArguments args) throws Exception {
 
     repositorioMascota.save(new Mascota( "Pachini","Gato",5,4.5,"VIF",
-    "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/gato-pachini.jpg?raw=true"));
+    "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/gato-pachini.jpg?raw=true",false));
     repositorioMascota.save(new Mascota("Zeus","Perro",9,11.7,null,
-    "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/perro-zeus.jpg?raw=true"));
+    "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/perro-zeus.jpg?raw=true",true));
     repositorioMascota.save(new Mascota("Figaro","Perro",9,19.7,"Cataratas",
-    "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/perro-figaro.jpg?raw=true"));
+    "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/perro-figaro.jpg?raw=true",true));
     repositorioMascota.save(new Mascota("Lola","Gato",3,6.0,null,
-    "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/gato-lola.jpg?raw=true"));
+    "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/gato-lola.jpg?raw=true",true));
     repositorioMascota.save(new Mascota("Atenea","Perro",3,4.5,"Virus Rabia",
-    "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/perro-atenea.jpg?raw=true"));
+    "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/perro-atenea.jpg?raw=true",true));
 
     repositorioCliente.save(new Cliente("18872435","Juan","juan@email.com",
     "3145194072"));

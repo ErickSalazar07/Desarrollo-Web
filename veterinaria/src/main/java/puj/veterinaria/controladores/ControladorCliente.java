@@ -29,6 +29,12 @@ public class ControladorCliente {
 
 // Metodos GetMapping
 
+  // URL: http://localhost:8090/cliente
+  @GetMapping("")
+  public String paginaInicio() {
+    return "redirect:/cliente/clientes";
+  }
+
   // URL: http://localhost:8090/cliente/
   @GetMapping("/")
   public String paginaInicioCliente() {
@@ -88,17 +94,13 @@ public class ControladorCliente {
     return "redirect:/cliente/clientes";
   }
 
-  @GetMapping("login")
+  @GetMapping("/login")
   public String loginCliente(Model modelo) {
     Cliente clienteIngresar = new Cliente();
     modelo.addAttribute("cliente", clienteIngresar);
-    return "html/cliente/login-cliente";
+    return "/html/cliente/login-cliente";
   }
 
-  @GetMapping("dashboardVeterinario")
-  public String dashboard(Model modelo) {
-    return "html/cliente/dashboard-veterinario";
-  }
 // Metodos PostMapping
 
   @PostMapping("/agregar")
@@ -118,7 +120,7 @@ public class ControladorCliente {
     Cliente clienteBuscar = clienteServicio.findByCorreoAndCedula(cliente.getCorreo(), cliente.getCedula());
     if(clienteBuscar == null) {
       model.addAttribute("error", "Datos incorrectos");
-      return "html/cliente/login-cliente";
+      return "/html/cliente/login-cliente";
     }
     
     return "redirect:/cliente/mostrar-cliente/"+clienteBuscar.getId();

@@ -1,10 +1,13 @@
 package puj.veterinaria.entidades;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 // Entidades son un POJO (Plain Old Java Object)
 @Entity
@@ -19,21 +22,26 @@ public class Mascota {
   private Double peso;
   private String enfermedad;
   private String foto;
+  private Boolean estadoActivo;
 
   @ManyToOne
   @JoinColumn(name = "cliente_cedula", referencedColumnName = "cedula") // usar cedula como foreign key
   private Cliente cliente;
-  // private List<Tratamiento> tratamientos;
+  
+  @OneToMany
+  private List<Tratamiento> tratamientos;
   
   public Mascota() { }
   
-  public Mascota(String nombre, String raza, Integer edad, Double peso, String enfermedad, String foto) {
+  public Mascota(String nombre, String raza, Integer edad, Double peso, String enfermedad, String foto, 
+  Boolean estadoActivo) {
     this.nombre = nombre;
     this.raza = raza;
     this.edad = edad;
     this.peso = peso;
     this.enfermedad = enfermedad;
     this.foto = foto;
+    this.estadoActivo = estadoActivo;
   }
 
 /*
@@ -59,6 +67,8 @@ public class Mascota {
   public void setFoto(String foto) { this.foto = foto; }
   public Cliente getCliente() { return cliente; }
   public void setCliente(Cliente cliente) { this.cliente = cliente; }
-  // public List<Tratamiento> getTratamientos() { return tratamientos; }
-  // public void setTratamientos(List<Tratamiento> tratamientos) { this.tratamientos = tratamientos; }
+  public List<Tratamiento> getTratamientos() { return tratamientos; }
+  public void setTratamientos(List<Tratamiento> tratamientos) { this.tratamientos = tratamientos; }
+  public Boolean getEstadoActivo() { return estadoActivo; }
+  public void setEstadoActivo(Boolean estadoActivo) { this.estadoActivo = estadoActivo; }
 }
