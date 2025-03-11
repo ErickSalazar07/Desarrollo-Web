@@ -17,7 +17,7 @@
 
 
 ## Estructura Sitio web:
-![Imagen inicial].(https://github.com/ErickSalazar07/Web/blob/main/imagenes/imagenes-funcionalidad/image.png?raw=true)
+![Imagen inicial](https://github.com/ErickSalazar07/Web/blob/main/imagenes/imagenes-funcionalidad/image.png?raw=true)
 
 
 ## `Diagrama de clases`
