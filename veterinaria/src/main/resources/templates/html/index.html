@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> <!-- URL para motor thymeleaf -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style-index.css">
+  <title>Health Animals</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="ir-inicio">
+        <a href="index.html">
+          <img src="/images/logo.png" alt="Logo Health Animals">
+        </a>
+      </div>
+      <div class="ir-otras-paginas">
+        <a href="#sobrenosotros_id">Sobre Nosotros</a>
+        <a href="#profesionales">Profesionales</a>
+        <a th:href="@{/mascota/mascotas}">Ver Mascotas</a>
+        <a th:href="@{/cliente/clientes}">Ver Clientes</a>
+      </div>
+    </nav>
+    <button type="button" class="boton_empezar"><a class="btn-ingresar" th:href="@{/cliente/login}">Ingresar</a></button>
+  </header>
+  <main>
+    <div id="LandPagePrincipal">
+      <div id="recuadroLand">
+        <h1>Cuidamos a tu <span> mascota </span> como si fuera nuestra.</h1>
+        <p> Compromiso, experiencia y mucho amor. En Health Animals, ofrecemos el mejor cuidado para que tu mascota tenga una vida sana y feliz. ¡Ven a conocernos!</p>
+        <button type="button" class="boton_empezar">Registrarse</button>
+      </div>
+      <div id="imgLand">
+        <img src="/images/LDP1_1.png" alt="">
+      </div>
+    </div>
+  </main>
+  <h1 id="profesionales"> Nuestros <span>profesionales</span></h1>
+  <p id="text_profesionales"> Asesoría y apoyo dedicados en todos los aspectos del cuidado
+    de tu mascota de la mano de un Guía especializado quien podrá darte revisiones periódicas de progreso, consultas rápidas y
+    mensajes en cualquier momento. </p>
+  <div class="team-container">
+    <!-- Veterinario 1 -->
+    <div class="vet-card">
+        <img src="https://github.com/ErickSalazar07/Web/blob/main/imagenes/veterinarios/vet1.png?raw=true" alt="Dra. Ana García" class="vet-image">
+        <div class="vet-info">
+            <h3 class="vet-name">Dra. Ana García</h3>
+            <p class="vet-specialty">Cirugía y Medicina Interna</p>
+            <p class="vet-description">Especialista con más de 10 años de experiencia en cirugías complejas y tratamientos de medicina interna. Dedicada al cuidado integral de mascotas.</p>
+        </div>
+    </div>
+        <!-- Veterinario 2 -->
+
+    <div class="vet-card">
+      <img src="https://github.com/ErickSalazar07/Web/blob/main/imagenes/veterinarios/vet4.png?raw=true" alt="Dr. Miguel Torres" class="vet-image">
+      <div class="vet-info">
+          <h3 class="vet-name">Dr. Ángela Rodríguez</h3>
+          <p class="vet-specialty">Traumatología y Rehabilitación</p>
+          <p class="vet-description">Especialista en traumatología y rehabilitación de mascotas. Experto en tratamientos postoperatorios y terapia física.</p>
+      </div>
+  </div>
+    <!-- Veterinario 3 -->
+    <div class="vet-card">
+        <img src="https://github.com/ErickSalazar07/Web/blob/main/imagenes/veterinarios/vet3.png?raw=true" alt="Dr. Carlos Rodríguez" class="vet-image">
+        <div class="vet-info">
+            <h3 class="vet-name">Dr. Carlos Rodríguez</h3>
+            <p class="vet-specialty">Dermatología Veterinaria</p>
+            <p class="vet-description">Experto en problemas dermatológicos y alergias en mascotas. Certificado en dermatología veterinaria avanzada.</p>
+        </div>
+    </div>
+</div>
+
+
+  
+  <!-- Sección sobre nosotros-->
+  <div id="sobrenosotros_id" class="sobrenosotros_id">
+    <section id="sobre-nosotros">
+      <h1>Sobre Nosotros</h1>
+      <p>
+        En nuestra veterinaria, nos apasiona el bienestar de cada mascota. Con un equipo de
+        profesionales dedicados y un enfoque basado en el amor y la ciencia, brindamos
+        atención médica de calidad para que tu compañero de vida esté siempre saludable y feliz.
+      </p>
+      <article class="tarjeta">
+        <h3>Cuidado Médico Especializado</h3>
+        <p>
+          Nuestros veterinarios brindan diagnósticos precisos y tratamientos personalizados.
+        </p>
+      </article>
+      <article class="tarjeta">
+        <h3>Espacio de Confianza</h3>
+        <p>
+          Queremos que cada visita sea agradable. Creamos un ambiente tranquilo para que tu mascota
+          se sienta segura.
+        </p>
+      </article>
+      <article class="tarjeta">
+        <h3>Instalaciones modernas</h3>
+        <p>
+          Contamos con tecnología avanzada y espacios diseñados para el confort y seguridad
+          de tu mascota, garantizando el mejor tratamiento.
+        </p>
+      </article>
+    </section>
+  
+    <img src="/images/LandPage1_2.png" alt="LandPage 4-1" id="sobre-nosotros-img">
+  </div>
+  
+
+  <footer>
+    <div>
+      <div class="logo">
+        <img src="/images/logo.png" id="logo" alt="Logo Health Animals">
+      </div>
+      <section class="contacto">
+        <span>Teléfono: 45634654564</span>
+        <span>Correo: healthAnimals@healtAnimals.com</span>
+        <span>Direccion: Calle 180#20c-56</span>
+        <span>Horario Atencion: 7am - 7pm  Lunes a Viernes</span>
+      </section>
+      <section class="redes-sociales">
+        <img src="data:image/png;base64,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" 
+        alt="Logo Instagram">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAb1BMVEUAAAD////IyMjh4eFWVlbo6Oi2trYyMjLCwsKtra3W1tYpKSnc3NyEhIQKCgr6+vo4ODhbW1unp6fPz88gICCXl5d0dHRLS0tqamru7u4YGBihoaFgYGB2dnaOjo67u7uAgIA/Pz9ISEglJSURERHwsYQeAAADl0lEQVR4nO3d2XLiMBCFYdkQxxbyhgl7DCS8/zMOSzK5mCkspLS7pTr/Re5C6Su8YiFUcs+UTaXiqWpK8yVTt7+65R4SQa3+K6wL7sHQVGX1XRgr8FJR34TxApXKrkLNPQrKKn0RxniQ+alNlOEeA3FGldxDIK5UDfcQiGtUTFcy/yt2H0IIIYQQQgghhBBC6N52dunUzL5bVPF8Pvh5apfH8q241OXFd7u+LPvjcrncT1fN64J7kM4tVu99kb4kD9oYnWfzdZDG7bQvuvqR7qfDK/don292zLSd7loWnPD1Ld3Y+8ITnkttuXUGKmy7p96/8IS7p32BCZ/dQEMTNg68oIR7N2A4wt4RGIywd9kFQxKuHQ6iQQn3D6+wIxCeOndgEMJF4bwTBiI8uu+EYQinT9wqBSk877yAAQh9jqNBCBdzP6B84d7rMBOA8Ox8PRqKcOW5F8oXrn2B0oWzPHbhhzdQutB/IxUu3GaxC2e+J8NE+nOLkz2knug0zf8t7T+5FY9a2vrMYbc+nbmH65DlNamZ77lH6prdnWEarE8pK2D+wT1M9z5tgF3AQHWyAL68c4/Sp9ZmGw16Ykk5DNwcuQfplYWwC/vbnxbCnHuMfh2GhYEvFJAO74Y99xj9GhaGfa6wEU6m3GP0C0II5QchhPKDEEL5QQih/CCEUH4QQig/CCGUH4ThC4enfBn5j0cHDb7NuWdokAvfmIEQerdZxi6crGMX8s9FoRbm7M/5qYXZNnYh/3N+auGcG0gtFDCTgVgoYCYDsVDz33sQC7sVN5BamLOfLKiFh+iFGbePXMh/OiQWSphfSyvkv3eiFmr+kwWxUMIcaVphKmAiP7GQm6eohQJOh7TCmv2jREUs3PDfOxELJxJ+EY9UaE7cPEUs1BKWnyUVdty6axD6VO+4ddc2Lw8aXsSsfvT/Rv4vUw4/5Z6wP3jxK/6ZChBCKD8IIZQfhBDKD0II5QchhPKDEEL5QQih/CCEUH4QQig/CCGUH4QQyg9CCOUHIYTygxBC+UEIofwghFB+EEIoPwghlB+EEMoPQgjlByGE8oMQQvlBCKH8IIRQfhD+npBr1bOxhJXiWrluLGGjuFZBGUtYKvMbL+PQWEKjEqZVwUYStolKNM+xZhxhpS9CpgUIxxFmyVVYs6zAP4qwqG/CpM4YNtQRhFV2XW7rvuSYHv9wQy9s9e1lvhdVM2Uz7htJK6ya0ny9zB+ZTkBMFF8i2wAAAABJRU5ErkJggg==" 
+        alt="Logo Facebook">
+        <img src="data:image/png;base64,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" 
+        alt="Logo X">
+      </section>
+    </div>
+    <section class="copyright">
+      &copy;2025. Health Animals. Todos los derechos reservados.
+    </section>
+  </footer>
+</body>
+</html>

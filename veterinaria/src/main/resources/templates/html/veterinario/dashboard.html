@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Veterinario | Dashboard</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/veterinario/style-dashboard-veterinario.css">
+</head>
+<body>
+    <div class="logo-container">
+        <img src="/images/logo.png" alt="Logo" class="logo">
+    </div>
+    <div class="dashboard">
+        <!-- Sidebar fija -->
+        <div class="sidebar">
+            <div class="sidebar-icon" data-tooltip="Home" onclick="cargarPagina('1', this)">
+                <i class="bx bx-home"></i>
+            </div>
+            <div class="sidebar-icon active" data-tooltip="Mascotas" onclick="cargarPagina('2', this)">
+                <i class="fas fa-dog"> </i>
+            </div>
+
+            <div class="sidebar-icon" data-tooltip="Dueños" onclick="cargarPagina('3', this)">
+                <i class='bx bxs-group'></i>
+            </div>
+            
+            <div class="sidebar-icon" data-tooltip="Perfil" onclick="cargarPagina('4', this)">
+                <i class='bx bx-user'></i>
+            </div>
+            <div class="sidebar-icon" data-tooltip="Cerrar Sesión" onclick="cargarPagina('5', this)">
+                <i class="bx bx-log-in-circle"></i>
+            </div>
+        </div>
+
+        <!-- Contenedor donde se cargará el contenido -->
+        <iframe id="contenido" class="contenido" src="/mascota/mascotas"></iframe>
+    </div>
+
+    <script>
+
+        function cargarPagina(pagina, elemento) {
+            // Verifica si la página es "mascota"
+            if (pagina === '2') {
+                pagina = '/mascota/mascotas'; // Usa la ruta del controlador
+            }
+            else if (pagina === '3') {
+                pagina = '/cliente/clientes';
+            }
+
+            document.getElementById("contenido").src = pagina;
+
+            document.querySelectorAll(".sidebar-icon").forEach(icon => icon.classList.remove("active"));
+
+            elemento.classList.add("active");
+        }
+    </script>
+</body>
+</html>

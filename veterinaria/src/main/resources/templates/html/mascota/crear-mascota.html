@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/mascota/style-crear-mascota.css">
+  <title>Crear Mascota</title>
+</head>
+<body>
+  <header>
+    <h1>Crea tu Mascota</h1>
+  </header>
+  <main>
+    <form th:object="${mascota}" th:action="@{/mascota/agregar}" method="post">
+      <label for="nombre">Nombre</label>
+      <input th:field="*{nombre}" type="text" id="nombre" placeholder="Ingrese nombre" required>
+      <label for="raza">Raza</label>
+      <select th:field="*{raza}" id="raza">
+        <option value="Perro">Perro</option>
+        <option value="Gato">Gato</option>
+      </select>
+      <label for="edad">Edad</label>
+      <input th:field="*{edad}" type="number" id="edad" placeholder="Ingrese edad" required>
+      <label for="peso">Peso</label>
+      <input th:field="*{peso}" type="number" id="peso" placeholder="Ingrese peso" required>
+      <label for="enfermedad">Enfermedad</label>
+      <input th:field="*{enfermedad}" type="text" id="enfermedad" placeholder="Ingrese enfermedad">
+      <label for="foto">Foto</label>
+      <input th:field="*{foto}" type="text" id="foto" placeholder="Ingrese URL de foto" required>
+      <label for="cedula-cliente">Cedula Dueño</label>
+      <input th:field="*{cliente.cedula}" type="number" id="cedula-cliente" placeholder="Ingrese cedula del Dueño" required>
+      <label>Seleccione estado de mascota(activa/no activa)</label>
+      <label for="activa">Activa</label>
+      <input th:field="*{estadoActivo}" type="radio" value="true" id="activa" required>
+      <label for="no-activa">No Activa</label>
+      <input th:field="*{estadoActivo}" type="radio" value="false" id="no-activa">
+      <!-- TODO: Realizar tratamientos -->
+      <button type="submit">Crear</button>
+    </form>
+  </main>
+  <footer>
+
+  </footer>
+</body>
+</html>

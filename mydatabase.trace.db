@@ -1,0 +1,9 @@
+2025-03-06 14:34:19.176769Z jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "FOTO CHARACTER VARYING(255)": "'data:image/webp;base64,UklGRhgeAABXRUJQVlA4IAweAADwpACdASo4ATgBPpFEnEolo6KtqBMq... (10307)"; SQL statement:
+insert into mascota (cliente_cedula,edad,enfermedad,foto,nombre,peso,raza,id) values (?,?,?,?,?,?,?,?) [22001-232]
+2025-03-06 14:34:35.879343Z jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "FOTO CHARACTER VARYING(255)": "'data:image/webp;base64,UklGRqQNAABXRUJQVlA4IJgNAACwSACdASrCAIQAPqlKn0ymI6KrJlFt... (4691)"; SQL statement:
+insert into mascota (cliente_cedula,edad,enfermedad,foto,nombre,peso,raza,id) values (?,?,?,?,?,?,?,?) [22001-232]
+2025-03-11 18:28:14.841229-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MASCOTA_TRATAMIENTO" not found; SQL statement:
+SELECT * FROM mascota_tratamiento [42102-232]

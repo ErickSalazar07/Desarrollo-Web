@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/cliente/style-mostrar-clientes.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+
+  <title>Clientes</title>
+</head>
+<h1>Dueños de Mascotas</h1>
+<section id="btn-inicial"class="acciones">
+  <a type="button" class="btn" th:href="@{/cliente/add}"> <i class='bx bx-plus-circle'></i> Agregar Dueño</a>
+</section>
+<body>    
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Cédula</th>
+          <th>Celular</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="cliente: ${clientes}">
+          <td><span th:text="${cliente.nombre}"></span></td>
+          <td><span th:text="${cliente.correo}"></span></td>
+          <td><span th:text="${cliente.cedula}"></span></td>
+          <td><span th:text="${cliente.celular}"></span></td>
+          <td>
+            <a type="button" th:href="@{/cliente/mostrar-cliente/{id}(id=${cliente.id})}" class="btn">
+              <i class='bx bxs-show'></i>
+            </a>
+            <a type="button" th:href="@{/cliente/update/{id}(id=${cliente.id})}" class="btn">
+              <i class='bx bx-edit'></i>
+            </a>
+            <a type="button" th:href="@{/cliente/delete/{id}(id=${cliente.id})}" class="btn">
+              <i class='bx bx-trash' ></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+  <footer>
+
+  </footer>
+</body>
+</html>

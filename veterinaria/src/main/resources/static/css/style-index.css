@@ -1,3 +1,4 @@
+<<<<<<< HEAD:css/style-index.css
 @import url("style-general.css");
 
 section#introduccion {
@@ -102,3 +103,18 @@ section#introduccion article {
   height: 350px; /* Ajustado proporcionalmente */
   object-fit: cover;
 }
+=======
+/*
+  Archivo de estilo propio de la pagina index.html
+*/
+
+@import url("style-general.css");
+
+main {
+  text-align: center;
+}
+
+.btn-ingresar {
+  color: white;
+}
+>>>>>>> desarrollo:veterinaria/src/main/resources/static/css/style-index.css

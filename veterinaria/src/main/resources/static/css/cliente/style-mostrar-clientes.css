@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.cdnfonts.com/css/pp-neue-montreal');
+
+body {
+    font-family: "PP Neue Montreal", serif;
+    background-image: url("../images/fondoTabla.png");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: "PP Neue Montreal", serif;
+    font-size: 30px;
+    margin-left: 80px;
+    margin-top: 15px;
+    text-align: left;
+    justify-content: left;
+    align-self: start;
+
+}
+
+#btn-inicial {
+    margin-left: 80px;
+    margin-bottom: 20px ;
+    align-self: start;
+    justify-content: left;
+
+}
+
+main {
+    width: 80%;
+    max-width: 900px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1px;
+}
+
+thead {
+    background-color: #969696;
+    color: white;
+}
+
+thead th {
+    padding: 12px;
+    font-size: 18px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background 0.3s;
+}
+
+tbody tr:hover {
+    background: #f1f1f1;
+}
+
+td {
+    padding: 15px;
+}
+
+main img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Separa los elementos a los extremos */
+    width: 100%;
+    padding: 10px;
+}
+header img {
+    margin-top: 0px;
+    width: 150px;
+    height: auto;
+    margin-bottom: 5px;
+    margin-left: 50px;
+}
+header button{
+    margin-right: 30px;
+
+}
+
+.btn {
+  border: 1px solid black;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding: 5px;
+  color: black;
+  font-weight: 450;
+}
+
+.btn-volver {
+    padding: 10px 30px;
+    background-color: #054f31;
+    color: white;
+    margin-right: 40px;
+}
+
+.btn-volver:hover {
+    padding: 10px 30px;
+    background-color: white;
+    color: #054f31;
+    border: 2px solid #054f31;
+    margin-right: 40px;
+}
+
+.btn-ver-mascota, .btn {
+    border: 1px solid #054f31;
+  background-color: white;
+  color: #054f31;
+  padding: 10px 10px;
+  font-size: 15px;
+  text-align: center;
+  margin-left: 5px;
+}   
+
+.btn-ver-mascota:hover, .btn:hover  {
+      background-color: #054f31;
+      color: white;
+      padding: 10px 10px;
+      font-size: 15px;
+      text-align: center;
+      margin-left: 5px;
+}
