@@ -1,7 +1,10 @@
 package puj.veterinaria.entidades;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -16,20 +19,33 @@ public class Mascota {
   @Id
   @GeneratedValue
   private Long id;
+
+  @Column(nullable = false)
   private String nombre;
+
+  @Column(nullable = false)
   private String raza;
+
+  @Column(nullable = false)
   private Integer edad;
+
+  @Column(nullable = false)
   private Double peso;
+
   private String enfermedad;
+
+  @Column(nullable = false)
   private String foto;
+
+  @Column(nullable = false, name = "estado_activo")
   private Boolean estadoActivo;
 
-  @ManyToOne
-  @JoinColumn(name = "cliente_cedula", referencedColumnName = "cedula") // usar cedula como foreign key
+  @ManyToOne // usar cedula como foreign key
+  @JoinColumn(name = "cliente_cedula", referencedColumnName = "cedula", nullable = false) 
   private Cliente cliente;
   
-  @OneToMany
-  private List<Tratamiento> tratamientos;
+  @OneToMany(mappedBy = "mascota", cascade = CascadeType.ALL)
+  private List<Tratamiento> tratamientos = new ArrayList<>();
   
   public Mascota() { }
   
@@ -44,13 +60,10 @@ public class Mascota {
     this.estadoActivo = estadoActivo;
   }
 
-/*
-  Comportamiento
-*/
+// Comportamiento
 
-/*
-  Getters y Setters
-*/
+// Getters y Setters
+
   public Long getId() { return id; }
   public void setId(Long id) { this.id = id; }
   public String getNombre() { return nombre; }

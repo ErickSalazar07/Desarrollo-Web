@@ -19,8 +19,14 @@ public class Cliente {
   
   @Column(unique = true, nullable = false) // Cambiar foreign key de id por cedula
   private String cedula;
+
+  @Column(nullable = false)
   private String nombre;
+
+  @Column(unique = true, nullable = false)
   private String correo;
+
+  @Column(nullable = false)
   private String celular;
 
   @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -35,13 +41,9 @@ public class Cliente {
     this.celular = celular;
   }
 
-/*
-  Comportamiento
-*/
+// Comportamiento
 
-/*
-  Getters y Setters
-*/
+// Getters y Setters
 
   public Long getId() { return id; }
   public void setId(Long id) { this.id = id; }

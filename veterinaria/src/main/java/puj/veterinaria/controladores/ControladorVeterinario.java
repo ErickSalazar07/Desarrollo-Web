@@ -21,15 +21,10 @@ public class ControladorVeterinario {
 
 // Metodos GetMapping
 
-  // URL: http://localhost:8090/veterinario
-  @GetMapping("")
+  // URL-1: http://localhost:8090/veterinario
+  // URL-2: http://localhost:8090/veterinario/
+  @GetMapping({"","/"})
   public String paginaPrincipal() {
-    return "redirect:/veterinario/veterinarios";
-  }
-
-  // URL: http://localhost:8090/veterinario/
-  @GetMapping("/")
-  public String paginaPrincipalVeterinario() {
     return "redirect:/veterinario/veterinarios";
   }
 

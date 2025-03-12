@@ -49,20 +49,18 @@ public class ClienteServicio implements IClienteServicio {
 
   @Transactional
   @Override
-  public Cliente updateCliente(Long id, Cliente nuevoCliente) {
-    Cliente cliente = repositorioCliente.findById(id)
-        .orElseThrow(() -> new RuntimeException("Cliente no encontrado con ID: " + id));
+  public Cliente updateCliente(Long id, Cliente nuevoCliente) throws Exception{
 
-    cliente.setNombre(nuevoCliente.getNombre());
-    cliente.setCorreo(nuevoCliente.getCorreo());
-    cliente.setCelular(nuevoCliente.getCelular());
+    if(repositorioCliente.findById(id).get() == null)
+      throw new RuntimeException();
 
-    return repositorioCliente.save(cliente);
+    return repositorioCliente.save(nuevoCliente);
   }
 
-
   @Override
-  public void deleteById(Long id) {
+  public void deleteById(Long id) throws Exception{
+    if(repositorioCliente.findById(id).get() == null)
+      throw new RuntimeException();
     repositorioCliente.deleteById(id);
   }
 }

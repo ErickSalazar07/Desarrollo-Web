@@ -28,15 +28,10 @@ public class ControladorMascota {
 
 // Metodos @GetMapping
 
-  // URL: http://localhost:8090/mascota
-  @GetMapping("")
+  // URL-1: http://localhost:8090/mascota
+  // URL-2: http://localhost:8090/mascota/
+  @GetMapping({"","/"})
   public String paginaInicio() {
-    return "redirect:/mascota/mascotas";
-  }
-
-  // URL: http://localhost:8090/mascota/
-  @GetMapping("/")
-  public String paginaInicioMascota() {
     return "redirect:/mascota/mascotas";
   }
 
@@ -49,13 +44,13 @@ public class ControladorMascota {
   
   // ? Cambiar id por algun id dentro de los animales guardados en el repositorio
   // URL: http://localhost:8090/mascota/mostrar-mascota/1 
-  @GetMapping("/mostrar-mascota/{id}")
-  public String mostrarMascota(Model modelo, @PathVariable("id") Long id) {
-    Mascota mascota = mascotaServicio.searchById(id);
+  @GetMapping({"/mostrar-mascota/","/mostrar-mascota/{id}"})
+  public String mostrarMascota(Model modelo, @PathVariable(value = "id", required = false) Long id) {
+    Mascota mascota;
+    if(id == null) throw new NotFoundExceptionMascota("El id no se logro encontrar para referenciar mascota.");
 
-    if(mascota == null) {
-      throw new NotFoundExceptionMascota(id);
-    }
+    mascota = mascotaServicio.searchById(id);
+    if(mascota == null) throw new NotFoundExceptionMascota(id);
 
     modelo.addAttribute("mascota", mascota);
     return "html/mascota/mostrar-mascota";
@@ -64,10 +59,7 @@ public class ControladorMascota {
   // URL: http://localhost:8090/mascota/add
   @GetMapping("/add")
   public String mostrarFormularioCrear(Model modelo) {
-    Mascota mascota = new Mascota();
-
-    modelo.addAttribute("mascota", mascota);
-
+    modelo.addAttribute("mascota", new Mascota());
     return "/html/mascota/crear-mascota";
   }
   
@@ -92,14 +84,17 @@ public class ControladorMascota {
   @PostMapping("/agregar")
   public String agregarMascota(@ModelAttribute("mascota") Mascota mascota) {
     // Buscar el cliente antes de asignarlo a la mascota
-    if (mascota.getCliente() != null && mascota.getCliente().getCedula() != null) {
-      Cliente clienteExistente = clienteServicio.findByCedula(mascota.getCliente().getCedula());
-      if (clienteExistente == null) 
-        throw new NotFoundExceptionCliente("No se encontro el cliente con cedula: "+mascota.getCliente().getCedula());
-        // Manejar el caso en que el cliente no exista
-      mascota.setCliente(clienteExistente);
-    }
-    
+
+    if(mascota.getCliente() == null || mascota.getCliente().getCedula() == null) 
+      throw new NotFoundExceptionCliente("El cliente no fue construido correctamente, verificar datos del cliente");
+
+    Cliente clienteExistente = clienteServicio.findByCedula(mascota.getCliente().getCedula());
+    if (clienteExistente == null) // Manejar el caso en que el cliente no exista
+      throw new NotFoundExceptionCliente("No se encontro el cliente con cedula: " +
+      mascota.getCliente().getCedula());
+
+    mascota.setCliente(clienteExistente);
+    mascota.setEstadoActivo(true);
     mascotaServicio.addMascota(mascota);
     return "redirect:/mascota/mascotas";
   }
@@ -108,8 +103,8 @@ public class ControladorMascota {
   public String actualizarMascota(@ModelAttribute("mascota") Mascota mascota, @PathVariable("id") Long id) {
 
     if(clienteServicio.findByCedula(mascota.getCliente().getCedula()) == null) 
-      throw new NotFoundExceptionCliente("No se encontro el cliente con cedula: "+mascota.getCliente().getCedula());
-    
+      throw new NotFoundExceptionCliente("No se encontro el cliente con cedula: " +
+      mascota.getCliente().getCedula());
 
     mascotaServicio.updateMascota(id,mascota);
     return "redirect:/mascota/mascotas";

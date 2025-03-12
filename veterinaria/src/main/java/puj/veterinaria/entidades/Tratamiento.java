@@ -2,6 +2,7 @@ package puj.veterinaria.entidades;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -15,17 +16,23 @@ public class Tratamiento {
   @Id
   @GeneratedValue
   private Long id;
+  
+  @Column(nullable = false, name = "nombre_tratamiento")
   private String nombreTratamiento;
+  
+  @Column(nullable = false)
   private Date fecha;
   
-  // private Droga drogaAsignada;
+  @ManyToOne
+  @JoinColumn(name = "id_droga", referencedColumnName = "id", nullable = false)
+  private Droga drogaAsignada;
 
   @ManyToOne
-  @JoinColumn(name = "id_mascota", referencedColumnName = "id")
+  @JoinColumn(name = "id_mascota", referencedColumnName = "id", nullable = false)
   private Mascota mascota;
 
   @ManyToOne
-  @JoinColumn(name = "cedula_veterinario_encargado", referencedColumnName = "cedula")
+  @JoinColumn(name = "cedula_veterinario", referencedColumnName = "cedula", nullable = false)
   private Veterinario veterinarioEncargado;
   
   public Tratamiento() { }
@@ -35,24 +42,20 @@ public class Tratamiento {
     this.fecha = fecha;
   }
   
-/*
-  Comportamiento
-*/
+// Comportamiento
   
-/*
-  Getters y Setters
-*/
+// Getters y Setters
 
   public Long getId() { return id; }
   public void setId(Long id) { this.id = id; }
-  // public Droga getDrogaAsignada() { return drogaAsignada; }
-  // public void setDrogaAsignada(Droga drogaAsignada) { this.drogaAsignada = drogaAsignada; }
   public String getNombreTratamiento() { return nombreTratamiento; }
   public void setNombreTratamiento(String nombreTratamiento) { this.nombreTratamiento = nombreTratamiento; }
-  public Veterinario getVeterinarioEncargado() { return veterinarioEncargado; }
-  public void setVeterinarioEncargado(Veterinario veterinarioEncargado) { this.veterinarioEncargado = veterinarioEncargado; }
   public Date getFecha() { return fecha; }
   public void setFecha(Date fecha) { this.fecha = fecha; }
+  public Droga getDrogaAsignada() { return drogaAsignada; }
+  public void setDrogaAsignada(Droga drogaAsignada) { this.drogaAsignada = drogaAsignada; }
+  public Veterinario getVeterinarioEncargado() { return veterinarioEncargado; }
+  public void setVeterinarioEncargado(Veterinario veterinarioEncargado) { this.veterinarioEncargado = veterinarioEncargado; }
   public Mascota getMascota() { return mascota; }
   public void setMascota(Mascota mascota) { this.mascota = mascota; }
 }

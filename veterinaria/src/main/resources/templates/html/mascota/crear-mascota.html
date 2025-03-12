@@ -28,7 +28,12 @@
       <label for="foto">Foto</label>
       <input th:field="*{foto}" type="text" id="foto" placeholder="Ingrese URL de foto" required>
       <label for="cedula-cliente">Cedula Dueño</label>
-      <input th:field="*{cliente.cedula}" type="number" id="cedula-cliente" placeholder="Ingrese cedula del Dueño" requiered>
+      <input th:field="*{cliente.cedula}" type="number" id="cedula-cliente" placeholder="Ingrese cedula del Dueño" required>
+      <label>Seleccione estado de mascota(activa/no activa)</label>
+      <label for="activa">Activa</label>
+      <input th:field="*{estadoActivo}" type="radio" value="true" id="activa" required>
+      <label for="no-activa">No Activa</label>
+      <input th:field="*{estadoActivo}" type="radio" value="false" id="no-activa">
       <!-- TODO: Realizar tratamientos -->
       <button type="submit">Crear</button>
     </form>

@@ -19,9 +19,17 @@ public class Veterinario {
   
   @Column(nullable = false, unique = true)
   private String cedula;
+
+  @Column(nullable = false)
   private String nombre;
+
+  @Column(nullable = false)
   private String contrasena;
+
+  @Column(nullable = false)
   private String especialidad;
+
+  @Column(nullable = false)
   private String foto;
   
   @OneToMany(mappedBy = "veterinarioEncargado", cascade = CascadeType.ALL)
@@ -37,9 +45,7 @@ public class Veterinario {
     this.foto = foto;
   }
 
-/*
-  Comportamiento
-*/
+// Comportamiento
 
   // TODO: Implementar funcion
   public void asignarTratamiento() {
@@ -51,9 +57,7 @@ public class Veterinario {
     return 0;
   }
 
-/*
-  Getters y Setters
-*/
+// Getters y Setters
 
   public Long getId() { return id; }
   public void setId(Long id) { this.id = id; }

@@ -22,6 +22,19 @@ public class DatabaseInit implements ApplicationRunner {
   @Override
   public void run(ApplicationArguments args) throws Exception {
 
+    // Clientes conocidos
+
+    repositorioCliente.save(new Cliente("18872435","Juan","juan@email.com",
+    "3145194072"));
+    repositorioCliente.save(new Cliente("19812305","Pedro","pedro@email.com",
+    "3045591094"));
+    repositorioCliente.save(new Cliente("27082133","Luis","luis@email.com",
+    "3944193373"));
+    repositorioCliente.save(new Cliente("17190115","Juliana","juli@email.com",
+    "3305004013"));
+    
+    // Mascotas conocidas
+
     repositorioMascota.save(new Mascota( "Pachini","Gato",5,4.5,"VIF",
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/gato-pachini.jpg?raw=true",false));
     repositorioMascota.save(new Mascota("Zeus","Perro",9,11.7,null,
@@ -32,7 +45,9 @@ public class DatabaseInit implements ApplicationRunner {
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/gato-lola.jpg?raw=true",true));
     repositorioMascota.save(new Mascota("Atenea","Perro",3,4.5,"Virus Rabia",
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/perro-atenea.jpg?raw=true",true));
-/* 
+
+    //* Datos para poblar la base de datos
+
     //50 Perros:
     repositorioMascota.save(new Mascota("Max", "Perro", 2, 5.3, null,
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/p1.png?raw=true",true));
@@ -140,11 +155,11 @@ public class DatabaseInit implements ApplicationRunner {
     //50 gatos
     repositorioMascota.save(new Mascota("Felix", "Gato", 2, 3.8, "Resfriado", 
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/1g.png?raw=true",true));
-repositorioMascota.save(new Mascota("Milo", "Gato", 4, 4.2, "Parásitos", 
+    repositorioMascota.save(new Mascota("Milo", "Gato", 4, 4.2, "Parásitos", 
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/2g.png?raw=true",true));
-repositorioMascota.save(new Mascota("Simba", "Gato", 5, 4.7, "Gripe Felina", 
+    repositorioMascota.save(new Mascota("Simba", "Gato", 5, 4.7, "Gripe Felina", 
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/3g.png?raw=true",true));
-repositorioMascota.save(new Mascota("Toby", "Gato", 3, 4.0, "VIF", 
+    repositorioMascota.save(new Mascota("Toby", "Gato", 3, 4.0, "VIF", 
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/4g.png?raw=true",true));
 repositorioMascota.save(new Mascota("Oliver", "Gato", 6, 5.0, "Insuficiencia renal", 
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/5g.png?raw=true",true));
@@ -166,9 +181,9 @@ repositorioMascota.save(new Mascota("Whiskers", "Gato", 5, 4.6, "Hipertiroidismo
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/13g.png?raw=true",true));
 repositorioMascota.save(new Mascota("Michi", "Gato", 2, 3.7, "Gastroenteritis", 
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/14g.png?raw=true",true));
-repositorioMascota.save(new Mascota("Zeus", "Gato", 4, 4.2, "Moquillo", 
+                                                                                                                repositorioMascota.save(new Mascota("Zeus", "Gato", 4, 4.2, "Moquillo", 
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/15g.png?raw=true",true));
-repositorioMascota.save(new Mascota("Sombra", "Gato", 3, 4.1, "Asma", 
+                                                                                                                repositorioMascota.save(new Mascota("Sombra", "Gato", 3, 4.1, "Asma", 
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/16g.png?raw=true",true));
 repositorioMascota.save(new Mascota("Moka", "Gato", 2, 3.9, "Enfermedad renal", 
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/17g.png?raw=true",true));
@@ -238,24 +253,6 @@ repositorioMascota.save(new Mascota("Copito", "Gato", 5, 4.8, "Virus de la Rabia
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/24g.png?raw=true",true));
 repositorioMascota.save(new Mascota("Felina", "Gato", 4, 4.5, "Infección Urinaria", 
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/25g.png?raw=true",true));
-
-*/
-
-
-
-
-
-
-
-
-        repositorioCliente.save(new Cliente("18872435","Juan","juan@email.com",
-    "3145194072"));
-    repositorioCliente.save(new Cliente("19812305","Pedro","pedro@email.com",
-    "3045591094"));
-    repositorioCliente.save(new Cliente("27082133","Luis","luis@email.com",
-    "3944193373"));
-    repositorioCliente.save(new Cliente("17190115","Juliana","juli@email.com",
-    "3305004013"));
 
     //50 dueños
     repositorioCliente.save(new Cliente("12345678","Carlos","carlos@email.com",

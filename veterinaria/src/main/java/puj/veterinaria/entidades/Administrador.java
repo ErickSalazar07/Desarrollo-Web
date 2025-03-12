@@ -3,9 +3,9 @@ package puj.veterinaria.entidades;
 // Entidades son un POJO (Plain Old Java Object)
 public class Administrador {
   public Administrador() { }
-/*
-  Comportamiento
-*/
+
+// Comportamiento
+
   // TODO: Implementar metodo
   public void agregarVeterinario(Veterinario veterinario) {
 

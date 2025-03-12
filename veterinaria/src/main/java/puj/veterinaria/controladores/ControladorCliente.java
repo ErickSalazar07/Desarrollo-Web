@@ -1,8 +1,5 @@
 package puj.veterinaria.controladores;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,31 +10,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import puj.veterinaria.entidades.Cliente;
-import puj.veterinaria.entidades.Mascota;
 import puj.veterinaria.excepciones.NotFoundExceptionCliente;
-import puj.veterinaria.servicios.ClienteServicio;
-import puj.veterinaria.servicios.MascotaServicio;
+import puj.veterinaria.servicios.IClienteServicio;
+import puj.veterinaria.servicios.IMascotaServicio;
 
 @Controller
 @RequestMapping("/cliente")
 public class ControladorCliente {
 
   @Autowired
-  ClienteServicio clienteServicio;
+  IClienteServicio clienteServicio;
   @Autowired
-  MascotaServicio mascotaServicio;
+  IMascotaServicio mascotaServicio;
 
 // Metodos GetMapping
 
-  // URL: http://localhost:8090/cliente
-  @GetMapping("")
+  // URL-1: http://localhost:8090/cliente
+  // URL-2: http://localhost:8090/cliente/
+  @GetMapping({"","/"})
   public String paginaInicio() {
-    return "redirect:/cliente/clientes";
-  }
-
-  // URL: http://localhost:8090/cliente/
-  @GetMapping("/")
-  public String paginaInicioCliente() {
     return "redirect:/cliente/clientes";
   }
 
@@ -50,22 +41,15 @@ public class ControladorCliente {
 
   // ? Cambiar id por algun id dentro de los clientes guardados en el repositorio
   // URL: http://localhost:8090/cliente/mostrar-cliente/1
-  @GetMapping("/mostrar-cliente/{id}")
-  public String mostrarCliente(Model modelo, @PathVariable("id") Long id) {
-    List<Mascota> mascotasCliente = new ArrayList<Mascota>();
-    Cliente cliente = clienteServicio.findById(id);
+  @GetMapping({"/mostrar-cliente/","/mostrar-cliente/{id}"})
+  public String mostrarCliente(Model modelo, @PathVariable(value = "id", required = false) Long id) {
+    Cliente cliente;
+     
+    if(id == null) throw new NotFoundExceptionCliente("El id se necesita para referenciar al cliente, verificar.");
 
+    cliente = clienteServicio.findById(id);
     if(cliente == null) throw new NotFoundExceptionCliente("El cliente con ID: " + id + " No existe");
 
-    if(cliente.getMascotas() != null) {
-      for(Mascota mascota: cliente.getMascotas()) {
-        Mascota mascotaBuscar = mascotaServicio.searchById(mascota.getId());
-        if(mascotaBuscar != null)
-          mascotasCliente.add(mascotaBuscar);
-      }
-    }
-
-    cliente.setMascotas(mascotasCliente);
     modelo.addAttribute("cliente", cliente);
     return "/html/cliente/mostrar-cliente";
   }
@@ -73,8 +57,7 @@ public class ControladorCliente {
   // URL: http://localhost:8090/cliente/add
   @GetMapping("/add")
   public String mostrarFormularioCrear(Model modelo) {
-    Cliente cliente = new Cliente();
-    modelo.addAttribute("cliente", cliente);
+    modelo.addAttribute("cliente", new Cliente());
     return "/html/cliente/crear-cliente";
   }
 
@@ -90,7 +73,11 @@ public class ControladorCliente {
   // URL: http://localhost:8090/cliente/delete/1
   @GetMapping("/delete/{id}")
   public String eliminarCliente(@PathVariable("id") Long id) {
-    clienteServicio.deleteById(id);
+    try {
+      clienteServicio.deleteById(id);
+    } catch(Exception e) {
+      throw new NotFoundExceptionCliente("El cliente no se pudo eliminar, verifique ID: " + id);
+    }
     return "redirect:/cliente/clientes";
   }
 
@@ -111,7 +98,11 @@ public class ControladorCliente {
 
   @PostMapping("/update/{id}")
   public String actualizarCliente(@ModelAttribute("cliente") Cliente cliente, @PathVariable("id") Long id) {
-    clienteServicio.updateCliente(id,cliente);
+    try {
+      clienteServicio.updateCliente(id,cliente);
+    } catch(Exception e) {
+      throw new NotFoundExceptionCliente("El cliente no se pudo actualizar, verifique id: " + id);
+    }
     return "redirect:/cliente/clientes";
   }
 
@@ -122,7 +113,6 @@ public class ControladorCliente {
       model.addAttribute("error", "Datos incorrectos");
       return "/html/cliente/login-cliente";
     }
-    
     return "redirect:/cliente/mostrar-cliente/"+clienteBuscar.getId();
   }
 } 
