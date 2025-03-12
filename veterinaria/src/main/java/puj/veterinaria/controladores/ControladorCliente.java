@@ -1,8 +1,5 @@
 package puj.veterinaria.controladores;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import puj.veterinaria.entidades.Cliente;
-import puj.veterinaria.entidades.Mascota;
 import puj.veterinaria.excepciones.NotFoundExceptionCliente;
 import puj.veterinaria.servicios.ClienteServicio;
 import puj.veterinaria.servicios.MascotaServicio;
@@ -29,15 +25,10 @@ public class ControladorCliente {
 
 // Metodos GetMapping
 
-  // URL: http://localhost:8090/cliente
-  @GetMapping("")
+  // URL-1: http://localhost:8090/cliente
+  // URL-2: http://localhost:8090/cliente/
+  @GetMapping({"","/"})
   public String paginaInicio() {
-    return "redirect:/cliente/clientes";
-  }
-
-  // URL: http://localhost:8090/cliente/
-  @GetMapping("/")
-  public String paginaInicioCliente() {
     return "redirect:/cliente/clientes";
   }
 
@@ -50,22 +41,17 @@ public class ControladorCliente {
 
   // ? Cambiar id por algun id dentro de los clientes guardados en el repositorio
   // URL: http://localhost:8090/cliente/mostrar-cliente/1
-  @GetMapping("/mostrar-cliente/{id}")
-  public String mostrarCliente(Model modelo, @PathVariable("id") Long id) {
-    List<Mascota> mascotasCliente = new ArrayList<Mascota>();
-    Cliente cliente = clienteServicio.findById(id);
+  @GetMapping({"/mostrar/cliente/","/mostrar-cliente/{id}"})
+  public String mostrarCliente(Model modelo, @PathVariable(value = "id", required = false) Long id) {
+    Cliente cliente;
 
-    if(cliente == null) throw new NotFoundExceptionCliente("El cliente con ID: " + id + " No existe");
+    if(id == null)
+      throw new NotFoundExceptionCliente("Se necesita el ID para poder referenciar al cliente, verifique");
 
-    if(cliente.getMascotas() != null) {
-      for(Mascota mascota: cliente.getMascotas()) {
-        Mascota mascotaBuscar = mascotaServicio.searchById(mascota.getId());
-        if(mascotaBuscar != null)
-          mascotasCliente.add(mascotaBuscar);
-      }
-    }
+    cliente = clienteServicio.findById(id);
+    if(cliente == null)
+      throw new NotFoundExceptionCliente("El cliente con ID: " + id + " No existe");
 
-    cliente.setMascotas(mascotasCliente);
     modelo.addAttribute("cliente", cliente);
     return "/html/cliente/mostrar-cliente";
   }
@@ -73,8 +59,7 @@ public class ControladorCliente {
   // URL: http://localhost:8090/cliente/add
   @GetMapping("/add")
   public String mostrarFormularioCrear(Model modelo) {
-    Cliente cliente = new Cliente();
-    modelo.addAttribute("cliente", cliente);
+    modelo.addAttribute("cliente", new Cliente());
     return "/html/cliente/crear-cliente";
   }
 

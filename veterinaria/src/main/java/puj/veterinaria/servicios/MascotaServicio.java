@@ -49,7 +49,8 @@ public class MascotaServicio implements IMascotaServicio {
     mascota.setPeso(nuevaMascota.getPeso());
     mascota.setEnfermedad(nuevaMascota.getEnfermedad());
     mascota.setFoto(nuevaMascota.getFoto());
-    mascota.setCliente(repositorioCliente.findByCedula(nuevaMascota.getCliente().getCedula())); // Si permites cambiar el cliente
+    mascota.setCliente(repositorioCliente.findByCedula(nuevaMascota.getCliente().getCedula()));
+    mascota.setEstadoActivo(nuevaMascota.getEstadoActivo());
 
     return repositorioMascota.save(mascota);
   }

@@ -28,7 +28,12 @@
       <label for="foto">Foto</label>
       <input th:field="*{foto}" type="text" id="foto" placeholder="Ingrese URL foto">
       <label for="cedula-cliente">Cedula Dueño</label>
-      <input th:field="*{cliente.cedula}" type="number" id="cedula-cliente" placeholder="Ingrese cedula del Dueño" requiered>
+      <input th:field="*{cliente.cedula}" type="number" id="cedula-cliente" placeholder="Ingrese cedula del Dueño" required>
+      <label>Ingrese Estado Activo:</label>
+      <label for="activo">Activo</label>
+      <input th:field="*{estadoActivo}" type="radio" id="activo" value="true" required>
+      <label for="no-activo">No Activo</label>
+      <input th:field="*{estadoActivo}" type="radio" id="no-activo" value="false">
       <button type="submit">Actualizar</button>
     </form>
   </main>
