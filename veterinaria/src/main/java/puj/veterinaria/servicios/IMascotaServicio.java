@@ -11,4 +11,5 @@ public interface IMascotaServicio {
   public Mascota updateMascota(Long id, Mascota mascota);
   public void addMascota(Mascota mascotas);
   public Long numeroMascotas();
+  public void cambiarEstadoById(Long id);
 }

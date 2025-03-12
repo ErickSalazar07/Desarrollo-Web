@@ -77,6 +77,14 @@ public class ControladorMascota {
     return "html/mascota/actualizar-mascota";
   }
 
+  @GetMapping("/cambiar-estado/{id}")
+  // ? Cambiar id por algun id dentro de los animales guardados en el repositorio
+  // URL: http://localhost:8090/mascota/cambiar-estado/1
+  public String cambiarEstado(@PathVariable("id") Long id) {
+    mascotaServicio.cambiarEstadoById(id);
+    return "redirect:/mascota/mascotas";
+  }
+
   // ? Cambiar id por algun id dentro de los animales guardados en el repositorio
   // URL: http://localhost:8090/mascota/delete/1
   @GetMapping("/delete/{id}")

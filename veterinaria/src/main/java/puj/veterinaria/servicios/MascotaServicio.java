@@ -64,4 +64,14 @@ public class MascotaServicio implements IMascotaServicio {
   public Long numeroMascotas() {
     return repositorioMascota.count();
   }
+
+  @Override
+  public void cambiarEstadoById(Long id) {
+    Mascota mascota = repositorioMascota.findById(id).get();
+
+    if(mascota == null) return;
+
+    mascota.setEstadoActivo(!mascota.getEstadoActivo());
+    repositorioMascota.save(mascota);
+  }
 }
