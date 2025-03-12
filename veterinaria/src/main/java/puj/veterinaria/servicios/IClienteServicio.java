@@ -12,4 +12,5 @@ public interface IClienteServicio {
   public void addCliente(Cliente cliente);
   public Cliente updateCliente(Long id, Cliente cliente);
   public void deleteById(Long id);
+  public Long numeroClientes();
 }

@@ -1,5 +1,7 @@
 package puj.veterinaria.entidades;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -239,14 +241,6 @@ repositorioMascota.save(new Mascota("Copito", "Gato", 5, 4.8, "Virus de la Rabia
 repositorioMascota.save(new Mascota("Felina", "Gato", 4, 4.5, "Infección Urinaria", 
     "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/25g.png?raw=true",true));
 
-
-
-
-
-
-
-
-
         repositorioCliente.save(new Cliente("18872435","Juan","juan@email.com",
     "3145194072"));
     repositorioCliente.save(new Cliente("19812305","Pedro","pedro@email.com",
@@ -339,31 +333,16 @@ repositorioMascota.save(new Mascota("Felina", "Gato", 4, 4.5, "Infección Urinar
     "3782021212"));
     repositorioCliente.save(new Cliente("21212121","Valeria","valeria@email.com",
     "3792121212"));
-  
 
-    // Asociar Mascota con Cliente
-    // Cliente id 1 tiene mascota id 1 y 5
-    Mascota mascotaAsociar = repositorioMascota.findById(1L).get();
-    mascotaAsociar.setCliente(repositorioCliente.findById(1L).get());
-    repositorioMascota.save(mascotaAsociar);
-
-    mascotaAsociar = repositorioMascota.findById(5L).get();
-    mascotaAsociar.setCliente(repositorioCliente.findById(1L).get());
-    repositorioMascota.save(mascotaAsociar);
-
-    // Cliente id 2 tiene mascota id 3
-    mascotaAsociar = repositorioMascota.findById(3L).get();
-    mascotaAsociar.setCliente(repositorioCliente.findById(2L).get());
-    repositorioMascota.save(mascotaAsociar);
-
-    // Cliente id 3 tiene mascota id 2
-    mascotaAsociar = repositorioMascota.findById(2L).get();
-    mascotaAsociar.setCliente(repositorioCliente.findById(3L).get());
-    repositorioMascota.save(mascotaAsociar);
-
-    // Cliente id 4 tiene mascota id 4
-    mascotaAsociar = repositorioMascota.findById(4L).get();
-    mascotaAsociar.setCliente(repositorioCliente.findById(4L).get());
-    repositorioMascota.save(mascotaAsociar);
+    // Asociamos Mascota con Cliente
+    // Lo que se busca es que ninguna Mascota quede sin Cliente
+    // Hay Clientes que pueden quedar si mascota, no hay problema
+    Long CANTIDAD_CLIENTES = repositorioCliente.count();
+    for(Mascota mascota: repositorioMascota.findAll()) {
+      Long random = ThreadLocalRandom.current().nextLong(1L,CANTIDAD_CLIENTES+1);
+      Cliente cliente = repositorioCliente.findById(random).get();
+      mascota.setCliente(cliente);
+      repositorioMascota.save(mascota);
+    }
   }
 }

@@ -7,4 +7,5 @@ import puj.veterinaria.entidades.Mascota;
 
 @Repository
 public interface RepositorioMascota extends JpaRepository<Mascota, Long> {
+  long count();
 }

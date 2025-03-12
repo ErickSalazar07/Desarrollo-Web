@@ -60,9 +60,13 @@ public class ClienteServicio implements IClienteServicio {
     return repositorioCliente.save(cliente);
   }
 
-
   @Override
   public void deleteById(Long id) {
     repositorioCliente.deleteById(id);
+  }
+
+  @Override
+  public Long numeroClientes() {
+    return repositorioCliente.count();
   }
 }

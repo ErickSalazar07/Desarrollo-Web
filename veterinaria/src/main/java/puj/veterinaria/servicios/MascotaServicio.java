@@ -59,4 +59,9 @@ public class MascotaServicio implements IMascotaServicio {
   public void addMascota(Mascota mascota) {
     repositorioMascota.save(mascota);
   }
+
+  @Override
+  public Long numeroMascotas() {
+    return repositorioMascota.count();
+  }
 }
