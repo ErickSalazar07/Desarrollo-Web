@@ -8,26 +8,28 @@
 
 </head>
 <body>
-  <div class="image-container"> 
-    <img id="img_login" src="/images/LandPage1_2.png">   
+  <div id="contenedor_info">
+    <div class="image-container"> 
+      <img id="img_login" src="/images/login-image.png">   
+    </div>
+
+    <div class="login-container">
+      <section class="campos-login">
+        <img src="/images/logo.png" alt="Logo Health Animals">
+        <h1> Bienvenido</h1>
+        <form th:object="${cliente}" th:action="@{/cliente/login}" method="post">
+          <label for="correo">Correo</label>
+          <input th:field="*{correo}" type="email" id="correo" placeholder="Ingrese correo" required>
+          
+          <label for="cedula">Cédula</label>
+          <input th:field="*{cedula}" type="number" id="cedula" placeholder="Ingrese cédula" required>
+
+          <p th:if="${error}" th:text="${error}" class="error-message"></p>
+
+          <button type="submit">Ingresar</button>
+        </form>
+      </section>
+    </div>
   </div>
-
-  <div class="login-container">
-    <section class="campos-login">
-      <img src="/images/logo.png" alt="Logo Health Animals">
-      <h1> Bienvenido</h1>
-      <form th:object="${cliente}" th:action="@{/cliente/login}" method="post">
-        <label for="correo">Correo</label>
-        <input th:field="*{correo}" type="email" id="correo" placeholder="Ingrese correo" required>
-        
-        <label for="cedula">Cédula</label>
-        <input th:field="*{cedula}" type="number" id="cedula" placeholder="Ingrese cédula" required>
-
-        <p th:if="${error}" th:text="${error}" class="error-message"></p>
-
-        <button type="submit">Ingresar</button>
-      </form>
-    </section>
-  </div>
-</body>
+  </body>
 </html>
