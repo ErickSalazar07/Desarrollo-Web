@@ -17,10 +17,16 @@ public class Cliente {
   @GeneratedValue
   private Long id;
   
-  @Column(unique = true, nullable = false) // Cambiar foreign key de id por cedula
+  @Column(nullable = false, unique = true) // Cambiar foreign key de id por cedula
   private String cedula;
+
+  @Column(nullable = false)
   private String nombre;
+
+  @Column(nullable = false, unique = true)
   private String correo;
+
+  @Column(nullable = false)
   private String celular;
 
   @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)

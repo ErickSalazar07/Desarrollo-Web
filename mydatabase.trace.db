@@ -203,3 +203,6 @@ SELECT rownumber FROM mascota [42122-232]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-03-12 20:47:32.508269-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO cliente (cedula, celular,correo,nombre) values([*],'3245','3235','erick@email','erick')"; expected "), DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+INSERT INTO cliente (cedula, celular,correo,nombre) values(,'3245','3235','erick@email','erick') [42001-232]
