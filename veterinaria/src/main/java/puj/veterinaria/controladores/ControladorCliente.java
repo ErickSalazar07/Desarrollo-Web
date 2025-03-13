@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import puj.veterinaria.entidades.Cliente;
 import puj.veterinaria.excepciones.NotFoundExceptionCliente;
 import puj.veterinaria.servicios.ClienteServicio;
 import puj.veterinaria.servicios.MascotaServicio;
+
 
 @Controller
 @RequestMapping("/cliente")
@@ -31,6 +33,16 @@ public class ControladorCliente {
   public String paginaInicio() {
     return "redirect:/cliente/clientes";
   }
+
+  @GetMapping("/dashboard")
+  public String mostrarDashboard(){
+    return "/html/cliente/dashboard_cliente";
+  }
+  
+  public String getMethodName(@RequestParam String param) {
+      return new String();
+  }
+  
 
   // URL: http://localhost:8090/cliente/clientes
   @GetMapping("/clientes")

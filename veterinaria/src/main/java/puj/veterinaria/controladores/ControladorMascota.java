@@ -82,7 +82,7 @@ public class ControladorMascota {
   // URL: http://localhost:8090/mascota/cambiar-estado/1
   public String cambiarEstado(@PathVariable("id") Long id) {
     mascotaServicio.cambiarEstadoById(id);
-      return "redirect:/mascota/mascotas";
+    return "redirect:/mascota/mascotas";
   }
 
   // ? Cambiar id por algun id dentro de los animales guardados en el repositorio
