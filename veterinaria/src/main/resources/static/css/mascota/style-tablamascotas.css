@@ -33,7 +33,7 @@ h1 {
 }
 
 main {
-    width: 80%;
+    width:100%;
     max-width: 900px;
     background: white;
     border-radius: 12px;
@@ -54,7 +54,7 @@ thead {
 }
 
 thead th {
-    padding: 12px;
+    padding: 8px;
     font-size: 18px;
 }
 
@@ -68,7 +68,7 @@ tbody tr:hover {
 }
 
 td {
-    padding: 12px;
+    padding: 10px;
 }
 
 main img {
@@ -124,7 +124,7 @@ header button{
 }
 
 .btn-ver-mascota, .btn {
-    border: 1px solid #054f31;
+    border: 1px solid white;
   background-color: white;
   color: #054f31;
   padding: 10px 10px;
@@ -140,4 +140,13 @@ header button{
       font-size: 15px;
       text-align: center;
       margin-left: 5px;
+}
+
+#icono_desactivado{
+    color: red;
+}
+
+#icono_desactivado:hover{
+    color: white;
+    background-color: red;
 }

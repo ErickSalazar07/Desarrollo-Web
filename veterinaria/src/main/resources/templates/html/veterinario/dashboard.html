@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/veterinario/style-dashboard-veterinario.css">
 </head>
 <body>
+    
     <div class="logo-container">
         <img src="/images/logo.png" alt="Logo" class="logo">
     </div>
@@ -15,21 +16,21 @@
         <!-- Sidebar fija -->
         <div class="sidebar">
             <div class="sidebar-icon" data-tooltip="Home" onclick="cargarPagina('1', this)">
-                <i class="bx bx-home"></i>
+                <i class="bx bx-home"> </i><div id="nombre-seccion">Home</div>
             </div>
             <div class="sidebar-icon active" data-tooltip="Mascotas" onclick="cargarPagina('2', this)">
-                <i class="fas fa-dog"> </i>
+                <i class="fas fa-dog"> </i><div id="nombre-seccion">Mascotas</div>
             </div>
 
             <div class="sidebar-icon" data-tooltip="Dueños" onclick="cargarPagina('3', this)">
-                <i class='bx bxs-group'></i>
+                <i class='bx bxs-group'></i><div id="nombre-seccion">Dueños de Mascotas</div>
             </div>
             
             <div class="sidebar-icon" data-tooltip="Perfil" onclick="cargarPagina('4', this)">
-                <i class='bx bx-user'></i>
+                <i class='bx bx-user'></i><div id="nombre-seccion">Mi perfil</div>
             </div>
             <div class="sidebar-icon" data-tooltip="Cerrar Sesión" onclick="cargarPagina('5', this)">
-                <i class="bx bx-log-in-circle"></i>
+                <i class="bx bx-log-in-circle"></i><div id="nombre-seccion">Cerrar Sesión</div>
             </div>
         </div>
 
