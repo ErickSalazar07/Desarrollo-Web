@@ -6,7 +6,7 @@ body {
     background-image: url("../images/fondoTabla.png");
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -32,6 +32,11 @@ h1 {
 
 }
 
+#boton-agregarMascota {
+    border: 1px solid #054f31;
+
+}
+
 main {
     width:100%;
     max-width: 900px;
@@ -39,13 +44,14 @@ main {
     border-radius: 12px;
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    padding: 20px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1px;
+    margin-left: 80px;
+
 }
 
 thead {
@@ -55,7 +61,8 @@ thead {
 
 thead th {
     padding: 8px;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 tbody tr {

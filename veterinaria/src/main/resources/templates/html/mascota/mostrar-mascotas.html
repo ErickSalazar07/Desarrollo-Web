@@ -8,12 +8,12 @@
 
 <title>Mascotas</title>
 </head>
-<h1>Información de Mascotas</h1>
-<section id="btn-inicial"class="acciones">
-  <a type="button" class="btn" th:href="@{/mascota/add}"> <i class='bx bx-plus-circle'></i> Agregar Mascota</a>
-</section>
-<body>
 
+<body>
+  <h1>Información de Mascotas</h1>
+  <section id="btn-inicial"class="acciones">
+    <a type="button" class="btn" id="boton-agregarMascota" th:href="@{/mascota/add}"> <i class='bx bx-plus-circle'></i> Agregar Mascota</a>
+  </section>
   <main>
 
     <table>
@@ -48,14 +48,16 @@
                 <a type="button" th:href="@{/mascota/update/{id}(id=${mascota.id})}" class="btn">
                     <i class='bx bx-edit'></i>
                 </a>
-                <a type="button" th:href="@{/mascota/cambiar-estado/{id}(id=${mascota.id})}" class="btn"
-                   th:if="${mascota.estadoActivo}">
-                    <i class='bx bxs-toggle-right'></i>
-                </a>
-                <a type="button" th:href="@{/mascota/cambiar-estado/{id}(id=${mascota.id})}" class="btn" id="icono_desactivado"
-                   th:unless="${mascota.estadoActivo}">
-                    <i  class='bx bxs-toggle-left'></i>
-                </a>
+                <a type="button" th:href="@{/mascota/cambiar-estado/{id}(id=${mascota.id})}" 
+                class="btn" onclick="recargarDespues()"
+                th:if="${mascota.estadoActivo}">
+                 <i class='bx bxs-toggle-right'></i>
+             </a>
+             <a type="button" th:href="@{/mascota/cambiar-estado/{id}(id=${mascota.id})}" 
+                class="btn" onclick="recargarDespues()" id="icono_desactivado"
+                th:unless="${mascota.estadoActivo}">
+                 <i class='bx bxs-toggle-left'></i>
+             </a>
             </td>
         </tr>
     </tbody>
@@ -64,5 +66,12 @@
   </main>
   <footer>
   </footer>
+  <script>
+    function recargarDespues() {
+        setTimeout(() => {
+            window.location.reload();
+        }, 300); 
+    }
+ </script>
 </body>
 </html>
