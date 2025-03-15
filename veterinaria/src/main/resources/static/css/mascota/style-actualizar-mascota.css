@@ -2,40 +2,43 @@
 @import url('https://fonts.cdnfonts.com/css/pp-neue-montreal');
 
 body {
-  background-image: url("../images/fondoTabla.png");
   font-family: "PP Neue Montreal", serif;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   min-height: 100vh;
+  margin-left: 80px;
+
 }
 
 header {
   width: 100%;
-  text-align: center;
-  padding: 20px 0;
+  text-align: left;
 }
 
 h1 {
-  font-family: "Atkinson Hyperlegible Next", serif;
-  font-size: 40px;
-  font-weight: bold;
-  color: #000000;
+  font-family: "PP Neue Montreal", serif;
+  font-size: 30px;
+  margin-top: 20px;
+  text-align: left;
+  justify-content: left;
+  align-self: start;
+
 }
 
 main {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 8px rgba(56, 56, 56, 0.2);
   width: 800px;
   text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 30px;
+  align-items: start;
+  margin-top: 10px;
 }
 
 form {
@@ -47,33 +50,55 @@ form {
 label {
   font-weight: bold;
   margin-top: 10px;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 input, select {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #054f31;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 15px;
+  color: #313131
 }
 
-button {
+#button-act {
   margin-top: 20px;
   padding: 13px 30px;
   background-color: #054f31;
+  border: 1px solid #054f31;
   color: white;
   font-family: "PP Neue Montreal", serif;
-  font-size: 16px;
-  border: none;
+  font-size: 15px;
   border-radius: 13px;
   cursor: pointer;
   transition: background 0.3s;
+  font-weight: bold;
 }
 
-button:hover {
+button-act:hover {
   background-color: #ffffff;
-  border: 2px solid #054f31;
   color: #054f31;
+}
+
+.btn-volver {
+  color: white;
+  display: inline-block;
+  font-family: "PP Neue Montreal", serif;
+  font-size: 16px;
+  padding: 10px;
+  font-weight: 500;
+  background-color: white;
+  color: #054f31;
+  border: 1px solid #054f31;
+  text-decoration: none;
+  border-radius: 15px;
+  transition: background 0.3s;
+
+}
+
+.btn-volver:hover {
+  background-color: #054f31;
+  color:white;
 }
