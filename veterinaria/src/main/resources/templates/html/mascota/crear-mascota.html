@@ -11,7 +11,7 @@
     <h1>Crea tu Mascota</h1>
   </header>
   <main>
-    <form th:object="${mascota}" th:action="@{/mascota/agregar}" method="post">
+    <form id="form-mascota" th:object="${mascota}" th:action="@{/mascota/agregar}" method="post">
       <label for="nombre">Nombre</label>
       <input th:field="*{nombre}" type="text" id="nombre" placeholder="Ingrese nombre" required>
       <label for="raza">Raza</label>
@@ -37,9 +37,18 @@
       <!-- TODO: Realizar tratamientos -->
       <button type="submit">Crear</button>
     </form>
-  </main>
-  <footer>
+    <div id="mensaje"> ¡Mascota creada con éxito!</div>
 
-  </footer>
+  </main>
+  <script>
+    document.getElementById("form-mascota").addEventListener("submit", function(event) {
+        this.submit(); // Luego de un segundo, envía el formulario real
+
+      setTimeout(() => {
+          document.getElementById("mensaje").style.display = "block"; // Muestra el mensaje
+      }, 3000);
+
+    });
+  </script>
 </body>
 </html>

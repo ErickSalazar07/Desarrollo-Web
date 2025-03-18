@@ -102,3 +102,9 @@ button-act:hover {
   background-color: #054f31;
   color:white;
 }
+#mensaje {
+  display: none;
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}

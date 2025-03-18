@@ -1,9 +1,8 @@
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
   color: #721c24;
   text-align: center;
-  padding: 50px;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,6 +16,7 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   max-width: 500px;
   text-align: center;
+  border: 3px solid #721c24;
   animation: fadeIn 0.5s ease-in-out;
 }
 @keyframes fadeIn {
