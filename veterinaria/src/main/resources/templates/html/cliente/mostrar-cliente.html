@@ -4,28 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/cliente/style-mostrar-cliente.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
   <title>Cliente</title>
 </head>
 <body>
-  <header>
-    <h1>Informacion Cliente</h1>
-  </header>
+    <h1>Información Dueño</h1>
+    <button class="btn btn-volver" onclick="window.history.back()"><i class='bx bx-arrow-back'></i>Volver</button>
   <main>
     <section class="informacion" th:object="${cliente}">
-      <button class="btn btn-volver" onclick="window.history.back()">Volver</button>
       <div class="campos">
-        <p>Nombre: <span th:text="*{nombre}"></span></p>
-        <p>Correo: <span th:text="*{correo}"></span></p>
-        <p>Cedula: <span th:text="*{cedula}"></span></p>
-        <p>Celular: <span th:text="*{celular}"></span></p>
-        <p>Mascotas: <span th:if="*{mascotas == null or mascotas.isEmpty()}">No tiene mascotas</span></p>
+        <p>Nombre:</p>
+        <p><span th:text="*{nombre}"></span></p>
+        <p>Correo:</p>
+        <p><span th:text="*{correo}"></span></p>
+        <p>Cédula: </p>
+        </p><span th:text="*{cedula}"></span></p>
+        <p>Celular: </p>
+        <p><span th:text="*{celular}"></span></p>
+      </div>
+      <div id="mascotas">
+        <p><span th:if="*{mascotas == null or mascotas.isEmpty()}">No tiene mascotas</span></p>
         <ul th:if="*{mascotas != null and !mascotas.isEmpty()}" class="mascotas">
           <li th:each="mascota: *{mascotas}">
             <img th:src="@{${mascota.foto}}" alt="Imagen de mascota" />
-            <div>
+            <div id="datosAnimal">
               <p th:text="${mascota.nombre}"></p>
-              <a id="boton-ver-mascota" th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}">Ver Mascota</a>
+              <p id="raza" th:text="${mascota.raza}"></p>
             </div>
+            <a id="boton-ver-mascota" th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}">Ver Mascota</a>
           </li>
         </ul>
       </div>
