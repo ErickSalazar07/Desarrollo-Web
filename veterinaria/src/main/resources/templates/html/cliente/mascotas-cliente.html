@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Mis Mascotas</title>
+</head>
+<body>
+    <header>
+      <h1>Mis mascotas</h1>
+    </header>
+    <main>
+      <section class="informacion" th:object="${cliente}">
+        <div class="campos">
+          <p>Mascotas: <span th:if="*{mascotas == null or mascotas.isEmpty()}">No tiene mascotas</span></p>
+          <ul th:if="*{mascotas != null and !mascotas.isEmpty()}" class="mascotas">
+            <li th:each="mascota: *{mascotas}">
+              <img th:src="@{${mascota.foto}}" alt="Imagen de mascota" />
+              <div>
+                <p th:text="${mascota.nombre}"></p>
+                <a id="boton-ver-mascota" th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}">Ver Mascota</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <footer>
+  
+    </footer>
+  </body>
+</html>

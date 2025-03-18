@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap');
+
+html, body {
+  overflow-x: hidden; /* Evita el desplazamiento horizontal */
+  width: 100%;
+}
+
+.dashboard {
+  display: flex;
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+}
+
+iframe {
+  width: calc(100vw - 200px); /* Ajusta el ancho del iframe para que no sobrepase la pantalla */
+  height: 100vh;
+  border: none;
+  margin-left: auto; /* Deja espacio al sidebar */
+}
+
+/* Sidebar */
+.sidebar {
+  width: auto; /* Aumenta el ancho del sidebar */
+  height: 100vh; /* Asegura que el sidebar ocupe toda la altura */
+  position: fixed; /* Fija el sidebar a la izquierda */
+  top: 0;
+  left: 0; /* Lo alinea a la izquierda */
+  background: #ffffff;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinea los íconos a la izquierda */
+  gap: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
+}
+
+/* Cada ítem del sidebar */
+.sidebar-icon {
+  width: 100%; /* Se asegura de que cada icono y texto ocupen todo el ancho */
+  display: flex;
+  align-items: center; /* Centra el icono y el texto verticalmente */
+  justify-content: flex-start; /* Alinea el contenido a la izquierda */
+  padding: 10px 20px;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  box-sizing: border-box;
+
+  
+}
+
+.sidebar-icon i {
+  font-size: 24px;
+  margin-right: 10px; /* Espacio entre el icono y el nombre */
+}
+
+.sidebar-icon:hover {
+  background: #f0eeee;
+  color: #086f46;
+  transform: translateY(-2px);
+}
+
+.sidebar-icon.active {
+  background: #054f31;
+  color: white;
+}
+
+
+
+#nombre-seccion {
+  font-size: 14px; /* Un tamaño de texto más grande */
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  font-family: 'Atkinson Hyperlegible Next';
+
+}
+
+/* Contenedor del logo */
+.logo-container {
+  position: absolute;
+  top: 20px;
+  right: 85px;
+  width: 60px;
+  height: 60px;
+}
+
+/* Imagen del logo */
+.logo {
+  width: 110px;
+  height: auto;
+}

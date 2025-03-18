@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.cdnfonts.com/css/pp-neue-montreal');
+
+body {
+  background-image: url("../images/fondoTabla.png");
+  font-family: "PP Neue Montreal", serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  min-height: 100vh;
+  margin-left: 80px;
+
+}
+h1 {
+    font-family: "PP Neue Montreal", serif;
+    font-size: 30px;
+    margin-top: 15px;
+    text-align: left;
+    justify-content: left;
+    align-self: start;
+}
+/* Asegurar que el header está en la parte superior */
+header {
+  width: 100%;
+  text-align: center;
+}
+
+/* Centrar el recuadro de información */
+main {
+  background-color: white; /* Caja blanca */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(59, 56, 56, 0.2);
+  width: 700px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 13px; /* Separación del header */
+}
+
+.btn-volver {
+  color: white;
+  display: inline-block;
+  font-family: "PP Neue Montreal", serif;
+  font-size: 16px;
+  padding: 10px;
+  font-weight: 500;
+  background-color: white;
+  color: #054f31;
+  border: 1px solid #054f31;
+  text-decoration: none;
+  border-radius: 15px;
+  transition: background 0.3s;
+
+}
+
+.btn-volver:hover {
+  background-color: #054f31;
+  color:white;
+}
+
+#negrilla {
+  font-weight: bold; /* Poner el texto en negrita */
+  font-size: 16px;
+}
+
+.informacion-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.campos {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.campos p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #333;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  font-size: 16px;
+}
+
+ul li {
+  background-color: #ececec;
+  margin: 5px 0;
+  padding: 5px 8px;
+  border-radius: 5px;
+}
+
+#nombreAnimal {
+  font-family: "Atkinson Hyperlegible Next", serif;
+  font-size: 50px;
+  font-weight: bold; /* Poner el texto en negrita */
+}
+
+img {
+  max-width: 50%;
+  height: auto;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+header img {
+  width: 160px;
+  height: auto;
+  margin-top: 20px;
+}

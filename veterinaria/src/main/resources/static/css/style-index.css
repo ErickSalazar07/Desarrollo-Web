@@ -1,0 +1,13 @@
+/*
+  Archivo de estilo propio de la pagina index.html
+*/
+
+@import url("style-general.css");
+
+main {
+  text-align: center;
+}
+
+.btn-ingresar {
+  color: white;
+}

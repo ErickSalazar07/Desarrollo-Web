@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> <!-- URL para motor thymeleaf -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/mascota/style-mostrar-mascota.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+  <title>Mostrar Mascota</title>
+</head>
+<body>
+  <h1>Datos de la Mascota</h1>
+  <button class="btn btn-volver" onclick="window.history.back()"><i class='bx bx-arrow-back'></i> Volver</button>
+  <main>
+    <div class="informacion-container" th:object="${mascota}">
+      <img th:src="*{foto}" th:alt="'Foto Mascota ' + *{nombre}">
+      <div class="campos">
+        <p><span id="negrilla">Nombre:</span></p>
+        <p><span th:text="*{nombre}"></span></p>
+        <p><span id="negrilla">Raza:</span></p>
+        <p><span th:text="*{raza}"></span></p>
+        <p><span id="negrilla">Edad: </span></p>
+        <p><span th:text="*{edad}"></span></p>
+        <p><span id="negrilla">Peso: </span></p>
+        <p><span th:text="*{peso}"></span></p>
+        <p><span id="negrilla">Enfermedad:</span></p>
+        <p><span th:text="*{enfermedad != null and !enfermedad.equals('')} ?
+           *{enfermedad} : 'Vacio'"></span></p>
+        <p><span id="negrilla">Estado:</span></p>
+        <p><span th:text="*{estadoActivo == true ? 'Activo' : 'No Activo'}">
+        </span></p>
+        <!-- <p><span id="negrilla">Tratamientos: </span> <span th:if="*{tratamientos == null or tratamientos.isEmpty()}">No hay Tratamientos</span></p>
+        <ul th:if="*{tratamientos != null and !tratamientos.isEmpty()}">
+          <li th:each="tratamiento: *{tratamientos}">
+            <span th:text="${tratamiento.nombreTratamiento}"></span>
+          </li>
+        </ul> -->
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> <!-- URL para motor thymeleaf -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/mascota/style-tablamascotas.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+
+<title>Mascotas</title>
+</head>
+
+<body>
+  <h1>Información de Mascotas</h1>
+  <section id="btn-inicial"class="acciones">
+    <a type="button" class="btn" id="boton-agregarMascota" th:href="@{/mascota/add}"> <i class='bx bx-plus-circle'></i> Agregar Mascota</a>
+  </section>
+  <main>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Foto</th>
+          <th>Nombre</th>
+          <th>Raza</th>
+          <th>Edad</th>
+          <th>Peso</th>
+          <th>Enfermedad</th>
+          <th>Estado Activo</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="mascota : ${mascotas}">
+          <td>
+            <img th:src="${mascota.foto}" th:alt="'Foto de ' + ${mascota.nombre}">
+          </td>
+          <td th:text="${mascota.nombre}"></td>
+          <td th:text="${mascota.raza}"></td>
+          <td th:text="${mascota.edad}"></td>
+          <td th:text="${mascota.peso}"></td>
+          <td th:text="${mascota.enfermedad != null and not #strings.isEmpty(mascota.enfermedad) ? mascota.enfermedad : 'Vacio'}"></td>
+          <td th:text="${mascota.estadoActivo} ? 'Si' : 'No'"></td>
+          <td>
+            <a type="button" th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}" class="btn btn-ver-mascota">
+              <i class='bx bxs-show'></i>
+            </a>
+            <a type="button" th:href="@{/mascota/update/{id}(id=${mascota.id})}" class="btn">
+              <i class='bx bx-edit'></i>
+            </a>
+            <a type="button" th:href="@{/mascota/cambiar-estado/{id}(id=${mascota.id})}" class="btn" onclick="recargarDespues()"th:if="${mascota.estadoActivo}">
+              <i class='bx bxs-toggle-right'></i>
+            </a>
+            <a type="button" th:href="@{/mascota/cambiar-estado/{id}(id=${mascota.id})}" class="btn" onclick="recargarDespues()" id="icono_desactivado"th:unless="${mascota.estadoActivo}">
+              <i class='bx bxs-toggle-left'></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+  <script>
+    function recargarDespues() {
+        setTimeout(() => {
+            window.location.reload();
+        }, 300); 
+    }
+ </script>
+</body>
+</html>
