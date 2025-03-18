@@ -10,8 +10,10 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   min-height: 100vh;
+  margin-left: 80px;
+
 }
 
 /* Header */
@@ -23,10 +25,14 @@ header {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-header h1 {
-  font-size: 32px;
-  color: #054f31;
-  margin: 0;
+h1 {
+    font-family: "PP Neue Montreal", serif;
+    font-size: 30px;
+    margin-top: 15px;
+    text-align: left;
+    justify-content: left;
+    align-self: start;
+
 }
 
 /* Contenido principal */
@@ -36,70 +42,72 @@ main {
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   width: 800px;
-  text-align: left;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: space-between;
   margin-top: 30px;
 }
-
-/* Botón Volver */
-.btn-volver {
-  background-color: #054f31;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-bottom: 20px;
-}
-
-.btn-volver:hover {
-  background-color: #006f3f;
+i {
+  font-size: 17px;
+  margin-right: 5px;
 }
 
 /* Información de cliente */
+.informacion {
+  display: flex;
+  width: 100%;
+}
+
 .campos {
   flex: 1;
-  padding-left: 20px;
-  width: 100%;
+  padding-right: 20px;
 }
 
 .campos p {
-  font-size: 18px;
+  font-size: 17px;
   margin: 5px 0;
   color: #333;
+  font-weight: 600;
+}
+.campos span {
+  font-size: 16px;
+  color: #555555;
+  font-weight: 400;
+
+
 }
 
 /* Sección de mascotas */
+#mascotas {
+  flex: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
 .mascotas {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Centra las tarjetas */
   gap: 20px;
-  width: 100%;
-  max-width: 800px;
-  padding: 0;
   list-style: none;
+  padding: 0;
+  flex-direction: column;
 }
 
-/* Tarjeta de cada mascota */
 .mascotas li {
   background-color: #f5f5f5;
-  padding: 15px;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  text-align: center;
-  width: calc(33.33% - 20px); /* 3 tarjetas por fila */
-  min-width: 220px;
+  text-align: left;
+  width: 100%;
+  max-width: 1000px;
+  justify-content: space-between;
 }
 
 .mascotas li:hover {
@@ -107,40 +115,67 @@ main {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Imagen de la mascota */
 .mascotas li img {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 10px;
+  margin-right: 15px;
+  border: 3px solid white;
 }
 
-/* Nombre de la mascota */
+#datosAnimal {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .mascotas li p {
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 17px;
   color: #333;
-  margin: 5px 3px;
-  padding-bottom: 8px;
+  margin: 2px 0;
+  font-weight: 600;
 }
 
-/* Botón "Ver Mascota" */
+.mascotas li #raza {
+  font-size: 15px;
+  color: #4d4d4d;
+  margin: 2px 0;
+  font-weight: 400;
+
+}
+
 .mascotas li a {
   text-decoration: none;
   color: white;
   font-size: 14px;
-  font-weight: normal; /* Peso más ligero */
   padding: 8px 16px;
   border-radius: 20px;
   background-color: #054f31;
-  font-family: "PP Neue Montreal", sans-serif; /* Mantiene la misma fuente */
   transition: background-color 0.3s ease;
-  margin-top: 10px;
+  margin-left: auto;
 }
 
 .mascotas li a:hover {
   background-color: #006f3f;
+}
+
+/* Botón Volver */
+.btn-volver {
+  border: 1px solid #054f31;
+  padding: 10px 30px;
+  background-color: white;
+  color: #054f31;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+
+}
+
+.btn-volver:hover {
+  background-color: #054f31;
+  color: white;
 }
 
 /* Footer */

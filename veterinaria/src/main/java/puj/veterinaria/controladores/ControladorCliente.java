@@ -34,9 +34,19 @@ public class ControladorCliente {
     return "redirect:/cliente/clientes";
   }
 
-  @GetMapping("/dashboard")
-  public String mostrarDashboard(){
-    return "/html/cliente/dashboard_cliente";
+  @GetMapping("/dashboard/{id}")
+  public String mostrarDashboard(Model modelo, @PathVariable(value = "id", required = false) Long id) {
+      Cliente cliente;
+  
+      if(id == null)
+        throw new NotFoundExceptionCliente("Se necesita el ID para poder referenciar al cliente, verifique");
+  
+      cliente = clienteServicio.findById(id);
+      if(cliente == null)
+        throw new NotFoundExceptionCliente("El cliente con ID: " + id + " No existe");
+  
+      modelo.addAttribute("cliente", cliente);
+      return "/html/cliente/dashboard_cliente";
   }
   
   public String getMethodName(@RequestParam String param) {
@@ -53,7 +63,7 @@ public class ControladorCliente {
 
   // ? Cambiar id por algun id dentro de los clientes guardados en el repositorio
   // URL: http://localhost:8090/cliente/mostrar-cliente/1
-  @GetMapping({"/mostrar/cliente/","/mostrar-cliente/{id}"})
+  @GetMapping({"/mostrar-cliente/","/mostrar-cliente/{id}"})
   public String mostrarCliente(Model modelo, @PathVariable(value = "id", required = false) Long id) {
     Cliente cliente;
 
@@ -120,6 +130,6 @@ public class ControladorCliente {
       return "/html/cliente/login-cliente";
     }
     
-    return "redirect:/cliente/mostrar-cliente/"+clienteBuscar.getId();
+    return "redirect:/cliente/dashboard/"+clienteBuscar.getId();
   }
 } 

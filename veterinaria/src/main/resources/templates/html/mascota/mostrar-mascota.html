@@ -4,22 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/mascota/style-mostrar-mascota.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
   <title>Mostrar Mascota</title>
 </head>
 <body>
-  <header>
-    <img src="/images/logo.png" alt="Logo Health Animals">
-  </header>
+  <h1>Datos de la Mascota</h1>
+  <button class="btn btn-volver" onclick="window.history.back()"><i class='bx bx-arrow-back'></i> Volver</button>
   <main>
     <div class="informacion-container" th:object="${mascota}">
+      <img th:src="*{foto}" th:alt="'Foto Mascota ' + *{nombre}">
       <div class="campos">
-        <p id="nombreAnimal"><span th:text="*{nombre}"></span></p>
-        <p><span id="negrilla">Raza:</span> <span th:text="*{raza}"></span></p>
-        <p><span id="negrilla">Edad: </span> <span th:text="*{edad}"></span></p>
-        <p><span id="negrilla">Peso: </span> <span th:text="*{peso}"></span></p>
-        <p><span id="negrilla">Enfermedad:</span> <span th:text="*{enfermedad != null and !enfermedad.equals('')} ?
+        <p><span id="negrilla">Nombre:</span></p>
+        <p><span th:text="*{nombre}"></span></p>
+        <p><span id="negrilla">Raza:</span></p>
+        <p><span th:text="*{raza}"></span></p>
+        <p><span id="negrilla">Edad: </span></p>
+        <p><span th:text="*{edad}"></span></p>
+        <p><span id="negrilla">Peso: </span></p>
+        <p><span th:text="*{peso}"></span></p>
+        <p><span id="negrilla">Enfermedad:</span></p>
+        <p><span th:text="*{enfermedad != null and !enfermedad.equals('')} ?
            *{enfermedad} : 'Vacio'"></span></p>
-        <p><span id="negrilla">Estado:</span> <span th:text="*{estadoActivo == true ? 'Activo' : 'No Activo'}">
+        <p><span id="negrilla">Estado:</span></p>
+        <p><span th:text="*{estadoActivo == true ? 'Activo' : 'No Activo'}">
         </span></p>
         <!-- <p><span id="negrilla">Tratamientos: </span> <span th:if="*{tratamientos == null or tratamientos.isEmpty()}">No hay Tratamientos</span></p>
         <ul th:if="*{tratamientos != null and !tratamientos.isEmpty()}">
@@ -27,9 +34,7 @@
             <span th:text="${tratamiento.nombreTratamiento}"></span>
           </li>
         </ul> -->
-        <button class="btn btn-volver" onclick="window.history.back()">Volver</button>
       </div>
-      <img th:src="*{foto}" th:alt="'Foto Mascota ' + *{nombre}">
     </div>
   </main>
 </body>
