@@ -16,26 +16,41 @@
     <div class="dashboard">
         <!-- Sidebar fija -->
         <div class="sidebar">
-            <div class="sidebar-icon" data-tooltip="Home" onclick="cargarPagina('1', this)">
+            <div class="sidebar-icon" data-tooltip="Home" onclick="cargarPagina('2', this)">
                 <i class="bx bx-home"> </i><div id="nombre-seccion">Home</div>
             </div>
             <div class="sidebar-icon active" data-tooltip="Mascotas" onclick="cargarPagina('2', this)">
                 <i class="fas fa-dog"> </i><div id="nombre-seccion">Mis Mascotas</div>
             </div>
-            
+            <!--
             <div class="sidebar-icon" data-tooltip="Perfil" onclick="cargarPagina('3', this)">
                 <i class='bx bx-user'></i><div id="nombre-seccion">Mi perfil</div>
             </div>
-            <div class="sidebar-icon" data-tooltip="Cerrar Sesión" onclick="cargarPagina('4', this)">
+            -->
+            <div class="sidebar-icon" data-tooltip="Cerrar Sesión" onclick="cargarPagina('2', this)">
                 <i class="bx bx-log-in-circle"></i><div id="nombre-seccion">Cerrar Sesión</div>
             </div>
         </div>
 
         <!-- Contenedor donde se cargará el contenido -->
-        <iframe id="contenido" class="contenido" src="/mascota/mascotas"></iframe>
+         
+        <iframe id="contenido" class="contenido"></iframe>
     </div>
 
     <script>
+            document.addEventListener("DOMContentLoaded", function () {
+        let clienteElement = document.getElementById("clienteId");
+        let iframe = document.getElementById("contenido");
+
+        if (clienteElement) {
+            let clienteId = clienteElement.getAttribute("data-id");
+            if (clienteId) {
+                iframe.src = `/cliente/mostrar-cliente/${clienteId}`;
+            } else {
+                console.warn("No se encontró el ID del cliente.");
+            }
+        }
+    });
         function cargarPagina(pagina, elemento) {
             let clienteId = document.getElementById("clienteId").getAttribute("data-id");
             
