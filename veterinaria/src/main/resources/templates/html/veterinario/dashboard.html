@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Veterinario | Dashboard</title>
@@ -15,8 +15,11 @@
     <div class="dashboard">
         <!-- Sidebar fija -->
         <div class="sidebar">
-            <div class="sidebar-icon" data-tooltip="Home" onclick="cargarPagina('1', this)">
-                <i class="bx bx-home"> </i><div id="nombre-seccion">Home</div>
+            <div class="sidebar-icon" data-tooltip="Home">
+                <i class="bx bx-home"> </i>
+                <div id="nombre-seccion">
+                  <a th:href="@{/}">Home</a>
+                </div>
             </div>
             <div class="sidebar-icon active" data-tooltip="Mascotas" onclick="cargarPagina('2', this)">
                 <i class="fas fa-dog"> </i><div id="nombre-seccion">Mascotas</div>
@@ -26,11 +29,17 @@
                 <i class='bx bxs-group'></i><div id="nombre-seccion">Dueños de Mascotas</div>
             </div>
             
-            <div class="sidebar-icon" data-tooltip="Perfil" onclick="cargarPagina('4', this)">
-                <i class='bx bx-user'></i><div id="nombre-seccion">Mi perfil</div>
+            <div class="sidebar-icon" data-tooltip="Perfil">
+                <i class='bx bx-user'></i>
+                <div id="nombre-seccion">
+                  <a th:href="@{/}">Mi perfil</a>
+                </div>
             </div>
-            <div class="sidebar-icon" data-tooltip="Cerrar Sesión" onclick="cargarPagina('5', this)">
-                <i class="bx bx-log-in-circle"></i><div id="nombre-seccion">Cerrar Sesión</div>
+            <div class="sidebar-icon" data-tooltip="Cerrar Sesión">
+                <i class="bx bx-log-in-circle"></i>
+                <div id="nombre-seccion">
+                  <a th:href="@{/}">Cerrar Sesión</a>
+                </div>
             </div>
         </div>
 
@@ -42,10 +51,9 @@
 
         function cargarPagina(pagina, elemento) {
             // Verifica si la página es "mascota"
-            if (pagina === '2') {
+            if(pagina === '2') {
                 pagina = '/mascota/mascotas'; // Usa la ruta del controlador
-            }
-            else if (pagina === '3') {
+            } else if(pagina === '3') {
                 pagina = '/cliente/clientes';
             }
 

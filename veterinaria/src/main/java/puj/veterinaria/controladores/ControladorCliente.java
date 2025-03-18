@@ -53,7 +53,7 @@ public class ControladorCliente {
 
   // ? Cambiar id por algun id dentro de los clientes guardados en el repositorio
   // URL: http://localhost:8090/cliente/mostrar-cliente/1
-  @GetMapping({"/mostrar/cliente/","/mostrar-cliente/{id}"})
+  @GetMapping({"/mostrar-cliente/","/mostrar-cliente/{id}"})
   public String mostrarCliente(Model modelo, @PathVariable(value = "id", required = false) Long id) {
     Cliente cliente;
 

@@ -90,3 +90,8 @@ iframe {
   width: 110px;
   height: auto;
 }
+
+a {
+  text-decoration: none;
+  color: #64748b;
+}
