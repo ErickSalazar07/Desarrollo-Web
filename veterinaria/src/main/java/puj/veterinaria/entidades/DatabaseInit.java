@@ -42,7 +42,7 @@ public class DatabaseInit implements ApplicationRunner {
       while((linea = br.readLine()) != null) {
         String datos[] = linea.split(",");
         mascota = new Mascota(datos[0],datos[1],Integer.parseInt(datos[2]),Double.parseDouble(datos[3]),
-                  datos[4],datos[5],Boolean.parseBoolean(datos[6]));
+                  datos[4].equals("null") ? "vacio":datos[4],datos[5],Boolean.parseBoolean(datos[6]));
         random = ThreadLocalRandom.current().nextLong(1L,CANTIDAD_CLIENTES+1);
         mascota.setCliente(repositorioCliente.findById(random).get());
         repositorioMascota.save(mascota);
