@@ -67,10 +67,15 @@ main {
   font-size: 16px;
 }
 
-.informacion-container {
-  display: flex;
-  align-items: center;
-  width: 100%;
+
+
+.informacion-container img {
+  width: 800px; /* Ancho fijo */
+  height: 400px; /* Alto fijo */
+  object-fit: cover; /* Ajusta la imagen sin deformarla */
+  border-radius: 10px; /* Bordes redondeados opcionales */
+  display: block;
+  margin: 0 auto; /* Centrar la imagen */
 }
 
 .campos {
@@ -114,4 +119,5 @@ header img {
   width: 160px;
   height: auto;
   margin-top: 20px;
-}
+}    
+
