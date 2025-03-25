@@ -134,20 +134,36 @@ header button{
     border: 1px solid white;
   background-color: white;
   color: #054f31;
-  padding: 10px 10px;
-  font-size: 15px;
+  padding: 12px 15px;   
+  display: inline-flex;
+  font-size: 18px;
   text-align: center;
-  margin-left: 5px;
-}   
+  margin-left: 5px;   
+     
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+  align-items: center;
+    justify-content: center;
+  
 
-.btn-ver-mascota:hover, .btn:hover  {
-      background-color: #054f31;
-      color: white;
-      padding: 10px 10px;
-      font-size: 15px;
-      text-align: center;
-      margin-left: 5px;
+}     
+
+
+
+.btn-ver-mascota:hover, .btn:hover {
+    background-color: #054f31;
+    color: white;
+    transform: scale(1.05); /* Aumenta apenas el tamaño sin desplazar */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}  
+
+
+.btn i {
+    font-size: 26px;
+    transition: transform 0.3s ease-in-out;
+    display: inline-block; /* Mantiene su espacio fijo */
 }
+
+
 
 #icono_desactivado{
     color: red;
@@ -156,4 +172,72 @@ header button{
 #icono_desactivado:hover{
     color: white;
     background-color: red;
+}  
+
+
+    
+
+
+.bxs-toggle-right, .bxs-toggle-left {
+    font-size: 32px;
+    padding: 5px;
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
+
+.btn:hover i {
+    transform: scale(1.1); /* Solo agranda sin mover */
+}
+
+.bxs-toggle-right:hover, .bxs-toggle-left:hover {
+    color: #0e7c48;
+    transform: scale(1.1); /* Pequeño aumento sin desalinear */
+}
+
+
+
+/* Estilo del switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+

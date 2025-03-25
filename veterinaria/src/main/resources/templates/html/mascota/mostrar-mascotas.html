@@ -43,23 +43,30 @@
           <td th:text="${mascota.estadoActivo} ? 'Si' : 'No'"></td>
           <td>
             <a type="button" th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}" class="btn btn-ver-mascota">
-              <i class='bx bxs-show'></i>
+                <i class='bx bxs-show'></i>
             </a>
             <a type="button" th:href="@{/mascota/update/{id}(id=${mascota.id})}" class="btn">
-              <i class='bx bx-edit'></i>
+                <i class='bx bx-edit'></i>
             </a>
-            <a type="button" th:href="@{/mascota/cambiar-estado/{id}(id=${mascota.id})}" class="btn" onclick="recargarDespues()"th:if="${mascota.estadoActivo}">
-              <i class='bx bxs-toggle-right'></i>
-            </a>
-            <a type="button" th:href="@{/mascota/cambiar-estado/{id}(id=${mascota.id})}" class="btn" onclick="recargarDespues()" id="icono_desactivado"th:unless="${mascota.estadoActivo}">
-              <i class='bx bxs-toggle-left'></i>
-            </a>
-          </td>
+            <label class="switch">
+                <input type="checkbox" th:checked="${mascota.estadoActivo}"
+                       th:attr="onchange=|cambiarEstado('${mascota.id}')|">
+                <span class="slider"></span>
+            </label>
+        </td>
+        
+        
         </tr>
       </tbody>
     </table>
   </main>
-  <script>
+  <script>  
+
+function cambiarEstado(id) {
+        fetch(`/mascota/cambiar-estado/${id}`, { method: 'GET' })
+        .then(() => recargarDespues())
+        .catch(error => console.error('Error al cambiar estado:', error));
+    }
     function recargarDespues() {
         setTimeout(() => {
             window.location.reload();
@@ -68,3 +75,5 @@
  </script>
 </body>
 </html>
+
+
