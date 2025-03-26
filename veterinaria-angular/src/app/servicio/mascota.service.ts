@@ -58,4 +58,10 @@ export class MascotaService {
     if(mascota == undefined) return null;
     return mascota;
   }
+
+  deleteById(id: number) {
+    const mascota = this.mascotas.find(m => m.id === id);
+    if(mascota == undefined) return;
+    this.mascotas = this.mascotas.filter(m => m.id !== id);
+  }
 }

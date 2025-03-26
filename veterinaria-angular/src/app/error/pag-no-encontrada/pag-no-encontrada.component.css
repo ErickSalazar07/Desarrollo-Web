@@ -1,0 +1,66 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: #721c24;
+  text-align: center;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.error-container {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+h1 {
+  font-size: 2.5em;
+  color: #d32f2f;
+  margin-bottom: 10px;
+}
+h2 {
+  font-size: 1.8em;
+  color: #b71c1c;
+}
+.error-icon {
+  font-size: 60px;
+  color: #ff1744;
+  margin-bottom: 10px;
+}
+p {
+  font-size: 1.5em;
+  color: #333;
+  font-weight: bold;
+  background: #ffebee;
+  padding: 10px;
+  border-radius: 8px;
+  display: inline-block;
+  border-left: 5px solid #d32f2f;
+}
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  font-size: 1.2em;
+  color: white;
+  background: #e53935;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  background: #c62828;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+

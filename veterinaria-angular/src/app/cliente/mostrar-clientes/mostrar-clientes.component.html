@@ -1,7 +1,7 @@
 <h1>Dueños de Mascotas</h1>
 <section id="btn-inicial"class="acciones">
   <!-- <a type="button" class="btn" th:href="@{/cliente/add}"> <i class='bx bx-plus-circle'></i> Agregar Dueño</a> -->
-</section>   
+</section>
 <main>
   <table>
     <thead>
@@ -16,10 +16,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let cliente of clientes">
-        <td>{{ cliente.nombre }}</td>
-        <td>{{ cliente.correo }}</td>
-        <td>{{ cliente.cedula }} </td>
-        <td>{{ cliente.celular }}</td>
+        <td>{{cliente.nombre}}</td>
+        <td>{{cliente.correo}}</td>
+        <td>{{cliente.cedula}} </td>
+        <td>{{cliente.celular}}</td>
         <td><button (click)="mostrarCliente(cliente)">Select</button></td>
         <td><button (click)="eliminarCliente(cliente)">Eliminar</button></td>
         <!-- <td>
@@ -47,6 +47,6 @@
   function recargarDespues() {
       setTimeout(() => {
           window.location.reload();
-      }, 300); 
+      }, 300);
   }
 </script>

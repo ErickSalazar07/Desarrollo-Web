@@ -18,8 +18,8 @@ export class MostrarMascotasComponent {
   }
 
   eliminarMascota(mascota: Mascota) {
-    console.log("Eliminando Mascota")
-    console.log(mascota);
+    this.mascotaServicio.deleteById(mascota.id);
+    this.mascotas = this.mascotaServicio.findAll();
   }
 
   mostrarMascota(mascota: Mascota) {
