@@ -5,7 +5,6 @@
 /* Tipografia: 'Atkinson Hyperlegible Next' */
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap');
 @import url('https://fonts.cdnfonts.com/css/pp-neue-montreal');
-html, 
 body {
   margin: 0px;
   padding: 0px;
@@ -27,6 +26,9 @@ header img, #logo {
   height: 15px; /* Grosor de la línea */
   background-color: #a9e0db ; /* Color de la línea */
 }
+button a {
+  color: white;
+}
 a {
   text-decoration: none;
   color: black;
@@ -45,7 +47,7 @@ header {
 }
 
 header button  {
-    background-color: #054f31 ; /* Color de fondo */
+    background-color: white ; /* Color de fondo */
     color: white; /* Color del texto */
     border: none; /* Sin borde */
     padding: 12px 20px; /* Relleno (más grande) */
@@ -56,6 +58,8 @@ header button  {
     transition: all 0.3s ease; /* Transición suave para los efectos */
     font-family: "Atkinson Hyperlegible Next", serif;
     margin-right: 70px;
+    border: 2px solid #054f31;
+
 }
 
 .boton_empezar {
@@ -71,7 +75,21 @@ header button  {
   font-family: "Atkinson Hyperlegible Next", serif;
 }
 
+#LandPagePrincipal {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  width: 100%;
+}
 
+#recuadroLand {
+  position: relative;
+  width: 1000px;
+  margin-left: 70px;
+  text-align: left;
+  
+}
 #LandPagePrincipal h1{
   font-family: "PP Neue Montreal", serif;
   font-size: 60px; /* Tamaño del texto */
@@ -81,26 +99,12 @@ header button  {
 
 }
 
-#LandPagePrincipal {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: left;
-  width: 100%;
-}
-
 #LandPagePrincipal img {
-  width: 610px;
+  width: 680px;
   height: auto;
 }
 
-#LandPagePrincipal #recuadroLand {
-  position: relative;
-  width: 1000px;
-  margin-left: 70px;
-  text-align: left;
-  
-}
+
 
 
 #recuadroLand span{
@@ -255,7 +259,6 @@ footer > div * {
 /* Servicios */
 
 #servicios_contenedor {
-  background-image: url("https://github.com/ErickSalazar07/Web/blob/main/imagenes/imgs-utils/LandingPageFondo.png?raw=true");
   background-size: cover; /* Hace que la imagen cubra toda el área del contenedor */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
   width: 100vw; /* Asegura que el contenedor ocupe todo el ancho de la pantalla */
@@ -493,4 +496,3 @@ footer {
   border: 2px solid black;
   margin: 0px 15px;
 }
-
