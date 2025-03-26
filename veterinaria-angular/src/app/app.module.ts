@@ -14,6 +14,7 @@ import { FormularioMascotaComponent } from './mascota/formulario-mascota/formula
 import { MostrarMascotaComponent } from './mascota/mostrar-mascota/mostrar-mascota.component';
 import { MostrarMascotasComponent } from './mascota/mostrar-mascotas/mostrar-mascotas.component';
 import { CrearMascotaComponent } from './mascota/crear-mascota/crear-mascota.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CrearMascotaComponent } from './mascota/crear-mascota/crear-mascota.com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Cliente } from 'src/app/modelo/cliente';
 
 @Component({
   selector: 'app-formulario-cliente',
@@ -7,4 +8,20 @@ import { Component } from '@angular/core';
 })
 export class FormularioClienteComponent {
 
+  @Output()
+  eventoAgregarCliente = new EventEmitter<Cliente>();
+
+  clienteCrear: Cliente = {
+    id: -1,
+    nombre: "",
+    cedula: "",
+    celular: "",
+    correo: ""
+  }
+
+  agregarCliente() {
+    console.log(this.clienteCrear)
+
+    this.eventoAgregarCliente.emit(this.clienteCrear);
+  }
 }

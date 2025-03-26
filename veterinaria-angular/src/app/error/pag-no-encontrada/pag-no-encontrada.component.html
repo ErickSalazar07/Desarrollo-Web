@@ -1,1 +1,7 @@
-<p>pag-no-encontrada works!</p>
+<div class="error-container">
+  <div class="error-icon">&#9888;</div>
+  <h1>Error Cliente</h1>
+  <h2>Ha ocurrido un problema</h2>
+  <p th:text="${mensajeError}"></p>
+  <button onclick="window.history.back()" class="btn">Volver al inicio</button>
+</div>
