@@ -1,3 +1,4 @@
+<p>mostrar-clientes works!</p>
 <h1>Dueños de Mascotas</h1>
 <section id="btn-inicial"class="acciones">
   <!-- <a type="button" class="btn" th:href="@{/cliente/add}"> <i class='bx bx-plus-circle'></i> Agregar Dueño</a> -->
@@ -21,6 +22,7 @@
         <td>{{ cliente.cedula }} </td>
         <td>{{ cliente.celular }}</td>
         <td><button (click)="mostrarCliente(cliente)">Select</button></td>
+        <td><button (click)="eliminarCliente(cliente)">Eliminar</button></td>
         <!-- <td>
           <a type="button" th:href="@{/cliente/mostrar-cliente/{id}(id=${cliente.id})}" class="btn">
             <i class='bx bxs-show'></i>
@@ -35,7 +37,8 @@
       </tr>
     </tbody>
   </table>
-  <app-mostrar-cliente [cliente]="clienteMostrar"></app-mostrar-cliente>
+  <br><br><br>
+  <!-- <app-mostrar-mascotas></app-mostrar-mascotas> -->
 </main>
 <footer>
 </footer>

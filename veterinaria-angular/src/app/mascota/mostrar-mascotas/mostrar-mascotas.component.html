@@ -18,18 +18,21 @@
     </tr>
   </thead>
   <tbody>
-    <tr th:each="mascota : ${mascotas}">
+    <tr *ngFor="let mascota of mascotas">
       <td>
-        <img th:src="${mascota.foto}" th:alt="'Foto de ' + ${mascota.nombre}">
+        <img [src]="mascota.foto" [alt]="'Foto de ' + mascota.nombre">
       </td>
-      <td th:text="${mascota.nombre}"></td>
-      <td th:text="${mascota.raza}"></td>
-      <td th:text="${mascota.edad}"></td>
-      <td th:text="${mascota.peso}"></td>
-      <td th:text="${mascota.enfermedad != null and not #strings.isEmpty(mascota.enfermedad) ? mascota.enfermedad : 'Vacio'}"></td>
-      <td th:text="${mascota.estadoActivo} ? 'Si' : 'No'"></td>
+      <td>{{mascota.nombre}}</td>
+      <td>{{mascota.raza}}</td>
+      <td>{{mascota.edad}}</td>
+      <td>{{mascota.peso}}</td>
+      <td>{{mascota.enfermedad === null ? "Vacio" : mascota.enfermedad}}</td>
+      <td>{{mascota.estadoActivo === true ? "Si" : "No" }}</td>
       <td>
-        <a type="button" th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}" class="btn btn-ver-mascota">
+        <button (click)="mostrarMascota(mascota)">Mostrar Mascota</button>
+        <button (click)="eliminarMascota(mascota)">Eliminar Mascota</button>
+        <!-- <button (click)="modificarMascota(mascota)">Modificar Mascota</button> -->
+        <!-- <a type="button" th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}" class="btn btn-ver-mascota">
             <i class='bx bxs-show'></i>
         </a>
         <a type="button" th:href="@{/mascota/update/{id}(id=${mascota.id})}" class="btn">
@@ -39,7 +42,7 @@
             <input type="checkbox" th:checked="${mascota.estadoActivo}"
                    th:attr="onchange=|cambiarEstado('${mascota.id}')|">
             <span class="slider"></span>
-        </label>
+        </label> -->
     </td>
     </tr>
   </tbody>

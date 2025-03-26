@@ -1,11 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { Cliente } from '../cliente';
+import { Cliente } from 'src/app/modelo/cliente';
 
 @Component({
   selector: 'app-mostrar-cliente',
-  imports: [],
   templateUrl: './mostrar-cliente.component.html',
-  styleUrl: './mostrar-cliente.component.css'
+  styleUrls: ['./mostrar-cliente.component.css']
 })
 export class MostrarClienteComponent {
   @Input()
