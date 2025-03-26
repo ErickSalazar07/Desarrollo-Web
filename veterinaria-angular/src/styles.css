@@ -255,7 +255,7 @@ footer > div * {
 /* Servicios */
 
 #servicios_contenedor {
-  background-image: url("../images/LandingPageFondo.png");
+  background-image: url("https://github.com/ErickSalazar07/Web/blob/main/imagenes/imgs-utils/LandingPageFondo.png?raw=true");
   background-size: cover; /* Hace que la imagen cubra toda el área del contenedor */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
   width: 100vw; /* Asegura que el contenedor ocupe todo el ancho de la pantalla */

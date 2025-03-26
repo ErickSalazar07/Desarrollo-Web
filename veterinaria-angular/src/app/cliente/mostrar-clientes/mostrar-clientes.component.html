@@ -1,0 +1,46 @@
+<h1>Dueños de Mascotas</h1>
+<section id="btn-inicial"class="acciones">
+  <a type="button" class="btn" th:href="@{/cliente/add}"> <i class='bx bx-plus-circle'></i> Agregar Dueño</a>
+</section>   
+<main>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Cédula</th>
+        <th>Celular</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes">
+        <td><span>{{cliente.nombre}}</span></td>
+        <td><span>{{cliente.correo}}</span></td>
+        <td><span>{{cliente.cedula}}</span></td>
+        <td><span>{{cliente.celular}}</span></td>
+        <!-- <td>
+          <a type="button" th:href="@{/cliente/mostrar-cliente/{id}(id=${cliente.id})}" class="btn">
+            <i class='bx bxs-show'></i>
+          </a>
+          <a type="button" th:href="@{/cliente/update/{id}(id=${cliente.id})}" class="btn">
+            <i class='bx bx-edit'></i>
+          </a>
+          <a type="button" th:href="@{/cliente/delete/{id}(id=${cliente.id})}" onclick="recargarDespues()" class="btn">
+            <i class='bx bx-trash' ></i>
+          </a>
+        </td> -->
+      </tr>
+    </tbody>
+  </table>
+</main>
+<footer>
+</footer>
+<script>
+  function recargarDespues() {
+      setTimeout(() => {
+          window.location.reload();
+      }, 300); 
+  }
+</script>
