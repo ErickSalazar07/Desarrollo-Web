@@ -1,6 +1,6 @@
 <h1>Dueños de Mascotas</h1>
 <section id="btn-inicial"class="acciones">
-  <a type="button" class="btn" th:href="@{/cliente/add}"> <i class='bx bx-plus-circle'></i> Agregar Dueño</a>
+  <!-- <a type="button" class="btn" th:href="@{/cliente/add}"> <i class='bx bx-plus-circle'></i> Agregar Dueño</a> -->
 </section>   
 <main>
   <table>
@@ -16,10 +16,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let cliente of clientes">
-        <td><span>{{cliente.nombre}}</span></td>
-        <td><span>{{cliente.correo}}</span></td>
-        <td><span>{{cliente.cedula}}</span></td>
-        <td><span>{{cliente.celular}}</span></td>
+        <td>{{ cliente.nombre }}</td>
+        <td>{{ cliente.correo }}</td>
+        <td>{{ cliente.cedula }} </td>
+        <td>{{ cliente.celular }}</td>
+        <td><button (click)="mostrarCliente(cliente)">Select</button></td>
         <!-- <td>
           <a type="button" th:href="@{/cliente/mostrar-cliente/{id}(id=${cliente.id})}" class="btn">
             <i class='bx bxs-show'></i>
@@ -34,6 +35,7 @@
       </tr>
     </tbody>
   </table>
+  <app-mostrar-cliente [cliente]="clienteMostrar"></app-mostrar-cliente>
 </main>
 <footer>
 </footer>

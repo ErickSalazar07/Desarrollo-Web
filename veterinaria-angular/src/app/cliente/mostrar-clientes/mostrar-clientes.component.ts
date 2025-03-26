@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
 import { Cliente } from '../cliente';
+import { CommonModule } from '@angular/common';
+import { MostrarClienteComponent } from "../mostrar-cliente/mostrar-cliente.component";
 
 @Component({
   selector: 'app-mostrar-clientes',
-  imports: [],
+  imports: [CommonModule, MostrarClienteComponent],
   templateUrl: './mostrar-clientes.component.html',
   styleUrl: './mostrar-clientes.component.css'
 })
 export class MostrarClientesComponent {
+  clienteMostrar!: Cliente;
   clientes: Cliente[] = [
     {
       id: 1,
@@ -37,5 +40,10 @@ export class MostrarClientesComponent {
       correo: "juli@email.com",
       celular: "3305004013"
     }
-  ]
+  ];
+
+  mostrarCliente(cliente: Cliente) {
+    this.clienteMostrar = cliente;
+  }
+
 }
