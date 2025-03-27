@@ -9,9 +9,8 @@ import { MascotaService } from 'src/app/servicio/mascota.service';
   styleUrls: ['./mostrar-mascota.component.css']
 })
 export class MostrarMascotaComponent {
-
   @Input()
-  mascota!: Mascota;
+  mascota!: Mascota
 
   constructor(
     private servicioMascota: MascotaService,
@@ -27,4 +26,9 @@ export class MostrarMascotaComponent {
       this.mascota = this.servicioMascota.findById(id);
     })
   }
+  volver() {
+    window.history.back(); // Función para volver a la página anterior
+  }
 }
+
+
