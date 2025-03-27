@@ -33,9 +33,11 @@
           <td>{{mascota.enfermedad ? mascota.enfermedad : 'Vacio'}}</td>
           <td>{{mascota.estadoActivo ? 'Si' : 'No'}}</td>
           <td>
-            <button class="btn" (click)="mostrarMascota(mascota)">
-              <i class='bx bxs-show'></i>
-            </button>
+            <a [routerLink]="['/mascota/mostrar-mascota',mascota.id]">
+              <button class="btn">
+                <i class='bx bxs-show'></i>
+              </button>
+            </a>
             <button class="btn" (click)="eliminarMascota(mascota)">
               <i class='bx bx-trash'></i>
             </button>
