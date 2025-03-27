@@ -1,7 +1,15 @@
 <h1>Información de Mascotas</h1>
+
 <section id="btn-inicial"class="acciones">
-  <a type="button" class="btn" id="boton-agregarMascota" th:href="@{/mascota/add}"> <i class='bx bx-plus-circle'></i> Agregar Mascota</a>
+  <button (click)="toggleFormulario()" class="btn">
+    <i class="bx bx-plus-circle"></i> Agregar Mascota
+  </button>
 </section>
+
+<ng-container *ngIf="showFormulario">
+  <app-crear-mascota></app-crear-mascota>
+</ng-container>
+
 <main>
 <table>
   <thead>
@@ -29,12 +37,11 @@
       <td>{{mascota.enfermedad === null ? "Vacio" : mascota.enfermedad}}</td>
       <td>{{mascota.estadoActivo === true ? "Si" : "No" }}</td>
       <td>
-        <button (click)="mostrarMascota(mascota)">Mostrar Mascota</button>
         <button (click)="eliminarMascota(mascota)">Eliminar Mascota</button>
-        <!-- <button (click)="modificarMascota(mascota)">Modificar Mascota</button> -->
-        <!-- <a type="button" th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}" class="btn btn-ver-mascota">
+         <a type="button" [routerLink]="['/mascota/mostrar-mascota',mascota.id]" class="btn btn-ver-mascota">
             <i class='bx bxs-show'></i>
         </a>
+        <!--
         <a type="button" th:href="@{/mascota/update/{id}(id=${mascota.id})}" class="btn">
             <i class='bx bx-edit'></i>
         </a>

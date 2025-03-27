@@ -1,1 +1,33 @@
-<p>formulario-mascota works!</p>
+<form (submit)="guardarMascota($event)">
+  <label for="nombre">Nombre</label>
+  <input [(ngModel)]="mascota.nombre" name="nombre" type="text" id="nombre" placeholder="Ingrese nombre" required>
+
+  <label for="raza">Raza</label>
+  <select [(ngModel)]="mascota.raza" name="raza" id="raza">
+    <option value="Perro">Perro</option>
+    <option value="Gato">Gato</option>
+  </select>
+
+  <label for="edad">Edad</label>
+  <input [(ngModel)]="mascota.edad" name="edad" type="number" id="edad" placeholder="Ingrese edad" required>
+
+  <label for="peso">Peso</label>
+  <input [(ngModel)]="mascota.peso" name="peso" type="number" id="peso" placeholder="Ingrese peso" required>
+
+  <label for="enfermedad">Enfermedad</label>
+  <input [(ngModel)]="mascota.enfermedad" name="enfermedad" type="text" id="enfermedad" placeholder="Ingrese enfermedad">
+
+  <label for="foto">Foto</label>
+  <input [(ngModel)]="mascota.foto" name="foto" type="text" id="foto" placeholder="Ingrese URL de foto" required>
+
+  <label for="cedula-cliente">Cédula Dueño</label>
+  <input [(ngModel)]="mascota.cedulaCliente" name="cedulaCliente" type="number" id="cedula-cliente" placeholder="Ingrese cédula del dueño" required>
+
+  <label>Ingrese Estado Activo:</label>
+  <label for="activo">Activo</label>
+  <input [(ngModel)]="mascota.estadoActivo" name="estadoActivo" type="radio" id="activo" value="true" required>
+  <label for="no-activo">No Activo</label>
+  <input [(ngModel)]="mascota.estadoActivo" name="estadoActivo" type="radio" id="no-activo" value="false">
+
+  <button type="submit">Guardar</button>
+</form>

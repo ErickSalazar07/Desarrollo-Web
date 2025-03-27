@@ -10,6 +10,7 @@ import { MascotaService } from 'src/app/servicio/mascota.service';
 export class MostrarMascotasComponent {
   mascotaMostrar!: Mascota;
   mascotas!: Mascota[];
+  showFormulario = false;
 
   constructor(private mascotaServicio: MascotaService) { }
 
@@ -24,5 +25,9 @@ export class MostrarMascotasComponent {
 
   mostrarMascota(mascota: Mascota) {
     this.mascotaMostrar = mascota;
+  }
+
+  toggleFormulario() {
+    this.showFormulario = !this.showFormulario;
   }
 }

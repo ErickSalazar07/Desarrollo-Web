@@ -4,13 +4,17 @@ import { HomeComponent } from './admin/home/home.component';
 import { MostrarClientesComponent } from './cliente/mostrar-clientes/mostrar-clientes.component';
 import { MostrarMascotasComponent } from './mascota/mostrar-mascotas/mostrar-mascotas.component';
 import { PagNoEncontradaComponent } from './error/pag-no-encontrada/pag-no-encontrada.component';
+import { MostrarMascotaComponent } from './mascota/mostrar-mascota/mostrar-mascota.component';
+import { MostrarClienteComponent } from './cliente/mostrar-cliente/mostrar-cliente.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'cliente', component: MostrarClientesComponent},
-  {path: 'mascota', component: MostrarMascotasComponent},
+  {path: 'cliente/clientes', component: MostrarClientesComponent},
+  {path: 'cliente/mostrar-cliente', component: MostrarClienteComponent},
+  {path: 'mascota/mascotas', component: MostrarMascotasComponent},
+  {path: 'mascota/mostrar-mascota/:id', component: MostrarMascotaComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
-  { path: '**', component: PagNoEncontradaComponent },
+  {path: '**', component: PagNoEncontradaComponent},
 ];
 
 @NgModule({

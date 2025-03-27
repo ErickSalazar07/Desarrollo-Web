@@ -4,6 +4,7 @@ export interface Mascota {
   raza: string
   edad: number;
   peso: number;
+  cedulaCliente: string;
   enfermedad?: string;
   foto: string;
   estadoActivo: boolean;

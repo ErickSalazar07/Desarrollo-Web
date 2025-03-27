@@ -1,19 +1,19 @@
 <header>
   <nav>
     <div class="ir-inicio">
-      <a th:href="@{/veterinario/dashboard}">
+      <a [routerLink]="['/home']">
         <img src="https://github.com/ErickSalazar07/Web/blob/main/imagenes/imgs-utils/logo.png?raw=true" alt="Logo Health Animals">
       </a>
     </div>
     <div class="ir-otras-paginas">
       <a href="#sobrenosotros_id">Sobre Nosotros</a>
       <a href="#profesionales">Profesionales</a>
-      <a th:href="@{/mascota/mascotas}">Ver Mascotas</a>
-      <a th:href="@{/cliente/clientes}">Ver Clientes</a>
+      <a [routerLink]="['/mascota/mascotas']">Ver Mascotas</a>
+      <a [routerLink]="['/cliente/clientes']">Ver Clientes</a>
     </div>
   </nav>
   <button type="button" class="boton_empezar">
-    <a class="btn-ingresar" th:href="@{/cliente/login}">Ingresar</a>
+    <a class="btn-ingresar" [routerLink]="['/cliente/login']">Ingresar</a>
   </button>
 </header>
 <main>
