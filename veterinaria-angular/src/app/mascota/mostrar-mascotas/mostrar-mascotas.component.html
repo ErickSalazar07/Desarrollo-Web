@@ -1,66 +1,8 @@
-<<<<<<< HEAD
-<h1>Información de Mascotas</h1>
-
-<section id="btn-inicial"class="acciones">
-  <button (click)="toggleFormulario()" class="btn">
-    <i class="bx bx-plus-circle"></i> Agregar Mascota
-  </button>
-</section>
-
-<ng-container *ngIf="showFormulario">
-  <app-crear-mascota></app-crear-mascota>
-</ng-container>
-
-<main>
-<table>
-  <thead>
-    <tr>
-      <th>Foto</th>
-      <th>Nombre</th>
-      <th>Raza</th>
-      <th>Edad</th>
-      <th>Peso</th>
-      <th>Enfermedad</th>
-      <th>Estado Activo</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let mascota of mascotas">
-      <td>
-        <img [src]="mascota.foto" [alt]="'Foto de ' + mascota.nombre">
-      </td>
-      <td>{{mascota.nombre}}</td>
-      <td>{{mascota.raza}}</td>
-      <td>{{mascota.edad}}</td>
-      <td>{{mascota.peso}}</td>
-      <td>{{mascota.enfermedad === null ? "Vacio" : mascota.enfermedad}}</td>
-      <td>{{mascota.estadoActivo === true ? "Si" : "No" }}</td>
-      <td>
-        <button (click)="eliminarMascota(mascota)">Eliminar Mascota</button>
-         <a type="button" [routerLink]="['/mascota/mostrar-mascota',mascota.id]" class="btn btn-ver-mascota">
-            <i class='bx bxs-show'></i>
-        </a>
-        <!--
-        <a type="button" th:href="@{/mascota/update/{id}(id=${mascota.id})}" class="btn">
-            <i class='bx bx-edit'></i>
-        </a>
-        <label class="switch">
-            <input type="checkbox" th:checked="${mascota.estadoActivo}"
-                   th:attr="onchange=|cambiarEstado('${mascota.id}')|">
-            <span class="slider"></span>
-        </label> -->
-    </td>
-    </tr>
-  </tbody>
-</table>
-=======
 <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
 <body>
   <h1>Información de Mascotas</h1>
   <section id="btn-inicial" class="acciones">
-    <a type="button" class="btn" id="boton-agregarMascota" [routerLink]="['/mascota/add']"> 
+    <a type="button" class="btn" id="boton-agregarMascota" [routerLink]="['/mascota/add']">
       <i class='bx bx-plus-circle'></i> Agregar Mascota
     </a>
   </section>
@@ -119,4 +61,3 @@
   </main>
   <app-mostrar-mascota *ngIf="mascotaMostrar" [mascota]="mascotaMostrar"></app-mostrar-mascota>
 </body>
->>>>>>> 2a9845a96f506ef8a51379ebfda439d1ef70f7a4
