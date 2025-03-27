@@ -8,15 +8,24 @@ import { MascotaService } from 'src/app/servicio/mascota.service';
   styleUrls: ['./mostrar-mascotas.component.css']
 })
 export class MostrarMascotasComponent {
-  mascotaMostrar!: Mascota;
+  mascotaSeleccionadaMostrar!: Mascota;
+  mascotaSeleccionadaModificar?: Mascota | null =  null;
   mascotas!: Mascota[];
   showFormulario = false;
-
   constructor(private mascotaServicio: MascotaService) { }
 
   ngOnInit() {
     this.mascotas = this.mascotaServicio.findAll();
   }
+
+  crearMascota() {
+    this.showFormulario = true; 
+  }
+  formularioCerrado() {
+    this.mascotaSeleccionadaModificar = null; 
+    this.showFormulario = false;  
+  }
+
 
   eliminarMascota(mascota: Mascota) {
     this.mascotaServicio.deleteById(mascota.id);
@@ -24,7 +33,12 @@ export class MostrarMascotasComponent {
   }
 
   mostrarMascota(mascota: Mascota) {
-    this.mascotaMostrar = mascota;
+    this.mascotaSeleccionadaMostrar = mascota;
+  }
+
+  actualizarMascota(mascota: Mascota) {
+    this.mascotaSeleccionadaModificar = mascota;
+    this.showFormulario = true;  
   }
 
   toggleFormulario() {

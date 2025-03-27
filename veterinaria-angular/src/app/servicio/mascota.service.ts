@@ -83,4 +83,11 @@ export class MascotaService {
         this.mascotas[index] = mascota;
     }
   }
+
+  updateMascota(mascota: Mascota) {
+    if(mascota === null) return;
+    const index = this.mascotas.findIndex(m => m.id === mascota.id);
+    if(index !== -1)
+      this.mascotas[index] = mascota;
+  }
 }

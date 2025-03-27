@@ -1,33 +1,45 @@
-<form (submit)="guardarMascota($event)">
-  <label for="nombre">Nombre</label>
-  <input [(ngModel)]="mascota.nombre" name="nombre" type="text" id="nombre" placeholder="Ingrese nombre" required>
+<body>
+<h1>{{ esEdicion ? 'Editar Mascota' : 'Nueva Mascota' }}</h1>
+<!--
+<button class="btn btn-volver" (click)="volver()">
+  <i class='bx bx-arrow-back'></i> Volver
+</button>
+-->
+<main>
+  <form (ngSubmit)="guardarMascota()">
+    <div class="informacion-container">
 
-  <label for="raza">Raza</label>
-  <select [(ngModel)]="mascota.raza" name="raza" id="raza">
-    <option value="Perro">Perro</option>
-    <option value="Gato">Gato</option>
-  </select>
+      
+      <div class="campos">
+        <label>Imagen:</label>
+        <input type="text" [(ngModel)]="mascotaForm.foto" name="foto" required>
 
-  <label for="edad">Edad</label>
-  <input [(ngModel)]="mascota.edad" name="edad" type="number" id="edad" placeholder="Ingrese edad" required>
+        <label>Nombre:</label>
+        <input type="text" [(ngModel)]="mascotaForm.nombre" name="nombre" required>
 
-  <label for="peso">Peso</label>
-  <input [(ngModel)]="mascota.peso" name="peso" type="number" id="peso" placeholder="Ingrese peso" required>
+        <label>Raza:</label>
+        <input type="text" [(ngModel)]="mascotaForm.raza" name="raza" required>
 
-  <label for="enfermedad">Enfermedad</label>
-  <input [(ngModel)]="mascota.enfermedad" name="enfermedad" type="text" id="enfermedad" placeholder="Ingrese enfermedad">
+        <label>Edad:</label>
+        <input type="number" [(ngModel)]="mascotaForm.edad" name="edad" required>
 
-  <label for="foto">Foto</label>
-  <input [(ngModel)]="mascota.foto" name="foto" type="text" id="foto" placeholder="Ingrese URL de foto" required>
+        <label>Peso:</label>
+        <input type="number" [(ngModel)]="mascotaForm.peso" name="peso" required>
 
-  <label for="cedula-cliente">Cédula Dueño</label>
-  <input [(ngModel)]="mascota.cedulaCliente" name="cedulaCliente" type="number" id="cedula-cliente" placeholder="Ingrese cédula del dueño" required>
+        <label>Enfermedad:</label>
+        <input type="text" [(ngModel)]="mascotaForm.enfermedad" name="enfermedad">
 
-  <label>Ingrese Estado Activo:</label>
-  <label for="activo">Activo</label>
-  <input [(ngModel)]="mascota.estadoActivo" name="estadoActivo" type="radio" id="activo" value="true" required>
-  <label for="no-activo">No Activo</label>
-  <input [(ngModel)]="mascota.estadoActivo" name="estadoActivo" type="radio" id="no-activo" value="false">
-
-  <button type="submit">Guardar</button>
-</form>
+        <label>Estado:</label>
+        <select [(ngModel)]="mascotaForm.estadoActivo" name="estadoActivo">
+          <option [value]="true">Activo</option>
+          <option [value]="false">No Activo</option>
+        </select>
+      </div>
+      
+      <button type="submit" class="btn btn-guardar">
+        {{ esEdicion ? 'Actualizar' : 'Guardar' }}
+      </button>
+    </div>
+  </form>
+</main>
+</body>

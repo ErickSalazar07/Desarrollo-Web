@@ -2,9 +2,10 @@
 <body>
   <h1>Información de Mascotas</h1>
   <section id="btn-inicial" class="acciones">
-    <a type="button" class="btn" id="boton-agregarMascota" [routerLink]="['/mascota/add']">
+    <a type="button" class="btn" id="boton-agregarMascota" href="javascript:void(0)" (click)="crearMascota()">
       <i class='bx bx-plus-circle'></i> Agregar Mascota
     </a>
+    
   </section>
   <main>
     <table>
@@ -41,7 +42,7 @@
             <button class="btn" (click)="eliminarMascota(mascota)">
               <i class='bx bx-trash'></i>
             </button>
-            <button class="btn" (click)="eliminarMascota(mascota)">
+            <button class="btn" (click)="actualizarMascota(mascota)">
               <i class='bx bx-edit'></i>
             </button>
             <!-- <button (click)="modificarMascota(mascota)">Modificar Mascota</button> -->
@@ -61,5 +62,15 @@
       </tbody>
     </table>
   </main>
-  <app-mostrar-mascota *ngIf="mascotaMostrar" [mascota]="mascotaMostrar"></app-mostrar-mascota>
+  <app-mostrar-mascota *ngIf="mascotaSeleccionadaMostrar" [mascota]="mascotaSeleccionadaMostrar"></app-mostrar-mascota>
+
+  <app-formulario-mascota 
+  *ngIf="mascotaSeleccionadaModificar" 
+  [mascota]="mascotaSeleccionadaModificar" 
+  (formularioCerrado)="formularioCerrado()">
+</app-formulario-mascota>
+  
+
+
+
 </body>
