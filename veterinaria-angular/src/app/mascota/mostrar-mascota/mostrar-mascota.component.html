@@ -1,1 +1,27 @@
-<p>mostrar-mascota works!</p>
+ <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+ <body> 
+    <h1>Datos de la Mascota</h1>
+    <button class="btn btn-volver" (click)="volver()">
+      <i class='bx bx-arrow-back'></i> Volver
+    </button>
+    <main>
+      <div class="informacion-container" *ngIf="mascota">
+        <img [src]="mascota.foto" [alt]="'Foto Mascota ' + mascota.nombre">
+        <div class="campos">
+          <p><span id="negrilla">Nombre:</span></p>
+          <p>{{ mascota.nombre }}</p>
+          <p><span id="negrilla">Raza:</span></p>
+          <p>{{ mascota.raza }}</p>
+          <p><span id="negrilla">Edad:</span></p>
+          <p>{{ mascota.edad }}</p>
+          <p><span id="negrilla">Peso:</span></p>
+          <p>{{ mascota.peso }}</p>
+          <p><span id="negrilla">Enfermedad:</span></p>
+          <p>{{ mascota.enfermedad ? mascota.enfermedad : 'Vacio' }}</p>
+          <p><span id="negrilla">Estado:</span></p>
+          <p>{{ mascota.estadoActivo ? 'Activo' : 'No Activo' }}</p>
+        </div>
+      </div>
+    </main>
+  </body>
+  

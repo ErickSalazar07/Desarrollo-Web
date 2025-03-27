@@ -25,4 +25,5 @@ export class MostrarMascotasComponent {
   mostrarMascota(mascota: Mascota) {
     this.mascotaMostrar = mascota;
   }
+
 }

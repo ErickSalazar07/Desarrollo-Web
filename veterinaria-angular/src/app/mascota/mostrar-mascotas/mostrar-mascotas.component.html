@@ -1,49 +1,63 @@
-<h1>Información de Mascotas</h1>
-<section id="btn-inicial"class="acciones">
-  <a type="button" class="btn" id="boton-agregarMascota" th:href="@{/mascota/add}"> <i class='bx bx-plus-circle'></i> Agregar Mascota</a>
-</section>
-<main>
-<table>
-  <thead>
-    <tr>
-      <th>Foto</th>
-      <th>Nombre</th>
-      <th>Raza</th>
-      <th>Edad</th>
-      <th>Peso</th>
-      <th>Enfermedad</th>
-      <th>Estado Activo</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let mascota of mascotas">
-      <td>
-        <img [src]="mascota.foto" [alt]="'Foto de ' + mascota.nombre">
-      </td>
-      <td>{{mascota.nombre}}</td>
-      <td>{{mascota.raza}}</td>
-      <td>{{mascota.edad}}</td>
-      <td>{{mascota.peso}}</td>
-      <td>{{mascota.enfermedad === null ? "Vacio" : mascota.enfermedad}}</td>
-      <td>{{mascota.estadoActivo === true ? "Si" : "No" }}</td>
-      <td>
-        <button (click)="mostrarMascota(mascota)">Mostrar Mascota</button>
-        <button (click)="eliminarMascota(mascota)">Eliminar Mascota</button>
-        <!-- <button (click)="modificarMascota(mascota)">Modificar Mascota</button> -->
-        <!-- <a type="button" th:href="@{/mascota/mostrar-mascota/{id}(id=${mascota.id})}" class="btn btn-ver-mascota">
-            <i class='bx bxs-show'></i>
-        </a>
-        <a type="button" th:href="@{/mascota/update/{id}(id=${mascota.id})}" class="btn">
-            <i class='bx bx-edit'></i>
-        </a>
-        <label class="switch">
-            <input type="checkbox" th:checked="${mascota.estadoActivo}"
-                   th:attr="onchange=|cambiarEstado('${mascota.id}')|">
-            <span class="slider"></span>
-        </label> -->
-    </td>
-    </tr>
-  </tbody>
-</table>
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+<body>
+  <h1>Información de Mascotas</h1>
+  <section id="btn-inicial" class="acciones">
+    <a type="button" class="btn" id="boton-agregarMascota" [routerLink]="['/mascota/add']"> 
+      <i class='bx bx-plus-circle'></i> Agregar Mascota
+    </a>
+  </section>
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Foto</th>
+          <th>Nombre</th>
+          <th>Raza</th>
+          <th>Edad</th>
+          <th>Peso</th>
+          <th>Enfermedad</th>
+          <th>Estado Activo</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mascota of mascotas">
+          <td>
+            <img [src]="mascota.foto" [alt]="'Foto de ' + mascota.nombre">
+          </td>
+          <td>{{mascota.nombre}}</td>
+          <td>{{mascota.raza}}</td>
+          <td>{{mascota.edad}}</td>
+          <td>{{mascota.peso}}</td>
+          <td>{{mascota.enfermedad ? mascota.enfermedad : 'Vacio'}}</td>
+          <td>{{mascota.estadoActivo ? 'Si' : 'No'}}</td>
+          <td>
+            <button class="btn" (click)="mostrarMascota(mascota)">
+              <i class='bx bxs-show'></i>
+            </button>
+            <button class="btn" (click)="eliminarMascota(mascota)">
+              <i class='bx bx-trash'></i>
+            </button>
+            <button class="btn" (click)="eliminarMascota(mascota)">
+              <i class='bx bx-edit'></i>
+            </button>
+            <!-- <button (click)="modificarMascota(mascota)">Modificar Mascota</button> -->
+            <!-- <a type="button" [routerLink]="['/mascota/mostrar-mascota', mascota.id]" class="btn btn-ver-mascota">
+              <i class='bx bxs-show'></i>
+          </a>
+          <a type="button" [routerLink]="['/mascota/update', mascota.id]" class="btn">
+              <i class='bx bx-edit'></i>
+          </a>
+          <label class="switch">
+              <input type="checkbox" [checked]="mascota.estadoActivo"
+                    (change)="cambiarEstado(mascota.id)">
+              <span class="slider"></span>
+          </label> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+  <app-mostrar-mascota *ngIf="mascotaMostrar" [mascota]="mascotaMostrar"></app-mostrar-mascota>
+</body>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Mascota } from 'src/app/modelo/mascota';
 
 @Component({
   selector: 'app-mostrar-mascota',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./mostrar-mascota.component.css']
 })
 export class MostrarMascotaComponent {
+  @Input()
+  mascota!: Mascota
 
+  volver() {
+    window.history.back(); // Función para volver a la página anterior
+  }
+  constructor() { }
 }
+
+
