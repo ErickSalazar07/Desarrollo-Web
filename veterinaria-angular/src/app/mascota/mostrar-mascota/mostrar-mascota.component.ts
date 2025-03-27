@@ -10,7 +10,7 @@ import { MascotaService } from 'src/app/servicio/mascota.service';
 })
 export class MostrarMascotaComponent {
   @Input()
-  mascota!: Mascota
+  mascota?: any
 
   constructor(
     private servicioMascota: MascotaService,

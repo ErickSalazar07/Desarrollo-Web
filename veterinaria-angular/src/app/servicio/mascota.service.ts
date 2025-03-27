@@ -57,19 +57,10 @@ export class MascotaService {
     return this.mascotas;
   }
 
-  findById(id: number): Mascota {
+  findById(id: number) {
     const mascota = this.mascotas.find(m => m.id === id);
     if(mascota == undefined) {
-      return  {
-        id: -1,
-        nombre: "",
-        cedulaCliente: "",
-        edad: 0,
-        estadoActivo: false,
-        foto: "",
-        peso: 0.0,
-        raza: ""
-      }
+      return null;
     }
     return mascota;
   }

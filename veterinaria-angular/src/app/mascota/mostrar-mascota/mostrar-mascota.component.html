@@ -1,10 +1,11 @@
  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
- <body> 
+ <body>
     <h1>Datos de la Mascota</h1>
     <button class="btn btn-volver" (click)="volver()">
       <i class='bx bx-arrow-back'></i> Volver
     </button>
     <main>
+      <ng-container *ngIf="!mascota"><h1>Esta mascota no existe</h1></ng-container>
       <div class="informacion-container" *ngIf="mascota">
         <img [src]="mascota.foto" [alt]="'Foto Mascota ' + mascota.nombre">
         <div class="campos">
@@ -24,4 +25,3 @@
       </div>
     </main>
   </body>
-  

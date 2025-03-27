@@ -6,12 +6,14 @@ import { MostrarMascotasComponent } from './mascota/mostrar-mascotas/mostrar-mas
 import { PagNoEncontradaComponent } from './error/pag-no-encontrada/pag-no-encontrada.component';
 import { MostrarMascotaComponent } from './mascota/mostrar-mascota/mostrar-mascota.component';
 import { MostrarClienteComponent } from './cliente/mostrar-cliente/mostrar-cliente.component';
+import { CrearMascotaComponent } from './mascota/crear-mascota/crear-mascota.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'cliente/clientes', component: MostrarClientesComponent},
   {path: 'cliente/mostrar-cliente', component: MostrarClienteComponent},
   {path: 'mascota/mascotas', component: MostrarMascotasComponent},
+  {path: 'mascota/add', component: CrearMascotaComponent},
   {path: 'mascota/mostrar-mascota/:id', component: MostrarMascotaComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: PagNoEncontradaComponent},

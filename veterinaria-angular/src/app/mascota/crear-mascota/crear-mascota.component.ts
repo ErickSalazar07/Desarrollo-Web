@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Mascota } from 'src/app/modelo/mascota';
+import { MascotaService } from 'src/app/servicio/mascota.service';
 
 @Component({
   selector: 'app-crear-mascota',
@@ -16,5 +17,14 @@ export class CrearMascotaComponent {
     peso: 0.0,
     cedulaCliente: "",
     raza: "Perro"
+  }
+
+  constructor(private servicioMascota: MascotaService) {
+
+  }
+
+  guardarMascota() {
+    console.log("Guardar nueva mascota",this.nuevaMascota);
+    this.servicioMascota.guardarMascota(this.nuevaMascota);
   }
 }
