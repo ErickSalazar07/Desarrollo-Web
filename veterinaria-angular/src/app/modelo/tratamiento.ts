@@ -1,8 +1,9 @@
+import { Mascota } from "./mascota";
 
 export interface Tratamiento {
   id: number;
   nombreTratamiento: string;
   fecha: Date;
-  idMascota: number;
+  mascota: Mascota;
   cedulaVeterinario: string;
 }

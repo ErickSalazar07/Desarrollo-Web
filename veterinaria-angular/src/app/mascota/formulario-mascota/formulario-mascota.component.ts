@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { Mascota } from 'src/app/modelo/mascota';
 import { MascotaService } from 'src/app/servicio/mascota.service';
 
@@ -8,13 +9,16 @@ import { MascotaService } from 'src/app/servicio/mascota.service';
   styleUrls: ['./formulario-mascota.component.css']
 })
 export class FormularioMascotaComponent implements OnInit {
-  @Input() mascota!: Mascota;  
+  @Input() mascota!: Mascota;
   @Output() formularioCerrado = new EventEmitter<void>();  // Evento para cerrar el formulario
 
   mascotaForm: Mascota = this.crearNuevaMascota();
   esEdicion: boolean = false;
 
-  constructor(private servicioMascota: MascotaService) {}
+  constructor(
+    private servicioMascota: MascotaService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     if (this.mascota && this.mascota.nombre !== '') {
@@ -25,16 +29,18 @@ export class FormularioMascotaComponent implements OnInit {
       this.esEdicion = false;
     }
   }
-  
+
   guardarMascota() {
     if (this.esEdicion) {
-      this.servicioMascota.updateMascota(this.mascotaForm);
-      
+      this.servicioMascota.updateMascota(this.mascotaForm)
+      this.router.navigate(['/mascota/mascotas']);
     } else {
       this.servicioMascota.guardarMascota(this.mascotaForm);
+      this.router.navigate(['/mascota/mascotas']);
     }
     this.servicioMascota.findAll();
-    this.formularioCerrado.emit(); 
+    this.formularioCerrado.emit();
+    this.router.navigate(['/mascota/mascotas']);
   }
 
   private crearNuevaMascota(): Mascota {

@@ -9,7 +9,6 @@
   <form (ngSubmit)="guardarMascota()">
     <div class="informacion-container">
 
-      
       <div class="campos">
         <label>Imagen:</label>
         <input type="text" [(ngModel)]="mascotaForm.foto" name="foto" required>
@@ -35,9 +34,9 @@
           <option [value]="false">No Activo</option>
         </select>
       </div>
-      
+
       <button type="submit" class="btn btn-guardar">
-        {{ esEdicion ? 'Actualizar' : 'Guardar' }}
+          Guardar
       </button>
     </div>
   </form>
