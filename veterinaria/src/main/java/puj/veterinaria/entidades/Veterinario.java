@@ -45,9 +45,7 @@ public class Veterinario {
     this.foto = foto;
   }
 
-/*
-  Comportamiento
-*/
+// Comportamiento
 
   // TODO: Implementar funcion
   public void asignarTratamiento() {
