@@ -2,6 +2,7 @@ package puj.veterinaria.entidades;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -15,17 +16,21 @@ public class Tratamiento {
   @Id
   @GeneratedValue
   private Long id;
+  
+  @Column(nullable = false, name = "nombre_tratamiento")
   private String nombreTratamiento;
+  
+  @Column(nullable = false)
   private Date fecha;
   
   // private Droga drogaAsignada;
 
   @ManyToOne
-  @JoinColumn(name = "id_mascota", referencedColumnName = "id")
+  @JoinColumn(nullable = false, name = "id_mascota", referencedColumnName = "id")
   private Mascota mascota;
 
-  @ManyToOne
-  @JoinColumn(name = "cedula_veterinario_encargado", referencedColumnName = "cedula")
+  @ManyToOne // Se usa la cedula del Veterinario como (foreign-key)
+  @JoinColumn(nullable = false, name = "cedula_veterinario_encargado", referencedColumnName = "cedula")
   private Veterinario veterinarioEncargado;
   
   public Tratamiento() { }
@@ -35,13 +40,9 @@ public class Tratamiento {
     this.fecha = fecha;
   }
   
-/*
-  Comportamiento
-*/
+// Comportamiento
   
-/*
-  Getters y Setters
-*/
+// Getters y Setters
 
   public Long getId() { return id; }
   public void setId(Long id) { this.id = id; }
