@@ -19,9 +19,17 @@ public class Veterinario {
   
   @Column(nullable = false, unique = true)
   private String cedula;
+  
+  @Column(nullable = false)
   private String nombre;
+  
+  @Column(nullable = false)
   private String contrasena;
+  
+  @Column(nullable = false)
   private String especialidad;
+  
+  @Column(nullable = false)
   private String foto;
   
   @OneToMany(mappedBy = "veterinarioEncargado", cascade = CascadeType.ALL)

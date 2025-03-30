@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import jakarta.transaction.Transactional;
 import puj.veterinaria.repositorios.RepositorioCliente;
 import puj.veterinaria.repositorios.RepositorioMascota;
+import puj.veterinaria.repositorios.RepositorioVeterinario;
 
 @Controller
 @Transactional
@@ -23,10 +24,14 @@ public class DatabaseInit implements ApplicationRunner {
   @Autowired
   RepositorioCliente repositorioCliente;
 
+  @Autowired
+  RepositorioVeterinario repositorioVeterinario;
+
   @Override
   public void run(ApplicationArguments args) throws Exception {
     cargarClientes();
     cargarMascotas(); //! Se debe cargar clientes antes que mascota, puesto que toda mascota debe tener un cliente
+    cargarVeterinarios();
   }
 
   // Asociamos Mascota con Cliente
@@ -42,7 +47,8 @@ public class DatabaseInit implements ApplicationRunner {
       while((linea = br.readLine()) != null) {
         String datos[] = linea.split(",");
         mascota = new Mascota(datos[0],datos[1],Integer.parseInt(datos[2]),Double.parseDouble(datos[3]),
-                  datos[4],datos[5],Boolean.parseBoolean(datos[6]));
+                  datos[4].equalsIgnoreCase("null") ? null:datos[4],datos[5],
+                  Boolean.parseBoolean(datos[6]));
         random = ThreadLocalRandom.current().nextLong(1L,CANTIDAD_CLIENTES+1);
         mascota.setCliente(repositorioCliente.findById(random).get());
         repositorioMascota.save(mascota);
@@ -63,6 +69,20 @@ public class DatabaseInit implements ApplicationRunner {
       System.out.println("se cargaron los clientes");
     } catch(Exception e) {
       System.err.println("Error al leer el archivo clientes: " + e.getMessage());
+    }
+  }
+
+  private void cargarVeterinarios() {
+    try(BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getClassLoader().
+    getResourceAsStream("init-data/veterinarios.txt")))) {
+      String linea;
+      while((linea = br.readLine()) != null) {
+        String datos[] = linea.split(",");
+        repositorioVeterinario.save(new Veterinario(datos[2],datos[0],datos[1],datos[3],datos[4]));
+      }
+      System.out.println("se cargaron los veterinarios");
+    } catch(Exception e) {
+      System.err.println("Error al leer el archivo veterinarios: "+ e.getMessage());
     }
   }
 }

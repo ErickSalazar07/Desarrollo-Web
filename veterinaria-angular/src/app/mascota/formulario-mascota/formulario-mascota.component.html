@@ -1,0 +1,44 @@
+<body>
+<h1>{{ esEdicion ? 'Editar Mascota' : 'Nueva Mascota' }}</h1>
+<!--
+<button class="btn btn-volver" (click)="volver()">
+  <i class='bx bx-arrow-back'></i> Volver
+</button>
+-->
+<main>
+  <form (ngSubmit)="guardarMascota()">
+    <div class="informacion-container">
+
+      <div class="campos">
+        <label>Imagen:</label>
+        <input type="text" [(ngModel)]="mascotaForm.foto" name="foto" required>
+
+        <label>Nombre:</label>
+        <input type="text" [(ngModel)]="mascotaForm.nombre" name="nombre" required>
+
+        <label>Raza:</label>
+        <input type="text" [(ngModel)]="mascotaForm.raza" name="raza" required>
+
+        <label>Edad:</label>
+        <input type="number" [(ngModel)]="mascotaForm.edad" name="edad" required>
+
+        <label>Peso:</label>
+        <input type="number" [(ngModel)]="mascotaForm.peso" name="peso" required>
+
+        <label>Enfermedad:</label>
+        <input type="text" [(ngModel)]="mascotaForm.enfermedad" name="enfermedad">
+
+        <label>Estado:</label>
+        <select [(ngModel)]="mascotaForm.estadoActivo" name="estadoActivo">
+          <option [value]="true">Activo</option>
+          <option [value]="false">No Activo</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-guardar">
+          Guardar
+      </button>
+    </div>
+  </form>
+</main>
+</body>

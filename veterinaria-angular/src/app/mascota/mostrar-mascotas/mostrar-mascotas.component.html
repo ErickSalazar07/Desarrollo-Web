@@ -1,0 +1,63 @@
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+<body>
+  <h1>Información de Mascotas</h1>
+  <section id="btn-inicial" class="acciones">
+    <a type="button" class="btn" id="boton-agregarMascota" [routerLink]="['/mascota/add']">
+      <i class='bx bx-plus-circle'></i> Agregar Mascota
+    </a>
+
+  </section>
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Foto</th>
+          <th>Nombre</th>
+          <th>Raza</th>
+          <th>Edad</th>
+          <th>Peso</th>
+          <th>Enfermedad</th>
+          <th>Estado Activo</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mascota of mascotas">
+          <td>
+            <img [src]="mascota.foto" [alt]="'Foto de ' + mascota.nombre">
+          </td>
+          <td>{{mascota.nombre}}</td>
+          <td>{{mascota.raza}}</td>
+          <td>{{mascota.edad}}</td>
+          <td>{{mascota.peso}}</td>
+          <td>{{mascota.enfermedad ? mascota.enfermedad : 'Vacio'}}</td>
+          <td>{{mascota.estadoActivo ? 'Si' : 'No'}}</td>
+          <td>
+            <a [routerLink]="['/mascota/mostrar-mascota',mascota.id]">
+              <button class="btn">
+                <i class='bx bxs-show'></i>
+              </button>
+            </a>
+            <a [routerLink]="['/mascota/update',mascota.id]">
+              <button class="btn" (click)="actualizarMascota(mascota)">
+                <i class='bx bx-edit'></i>
+              </button>
+            </a>
+            <button class="btn" (click)="eliminarMascota(mascota)">
+              <i class='bx bx-trash'></i>
+            </button>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+  <app-mostrar-mascota *ngIf="mascotaSeleccionadaMostrar" [mascota]="mascotaSeleccionadaMostrar"></app-mostrar-mascota>
+
+  <app-formulario-mascota
+    *ngIf="showFormulario"
+    [mascota]="mascotaSeleccionadaModificar ? mascotaSeleccionadaModificar : { id: -1, nombre: '', raza: '', edad: 0, peso: 0, cedulaCliente: '', foto: '', estadoActivo: false }"
+    (formularioCerrado)="formularioCerrado()">
+  </app-formulario-mascota>
+
+</body>
