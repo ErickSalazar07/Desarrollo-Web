@@ -30,7 +30,7 @@ public class Tratamiento {
   private Mascota mascota;
 
   @ManyToOne // Se usa la cedula del Veterinario como (foreign-key)
-  @JoinColumn(nullable = false, name = "cedula_veterinario_encargado", referencedColumnName = "cedula")
+  @JoinColumn(nullable = false, name = "cedula_veterinario", referencedColumnName = "cedula")
   private Veterinario veterinarioEncargado;
   
   public Tratamiento() { }

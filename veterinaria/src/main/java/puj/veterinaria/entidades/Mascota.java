@@ -41,8 +41,8 @@ public class Mascota {
   @ManyToOne // usar cedula como foreign key
   @JoinColumn(nullable = false, name = "cliente_cedula", referencedColumnName = "cedula") 
   private Cliente cliente;
-  
-  @OneToMany
+
+  @OneToMany(mappedBy = "mascota")
   private List<Tratamiento> tratamientos;
   
   public Mascota() { }

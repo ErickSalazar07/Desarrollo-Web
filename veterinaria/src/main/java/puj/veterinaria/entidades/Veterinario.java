@@ -2,7 +2,6 @@ package puj.veterinaria.entidades;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,8 +30,8 @@ public class Veterinario {
   
   @Column(nullable = false)
   private String foto;
-  
-  @OneToMany(mappedBy = "veterinarioEncargado", cascade = CascadeType.ALL)
+
+  @OneToMany(mappedBy = "veterinarioEncargado")
   private List<Tratamiento> tratamientos;
 
   public Veterinario() { }
