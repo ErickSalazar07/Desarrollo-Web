@@ -1,3 +1,4 @@
+import { Tratamiento } from "./tratamiento";
 
 export interface Droga {
   id: number;
@@ -6,5 +7,5 @@ export interface Droga {
   precioVenta: number;
   unidadDisponible: number;
   unidadVendida: number;
-  idTratamiento?: number[];
+  tratamientos?: Tratamiento[];
 }

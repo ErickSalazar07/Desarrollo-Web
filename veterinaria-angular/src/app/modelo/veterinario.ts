@@ -1,3 +1,4 @@
+import { Tratamiento } from "./tratamiento";
 
 export interface Veterinario {
   id: number;
@@ -6,5 +7,5 @@ export interface Veterinario {
   contrasena: string;
   especialidad: string;
   foto: string;
-  idTratamientos: number[];
+  tratamientos?: Tratamiento[];
 }

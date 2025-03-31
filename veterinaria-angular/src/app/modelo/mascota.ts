@@ -1,3 +1,5 @@
+import { Tratamiento } from "./tratamiento";
+
 export interface Mascota {
   id: number;
   nombre: string;
@@ -8,5 +10,5 @@ export interface Mascota {
   foto: string;
   estadoActivo: boolean;
   cedulaCliente: string;
-  idTratamientos?: number[];
+  tratamientos?: Tratamiento[];
 }
