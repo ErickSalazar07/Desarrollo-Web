@@ -1,0 +1,25 @@
+Vacunación antirrábica,2024-03-10
+Desparasitación interna,2024-03-15
+Tratamiento para dermatitis,2024-04-02
+Cirugía de esterilización,2024-05-20
+Control postoperatorio,2024-06-01
+Limpieza dental,2024-06-10
+Tratamiento para otitis,2024-06-15
+Terapia para displasia de cadera,2024-07-05
+Control de peso y nutrición,2024-07-12
+Tratamiento para insuficiencia renal,2024-07-25
+Vacuna contra moquillo,2024-08-05
+Cirugía ortopédica,2024-08-15
+Tratamiento para alergias,2024-08-22
+Rehabilitación post cirugía,2024-09-01
+Control y prevención de pulgas,2024-09-10
+Aplicación de microchip,2024-09-18
+Extracción de tumor,2024-09-25
+Tratamiento para conjuntivitis,2024-10-05
+Chequeo cardiológico,2024-10-12
+Tratamiento para gastroenteritis,2024-10-20
+Control de diabetes en mascotas,2024-10-28
+Cirugía ocular,2024-11-05
+Terapia para artritis,2024-11-12
+Tratamiento para neumonía,2024-11-20
+Chequeo general anual,2024-12-01

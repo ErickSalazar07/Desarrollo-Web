@@ -1,0 +1,20 @@
+2025-03-30 19:53:11.021686-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM CLIENTE WHERE nombre = 'Juliana' OR nombre = 'Juan' OR nombre = 'Pedro'\000d\000a\000d\000a[*]SELECT * FROM mascota WHERE cliente_cedula = '18872435' OR cliente_cedula = '19812305' OR cliente_cedula = '17190115'"; SQL statement:
+SELECT * FROM CLIENTE WHERE nombre = 'Juliana' OR nombre = 'Juan' OR nombre = 'Pedro'
+
+SELECT * FROM mascota WHERE cliente_cedula = '18872435' OR cliente_cedula = '19812305' OR cliente_cedula = '17190115' [42000-232]
+2025-03-30 19:53:28.959556-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM CLIENTE WHERE nombre = 'Juliana' OR nombre = 'Juan' OR nombre = 'Pedro'\000d\000a\000d\000a[*]SELECT * FROM mascota WHERE cliente_cedula = '18872435' OR cliente_cedula = '19812305' OR cliente_cedula = '17190115'"; SQL statement:
+SELECT * FROM CLIENTE WHERE nombre = 'Juliana' OR nombre = 'Juan' OR nombre = 'Pedro'
+
+SELECT * FROM mascota WHERE cliente_cedula = '18872435' OR cliente_cedula = '19812305' OR cliente_cedula = '17190115' [42000-232]
+2025-03-30 19:53:30.089336-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM CLIENTE WHERE nombre = 'Juliana' OR nombre = 'Juan' OR nombre = 'Pedro'\000d\000a\000d\000a[*]SELECT * FROM mascota WHERE cliente_cedula = '18872435' OR cliente_cedula = '19812305' OR cliente_cedula = '17190115'"; SQL statement:
+SELECT * FROM CLIENTE WHERE nombre = 'Juliana' OR nombre = 'Juan' OR nombre = 'Pedro'
+
+SELECT * FROM mascota WHERE cliente_cedula = '18872435' OR cliente_cedula = '19812305' OR cliente_cedula = '17190115' [42000-232]
+2025-03-30 19:53:30.989240-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM CLIENTE WHERE nombre = 'Juliana' OR nombre = 'Juan' OR nombre = 'Pedro'\000d\000a\000d\000a[*]SELECT * FROM mascota WHERE cliente_cedula = '18872435' OR cliente_cedula = '19812305' OR cliente_cedula = '17190115'"; SQL statement:
+SELECT * FROM CLIENTE WHERE nombre = 'Juliana' OR nombre = 'Juan' OR nombre = 'Pedro'
+
+SELECT * FROM mascota WHERE cliente_cedula = '18872435' OR cliente_cedula = '19812305' OR cliente_cedula = '17190115' [42000-232]

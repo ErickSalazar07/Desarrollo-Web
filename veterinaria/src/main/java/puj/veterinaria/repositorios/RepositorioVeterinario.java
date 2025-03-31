@@ -7,5 +7,5 @@ import puj.veterinaria.entidades.Veterinario;
 
 @Repository
 public interface RepositorioVeterinario extends JpaRepository<Veterinario, Long> {
-  
+  long count();
 }
