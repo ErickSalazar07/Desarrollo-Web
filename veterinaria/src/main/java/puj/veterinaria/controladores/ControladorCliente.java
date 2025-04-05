@@ -26,33 +26,6 @@ public class ControladorCliente {
   @Autowired
   ClienteServicio clienteServicio;
 
-// Metodos GetMapping
-
-  // URL: http://localhost:8090/cliente/clientes
-  @GetMapping("/clientes")
-  @Operation(summary = "Retorna todos los Clientes de la bd.")
-  public List<Cliente> mostrarClientes() {
-    return clienteServicio.findAll();
-  }
-
-  // ? Cambiar id por algun id dentro de los clientes guardados en el repositorio
-  // URL: http://localhost:8090/cliente/mostrar-cliente/1
-  @GetMapping("/mostrar-cliente/{id}")
-  @Operation(summary = "Retorna 1 Cliente, el cual tiene el id, que se especifica.")
-  public Cliente mostrarCliente(@PathVariable(value = "id") Long id) {
-    return clienteServicio.findById(id);
-  }
-
-// Metodos DeleteMapping
-
-  // ? Cambiar id por algun id dentro de los clientes guardados en el repositorio
-  // URL: http://localhost:8090/cliente/delete/1
-  @DeleteMapping("/delete/{id}")
-  @Operation(summary = "Elimina un Cliente, el cual corresponde al id que se especifica.")
-  public void eliminarCliente(@PathVariable("id") Long id) {
-    clienteServicio.deleteById(id);
-  }
-
 // Metodos PostMapping
 
   // URL: http://localhost:8090/cliente/add
@@ -60,6 +33,23 @@ public class ControladorCliente {
   @Operation(summary = "Agrega un nuevo Cliente, pasado por el body.")
   public void agregarCliente(@RequestBody Cliente cliente) {
     clienteServicio.addCliente(cliente);
+  }
+
+// Metodos GetMapping
+
+  // URL: http://localhost:8090/cliente/clientes
+  @GetMapping("/clientes")
+  @Operation(summary = "Retorna todos los Clientes de la bd.")
+  public List<Cliente> obtenerClientes() {
+    return clienteServicio.findAll();
+  }
+
+  // ? Cambiar id por algun id dentro de los clientes guardados en el repositorio
+  // URL: http://localhost:8090/cliente/mostrar-cliente/1
+  @GetMapping("/mostrar-cliente/{id}")
+  @Operation(summary = "Retorna 1 Cliente, el cual tiene el id, que se especifica.")
+  public Cliente obtenerCliente(@PathVariable(value = "id") Long id) {
+    return clienteServicio.findById(id);
   }
 
 // Metodos PutMapping
@@ -70,5 +60,15 @@ public class ControladorCliente {
   @Operation(summary = "Actualiza un Cliente existente en la base de datos.")
   public void actualizarCliente(@RequestBody Cliente cliente) {
     clienteServicio.updateCliente(cliente);
+  }
+
+// Metodos DeleteMapping
+
+  // ? Cambiar id por algun id dentro de los clientes guardados en el repositorio
+  // URL: http://localhost:8090/cliente/delete/1
+  @DeleteMapping("/delete/{id}")
+  @Operation(summary = "Elimina un Cliente, el cual corresponde al id que se especifica.")
+  public void eliminarCliente(@PathVariable("id") Long id) {
+    clienteServicio.deleteById(id);
   }
 } 

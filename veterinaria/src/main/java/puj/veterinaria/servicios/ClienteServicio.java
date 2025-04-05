@@ -8,15 +8,11 @@ import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import puj.veterinaria.entidades.Cliente;
 import puj.veterinaria.repositorios.RepositorioCliente;
-import puj.veterinaria.repositorios.RepositorioMascota;
 
 @Service
 public class ClienteServicio implements IClienteServicio {
   @Autowired
   RepositorioCliente repositorioCliente;
-
-  @Autowired
-  RepositorioMascota repositorioMascota;
 
   @Override
   public Cliente findById(Long id) {
@@ -45,7 +41,7 @@ public class ClienteServicio implements IClienteServicio {
 
   @Transactional
   @Override
-  public Cliente updateCliente(Long id, Cliente nuevoCliente) {
+  public void updateCliente(Long id, Cliente nuevoCliente) {
     Cliente cliente = repositorioCliente.findById(id)
         .orElseThrow(() -> new RuntimeException("Cliente no encontrado con ID: " + id));
 
@@ -53,12 +49,12 @@ public class ClienteServicio implements IClienteServicio {
     cliente.setCorreo(nuevoCliente.getCorreo());
     cliente.setCelular(nuevoCliente.getCelular());
 
-    return repositorioCliente.save(cliente);
+    repositorioCliente.save(cliente);
   }
 
   @Override
-  public Cliente updateCliente(Cliente cliente) {
-    return repositorioCliente.save(cliente);
+  public void updateCliente(Cliente cliente) {
+    repositorioCliente.save(cliente);
   }
 
   @Override

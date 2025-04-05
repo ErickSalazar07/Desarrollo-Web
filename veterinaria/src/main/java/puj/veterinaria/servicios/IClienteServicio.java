@@ -10,8 +10,8 @@ public interface IClienteServicio {
   public Cliente findByCorreoAndCedula(String correo, String cedula);
   public Cliente findByCedula(String cedula);
   public void addCliente(Cliente cliente);
-  public Cliente updateCliente(Long id, Cliente cliente);
-  public Cliente updateCliente(Cliente cliente);
+  public void updateCliente(Long id, Cliente cliente);
+  public void updateCliente(Cliente cliente);
   public void deleteById(Long id);
   public Long numeroClientes();
 }

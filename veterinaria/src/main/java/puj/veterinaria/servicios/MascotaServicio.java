@@ -1,6 +1,6 @@
 package puj.veterinaria.servicios;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,16 +20,12 @@ public class MascotaServicio implements IMascotaServicio {
   RepositorioCliente repositorioCliente;
 
   @Override
-  public Mascota searchById(Long id) {
-    try {
-      return repositorioMascota.findById(id).get();
-    } catch(Exception e) {
-      return null;
-    }
+  public Mascota findById(Long id) {
+    return repositorioMascota.findById(id).orElse(null);
   }
 
   @Override
-  public Collection<Mascota> searchAll() {
+  public List<Mascota> findAll() {
     return repositorioMascota.findAll();
   }
 
@@ -40,8 +36,10 @@ public class MascotaServicio implements IMascotaServicio {
 
   @Transactional
   @Override
-  public Mascota updateMascota(Long id,Mascota nuevaMascota) {
-    Mascota mascota = repositorioMascota.findById(id).get();
+  public void updateMascota(Long id,Mascota nuevaMascota) {
+    Mascota mascota = repositorioMascota.findById(id).orElse(null);
+
+    if(mascota == null) return;
 
     mascota.setNombre(nuevaMascota.getNombre());
     mascota.setRaza(nuevaMascota.getRaza());
@@ -52,7 +50,12 @@ public class MascotaServicio implements IMascotaServicio {
     mascota.setCliente(repositorioCliente.findByCedula(nuevaMascota.getCliente().getCedula()));
     mascota.setEstadoActivo(nuevaMascota.getEstadoActivo());
 
-    return repositorioMascota.save(mascota);
+    repositorioMascota.save(mascota);
+  }
+
+  @Override
+  public void updateMascota(Mascota mascota) {
+    repositorioMascota.save(mascota);
   }
 
   @Override
@@ -67,8 +70,7 @@ public class MascotaServicio implements IMascotaServicio {
 
   @Override
   public void cambiarEstadoById(Long id) {
-    Mascota mascota = repositorioMascota.findById(id).get();
-
+    Mascota mascota = repositorioMascota.findById(id).orElse(null);
     if(mascota == null) return;
 
     mascota.setEstadoActivo(!mascota.getEstadoActivo());
