@@ -1,6 +1,6 @@
 package puj.veterinaria.servicios;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,15 +20,11 @@ public class ClienteServicio implements IClienteServicio {
 
   @Override
   public Cliente findById(Long id) {
-    try {
-      return repositorioCliente.findById(id).get();
-    } catch(Exception e) {
-      return null;
-    }
+    return repositorioCliente.findById(id).orElse(null);
   }
 
   @Override
-  public Collection<Cliente> findAll() {
+  public List<Cliente> findAll() {
     return repositorioCliente.findAll();
   }
 
@@ -57,6 +53,11 @@ public class ClienteServicio implements IClienteServicio {
     cliente.setCorreo(nuevoCliente.getCorreo());
     cliente.setCelular(nuevoCliente.getCelular());
 
+    return repositorioCliente.save(cliente);
+  }
+
+  @Override
+  public Cliente updateCliente(Cliente cliente) {
     return repositorioCliente.save(cliente);
   }
 

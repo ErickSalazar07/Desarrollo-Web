@@ -2,6 +2,8 @@ package puj.veterinaria.entidades;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,10 +40,12 @@ public class Mascota {
   @Column(nullable = false)
   private Boolean estadoActivo;
 
+  @JsonIgnore
   @ManyToOne // usar cedula como foreign key
   @JoinColumn(nullable = false, name = "cliente_cedula", referencedColumnName = "cedula") 
   private Cliente cliente;
 
+  @JsonIgnore
   @OneToMany(mappedBy = "mascota")
   private List<Tratamiento> tratamientos;
   
