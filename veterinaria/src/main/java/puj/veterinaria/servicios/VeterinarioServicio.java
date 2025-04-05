@@ -1,6 +1,6 @@
 package puj.veterinaria.servicios;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,13 +15,13 @@ public class VeterinarioServicio implements IVeterinarioServicio {
   RepositorioVeterinario repositorioVeterinario;
 
   @Override
-  public Collection<Veterinario> findAll() {
+  public List<Veterinario> findAll() {
     return repositorioVeterinario.findAll();
   }
 
   @Override
   public Veterinario findById(Long id) {
-    return repositorioVeterinario.findById(id).get();
+    return repositorioVeterinario.findById(id).orElse(null);
   }
 
   @Override
@@ -30,15 +30,17 @@ public class VeterinarioServicio implements IVeterinarioServicio {
   }
 
   @Override
-  public void updateVeterinario(Long id, Veterinario veterinario) throws Exception {
-    if(repositorioVeterinario.findById(id).get() == null) throw new RuntimeException();
+  public void updateVeterinario(Long id, Veterinario veterinario) {
     repositorioVeterinario.save(veterinario);
   }
 
   @Override
-  public void deleteById(Long id) throws Exception {
-    if(repositorioVeterinario.findById(id).get() == null) throw new RuntimeException();
+  public void updateVeterinario(Veterinario veterinario) {
+    repositorioVeterinario.save(veterinario);
+  }
+
+  @Override
+  public void deleteById(Long id) {
     repositorioVeterinario.deleteById(id);
   }
-  
 }

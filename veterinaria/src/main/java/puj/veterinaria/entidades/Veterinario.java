@@ -2,6 +2,8 @@ package puj.veterinaria.entidades;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,6 +33,7 @@ public class Veterinario {
   @Column(nullable = false)
   private String foto;
 
+  @JsonIgnore
   @OneToMany(mappedBy = "veterinarioEncargado")
   private List<Tratamiento> tratamientos;
 

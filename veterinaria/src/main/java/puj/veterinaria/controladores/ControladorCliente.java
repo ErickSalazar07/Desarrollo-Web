@@ -45,8 +45,8 @@ public class ControladorCliente {
   }
 
   // ? Cambiar id por algun id dentro de los clientes guardados en el repositorio
-  // URL: http://localhost:8090/cliente/mostrar-cliente/1
-  @GetMapping("/mostrar-cliente/{id}")
+  // URL: http://localhost:8090/cliente/get-cliente/1
+  @GetMapping("/get-cliente/{id}")
   @Operation(summary = "Retorna 1 Cliente, el cual tiene el id, que se especifica.")
   public Cliente obtenerCliente(@PathVariable(value = "id") Long id) {
     return clienteServicio.findById(id);

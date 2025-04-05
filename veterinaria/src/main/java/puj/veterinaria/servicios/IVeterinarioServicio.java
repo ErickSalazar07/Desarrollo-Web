@@ -1,13 +1,14 @@
 package puj.veterinaria.servicios;
 
-import java.util.Collection;
+import java.util.List;
 
 import puj.veterinaria.entidades.Veterinario;
 
 public interface IVeterinarioServicio {
-  public Collection<Veterinario> findAll();
+  public List<Veterinario> findAll();
   public Veterinario findById(Long id);
   public void addVeterinario(Veterinario veterinario);
-  public void updateVeterinario(Long id, Veterinario veterinario) throws Exception;
-  public void deleteById(Long id) throws Exception;
+  public void updateVeterinario(Long id, Veterinario veterinario);
+  public void updateVeterinario(Veterinario veterinario);
+  public void deleteById(Long id);
 }

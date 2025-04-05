@@ -43,11 +43,17 @@ public class ControladorMascota {
   }
   
   // ? Cambiar id por algun id dentro de los animales guardados en el repositorio
-  // URL: http://localhost:8090/mascota/mostrar-mascota/1 
-  @GetMapping("/mostrar-mascota/{id}")
+  // URL: http://localhost:8090/mascota/get-mascota/1 
+  @GetMapping("/get-mascota/{id}")
   @Operation(summary = "Retornar una Mascota la cual corresponda con el id, que se pasa por la URL.")
   public Mascota obtenerMascota(@PathVariable(value = "id") Long id) {
     return mascotaServicio.findById(id);
+  }
+
+  // URL: http://localhost:8090/mascota/mascotas-cliente/1 
+  @GetMapping("/mascotas-cliente/{cedula}")
+  public List<Mascota> obtenerMascotasCliente(@PathVariable(value = "cedula") String cedula) {
+    return mascotaServicio.findByClienteCedula(cedula);
   }
 
 // Metodos PutMapping

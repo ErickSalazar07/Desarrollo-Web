@@ -30,6 +30,11 @@ public class MascotaServicio implements IMascotaServicio {
   }
 
   @Override
+  public List<Mascota> findByClienteCedula(String cedula) {
+    return repositorioMascota.findByClienteCedula(cedula);
+  }
+
+  @Override
   public void deleteById(Long id) {
     repositorioMascota.deleteById(id);
   }
