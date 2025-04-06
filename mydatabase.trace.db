@@ -1,20 +1,68 @@
-2025-03-30 19:53:11.021686-05:00 jdbc[13]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM CLIENTE WHERE nombre = 'Juliana' OR nombre = 'Juan' OR nombre = 'Pedro'\000d\000a\000d\000a[*]SELECT * FROM mascota WHERE cliente_cedula = '18872435' OR cliente_cedula = '19812305' OR cliente_cedula = '17190115'"; SQL statement:
-SELECT * FROM CLIENTE WHERE nombre = 'Juliana' OR nombre = 'Juan' OR nombre = 'Pedro'
-
-SELECT * FROM mascota WHERE cliente_cedula = '18872435' OR cliente_cedula = '19812305' OR cliente_cedula = '17190115' [42000-232]
-2025-03-30 19:53:28.959556-05:00 jdbc[13]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM CLIENTE WHERE nombre = 'Juliana' OR nombre = 'Juan' OR nombre = 'Pedro'\000d\000a\000d\000a[*]SELECT * FROM mascota WHERE cliente_cedula = '18872435' OR cliente_cedula = '19812305' OR cliente_cedula = '17190115'"; SQL statement:
-SELECT * FROM CLIENTE WHERE nombre = 'Juliana' OR nombre = 'Juan' OR nombre = 'Pedro'
-
-SELECT * FROM mascota WHERE cliente_cedula = '18872435' OR cliente_cedula = '19812305' OR cliente_cedula = '17190115' [42000-232]
-2025-03-30 19:53:30.089336-05:00 jdbc[13]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM CLIENTE WHERE nombre = 'Juliana' OR nombre = 'Juan' OR nombre = 'Pedro'\000d\000a\000d\000a[*]SELECT * FROM mascota WHERE cliente_cedula = '18872435' OR cliente_cedula = '19812305' OR cliente_cedula = '17190115'"; SQL statement:
-SELECT * FROM CLIENTE WHERE nombre = 'Juliana' OR nombre = 'Juan' OR nombre = 'Pedro'
-
-SELECT * FROM mascota WHERE cliente_cedula = '18872435' OR cliente_cedula = '19812305' OR cliente_cedula = '17190115' [42000-232]
-2025-03-30 19:53:30.989240-05:00 jdbc[13]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM CLIENTE WHERE nombre = 'Juliana' OR nombre = 'Juan' OR nombre = 'Pedro'\000d\000a\000d\000a[*]SELECT * FROM mascota WHERE cliente_cedula = '18872435' OR cliente_cedula = '19812305' OR cliente_cedula = '17190115'"; SQL statement:
-SELECT * FROM CLIENTE WHERE nombre = 'Juliana' OR nombre = 'Juan' OR nombre = 'Pedro'
-
-SELECT * FROM mascota WHERE cliente_cedula = '18872435' OR cliente_cedula = '19812305' OR cliente_cedula = '17190115' [42000-232]
+2025-04-05 23:55:04.217809-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "PUBLIC.DROGA.PRECIO_COMPRA" must be in the GROUP BY list; SQL statement:
+SELECT COUNT(*),* FROM DROGA [90016-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:266)
+	at org.h2.command.query.Select.updateAgg(Select.java:542)
+	at org.h2.command.query.Select.gatherGroup(Select.java:525)
+	at org.h2.command.query.Select.queryGroup(Select.java:491)
+	at org.h2.command.query.Select.queryWithoutCache(Select.java:886)
+	at org.h2.command.query.Query.queryWithoutCacheLazyCheck(Query.java:211)
+	at org.h2.command.query.Query.query(Query.java:530)
+	at org.h2.command.query.Query.query(Query.java:498)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:222)
+	at org.h2.command.Command.executeQuery(Command.java:196)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:257)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1344)
+	at org.h2.server.web.WebApp.query(WebApp.java:1142)
+	at org.h2.server.web.WebApp.query(WebApp.java:1118)
+	at org.h2.server.web.WebApp.process(WebApp.java:244)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.servlet.resource.ResourceUrlEncodingFilter.doFilter(ResourceUrlEncodingFilter.java:66)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:114)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:840)

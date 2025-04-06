@@ -25,10 +25,10 @@ public class Tratamiento {
   @Column(nullable = false)
   private Date fecha;
   
-  //@JsonIgnore
-  //@ManyToOne
-  //@JoinColumn(nullable = false, name = "id_droga", referencedColumnName = "id")
-  //private Droga drogaAsignada;
+  @JsonIgnore
+  @ManyToOne
+  @JoinColumn(nullable = false, name = "id_droga", referencedColumnName = "id")
+  private Droga drogaAsignada;
 
   @JsonIgnore
   @ManyToOne
@@ -53,8 +53,8 @@ public class Tratamiento {
 
   public Long getId() { return id; }
   public void setId(Long id) { this.id = id; }
-  // public Droga getDrogaAsignada() { return drogaAsignada; }
-  // public void setDrogaAsignada(Droga drogaAsignada) { this.drogaAsignada = drogaAsignada; }
+  public Droga getDrogaAsignada() { return drogaAsignada; }
+  public void setDrogaAsignada(Droga drogaAsignada) { this.drogaAsignada = drogaAsignada; }
   public String getNombreTratamiento() { return nombreTratamiento; }
   public void setNombreTratamiento(String nombreTratamiento) { this.nombreTratamiento = nombreTratamiento; }
   public Veterinario getVeterinarioEncargado() { return veterinarioEncargado; }

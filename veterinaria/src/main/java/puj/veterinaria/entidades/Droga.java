@@ -24,10 +24,10 @@ public class Droga {
   private String nombre;
 
   @Column(nullable = false, name = "precio_compra")
-  private Integer precioCompra;
+  private Double precioCompra;
 
   @Column(nullable = false, name = "precio_venta")
-  private Integer precioVenta;
+  private Double precioVenta;
 
   @Column(nullable = false, name = "unidad_disponible")
   private Integer unidadDisponible;
@@ -35,11 +35,11 @@ public class Droga {
   @Column(nullable = false, name = "unidad_vendida")
   private Integer unidadVendida;
 
-  //@JsonIgnore
-  //@OneToMany(mappedBy = "drogaAsignada", cascade = CascadeType.ALL)
-  //private List<Tratamiento> tratamientos = new ArrayList<>();
+  @JsonIgnore
+  @OneToMany(mappedBy = "drogaAsignada", cascade = CascadeType.ALL)
+  private List<Tratamiento> tratamientos = new ArrayList<>();
 
-  public Droga(String nombre, Integer precioCompra, Integer precioVenta,
+  public Droga(String nombre, Double precioCompra, Double precioVenta,
       Integer unidadDisponible, Integer unidadVendida) {
     this.nombre = nombre;
     this.precioCompra = precioCompra;
@@ -48,22 +48,20 @@ public class Droga {
     this.unidadVendida = unidadVendida;
   }
 
-
-
 // Getters y Setters
 
   public Long getId() { return id; }
   public void setId(Long id) { this.id = id; }
   public String getNombre() { return nombre; }
   public void setNombre(String nombre) { this.nombre = nombre; }
-  public Integer getPrecioCompra() { return precioCompra; }
-  public void setPrecioCompra(Integer precioCompra) { this.precioCompra = precioCompra; }
-  public Integer getPrecioVenta() { return precioVenta; }
-  public void setPrecioVenta(Integer precioVenta) { this.precioVenta = precioVenta; }
+  public Double getPrecioCompra() { return precioCompra; }
+  public void setPrecioCompra(Double precioCompra) { this.precioCompra = precioCompra; }
+  public Double getPrecioVenta() { return precioVenta; }
+  public void setPrecioVenta(Double precioVenta) { this.precioVenta = precioVenta; }
   public Integer getUnidadDisponible() { return unidadDisponible; }
   public void setUnidadDisponible(Integer unidadDisponible) { this.unidadDisponible = unidadDisponible; }
   public Integer getUnidadVendida() { return unidadVendida; }
   public void setUnidadVendida(Integer unidadVendida) { this.unidadVendida = unidadVendida; }
-  //public List<Tratamiento> getTratamientos() { return tratamientos; }
-  //public void setTratamientos(List<Tratamiento> tratamientos) { this.tratamientos = tratamientos; }
+  public List<Tratamiento> getTratamientos() { return tratamientos; }
+  public void setTratamientos(List<Tratamiento> tratamientos) { this.tratamientos = tratamientos; }
 }
