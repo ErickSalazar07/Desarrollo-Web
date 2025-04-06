@@ -212,12 +212,17 @@ public class DatabaseInit implements ApplicationRunner {
   }
 
   private String obtenerTextoDesdeCelda(Cell celda) {
+
     if (celda == null) return "";
+
     switch (celda.getCellType()) {
+
       case STRING:
         return celda.getStringCellValue();
+
       case NUMERIC:
         return String.valueOf(celda.getNumericCellValue());
+
       case FORMULA:
         switch(celda.getCachedFormulaResultType()) {
 
@@ -226,26 +231,28 @@ public class DatabaseInit implements ApplicationRunner {
 
           case NUMERIC:
             return String.valueOf(celda.getNumericCellValue());
-          
+
+          case BOOLEAN:
+            return String.valueOf(celda.getBooleanCellValue());
+
+      // Se devuelve String vacio, puesto que no es de interes procesar estos tipos de celdas
+          case FORMULA:
+          case ERROR:
           case BLANK:
-            return "";
-          
           case _NONE:
             return "";
         }
-      break;
 
       case BOOLEAN:
         return String.valueOf(celda.getBooleanCellValue());
-      case BLANK:
-        return "";
       
+      // Se devuelve String vacio, puesto que no es de interes procesar estos tipos de celdas
+      case BLANK:
       case _NONE:
-        return "";
-
       case ERROR:
         return "";
     }
+
     return "";
   }
 }

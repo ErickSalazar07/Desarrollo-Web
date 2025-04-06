@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -46,7 +47,7 @@ public class Mascota {
   private Cliente cliente;
 
   @JsonIgnore
-  @OneToMany(mappedBy = "mascota")
+  @OneToMany(mappedBy = "mascota", cascade = CascadeType.ALL)
   private List<Tratamiento> tratamientos;
   
   public Mascota() { }
