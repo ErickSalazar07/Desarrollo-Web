@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Mascota } from 'src/app/modelo/mascota';
 import { MascotaService } from 'src/app/servicio/mascota.service';
+import {HttpClient} from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mostrar-mascotas',
@@ -8,14 +10,18 @@ import { MascotaService } from 'src/app/servicio/mascota.service';
   styleUrls: ['./mostrar-mascotas.component.css']
 })
 export class MostrarMascotasComponent {
+
   mascotaSeleccionadaMostrar!: Mascota;
   mascotaSeleccionadaModificar?: Mascota | null =  null;
-  mascotas!: Mascota[];
+  mascotas: Mascota[]  = [];
   showFormulario = false;
-  constructor(private mascotaServicio: MascotaService) { }
+
+  constructor(private http: HttpClient, private service: MascotaService, private router: Router) { }
 
   ngOnInit() {
-    this.mascotas = this.mascotaServicio.findAll();
+    this.service.findAll().subscribe(mascotas => {
+      this.mascotas = mascotas;
+    });
   }
 
   crearMascota() {
@@ -28,12 +34,15 @@ export class MostrarMascotasComponent {
 
 
   eliminarMascota(mascota: Mascota) {
-    this.mascotaServicio.deleteById(mascota.id);
-    this.mascotas = this.mascotaServicio.findAll();
+    this.service.deleteById(mascota.id).subscribe(() => {
+      this.service.findAll().subscribe(mascotas => {
+        this.mascotas = mascotas;
+      })
+    })
   }
 
   mostrarMascota(mascota: Mascota) {
-    this.mascotaSeleccionadaMostrar = mascota;
+    this.router.navigate(['/mascota/mostrar-mascota', mascota.id]);
   }
 
   actualizarMascota(mascota: Mascota) {

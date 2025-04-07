@@ -34,12 +34,12 @@
           <td>{{mascota.enfermedad ? mascota.enfermedad : 'Vacio'}}</td>
           <td>{{mascota.estadoActivo ? 'Si' : 'No'}}</td>
           <td>
-            <a [routerLink]="['/mascota/mostrar-mascota',mascota.id]">
-              <button class="btn">
+            <a>
+              <button class="btn" (click)="mostrarMascota(mascota)">
                 <i class='bx bxs-show'></i>
               </button>
             </a>
-            <a [routerLink]="['/mascota/update',mascota.id]">
+            <a>
               <button class="btn" (click)="actualizarMascota(mascota)">
                 <i class='bx bx-edit'></i>
               </button>
@@ -52,7 +52,6 @@
       </tbody>
     </table>
   </main>
-  <app-mostrar-mascota *ngIf="mascotaSeleccionadaMostrar" [mascota]="mascotaSeleccionadaMostrar"></app-mostrar-mascota>
 
   <app-formulario-mascota
     *ngIf="showFormulario"
