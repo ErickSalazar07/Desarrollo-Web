@@ -24,12 +24,12 @@ export class MascotaService {
     return this.http.delete(`http://localhost:8090/mascota/delete/${id}`);
   }
 
-  guardarMascota(mascota: Mascota): Observable<Mascota> {
-    return this.http.post<Mascota>('http://localhost:8090/mascota/add', mascota);
+  guardarMascota(mascota: Mascota): Observable<any> {
+    return this.http.post('http://localhost:8090/mascota/add', mascota);
   }
   
 
-  updateMascota(mascota: Mascota): Observable<Mascota> {
-    return this.http.put<Mascota>('http://localhost:8090/mascota/update/'+ mascota.id, mascota);
+  updateMascota(mascota: Mascota): Observable<any> {
+    return this.http.put('http://localhost:8090/mascota/update/'+ mascota.id, mascota);
   }
 }
