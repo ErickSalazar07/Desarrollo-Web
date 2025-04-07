@@ -1,93 +1,35 @@
 import { Injectable } from '@angular/core';
 import { Mascota } from '../modelo/mascota';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MascotaService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  mascotas: Mascota[] = [
-    {
-      id: 1,
-      nombre: "Pachini",
-      raza: "Gato",
-      edad: 4,
-      peso: 4.5,
-      cedulaCliente: "1",
-      enfermedad: "VIF",
-      foto: "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/gato-pachini.jpg?raw=true",
-      estadoActivo: true
-    },
-    {
-      id: 2,
-      nombre: "Zeus",
-      raza: "Perro",
-      edad: 9,
-      peso: 11.7,
-      cedulaCliente: "2",
-      foto: "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/perro-zeus.jpg?raw=true",
-      estadoActivo: true
-    },
-    {
-      id: 3,
-      nombre: "Figaro",
-      raza: "Perro",
-      edad: 9,
-      peso: 19.5,
-      cedulaCliente: "3",
-      enfermedad: "Cataratas",
-      foto: "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/perro-figaro.jpg?raw=true",
-      estadoActivo: true
-    },
-    {
-      id: 4,
-      nombre: "Lola",
-      raza: "Gato",
-      edad: 3,
-      peso: 6.0,
-      cedulaCliente: "4",
-      foto: "https://github.com/ErickSalazar07/Web/blob/main/imagenes/mascotas/gato-lola.jpg?raw=true",
-      estadoActivo: true
-    }
-  ];
+  mascotas: Mascota[] = [];
 
-  findAll(): Mascota[] {
-    return this.mascotas;
+  findAll(): Observable<Mascota[]> {
+    return this.http.get<Mascota[]>('http://localhost:8090/mascota/mascotas');
   }
 
-  findById(id: number) {
-    const mascota = this.mascotas.find(m => m.id === id);
-    if(mascota == undefined) {
-      return null;
-    }
-    return mascota;
+  findById(id: number): Observable<Mascota> {
+    return this.http.get<Mascota>('http://localhost:8090/mascota/get-mascota/' + id);
   }
 
-  deleteById(id: number) {
-    const mascota = this.mascotas.find(m => m.id === id);
-    if(mascota == undefined) return;
-    this.mascotas = this.mascotas.filter(m => m.id !== id);
+  deleteById(id: number): Observable<any> {
+    return this.http.delete(`http://localhost:8090/mascota/delete/${id}`);
   }
 
-  guardarMascota(mascota: Mascota) {
-    if(mascota === null) return;
-
-    if(mascota.id === -1) {
-      mascota.id = this.mascotas.length + 1;
-      this.mascotas.push(mascota);
-    } else {
-      const index = this.mascotas.findIndex(m => m.id === mascota.id);
-      if(index !== -1)
-        this.mascotas[index] = mascota;
-    }
+  guardarMascota(mascota: Mascota): Observable<any> {
+    return this.http.post('http://localhost:8090/mascota/add', mascota);
   }
+  
 
-  updateMascota(mascota: Mascota) {
-    if(mascota === null) return;
-    const index = this.mascotas.findIndex(m => m.id === mascota.id);
-    if(index !== -1)
-      this.mascotas[index] = mascota;
+  updateMascota(mascota: Mascota): Observable<any> {
+    return this.http.put('http://localhost:8090/mascota/update/'+ mascota.id, mascota);
   }
 }

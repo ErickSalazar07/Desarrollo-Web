@@ -12,7 +12,7 @@ import { ActualizarMascotaComponent } from './mascota/actualizar-mascota/actuali
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'cliente/clientes', component: MostrarClientesComponent},
-  {path: 'cliente/mostrar-cliente', component: MostrarClienteComponent},
+  {path: 'cliente/mostrar-cliente/:id', component: MostrarClienteComponent},
   {path: 'mascota/mascotas', component: MostrarMascotasComponent},
   {path: 'mascota/add', component: CrearMascotaComponent},
   {path: 'mascota/mostrar-mascota/:id', component: MostrarMascotaComponent},

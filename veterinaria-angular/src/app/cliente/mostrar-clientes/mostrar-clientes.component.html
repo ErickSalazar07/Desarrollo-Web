@@ -15,7 +15,10 @@
       </tr>
     </thead>
     <tbody>
+      <p *ngIf="clientes.length === 0">No hay clientes para mostrar.</p>
+
       <tr *ngFor="let cliente of clientes">
+
         <td>{{cliente.nombre}}</td>
         <td>{{cliente.correo}}</td>
         <td>{{cliente.cedula}} </td>

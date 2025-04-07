@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Mascota } from 'src/app/modelo/mascota';
@@ -9,13 +10,13 @@ import { MascotaService } from 'src/app/servicio/mascota.service';
   styleUrls: ['./mostrar-mascota.component.css']
 })
 export class MostrarMascotaComponent {
-  @Input()
   mascota?: any
 
   constructor(
     private servicioMascota: MascotaService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {
 
   }
@@ -23,7 +24,9 @@ export class MostrarMascotaComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const id = Number(params.get('id'));
-      this.mascota = this.servicioMascota.findById(id);
+      this.servicioMascota.findById(id).subscribe(mascota => {
+        this.mascota = mascota
+      });
     })
   }
   volver() {

@@ -3,6 +3,7 @@
 <main>
   <section class="informacion">
     <div class="campos">
+      <ng-container *ngIf="!cliente"><h1>Este cliente no existe</h1></ng-container>
       <p>Nombre:</p>
       <p><span>{{cliente.nombre}}</span></p>
       <p>Correo:</p>

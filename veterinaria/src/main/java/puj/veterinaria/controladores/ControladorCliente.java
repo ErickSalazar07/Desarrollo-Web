@@ -20,7 +20,7 @@ import puj.veterinaria.servicios.ClienteServicio;
 
 @RestController
 @RequestMapping("/cliente")
-@CrossOrigin(origins = "https://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ControladorCliente {
 
   @Autowired

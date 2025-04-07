@@ -19,7 +19,7 @@ import puj.veterinaria.servicios.IVeterinarioServicio;
 
 @RestController
 @RequestMapping("/veterinario")
-@CrossOrigin("https://localhost:4200")
+@CrossOrigin("http://localhost:4200")
 public class ControladorVeterinario {
 
   @Autowired
