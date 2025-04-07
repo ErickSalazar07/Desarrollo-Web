@@ -15,6 +15,7 @@ import { MostrarMascotaComponent } from './mascota/mostrar-mascota/mostrar-masco
 import { MostrarMascotasComponent } from './mascota/mostrar-mascotas/mostrar-mascotas.component';
 import { CrearMascotaComponent } from './mascota/crear-mascota/crear-mascota.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule
   ],
   providers: [],

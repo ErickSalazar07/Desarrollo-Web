@@ -1,57 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Cliente } from '../modelo/cliente';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+  clientes: Cliente[] = [];
 
-  clientes: Cliente[] = [
-    {
-      id: 1,
-      cedula: "18872435",
-      nombre: "Juan",
-      correo: "juan@email.com",
-      celular: "3145194072"
-    },
-    {
-      id: 2,
-      cedula: "19812305",
-      nombre: "Pedro",
-      correo: "pedro@email.com",
-      celular: "3045591094"
-    },
-    {
-      id: 3,
-      cedula: "27082133",
-      nombre: "Luis",
-      correo: "luis@email.com",
-      celular: "3944193373"
-    },
-    {
-      id: 4,
-      cedula: "17190115",
-      nombre: "Jualiana",
-      correo: "juli@email.com",
-      celular: "3305004013"
-    }
-  ];
 
-  findAll(): Cliente[] {
-    return this.clientes;
+  findAll(): Observable<Cliente[]> {
+    return this.http.get<Cliente[]>('http://localhost:8090/cliente/clientes');
   }
+  
 
-  findById(id: number) {
-    const cliente = this.clientes.find(c => c.id === id);
-    if(cliente == undefined) return null;
+  findById(id: number): Observable<Cliente> {
+    const cliente = this.http.get<Cliente>('http://localhost:8090/cliente/get-cliente/' + id);
     return cliente;
   }
 
-  deleteById(id: number) {
-    const cliente = this.clientes.find(c => c.id === id);
-    if(cliente == undefined) return;
-    this.clientes = this.clientes.filter(c => c.id !== id);
+  deleteById(id: number): Observable<any> {
+    return this.http.delete(`http://localhost:8090/cliente/delete/${id}`);
   }
 }
