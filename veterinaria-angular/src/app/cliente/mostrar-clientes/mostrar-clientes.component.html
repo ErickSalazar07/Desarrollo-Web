@@ -30,6 +30,9 @@
           <a>
             <button class="btn" (click)="eliminarCliente(cliente)"><i class='bx bx-trash' ></i></button>
           </a>
+          <a type="button" [routerLink]="['/cliente/update/',cliente.id]" class="btn">
+            <i class='bx bx-edit'></i>
+          </a>
         </td>
         <!-- <td>
           <a type="button" th:href="@{/cliente/mostrar-cliente/{id}(id=${cliente.id})}" class="btn">
@@ -45,10 +48,6 @@
       </tr>
     </tbody>
   </table>
-  <br><br><br>
-  <!-- <app-mostrar-mascotas></app-mostrar-mascotas> -->
-  <h1></h1>
-  <app-formulario-cliente></app-formulario-cliente>
 </main>
 <footer>
 </footer>
