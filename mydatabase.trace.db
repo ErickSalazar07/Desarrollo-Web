@@ -3391,3 +3391,21 @@ WHERE m.cliente_cedula = c.cedula AND c.id = 4 [90059-232]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:840)
+2025-04-09 09:56:05.911625-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT m.id AS [*]'ID_MASCOTA',m.nombre,m.enfermedad,t.nombre_tratamiento\000d\000aFROM mascota m\000d\000aINNER JOIN tratamiento t\000d\000aWHERE m.id = t.id_mascota"; expected "identifier"; SQL statement:
+SELECT m.id AS 'ID_MASCOTA',m.nombre,m.enfermedad,t.nombre_tratamiento
+FROM mascota m
+INNER JOIN tratamiento t
+WHERE m.id = t.id_mascota [42001-232]
+2025-04-09 10:49:18.585951-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT c.id,c.nombre,c.cedula,m.nombre,m.id mascota_id,\000d\000a[*]FROM cliente c\000d\000aINNER JOIN mascota m\000d\000aWHERE m.cliente_cedula = c.cedula AND c.nombre = 'Juliana'"; expected "*, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+SELECT c.id,c.nombre,c.cedula,m.nombre,m.id mascota_id,
+FROM cliente c
+INNER JOIN mascota m
+WHERE m.cliente_cedula = c.cedula AND c.nombre = 'Juliana' [42001-232]
+2025-04-09 10:49:24.657455-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT c.id,c.nombre,c.cedula,m.nombre,m.id AS mascota_id,\000d\000a[*]FROM cliente c\000d\000aINNER JOIN mascota m\000d\000aWHERE m.cliente_cedula = c.cedula AND c.nombre = 'Juliana'"; expected "*, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+SELECT c.id,c.nombre,c.cedula,m.nombre,m.id AS mascota_id,
+FROM cliente c
+INNER JOIN mascota m
+WHERE m.cliente_cedula = c.cedula AND c.nombre = 'Juliana' [42001-232]

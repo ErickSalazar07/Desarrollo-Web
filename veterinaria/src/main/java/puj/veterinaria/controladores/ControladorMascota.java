@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
 import puj.veterinaria.entidades.Mascota;
+import puj.veterinaria.entidades.DTO.MascotaDTO;
+import puj.veterinaria.servicios.IClienteServicio;
 import puj.veterinaria.servicios.IMascotaServicio;
 
 @RestController
@@ -25,12 +27,16 @@ public class ControladorMascota {
   @Autowired
   IMascotaServicio mascotaServicio; 
 
+  @Autowired
+  IClienteServicio clienteServicio;
 // Metodos PostMapping
 
   @PostMapping("/add")
   @Operation(summary = "Agrega una Mascota a la db, la cual es pasado por el cuerpo de la peticion.")
-  public void agregarMascota(@RequestBody Mascota mascota) {
-    mascotaServicio.addMascota(mascota);
+  public void agregarMascota(@RequestBody MascotaDTO mascotaPeticion) {
+    Mascota mascotaAgregar = Mascota.getInfoFromDTO(mascotaPeticion);
+    mascotaAgregar.setCliente(clienteServicio.findByCedula(mascotaPeticion.getCedulaCliente()));
+    mascotaServicio.addMascota(mascotaAgregar);
   }
 
 // Metodos @GetMapping

@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import puj.veterinaria.entidades.DTO.MascotaDTO;
 
 // Entidades son un POJO (Plain Old Java Object)
 @Entity
@@ -64,6 +65,18 @@ public class Mascota {
   }
 
 // Comportamiento
+
+  public static Mascota getInfoFromDTO(MascotaDTO mascota) {
+    return new Mascota(
+      mascota.getNombre(),
+      mascota.getRaza(),
+      mascota.getEdad(),
+      mascota.getPeso(),
+      mascota.getEnfermedad(),
+      mascota.getFoto(),
+      mascota.getEstadoActivo()
+    );
+  }
 
 // Getters y Setters
 
