@@ -1,84 +1,117 @@
-@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap');
-@import url('https://fonts.cdnfonts.com/css/pp-neue-montreal');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@300;400;600&display=swap');
 
-:host {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  width: 100%;
-  background-color: #f4f4f4;
+body {
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-.container {
-  background-color: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  width: 400px;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 40px;
-}
-
+/* Centrar el título "Crear Cliente" */
 h1 {
-  font-family: "Atkinson Hyperlegible Next", sans-serif;
   font-size: 28px;
-  font-weight: bold;
+  font-weight: 600;
   color: #054f31;
-  text-align: center;
+  text-align: center; /* Asegura que el texto esté centrado */
+  margin-bottom: 20px;
+  width: 100%;
 }
 
+/* Centrar el label "Nombre" */
+label {
+  font-weight: 600;
+  color: #333;
+  text-align: center; /* Centra el texto del label */
+  display: block; /* Hace que ocupe toda la línea */
+  margin: 0 auto 10px; /* Centrado horizontal con margen inferior */
+  width: fit-content; /* Ancho ajustado al contenido */
+}
+
+/* Cent
+
+/* Estilizando el formulario */
 form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+    background: white;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto;
 }
 
 label {
-  font-size: 16px;
-  font-weight: bold;
-  margin-top: 10px;
-  color: #333;
+    font-weight: 600;
+    color: #333;
+    text-align: left;
+    width: 100%;
 }
 
-input {
-  width: 97%; 
- 
-  padding: 10px;
-  margin-top: 5px;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-  font-family: "PP Neue Montreal", sans-serif;
-  transition: border-color 0.3s ease-in-out;
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border 0.3s;
+    box-sizing: border-box;
 }
 
-input:focus {
-  border-color: #054f31;
-  outline: none;
-  box-shadow: 0px 0px 5px rgba(5, 79, 49, 0.5);
+input:focus,
+select:focus {
+    border: 1px solid #054f31;
+    outline: none;
 }
 
+/* Estilos para radio buttons */
+.radio-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+}
+
+input[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+/* Botón de guardar */
 button {
-  margin-top: 20px;
-  padding: 13px 30px;
-  background-color: #054f31;
-  color: white;
-  font-size: 16px;
-  font-family: "PP Neue Montreal", sans-serif;
-  font-weight: bold;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
+    background-color: #054f31;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    width: 100%;
+    max-width: 500px;
+    margin: 10px auto;
+    display: block;
 }
-
-button:hover {
-  background-color: white;
-  color: #054f31;
-  border: 2px solid #054f31;
-  transform: scale(1.05);
+/* Contenedor para centrar los botones */
+.button-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
