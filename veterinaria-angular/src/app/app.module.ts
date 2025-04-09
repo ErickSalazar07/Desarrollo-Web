@@ -16,6 +16,7 @@ import { MostrarMascotasComponent } from './mascota/mostrar-mascotas/mostrar-mas
 import { CrearMascotaComponent } from './mascota/crear-mascota/crear-mascota.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormularioMascotaComponent,
     MostrarMascotaComponent,
     MostrarMascotasComponent,
-    CrearMascotaComponent
+    CrearMascotaComponent,
+    CrearClienteComponent
   ],
   imports: [
     BrowserModule,

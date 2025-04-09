@@ -32,6 +32,7 @@ public class ControladorCliente {
   @PostMapping("/add")
   @Operation(summary = "Agrega un nuevo Cliente, pasado por el body.")
   public void agregarCliente(@RequestBody Cliente cliente) {
+    cliente.setId(null);
     clienteServicio.addCliente(cliente);
   }
 

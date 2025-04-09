@@ -9,6 +9,7 @@ import { MascotaService } from 'src/app/servicio/mascota.service';
   styleUrls: ['./formulario-mascota.component.css']
 })
 export class FormularioMascotaComponent implements OnInit {
+
   @Input() mascota!: Mascota;
   @Output() formularioCerrado = new EventEmitter<void>();  // Evento para cerrar el formulario
 
@@ -54,5 +55,9 @@ export class FormularioMascotaComponent implements OnInit {
       foto: '',
       estadoActivo: false
     };
+  }
+
+  submitMascota() {
+
   }
 }
