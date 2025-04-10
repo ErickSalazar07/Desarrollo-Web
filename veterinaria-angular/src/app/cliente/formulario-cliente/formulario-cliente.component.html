@@ -9,6 +9,8 @@
   </ng-container>
   <label for="celular">Celular</label>
   <input [(ngModel)]="cliente.celular" name="celular" type="number" id="celular" placeholder="Ingrese su celular" required>
-  <button class="btn" type="submit" (click)="submitFormulario()">Crear</button>
-  <button onclick="window.history.back()">Volver </button>
+  <button class="btn" type="submit" (click)="submitFormulario()">
+    {{cliente.id === -1 ? "Agregar":"Actualizar"}}
+    </button>
+  <button onclick="window.history.back()">Volver</button>
 </form>
