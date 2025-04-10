@@ -66,16 +66,14 @@ public class Mascota {
 
 // Comportamiento
 
-  public static Mascota getInfoFromDTO(MascotaDTO mascota) {
-    return new Mascota(
-      mascota.getNombre(),
-      mascota.getRaza(),
-      mascota.getEdad(),
-      mascota.getPeso(),
-      mascota.getEnfermedad(),
-      mascota.getFoto(),
-      mascota.getEstadoActivo()
-    );
+  public Mascota(MascotaDTO mascotaDTO) {
+    this.nombre = mascotaDTO.getNombre();
+    this.raza = mascotaDTO.getRaza();
+    this.edad = mascotaDTO.getEdad();
+    this.peso = mascotaDTO.getPeso();
+    this.enfermedad = mascotaDTO.getEnfermedad();
+    this.foto = mascotaDTO.getFoto();
+    this.estadoActivo = mascotaDTO.getEstadoActivo();
   }
 
 // Getters y Setters

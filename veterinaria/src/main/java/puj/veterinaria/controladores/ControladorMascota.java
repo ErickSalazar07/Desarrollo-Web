@@ -34,7 +34,7 @@ public class ControladorMascota {
   @PostMapping("/add")
   @Operation(summary = "Agrega una Mascota a la db, la cual es pasado por el cuerpo de la peticion.")
   public void agregarMascota(@RequestBody MascotaDTO mascotaPeticion) {
-    Mascota mascotaAgregar = Mascota.getInfoFromDTO(mascotaPeticion);
+    Mascota mascotaAgregar = new Mascota(mascotaPeticion);
     mascotaAgregar.setCliente(clienteServicio.findByCedula(mascotaPeticion.getCedulaCliente()));
     mascotaServicio.addMascota(mascotaAgregar);
   }
@@ -52,12 +52,13 @@ public class ControladorMascota {
   // URL: http://localhost:8090/mascota/get-mascota/1 
   @GetMapping("/get-mascota/{id}")
   @Operation(summary = "Retornar una Mascota la cual corresponda con el id, que se pasa por la URL.")
-  public Mascota obtenerMascota(@PathVariable(value = "id") Long id) {
-    return mascotaServicio.findById(id);
+  public MascotaDTO obtenerMascota(@PathVariable(value = "id") Long id) {
+    return new MascotaDTO(mascotaServicio.findById(id));
   }
 
   // URL: http://localhost:8090/mascota/mascotas-cliente/1 
   @GetMapping("/mascotas-cliente/{cedula}")
+  @Operation(summary = "Retorna todas las Mascotas de un Cliente, por la cedula del Cliente.")
   public List<Mascota> obtenerMascotasCliente(@PathVariable(value = "cedula") String cedula) {
     return mascotaServicio.findByClienteCedula(cedula);
   }
@@ -74,8 +75,19 @@ public class ControladorMascota {
 
   @PutMapping("/update/{id}")
   @Operation(summary = "Actualiza una Mascota, la cual se pasa por el cuerpo de la peticion.")
-  public void actualizarMascota(@RequestBody Mascota mascota) {
-    mascotaServicio.updateMascota(mascota);
+  public void actualizarMascota(@RequestBody MascotaDTO mascotaDTO) {
+    Mascota mascotaActualizar = mascotaServicio.findById(mascotaDTO.getId());
+
+    mascotaActualizar.setNombre(mascotaDTO.getNombre());
+    mascotaActualizar.setEdad(mascotaDTO.getEdad());
+    mascotaActualizar.setRaza(mascotaDTO.getRaza());
+    mascotaActualizar.setPeso(mascotaDTO.getPeso());
+    mascotaActualizar.setFoto(mascotaDTO.getFoto());
+    mascotaActualizar.setEnfermedad(mascotaDTO.getEnfermedad());
+    mascotaActualizar.setEstadoActivo(mascotaDTO.getEstadoActivo());
+    mascotaActualizar.setCliente(clienteServicio.findByCedula(mascotaDTO.getCedulaCliente()));
+
+    mascotaServicio.updateMascota(mascotaActualizar);
   }
 
 // Metodos DeleteMapping

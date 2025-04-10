@@ -1,5 +1,7 @@
 package puj.veterinaria.entidades.DTO;
 
+import puj.veterinaria.entidades.Mascota;
+
 public class MascotaDTO {
   private Long id;
   private String nombre;
@@ -24,6 +26,18 @@ public class MascotaDTO {
     this.foto = foto;
     this.estadoActivo = estadoActivo;
     this.cedulaCliente = cedulaCliente;
+  }
+
+  public MascotaDTO(Mascota mascota) {
+    this.id = mascota.getId();
+    this.nombre = mascota.getNombre();
+    this.raza = mascota.getRaza();
+    this.edad = mascota.getEdad();
+    this.peso = mascota.getPeso();
+    this.enfermedad = mascota.getEnfermedad();
+    this.foto = mascota.getFoto();
+    this.estadoActivo = mascota.getEstadoActivo();
+    this.cedulaCliente = mascota.getCliente().getCedula();
   }
 
   public Long getId() { return id; }

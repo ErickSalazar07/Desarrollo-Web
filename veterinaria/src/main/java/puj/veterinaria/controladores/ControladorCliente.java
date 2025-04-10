@@ -53,6 +53,12 @@ public class ControladorCliente {
     return clienteServicio.findById(id);
   }
 
+  @GetMapping("/get-cliente-cedula/{cedula}")
+  @Operation(summary = "Retorna 1 Cliente, correspondiente a la cedula.")
+  public Cliente obtenerClientePorCedula(@PathVariable(value = "cedula") String cedula) {
+    return clienteServicio.findByCedula(cedula);
+  }
+
 // Metodos PutMapping
 
   // ? Cambiar id por algun id dentro de los clientes guardados en el repositorio
