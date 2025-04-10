@@ -8,6 +8,7 @@ import { MascotaService } from 'src/app/servicio/mascota.service';
   styleUrls: ['./crear-mascota.component.css']
 })
 export class CrearMascotaComponent {
+
   nuevaMascota: Mascota = {
     id: -1,
     nombre: "",
@@ -19,14 +20,4 @@ export class CrearMascotaComponent {
     raza: "Perro"
   }
 
-  constructor(private servicioMascota: MascotaService) {
-
-  }  
-
-  
-
-  guardarMascota() {
-    console.log("Guardar nueva mascota",this.nuevaMascota);
-    this.servicioMascota.guardarMascota(this.nuevaMascota);
-  }
 }

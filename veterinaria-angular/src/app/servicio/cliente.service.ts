@@ -9,27 +9,31 @@ import { Observable } from 'rxjs';
 export class ClienteService {
 
   constructor(private http: HttpClient) { }
+
   clientes: Cliente[] = [];
+  URL_ROOT:string = "http://localhost:8090/cliente";
 
   addCliente(cliente: Cliente): Observable<Cliente> {
-    return this.http.post<Cliente>('http://localhost:8090/cliente/add',cliente);
+    return this.http.post<Cliente>(this.URL_ROOT + `/add`,cliente);
   }
 
   findAll(): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>('http://localhost:8090/cliente/clientes');
+    return this.http.get<Cliente[]>(this.URL_ROOT + `/clientes`);
   }
 
-
   findById(id: number): Observable<Cliente> {
-    const cliente = this.http.get<Cliente>('http://localhost:8090/cliente/get-cliente/' + id);
-    return cliente;
+    return this.http.get<Cliente>(this.URL_ROOT + `/get-cliente/${id}`);
+  }
+
+  findByCedula(cedula:string): Observable<Cliente> {
+    return this.http.get<Cliente>(this.URL_ROOT + `/get-cliente-cedula/${cedula}`);
   }
 
   updateCliente(cliente: Cliente): Observable<Cliente> {
-    return this.http.put<Cliente>('http://localhost:8090/cliente/update/'+cliente.id,cliente);
+    return this.http.put<Cliente>(this.URL_ROOT + `/update/${cliente.id}`,cliente);
   }
 
   deleteById(id: number): Observable<any> {
-    return this.http.delete(`http://localhost:8090/cliente/delete/${id}`);
+    return this.http.delete(this.URL_ROOT + `/delete/${id}`);
   }
 }

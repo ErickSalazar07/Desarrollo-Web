@@ -1,44 +1,44 @@
-<body>
-<h1>{{ esEdicion ? 'Editar Mascota' : 'Nueva Mascota' }}</h1>
-<!--
-<button class="btn btn-volver" (click)="volver()">
+<button class="btn btn-volver" onclick="window.history.back()">
   <i class='bx bx-arrow-back'></i> Volver
 </button>
--->
-<main>
-  <form (ngSubmit)="guardarMascota()">
-    <div class="informacion-container">
 
-      <div class="campos">
-        <label>Imagen:</label>
-        <input type="text" [(ngModel)]="mascotaForm.foto" name="foto" required>
+<div *ngIf="!clienteEncontrado">
+  <h2 class="msg-error">No se encontro el Cliente</h2>
+</div>
 
-        <label>Nombre:</label>
-        <input type="text" [(ngModel)]="mascotaForm.nombre" name="nombre" required>
+<form>
+  <div class="informacion-container">
+    <div class="campos">
+      <label for="nombre">Nombre:</label>
+      <input id="nombre" type="text" [(ngModel)]="mascota.nombre" name="nombre" required>
 
-        <label>Raza:</label>
-        <input type="text" [(ngModel)]="mascotaForm.raza" name="raza" required>
+      <label for="raza">Raza:</label>
+      <input id="raza" type="text" [(ngModel)]="mascota.raza" name="raza" required>
 
-        <label>Edad:</label>
-        <input type="number" [(ngModel)]="mascotaForm.edad" name="edad" required>
+      <label for="edad">Edad:</label>
+      <input id="edad" type="number" [(ngModel)]="mascota.edad" name="edad" required>
 
-        <label>Peso:</label>
-        <input type="number" [(ngModel)]="mascotaForm.peso" name="peso" required>
+      <label for="peso">Peso:</label>
+      <input id="peso" type="number" [(ngModel)]="mascota.peso" name="peso" required>
 
-        <label>Enfermedad:</label>
-        <input type="text" [(ngModel)]="mascotaForm.enfermedad" name="enfermedad">
+      <label for="imagen">Imagen:</label>
+      <input id="imagen" type="text" [(ngModel)]="mascota.foto" name="foto" required>
 
-        <label>Estado:</label>
-        <select [(ngModel)]="mascotaForm.estadoActivo" name="estadoActivo">
-          <option [value]="true">Activo</option>
-          <option [value]="false">No Activo</option>
-        </select>
-      </div>
+      <label for="enfermedad">Enfermedad:</label>
+      <input id="enfermedad" type="text" [(ngModel)]="mascota.enfermedad" name="enfermedad">
 
-      <button type="submit" class="btn btn-guardar" (click)="submitMascota()">
-          Guardar
-      </button>
+      <label for="cedula-cliente">Cedula Cliente:</label>
+      <input id="cedula-cliente" type="number" [(ngModel)]="mascota.cedulaCliente" name="cedula-cliente"required>
+
+      <label>Estado:</label>
+      <select [(ngModel)]="mascota.estadoActivo" name="estadoActivo">
+        <option [value]="true">Activo</option>
+        <option [value]="false">No Activo</option>
+      </select>
     </div>
-  </form>
-</main>
-</body>
+    <br>
+    <button type="submit" class="btn btn-guardar" (click)="submitMascota()">
+        Guardar
+    </button>
+  </div>
+</form>

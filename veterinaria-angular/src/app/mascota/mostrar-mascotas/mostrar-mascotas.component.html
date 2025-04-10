@@ -5,7 +5,6 @@
     <a type="button" class="btn" id="boton-agregarMascota" [routerLink]="['/mascota/add']">
       <i class='bx bx-plus-circle'></i> Agregar Mascota
     </a>
-
   </section>
   <main>
     <table>
@@ -34,13 +33,13 @@
           <td>{{mascota.enfermedad ? mascota.enfermedad : 'Vacio'}}</td>
           <td>{{mascota.estadoActivo ? 'Si' : 'No'}}</td>
           <td>
-            <a>
-              <button class="btn" (click)="mostrarMascota(mascota)">
+            <a [routerLink]="['/mascota/mostrar-mascota/',mascota.id]">
+              <button class="btn">
                 <i class='bx bxs-show'></i>
               </button>
             </a>
-            <a>
-              <button class="btn" (click)="actualizarMascota(mascota)">
+            <a [routerLink]="['/mascota/update/',mascota.id]">
+              <button class="btn">
                 <i class='bx bx-edit'></i>
               </button>
             </a>
@@ -52,11 +51,4 @@
       </tbody>
     </table>
   </main>
-
-  <app-formulario-mascota
-    *ngIf="showFormulario"
-    [mascota]="mascotaSeleccionadaModificar ? mascotaSeleccionadaModificar : { id: -1, nombre: '', raza: '', edad: 0, peso: 0, cedulaCliente: '', foto: '', estadoActivo: false }"
-    (formularioCerrado)="formularioCerrado()">
-  </app-formulario-mascota>
-
 </body>

@@ -1,6 +1,8 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Cliente } from 'src/app/modelo/cliente';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Mascota } from 'src/app/modelo/mascota';
+import { ClienteService } from 'src/app/servicio/cliente.service';
 import { MascotaService } from 'src/app/servicio/mascota.service';
 
 @Component({
@@ -10,54 +12,33 @@ import { MascotaService } from 'src/app/servicio/mascota.service';
 })
 export class FormularioMascotaComponent implements OnInit {
 
-  @Input() mascota!: Mascota;
-  @Output() formularioCerrado = new EventEmitter<void>();  // Evento para cerrar el formulario
-
-  mascotaForm: Mascota = this.crearNuevaMascota();
-  esEdicion: boolean = false;
+  @Input()
+  mascota!: Mascota;
+  clienteEncontrado: boolean = true;
 
   constructor(
     private servicioMascota: MascotaService,
+    private servicioCliente: ClienteService,
     private router: Router
   ) {}
 
-  ngOnInit() {
-    if (this.mascota && this.mascota.nombre !== '') {
-      this.mascotaForm = { ...this.mascota };
-      this.esEdicion = true;
-    } else {
-      this.mascotaForm = this.crearNuevaMascota();
-      this.esEdicion = false;
-    }
-  }
-
-  guardarMascota() {
-    if (this.esEdicion) {
-      this.servicioMascota.updateMascota(this.mascotaForm)
-      this.router.navigate(['/mascota/mascotas']);
-    } else {
-      this.servicioMascota.guardarMascota(this.mascotaForm);
-      this.router.navigate(['/mascota/mascotas']);
-    }
-    this.servicioMascota.findAll();
-    this.formularioCerrado.emit();
-    this.router.navigate(['/mascota/mascotas']);
-  }
-
-  private crearNuevaMascota(): Mascota {
-    return {
-      id: -1,
-      nombre: '',
-      raza: '',
-      edad: 0,
-      peso: 0,
-      cedulaCliente: '',
-      foto: '',
-      estadoActivo: false
-    };
-  }
+  ngOnInit(): void { }
 
   submitMascota() {
+    this.servicioCliente.findByCedula(this.mascota.cedulaCliente).
+    subscribe(c => {
+      if(c === null) {
+        this.clienteEncontrado = false;
+        return;
+      }
 
+      if(this.mascota.id === -1) {
+        this.servicioMascota.addMascota(this.mascota).subscribe();
+      } else {
+        this.servicioMascota.updateMascota(this.mascota).subscribe();
+      }
+      this.clienteEncontrado = true;
+      this.router.navigate(['/mascota/mascotas']);
+    });
   }
 }

@@ -21,12 +21,6 @@ export class FormularioClienteComponent {
     private router: Router
   ) {}
 
-  agregarCliente() {
-    console.log(this.cliente)
-    this.servicioCliente.addCliente(this.cliente).subscribe();
-    this.eventoAgregarCliente.emit(this.cliente);
-  }
-
   submitFormulario() {
     if(this.cliente.id === -1) {
       this.servicioCliente.addCliente(this.cliente).subscribe();

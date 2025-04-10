@@ -11,29 +11,29 @@ export class MascotaService {
   constructor(private http: HttpClient) { }
 
   mascotas: Mascota[] = [];
-  URL_ROOT:string = "http://localhost:8090/mascota/";
+  URL_ROOT:string = "http://localhost:8090/mascota";
 
   findAll(): Observable<Mascota[]> {
-    return this.http.get<Mascota[]>(this.URL_ROOT + 'mascotas');
+    return this.http.get<Mascota[]>(this.URL_ROOT + '/mascotas');
   }
 
   findById(id: number): Observable<Mascota> {
-    return this.http.get<Mascota>(this.URL_ROOT + `get-mascota/${id}`);
+    return this.http.get<Mascota>(this.URL_ROOT + `/get-mascota/${id}`);
   }
 
   deleteById(id: number): Observable<any> {
-    return this.http.delete(this.URL_ROOT + `delete/${id}`);
+    return this.http.delete(this.URL_ROOT + `/delete/${id}`);
   }
 
-  guardarMascota(mascota: Mascota): Observable<any> {
-    return this.http.post(this.URL_ROOT + 'add', mascota);
+  addMascota(mascota: Mascota): Observable<any> {
+    return this.http.post(this.URL_ROOT + '/add', mascota);
   }
 
   findMascotasByClienteCedula(cedula:string): Observable<Mascota[]> {
-    return this.http.get<Mascota[]>(this.URL_ROOT + `mascotas-cliente/${cedula}`);
+    return this.http.get<Mascota[]>(this.URL_ROOT + `/mascotas-cliente/${cedula}`);
   }
 
   updateMascota(mascota: Mascota): Observable<any> {
-    return this.http.put(this.URL_ROOT + `update/${mascota.id}`, mascota);
+    return this.http.put(this.URL_ROOT + `/update/${mascota.id}`, mascota);
   }
 }
