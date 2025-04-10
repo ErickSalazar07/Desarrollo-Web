@@ -66,7 +66,13 @@ public class ControladorCliente {
   @PutMapping("/update/{id}")
   @Operation(summary = "Actualiza un Cliente existente en la base de datos.")
   public void actualizarCliente(@RequestBody Cliente cliente) {
-    clienteServicio.updateCliente(cliente);
+    Cliente clienteActualizar = clienteServicio.findById(cliente.getId());
+
+    clienteActualizar.setNombre(cliente.getNombre());
+    clienteActualizar.setCorreo(cliente.getCorreo());
+    clienteActualizar.setCelular(cliente.getCelular());
+
+    clienteServicio.updateCliente(clienteActualizar);
   }
 
 // Metodos DeleteMapping

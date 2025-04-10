@@ -7,6 +7,7 @@ import puj.veterinaria.entidades.Tratamiento;
 public interface ITratamientoServicio {
   public List<Tratamiento> findAll();
   public Tratamiento findById(Long id);
+  public List<Tratamiento> findByMascotaId(Long id);
   public void addTratamiento(Tratamiento tratamiento);
   public void updateTratamiento(Long id, Tratamiento tratamiento);
   public void updateTratamiento(Tratamiento tratamiento);

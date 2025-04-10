@@ -46,6 +46,12 @@ public class ControladorTratamiento {
     return tratamientoServicio.findById(id);
   }
 
+  @GetMapping("/tratamientos-mascota/{id}")
+  @Operation(summary = "Retorna los Tratamientos de una Mascota, la cual corresponde al id.")
+  public List<Tratamiento> obtenerTratamientosMascota(@PathVariable(value = "id") Long idMascota) {
+    return tratamientoServicio.findByMascotaId(idMascota);
+  }
+
 // Metodos PutMapping
 
   @PutMapping("/update/{id}")

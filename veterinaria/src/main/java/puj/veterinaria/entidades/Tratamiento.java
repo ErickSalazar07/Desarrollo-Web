@@ -2,8 +2,6 @@ package puj.veterinaria.entidades;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,17 +23,14 @@ public class Tratamiento {
   @Column(nullable = false)
   private Date fecha;
   
-  @JsonIgnore
   @ManyToOne
   @JoinColumn(nullable = false, name = "id_droga", referencedColumnName = "id")
   private Droga drogaAsignada;
 
-  @JsonIgnore
   @ManyToOne
   @JoinColumn(nullable = false, name = "id_mascota", referencedColumnName = "id")
   private Mascota mascota;
 
-  @JsonIgnore
   @ManyToOne // Se usa la cedula del Veterinario como (foreign-key)
   @JoinColumn(nullable = false, name = "cedula_veterinario", referencedColumnName = "cedula")
   private Veterinario veterinarioEncargado;

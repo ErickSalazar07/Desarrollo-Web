@@ -1,258 +1,118 @@
-@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap');
-@import url('https://fonts.cdnfonts.com/css/pp-neue-montreal');
-
 body {
-    font-family: "PP Neue Montreal", serif;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-    flex-direction: column;
+  font-family: "PP Neue Montreal", serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  margin: 0;
+  background-color: #f9f9f9;
 }
 
 h1 {
-    font-family: "PP Neue Montreal", serif;
-    font-size: 30px;
-    margin-left: 80px;
-    margin-top: 15px;
-    text-align: left;
-    justify-content: left;
-    align-self: start;
-
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #054f31;
+  align-self: flex-start;
+  margin-left: 60px;
 }
 
 #btn-inicial {
-    margin-left: 80px;
-    margin-bottom: 20px ;
-    align-self: start;
-    justify-content: left;
-
-}
-
-#boton-agregarMascota {
-    border: 1px solid #054f31;
-
+  align-self: flex-start;
+  margin-left: 60px;
+  margin-bottom: 20px;
 }
 
 main {
-    width:100%;
-    background: white;
-    text-align: center;
+  width: 90%;
+  max-width: 1200px;
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 table {
-    width: auto;
-    border-collapse: collapse;
-    margin-top: 1px;
-    margin-left: 80px;
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-
-
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 10px;
 }
 
 thead {
-    background-color: #969696;
-    color: white;
+  background-color: #054f31;
+  color: white;
 }
 
 thead th {
-    padding: 8px;
-    font-size: 16px;
-    font-weight: 500;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
 }
 
 tbody tr {
-    border-bottom: 1px solid #ddd;
-    transition: background 0.3s;
+  border-bottom: 1px solid #ddd;
+  transition: background 0.3s;
 }
 
 tbody tr:hover {
-    background: #f1f1f1;
+  background-color: #f5f5f5;
 }
 
 td {
-    padding: 10px;
+  padding: 15px;
+  font-size: 16px;
+  text-align: center;
 }
 
 main img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Separa los elementos a los extremos */
-    width: 100%;
-    padding: 10px;
-}
-header img {
-    margin-top: 0px;
-    width: 150px;
-    height: auto;
-    margin-bottom: 5px;
-    margin-left: 50px;
-}
-header button{
-    margin-right: 30px;
-
-}
-
+/* Botones */
 .btn {
-  border: 1px solid black;
-  border-radius: 50px;
-  font-size: 1.2rem;
-  text-decoration: none;
-  padding: 5px;
-  color: black;
-  font-weight: 450;
-}
-
-.btn-volver {
-    padding: 10px 30px;
-    background-color: #054f31;
-    color: white;
-    margin-right: 40px;
-}
-
-.btn-volver:hover {
-    padding: 10px 30px;
-    background-color: white;
-    color: #054f31;
-    border: 2px solid #054f31;
-    margin-right: 40px;
-}
-
-.btn-ver-mascota{
-    border: 1px solid white;
+  padding: 10px 14px;
+  font-size: 15px;
+  margin: 4px;
+  border-radius: 40px;
+  border: 1px solid #054f31;
   background-color: white;
   color: #054f31;
-  padding: 12px 15px;   
+  transition: 0.3s ease;
   display: inline-flex;
-  font-size: 18px;
-  text-align: center;
-  margin-left: 5px;   
-     
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
   align-items: center;
-    justify-content: center;
-  
-
-}  
-.btn {
-    border: 1px solid white;
-  background-color: white;
-  color: #054f31;
-  padding: 12px 15px;   
-  display: inline-flex;
-  font-size: 13px;
-  text-align: center;
-  margin-left: 5px;   
-     
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
-  align-items: center;
-    justify-content: center;
-  
-
-}    
-
-
-
-.btn-ver-mascota:hover, .btn:hover {
-    background-color: #054f31;
-    color: white;
-    transform: scale(1.05); /* Aumenta apenas el tamaño sin desplazar */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}  
-
+  justify-content: center;
+}
 
 .btn i {
-    font-size: 20px;
-    transition: transform 0.3s ease-in-out;
-    display: inline-block; /* Mantiene su espacio fijo */
+  font-size: 18px;
 }
 
-
-
-#icono_desactivado{
-    color: red;
+.btn:hover {
+  background-color: #054f31;
+  color: white;
+  transform: scale(1.05);
 }
 
-#icono_desactivado:hover{
-    color: white;
-    background-color: red;
-}  
-
-
-    
-
-
-.bxs-toggle-right, .bxs-toggle-left {
-    font-size: 32px;
-    padding: 5px;
-    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+/* Si no hay mascotas */
+.sin-mascotas {
+  width: 100%;
+  padding: 60px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #666;
+  border: 3px dashed #ccc;
+  border-radius: 16px;
+  margin-top: 40px;
 }
 
-.btn:hover i {
-    transform: scale(1.1); /* Solo agranda sin mover */
+.sin-mascotas i {
+  font-size: 80px;
+  display: block;
+  margin-bottom: 20px;
+  color: #aaaaaa;
 }
-
-.bxs-toggle-right:hover, .bxs-toggle-left:hover {
-    color: #0e7c48;
-    transform: scale(1.1); /* Pequeño aumento sin desalinear */
-}
-
-
-
-/* Estilo del switch */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 20px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 20px;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 14px;
-    width: 14px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
-}
-
-input:checked + .slider {
-    background-color: #4CAF50;
-}
-
-input:checked + .slider:before {
-    transform: translateX(20px);
-}
-

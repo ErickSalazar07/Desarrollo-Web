@@ -14,7 +14,9 @@
       <p><span>{{cliente.celular}}</span></p>
     </div>
     <div id="mascotas">
-      <p><span *ngIf="mascotas == null">No tiene mascotas</span></p>
+      <p class="msg-no-tiene-mascotas" *ngIf="mascotas && mascotas.length === 0">
+        No tiene mascotas registradas.
+      </p>
       <ul *ngIf="mascotas != null" class="mascotas">
         <li *ngFor="let mascota of mascotas">
           <img [src]="mascota.foto" [alt]="'Imagen de mascota ' + mascota.nombre" />

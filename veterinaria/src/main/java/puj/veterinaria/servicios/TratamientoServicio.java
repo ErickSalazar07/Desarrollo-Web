@@ -33,6 +33,11 @@ public class TratamientoServicio implements ITratamientoServicio {
   }
 
   @Override
+  public List<Tratamiento> findByMascotaId(Long id) {
+    return repositorioTratamiento.findByMascotaId(id).orElse(null);
+  }
+
+  @Override
   public void addTratamiento(Tratamiento tratamiento) {
     repositorioTratamiento.save(tratamiento);
   }

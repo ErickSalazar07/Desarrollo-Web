@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Mascota } from 'src/app/modelo/mascota';
+import { Tratamiento } from 'src/app/modelo/tratamiento';
 import { MascotaService } from 'src/app/servicio/mascota.service';
+import { TratamientoService } from 'src/app/servicio/tratamiento.service';
 
 @Component({
   selector: 'app-mostrar-mascota',
@@ -10,10 +12,13 @@ import { MascotaService } from 'src/app/servicio/mascota.service';
   styleUrls: ['./mostrar-mascota.component.css']
 })
 export class MostrarMascotaComponent {
-  mascota?: any
+
+  mascota!: Mascota;
+  tratamientos!: Tratamiento[];
 
   constructor(
     private servicioMascota: MascotaService,
+    private servicioTratamiento: TratamientoService,
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient
@@ -26,6 +31,8 @@ export class MostrarMascotaComponent {
       const id = Number(params.get('id'));
       this.servicioMascota.findById(id).subscribe(mascota => {
         this.mascota = mascota
+        this.servicioTratamiento.findByMascotaId(this.mascota.id).
+        subscribe(tratamientos => this.tratamientos = tratamientos)
       });
     })
   }

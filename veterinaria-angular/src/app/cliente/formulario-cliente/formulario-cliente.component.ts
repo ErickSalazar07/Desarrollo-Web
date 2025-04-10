@@ -11,6 +11,8 @@ import { ClienteService } from 'src/app/servicio/cliente.service';
 })
 export class FormularioClienteComponent {
 
+  mostrarCedula!:boolean;
+
   @Input()
   cliente!: Cliente;
   @Output()
@@ -21,6 +23,9 @@ export class FormularioClienteComponent {
     private router: Router
   ) {}
 
+  ngOnInit(): void {
+    this.mostrarCedula = !this.cliente.cedula || this.cliente.cedula !== "";
+  }
   submitFormulario() {
     if(this.cliente.id === -1) {
       this.servicioCliente.addCliente(this.cliente).subscribe();

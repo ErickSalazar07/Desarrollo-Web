@@ -9,23 +9,32 @@
       <div class="informacion-container" *ngIf="mascota">
         <img [src]="mascota.foto" [alt]="'Foto Mascota ' + mascota.nombre">
         <div class="campos">
-          <p><span id="negrilla">Nombre:</span></p>
+          <p id="negrilla">Nombre:</p>
           <p>{{ mascota.nombre }}</p>
-          <p><span id="negrilla">Raza:</span></p>
+          <p id="negrilla">Raza:</p>
           <p>{{ mascota.raza }}</p>
-          <p><span id="negrilla">Edad:</span></p>
+          <p id="negrilla">Edad:</p>
           <p>{{ mascota.edad }}</p>
-          <p><span id="negrilla">Peso:</span></p>
+          <p id="negrilla">Peso:</p>
           <p>{{ mascota.peso }}</p>
-          <p><span id="negrilla">Enfermedad:</span></p>
+          <p id="negrilla">Enfermedad:</p>
           <p>{{ mascota.enfermedad ? mascota.enfermedad : 'Vacio' }}</p>
-          <p><span id="negrilla">Estado:</span></p>
+          <p id="negrilla">Estado:</p>
           <p>{{ mascota.estadoActivo ? 'Activo' : 'No Activo' }}</p>
         </div>
       </div>
       <div class="seccion-tratamientos">
-        <ol>
-          <li>
+        <!-- Si no hay tratamientos -->
+        <ng-container *ngIf="!tratamientos || tratamientos.length === 0">
+          <p class="msg-no-tiene-tratamientos">{{ mascota.nombre }} no tiene tratamientos.</p>
+        </ng-container>
+
+        <!-- Si hay tratamientos -->
+        <ol *ngIf="tratamientos && tratamientos.length > 0">
+          <li *ngFor="let tratamiento of tratamientos">
+            <p><strong>Nombre Tratamiento:</strong> {{ tratamiento.nombreTratamiento }}</p>
+            <p><strong>Fecha:</strong> {{ tratamiento.fecha | date: "dd/MM/yyyy" }}</p>
+            <p><strong>Droga Asignada:</strong> {{ tratamiento.drogaAsignada.nombre }}</p>
           </li>
         </ol>
       </div>
