@@ -17,6 +17,7 @@ import { CrearMascotaComponent } from './mascota/crear-mascota/crear-mascota.com
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.component';
+import { DashboardComponent } from './veterinario/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.com
     MostrarMascotaComponent,
     MostrarMascotasComponent,
     CrearMascotaComponent,
-    CrearClienteComponent
+    CrearClienteComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

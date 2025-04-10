@@ -1,3 +1,0 @@
-2025-04-09 19:14:02.732829-05:00 jdbc[13]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT COUNT([*]"; expected "*, DISTINCT, ALL, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
-SELECT COUNT( [42001-232]

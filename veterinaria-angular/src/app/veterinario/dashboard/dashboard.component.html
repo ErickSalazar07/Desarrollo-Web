@@ -1,0 +1,31 @@
+<!-- dashboard.component.html (Angular) -->
+<div class="logo-container">
+    <img src="https://github.com/ErickSalazar07/Web/blob/main/imagenes/imgs-utils/logo.png?raw=true" alt="Logo" class="logo" />
+  </div>
+  
+  <div class="dashboard">
+    <!-- Sidebar fija -->
+    <div class="sidebar">
+      <div class="sidebar-icon" data-tooltip="Home" routerLink="/cliente/home" routerLinkActive="active" id="home">
+        <i class="bx bx-home"></i><div id="nombre-seccion">Home</div>
+      </div>
+  
+      <div class="sidebar-icon" data-tooltip="Mascotas" routerLink="mascota/mascotas" routerLinkActive="active" id="mascotas">
+        <i class='bx bxs-dog'></i><div id="nombre-seccion"> Mascotas</div>
+      </div>
+  
+      <div class="sidebar-icon" data-tooltip="Perfil" routerLink="cliente/clientes" routerLinkActive="active" id="perfil">
+        <i class="bx bx-user"></i><div id="nombre-seccion"> Clientes </div>
+      </div>
+  
+      <div class="sidebar-icon" data-tooltip="Cerrar Sesión" routerLink="/logout" id="logout">
+        <i class="bx bx-log-in-circle"></i><div id="nombre-seccion">Cerrar Sesión</div>
+      </div>
+    </div>
+  
+    <!-- Contenedor donde se carga el contenido -->
+    <div id="contenido" class="contenido">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  
