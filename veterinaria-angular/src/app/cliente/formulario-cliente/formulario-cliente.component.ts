@@ -28,10 +28,13 @@ export class FormularioClienteComponent {
   }
   submitFormulario() {
     if(this.cliente.id === -1) {
-      this.servicioCliente.addCliente(this.cliente).subscribe();
+      this.servicioCliente.addCliente(this.cliente).subscribe({
+        complete: () => this.router.navigate(['/veterinario/dashboard/cliente/clientes'])
+      });
     } else {
-      this.servicioCliente.updateCliente(this.cliente).subscribe();
+      this.servicioCliente.updateCliente(this.cliente).subscribe({
+        complete: () => this.router.navigate(['/veterinario/dashboard/cliente/clientes'])
+      });
     }
-    this.router.navigate(['cliente/clientes']);
   }
 }

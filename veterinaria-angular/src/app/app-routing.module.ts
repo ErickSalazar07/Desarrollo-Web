@@ -11,6 +11,7 @@ import { ActualizarMascotaComponent } from './mascota/actualizar-mascota/actuali
 import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.component';
 import { ActualizarClienteComponent } from './cliente/actualizar-cliente/actualizar-cliente.component';
 import { DashboardComponent } from './veterinario/dashboard/dashboard.component';
+import { LoginClienteComponent } from './cliente/login-cliente/login-cliente.component';
 
 const routes: Routes = [
 
@@ -23,6 +24,7 @@ const routes: Routes = [
   },
   {path: 'home', component: HomeComponent},
   {path: 'cliente/dashboard', component: DashboardComponent},
+  {path: 'cliente/login', component: LoginClienteComponent},
   {path: 'cliente/add', component: CrearClienteComponent},
   {path: 'cliente/clientes', component: MostrarClientesComponent},
   {path: 'cliente/mostrar-cliente/:id', component: MostrarClienteComponent},

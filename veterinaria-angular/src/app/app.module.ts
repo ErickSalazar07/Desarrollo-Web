@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.component';
 import { DashboardComponent } from './veterinario/dashboard/dashboard.component';
+import { LoginClienteComponent } from './cliente/login-cliente/login-cliente.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DashboardComponent } from './veterinario/dashboard/dashboard.component'
     MostrarMascotasComponent,
     CrearMascotaComponent,
     CrearClienteComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoginClienteComponent
   ],
   imports: [
     BrowserModule,

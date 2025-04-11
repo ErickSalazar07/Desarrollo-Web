@@ -33,12 +33,16 @@ export class FormularioMascotaComponent implements OnInit {
       }
 
       if(this.mascota.id === -1) {
-        this.servicioMascota.addMascota(this.mascota).subscribe();
+        this.servicioMascota.addMascota(this.mascota).subscribe({
+            complete: () => this.router.navigate(['/veterinario/dashboard/mascota/mascotas'])
+          }
+        )
       } else {
-        this.servicioMascota.updateMascota(this.mascota).subscribe();
+        this.servicioMascota.updateMascota(this.mascota).subscribe({
+          complete: () => this.router.navigate(['/veterinario/dashboard/mascota/mascotas'])
+        });
       }
       this.clienteEncontrado = true;
-      this.router.navigate(['/mascota/mascotas']);
     });
   }
 }

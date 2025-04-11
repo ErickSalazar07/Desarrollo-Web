@@ -1,0 +1,22 @@
+<div id="contenedor_info">
+  <div class="image-container">
+    <img id="img_login" src="https://github.com/ErickSalazar07/Web/blob/main/imagenes/imgs-utils/logo.png?raw=true">
+  </div>
+
+  <div class="login-container">
+    <section class="campos-login">
+      <h1> Bienvenido</h1>
+      <form method="post">
+        <label for="correo">Correo</label>
+        <input [(ngModel)]="cliente.correo" type="email" id="correo" placeholder="Ingrese correo" required name="correo">
+
+        <label for="cedula">Cédula</label>
+        <input [(ngModel)]="cliente.cedula" id="cedula" placeholder="Ingrese cédula" required name="cedula">
+
+        <p *ngIf="msgError !== ''" class="error-message">{{msgError}}</p>
+
+        <button type="submit" (click)="logearCliente()">Ingresar</button>
+      </form>
+    </section>
+  </div>
+</div>
