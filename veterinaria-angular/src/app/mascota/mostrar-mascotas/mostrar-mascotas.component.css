@@ -63,8 +63,8 @@ tbody tr:hover {
 
 td {
   padding: 15px;
-  font-size: 16px;
   text-align: center;
+
 }
 
 main img {
@@ -76,27 +76,53 @@ main img {
 
 /* Botones */
 .btn {
-  padding: 10px 14px;
-  font-size: 15px;
-  margin: 4px;
-  border-radius: 40px;
+  border: 1px solid black;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding: 5px;
+  color: black;
+  font-weight: 450;
+}
+
+.btn-volver {
+    padding: 10px 30px;
+    background-color: #054f31;
+    color: white;
+    margin-right: 40px;
+}
+
+.btn-volver:hover {
+    padding: 10px 30px;
+    background-color: white;
+    color: #054f31;
+    border: 2px solid #054f31;
+    margin-right: 40px;
+}
+
+.btn-ver-mascota, .btn {
   border: 1px solid #054f31;
   background-color: white;
   color: #054f31;
-  transition: 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  padding: 10px 10px;
+  font-size: 14px;
+  text-align: center;
+  margin-left: 5px;
+}
+
+.btn-ver-mascota:hover, .btn:hover  {
+      background-color: #054f31;
+      color: white;
+      padding: 10px 10px;
+      font-size: 15px;
+      text-align: center;
+      margin-left: 5px;
 }
 
 .btn i {
-  font-size: 18px;
-}
-
-.btn:hover {
-  background-color: #054f31;
-  color: white;
-  transform: scale(1.05);
+    font-size: 20px;
+    transition: transform 0.3s ease-in-out;
+    display: inline-block; /* Mantiene su espacio fijo */
 }
 
 /* Si no hay mascotas */

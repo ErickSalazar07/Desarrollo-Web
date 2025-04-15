@@ -36,4 +36,7 @@ export class MascotaService {
   updateMascota(mascota: Mascota): Observable<any> {
     return this.http.put(this.URL_ROOT + `/update/${mascota.id}`, mascota);
   }
+  cambiarEstadoById(mascota: Mascota): Observable<any> {
+    return this.http.put(this.URL_ROOT + `/cambiar-estado/${mascota.id}`, null);
+  }
 }
