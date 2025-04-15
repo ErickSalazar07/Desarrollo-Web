@@ -44,7 +44,13 @@
           <td>{{mascota.edad}}</td>
           <td>{{mascota.peso}}</td>
           <td>{{mascota.enfermedad ? mascota.enfermedad : 'Vacio'}}</td>
-          <td>{{mascota.estadoActivo ? '✅' : '❌'}}</td>
+          <td>
+            <b>
+              <font [color]="mascota.estadoActivo ? 'green' : 'red'">
+                {{ mascota.estadoActivo ? 'SI' : 'NO' }}
+              </font>
+            </b>
+          </td>
           <td>
             <a (click)="mostrarMascota(mascota)">
               <button title="Ver" class="btn">
