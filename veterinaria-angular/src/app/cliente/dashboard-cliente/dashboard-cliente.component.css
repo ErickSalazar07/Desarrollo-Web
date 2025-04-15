@@ -24,7 +24,7 @@ html, body {
 
 /* Sidebar fijo */
 .sidebar {
-  width: 200px;
+  width: 230px;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -92,10 +92,10 @@ html, body {
 
 /* Iframe principal */
 .contenido {
-  width: calc(100vw - 200px);
+  width: calc(100vw - 230px);
   height: 100vh;
   border: none;
-  margin-left: 200px;
+  margin-left: 230px;
   overflow-y: auto; /* Permite scroll vertical */
   overflow-x: hidden;
 }

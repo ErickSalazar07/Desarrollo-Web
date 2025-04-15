@@ -54,6 +54,12 @@ public class ControladorVeterinario {
     return veterinarioServicio.findById(id);
   }
 
+  @GetMapping("/get-veterinario-cedula/{cedula}")
+  @Operation(summary = "Retorna un Veterinario, el cual corresponde a la cedula que se pasa por la URL.")
+  public Veterinario obtenerVeterinarioCedula(@PathVariable(value = "cedula") String cedula) {
+    return veterinarioServicio.findByCedula(cedula);
+  }
+
 // Metodos PutMapping
 
   // URL: http://localhost:8090/veterinario/update/1

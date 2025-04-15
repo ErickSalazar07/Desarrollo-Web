@@ -20,6 +20,7 @@ import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.com
 import { DashboardComponent } from './veterinario/dashboard/dashboard.component';
 import { LoginClienteComponent } from './cliente/login-cliente/login-cliente.component';
 import { DashboardClienteComponent } from './cliente/dashboard-cliente/dashboard-cliente.component';
+import { LoginVeterinarioComponent } from './veterinario/login-veterinario/login-veterinario.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DashboardClienteComponent } from './cliente/dashboard-cliente/dashboard
     CrearClienteComponent,
     DashboardComponent,
     LoginClienteComponent,
-    DashboardClienteComponent
+    DashboardClienteComponent,
+    LoginVeterinarioComponent
   ],
   imports: [
     BrowserModule,
