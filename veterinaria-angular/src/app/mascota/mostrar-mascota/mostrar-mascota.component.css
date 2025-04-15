@@ -8,14 +8,17 @@ body {
   background-color: #f7f7f7;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   min-height: 100vh;
+
 }
 
 h1 {
   font-size: 32px;
-  margin-top: 20px;
-  color: #054f31;
+  margin-top: 40px;
+  color: black;
+  margin-left: 30px;
+
 }
 
 main {
@@ -25,11 +28,13 @@ main {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   width: 90%;
   max-width: 1000px;
-  margin-top: 20px;
+  margin-top: 0px;
+  margin-left: 30px;
+
 }
 
 .btn-volver {
-  margin-top: 10px;
+  margin-top: 5px;
   font-size: 16px;
   padding: 10px 20px;
   background-color: white;
@@ -38,6 +43,8 @@ main {
   border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  margin-left: 30px;
+
 }
 
 .btn-volver:hover {

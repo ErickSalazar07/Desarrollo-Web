@@ -1,11 +1,22 @@
 <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
 <body>
-  <h1>Información de Mascotas</h1>
-  <section id="btn-inicial" class="acciones">
-    <a type="button" class="btn" id="boton-agregarMascota" [routerLink]="['/mascota/add']">
-      <i class='bx bx-plus-circle'></i> Agregar Mascota
-    </a>
-  </section>
+    <h1>Información de Mascotas</h1>
+  <div id="seccion_busqueda_crear">
+    <section id="btn-inicial" class="acciones">
+      <a type="button" class="btn" id="boton-agregarMascota" [routerLink]="['/mascota/add']">
+        <i class='bx bx-plus-circle'></i> Agregar Mascota
+      </a>
+    </section>
+    <section class="busqueda">
+      <input type="text" placeholder="Buscar..." [(ngModel)]="terminoBusqueda" />
+      <select [(ngModel)]="filtroSeleccionado">
+        <option value="nombre">Nombre</option>
+        <option value="edad">Edad</option>
+        <option value="enfermedad">Enfermedad</option>
+        <option value="estadoActivo">Estado</option>
+      </select>
+    </section>
+  </div>
   <main>
     <table>
       <thead>
@@ -22,7 +33,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let mascota of mascotas">
+        <tr *ngFor="let mascota of mascotasFiltradas">
           <td>
             <img [src]="mascota.foto" [alt]="'Foto de ' + mascota.nombre">
           </td>
@@ -33,7 +44,7 @@
           <td>{{mascota.enfermedad ? mascota.enfermedad : 'Vacio'}}</td>
           <td>{{mascota.estadoActivo ? 'Si' : 'No'}}</td>
           <td>
-            <a [routerLink]="['/mascota/mostrar-mascota/',mascota.id]">
+            <a (click)="mostrarMascota(mascota)">
               <button class="btn">
                 <i class='bx bxs-show'></i>
               </button>
@@ -43,9 +54,14 @@
                 <i class='bx bx-edit'></i>
               </button>
             </a>
-            <button class="btn" (click)="eliminarMascota(mascota)">
-              <i class='bx bx-trash'></i>
+            <!--
+            <button class="btn_switch" (click)="eliminarMascota(mascota)">
+              <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider round"></span>
+              </label>
             </button>
+            -->
             </td>
         </tr>
       </tbody>

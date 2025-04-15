@@ -1,9 +1,7 @@
  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
  <body>
     <h1>Datos de la Mascota</h1>
-    <button class="btn btn-volver" (click)="volver()">
-      <i class='bx bx-arrow-back'></i> Volver
-    </button>
+
     <main>
       <ng-container *ngIf="!mascota"><h1>Esta mascota no existe</h1></ng-container>
       <div class="informacion-container" *ngIf="mascota">
@@ -22,6 +20,9 @@
           <p id="negrilla">Estado:</p>
           <p>{{ mascota.estadoActivo ? 'Activo' : 'No Activo' }}</p>
         </div>
+        <button class="btn btn-volver" (click)="volver()">
+          <i class='bx bx-arrow-back'></i> Volver
+        </button>
       </div>
       <div class="seccion-tratamientos">
         <!-- Si no hay tratamientos -->

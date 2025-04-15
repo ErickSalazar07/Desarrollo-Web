@@ -19,6 +19,8 @@ const routes: Routes = [
   children: [
     { path: 'mascota/mascotas', component: MostrarMascotasComponent },
     {path: 'cliente/clientes', component: MostrarClientesComponent},
+    {path: 'mascota/mostrar-mascota/:id', component: MostrarMascotaComponent},
+
 
   ]
   },
@@ -31,7 +33,6 @@ const routes: Routes = [
   {path: 'cliente/update/:id', component: ActualizarClienteComponent},
   {path: 'mascota/mascotas', component: MostrarMascotasComponent},
   {path: 'mascota/add', component: CrearMascotaComponent},
-  {path: 'mascota/mostrar-mascota/:id', component: MostrarMascotaComponent},
   {path: 'mascota/update/:id', component: ActualizarMascotaComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: PagNoEncontradaComponent},

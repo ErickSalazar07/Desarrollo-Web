@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.component';
 import { DashboardComponent } from './veterinario/dashboard/dashboard.component';
 import { LoginClienteComponent } from './cliente/login-cliente/login-cliente.component';
+import { DashboardClienteComponent } from './cliente/dashboard-cliente/dashboard-cliente.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { LoginClienteComponent } from './cliente/login-cliente/login-cliente.com
     CrearMascotaComponent,
     CrearClienteComponent,
     DashboardComponent,
-    LoginClienteComponent
+    LoginClienteComponent,
+    DashboardClienteComponent
   ],
   imports: [
     BrowserModule,
