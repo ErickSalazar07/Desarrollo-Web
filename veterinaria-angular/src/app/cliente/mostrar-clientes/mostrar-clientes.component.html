@@ -1,56 +1,67 @@
-<h1>Dueños de Mascotas</h1>
-<section id="btn-inicial"class="acciones">
-  <a type="button" class="btn" [routerLink]="['/cliente/add']"><i class='bx bx-plus-circle'></i> Agregar Dueño</a>
-</section>
-<main>
-  <table>
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Email</th>
-        <th>Cédula</th>
-        <th>Celular</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <p *ngIf="clientes.length === 0">No hay clientes para mostrar.</p>
+<body>
+  <h1>Dueños de Mascotas</h1>
+  <div id="seccion_busqueda_crear">
+    <section id="btn-inicial"class="acciones">
+      <a type="button" class="btn" [routerLink]="['/cliente/add']"><i class='bx bx-plus-circle'></i> Agregar Dueño</a>
+    </section>
+    <section class="busqueda">
+      <input type="text" placeholder="Buscar..." [(ngModel)]="terminoBusqueda" />
+      <select [(ngModel)]="filtroSeleccionado">
+        <option value="nombre">Nombre</option>
+        <option value="cedula">Cédula</option>
+        <option value="celular">Celular</option>
+      </select>
+    </section>
+  </div>
 
-      <tr *ngFor="let cliente of clientes">
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Cédula</th>
+          <th>Celular</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <p *ngIf="clientes.length === 0">No hay clientes para mostrar.</p>
 
-        <td>{{cliente.nombre}}</td>
-        <td>{{cliente.correo}}</td>
-        <td>{{cliente.cedula}} </td>
-        <td>{{cliente.celular}}</td>
-        <td>
-          <a>
-            <button class="btn" (click)="mostrarCliente(cliente)"><i class='bx bxs-show'></i></button>
-          </a>
-          <a>
-            <button class="btn" (click)="eliminarCliente(cliente)"><i class='bx bx-trash' ></i></button>
-          </a>
-          <a type="button" [routerLink]="['/cliente/update/',cliente.id]" class="btn">
-            <i class='bx bx-edit'></i>
-          </a>
-        </td>
-        <!-- <td>
-          <a type="button" th:href="@{/cliente/mostrar-cliente/{id}(id=${cliente.id})}" class="btn">
-            <i class='bx bxs-show'></i>
-          </a>
-          <a type="button" th:href="@{/cliente/update/{id}(id=${cliente.id})}" class="btn">
-            <i class='bx bx-edit'></i>
-          </a>
-          <a type="button" th:href="@{/cliente/delete/{id}(id=${cliente.id})}" onclick="recargarDespues()" class="btn">
-            <i class='bx bx-trash' ></i>
-          </a>
-        </td> -->
-      </tr>
-    </tbody>
-  </table>
-</main>
-<footer>
-</footer>
+        <tr *ngFor="let cliente of clientesFiltrados">
+
+          <td>{{cliente.nombre}}</td>
+          <td>{{cliente.correo}}</td>
+          <td>{{cliente.cedula}} </td>
+          <td>{{cliente.celular}}</td>
+          <td>
+            <a>
+              <button class="btn" (click)="mostrarCliente(cliente)"><i class='bx bxs-show'></i></button>
+            </a>
+            <a>
+              <button class="btn" (click)="eliminarCliente(cliente)"><i class='bx bx-trash' ></i></button>
+            </a>
+            <a>
+              <button class="btn" [routerLink]="['/cliente/update/',cliente.id]"> <i class='bx bx-edit'></i></button>             
+            </a>
+          </td>
+          <!-- <td>
+            <a type="button" th:href="@{/cliente/mostrar-cliente/{id}(id=${cliente.id})}" class="btn">
+              <i class='bx bxs-show'></i>
+            </a>
+            <a type="button" th:href="@{/cliente/update/{id}(id=${cliente.id})}" class="btn">
+              <i class='bx bx-edit'></i>
+            </a>
+            <a type="button" th:href="@{/cliente/delete/{id}(id=${cliente.id})}" onclick="recargarDespues()" class="btn">
+              <i class='bx bx-trash' ></i>
+            </a>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>
 <script>
   function recargarDespues() {
       setTimeout(() => {
