@@ -21,6 +21,7 @@ import { DashboardComponent } from './veterinario/dashboard/dashboard.component'
 import { LoginClienteComponent } from './cliente/login-cliente/login-cliente.component';
 import { DashboardClienteComponent } from './cliente/dashboard-cliente/dashboard-cliente.component';
 import { LoginVeterinarioComponent } from './veterinario/login-veterinario/login-veterinario.component';
+import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { LoginVeterinarioComponent } from './veterinario/login-veterinario/login
     DashboardComponent,
     LoginClienteComponent,
     DashboardClienteComponent,
-    LoginVeterinarioComponent
+    LoginVeterinarioComponent,
+    LoginAdminComponent
   ],
   imports: [
     BrowserModule,
