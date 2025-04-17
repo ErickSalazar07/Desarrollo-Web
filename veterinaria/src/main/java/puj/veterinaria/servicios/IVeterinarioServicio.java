@@ -12,5 +12,4 @@ public interface IVeterinarioServicio {
   public void updateVeterinario(Long id, Veterinario veterinario);
   public void updateVeterinario(Veterinario veterinario);
   public void deleteById(Long id);
-  public Veterinario findByCedula(String cedula);
 }

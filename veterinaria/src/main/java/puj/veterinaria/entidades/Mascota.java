@@ -39,7 +39,7 @@ public class Mascota {
   @Column(nullable = false)
   private String foto;
 
-  @Column(nullable = false)
+  @Column(nullable = false, name = "estado_activo")
   private Boolean estadoActivo;
 
   @JsonIgnore
