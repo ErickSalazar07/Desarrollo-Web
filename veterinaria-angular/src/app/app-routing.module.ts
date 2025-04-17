@@ -12,6 +12,9 @@ import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.com
 import { ActualizarClienteComponent } from './cliente/actualizar-cliente/actualizar-cliente.component';
 import { DashboardComponent } from './veterinario/dashboard/dashboard.component';
 import { LoginClienteComponent } from './cliente/login-cliente/login-cliente.component';
+import { DashboardClienteComponent } from './cliente/dashboard-cliente/dashboard-cliente.component';
+import { LoginVeterinarioComponent } from './veterinario/login-veterinario/login-veterinario.component';
+import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
 
 const routes: Routes = [
 
@@ -20,13 +23,19 @@ const routes: Routes = [
     { path: 'mascota/mascotas', component: MostrarMascotasComponent },
     {path: 'cliente/clientes', component: MostrarClientesComponent},
     {path: 'mascota/mostrar-mascota/:id', component: MostrarMascotaComponent},
-
-
+    {path: 'cliente/mostrar-cliente/:id', component: MostrarClienteComponent},
   ]
   },
+
+  {path: 'cliente/dashboard/:id', component: DashboardClienteComponent ,
+  children: [
+    {path: 'mostrar-cliente/:id', component: MostrarClienteComponent},
+  ]
+},
+  {path: 'mascota/mostrar-mascota/:id', component: MostrarMascotaComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'cliente/dashboard', component: DashboardComponent},
   {path: 'cliente/login', component: LoginClienteComponent},
+  {path: 'admin/login', component: LoginAdminComponent},
   {path: 'cliente/add', component: CrearClienteComponent},
   {path: 'cliente/clientes', component: MostrarClientesComponent},
   {path: 'cliente/mostrar-cliente/:id', component: MostrarClienteComponent},
@@ -34,6 +43,7 @@ const routes: Routes = [
   {path: 'mascota/mascotas', component: MostrarMascotasComponent},
   {path: 'mascota/add', component: CrearMascotaComponent},
   {path: 'mascota/update/:id', component: ActualizarMascotaComponent},
+  {path: 'veterinario/login', component: LoginVeterinarioComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: PagNoEncontradaComponent},
 ];

@@ -1,15 +1,15 @@
-import { Route, Router } from '@angular/router';
-import { Component, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Cliente } from 'src/app/modelo/cliente';
 import { ClienteService } from 'src/app/servicio/cliente.service';
 
 @Component({
-  selector: 'app-login-cliente',
-  templateUrl: './login-cliente.component.html',
-  styleUrls: ['./login-cliente.component.css']
+  selector: 'app-login-admin',
+  templateUrl: './login-admin.component.html',
+  styleUrls: ['./login-admin.component.css']
 })
-export class LoginClienteComponent {
-
+export class LoginAdminComponent {
+// ESTO LO COPIÉ DE LOGIN-CLIENTE, PERO TENGO QUE CAMBIARLO PARA QUE SEAN ADMINISTRADORES
   cliente:Cliente = {
     nombre: "",
     id: -1,
@@ -35,4 +35,5 @@ export class LoginClienteComponent {
       this.router.navigate([`/cliente/dashboard/${c.id}/mostrar-cliente/${c.id}`]);
     });
   }
+    
 }

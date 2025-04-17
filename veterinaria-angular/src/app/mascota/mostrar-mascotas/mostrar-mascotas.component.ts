@@ -37,9 +37,8 @@ export class MostrarMascotasComponent {
 
 
   cambiarEstadoMascota(mascota: Mascota) {
-    mascota.estadoActivo = !mascota.estadoActivo; 
-    this.service.updateMascota(mascota).subscribe(() => {
-      this.service.findAll().subscribe(mascotas => {
+    this.service.cambiarEstadoById(mascota).subscribe(() => {
+      complete: this.service.findAll().subscribe(mascotas => {
         this.mascotas = mascotas;
       });
     });
@@ -73,6 +72,8 @@ export class MostrarMascotasComponent {
           return (mascota.enfermedad || '').toLowerCase().includes(valor);
         case 'estadoActivo':
           return (mascota.estadoActivo ? 'si' : 'no').includes(valor);
+        case 'raza':
+          return mascota.raza.toLowerCase().includes(valor);
         default:
           return true;
       }

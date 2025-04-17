@@ -12,11 +12,16 @@
       <a [routerLink]="['/cliente/clientes']">Ver Clientes</a>
     </div>
   </nav>
-  <a class="btn-ingresar" [routerLink]="['/cliente/login']">
-    <button type="button" class="boton_empezar">
-      Ingresar
-    </button>
-  </a>
+
+  <div class="dropdown">
+    <button type="button" class="boton_empezar">Ingresar</button>
+    <div class="dropdown-content">
+      <a [routerLink]="['/cliente/login']">Usuario</a>
+      <a [routerLink]="['/veterinario/login']">Veterinario</a>
+      <a [routerLink]="['/admin/login']">Admin</a>
+    </div>
+  </div>
+  
 </header>
 <main>
   <div id="LandPagePrincipal">

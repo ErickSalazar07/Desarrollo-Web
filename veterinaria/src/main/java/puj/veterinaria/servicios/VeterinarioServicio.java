@@ -20,6 +20,11 @@ public class VeterinarioServicio implements IVeterinarioServicio {
   }
 
   @Override
+  public Veterinario findByCedula(String cedula) {
+    return repositorioVeterinario.findByCedula(cedula);
+  }
+  
+  @Override
   public Veterinario findById(Long id) {
     return repositorioVeterinario.findById(id).orElse(null);
   }

@@ -10,7 +10,8 @@
         <i class="bx bx-home"></i><div id="nombre-seccion">Home</div>
       </div>
   
-      <div class="sidebar-icon" data-tooltip="Mascotas" routerLink="mascota/mascotas" routerLinkActive="active" id="mascotas">
+      <div class="sidebar-icon" data-tooltip="Mascotas"  [routerLink]="['mostrar-cliente', cliente.id]" 
+      routerLinkActive="active" id="mascotas">
         <i class='bx bxs-dog'></i><div id="nombre-seccion"> Mis Mascotas</div>
       </div>
   

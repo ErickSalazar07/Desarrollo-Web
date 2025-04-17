@@ -13,6 +13,9 @@ import { ClienteService } from 'src/app/servicio/cliente.service';
 })
 export class MostrarClientesComponent implements OnInit {
   clientes: Cliente[] = [];
+  terminoBusqueda: string = '';
+  filtroSeleccionado: string = 'nombre';
+  
   constructor(private http: HttpClient, private router: Router, private service: ClienteService) {}
 
 
@@ -33,6 +36,24 @@ export class MostrarClientesComponent implements OnInit {
     this.service.findAll().subscribe(clientes => {
         this.clientes = clientes;
       })
+    });
+  }
+  get clientesFiltrados() {
+    if (!this.terminoBusqueda) return this.clientes;
+  
+    return this.clientes.filter(cliente => {
+      const valor = this.terminoBusqueda.toLowerCase();
+  
+      switch (this.filtroSeleccionado) {
+        case 'nombre':
+          return cliente.nombre.toLowerCase().includes(valor);
+        case 'cedula':
+          return cliente.cedula.toString().includes(valor);
+          case 'celular':
+            return cliente.celular.toString().includes(valor);
+        default:
+          return true;
+      }
     });
   }
   
