@@ -25,6 +25,11 @@ public class VeterinarioServicio implements IVeterinarioServicio {
   }
 
   @Override
+  public Veterinario findByCedula(String cedula) {
+    return repositorioVeterinario.findByCedula(cedula);
+  }
+
+  @Override
   public void addVeterinario(Veterinario veterinario) {
     repositorioVeterinario.save(veterinario);
   }

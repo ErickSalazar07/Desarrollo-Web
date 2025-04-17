@@ -63,6 +63,26 @@ public class ControladorVeterinario {
     veterinarioServicio.updateVeterinario(veterinario);
   }
 
+  // URL: https://localhost:8090/veterinario/update/104828483
+  @PutMapping("/update/{cedula}")
+  @Operation(summary = "Actualiza un Veterinario, correspondiente a la cedula que se pasa.")
+  public void actualizarVeterinarioPorCedula(@RequestBody Veterinario veterinario) {
+    Veterinario veterinarioActualizar = veterinarioServicio.findByCedula(veterinario.getCedula());
+    veterinarioActualizar.setNombre(veterinario.getNombre());
+    veterinarioActualizar.setActivo(veterinario.getActivo());
+    veterinarioActualizar.setContrasena(veterinario.getContrasena());
+    veterinarioActualizar.setEspecialidad(veterinario.getEspecialidad());
+    veterinarioActualizar.setFoto(veterinario.getFoto());
+    veterinarioServicio.updateVeterinario(veterinarioActualizar);
+  }
+  
+  @PutMapping("/update-estado/{cedula}")
+  public void cambiarEstadoVeterinarioPorCedula(@PathVariable(value = "cedula") String cedula) {
+    Veterinario veterinario = veterinarioServicio.findByCedula(cedula);
+    veterinario.setActivo(!veterinario.getActivo());
+    veterinarioServicio.updateVeterinario(veterinario);
+  }
+
 // Metodos DeleteMapping
 
   // URL: http://localhost:8090/veterinario/delete/1

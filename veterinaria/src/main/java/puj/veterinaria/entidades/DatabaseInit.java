@@ -153,7 +153,7 @@ public class DatabaseInit implements ApplicationRunner {
       String datos[];
       while((linea = br.readLine()) != null) {
         datos = linea.split(",");
-        repositorioVeterinario.save(new Veterinario(datos[2],datos[0],datos[1],datos[3],datos[4]));
+        repositorioVeterinario.save(new Veterinario(datos[2],datos[0],datos[1],datos[3],datos[4],datos[5].equalsIgnoreCase("si")));
       }
       System.out.println("\n\n\n\033[36mSE CARGARON LOS VETERINARIOS.\033[0m\n\n\n");
     } catch(Exception e) {
