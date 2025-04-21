@@ -10,15 +10,15 @@
           <h1> Bienvenido</h1>
 
           <form method="post">
-            <label for="correo">Correo</label>
-            <input [(ngModel)]="cliente.correo" type="email" id="correo" placeholder="Ingrese correo" required name="correo">
+            <label for="username">Username</label>
+            <input [(ngModel)]="admin.username"  id="username" placeholder="Ingrese usuario" required name="username">
     
-            <label for="cedula">Cédula</label>
-            <input [(ngModel)]="cliente.cedula" id="cedula" placeholder="Ingrese cédula" required name="cedula">
+            <label for="celular">Celular</label>
+            <input [(ngModel)]="admin.celular" id="celular" placeholder="Ingrese celular" required name="celular">
     
             <p *ngIf="msgError !== ''" class="error-message">{{msgError}}</p>
     
-            <button type="submit" (click)="logearCliente()">Ingresar</button>
+            <button type="submit" (click)="logearAdmin()">Ingresar</button>
           </form>
         </section>
       </div>

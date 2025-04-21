@@ -17,5 +17,8 @@ export class VeterinarioService {
   findByCedula(cedula: string): Observable<Veterinario> {
     return this.http.get<Veterinario>(this.URL_ROOT + `/get-veterinario-cedula/${cedula}`);
   } 
+  findAll(): Observable<Veterinario[]> {
+    return this.http.get<Veterinario[]>(this.URL_ROOT + `/veterinarios`);
+  } 
 
 }

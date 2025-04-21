@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cliente } from 'src/app/modelo/cliente';
-import { ClienteService } from 'src/app/servicio/cliente.service';
+import { Admin } from 'src/app/modelo/admin';
+import { AdminService} from 'src/app/servicio/admin.service';
 
 @Component({
   selector: 'app-login-admin',
@@ -9,30 +9,30 @@ import { ClienteService } from 'src/app/servicio/cliente.service';
   styleUrls: ['./login-admin.component.css']
 })
 export class LoginAdminComponent {
-// ESTO LO COPIÉ DE LOGIN-CLIENTE, PERO TENGO QUE CAMBIARLO PARA QUE SEAN ADMINISTRADORES
-  cliente:Cliente = {
-    nombre: "",
+
+  admin:Admin = {
+    username: "",
     id: -1,
-    cedula: "",
     celular: "",
+    nombre: "",
     correo: "",
-  };
+  }
 
   msgError:string = "";
 
   constructor(
-    private servicioCliente:ClienteService,
+    private servicioAdmin:AdminService,
     private router: Router
   ) {}
 
-  logearCliente() {
-    this.servicioCliente.findByCedula(this.cliente.cedula).
+  logearAdmin() {
+    this.servicioAdmin.findByUsername(this.admin.username).
     subscribe(c => {
-      if(c == null || this.cliente.correo !== c.correo)  {
+      if(c == null || this.admin.celular !== c.celular)  {
         this.msgError = "Datos incorrectos";
         return;
       }
-      this.router.navigate([`/cliente/dashboard/${c.id}/mostrar-cliente/${c.id}`]);
+      this.router.navigate([`/admin/dashboard/cliente/clientes`]);
     });
   }
     

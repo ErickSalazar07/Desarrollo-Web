@@ -16,7 +16,8 @@ export class LoginVeterinarioComponent {
     cedula: "",
     contrasena: "",
     foto: "",
-    especialidad: ""
+    especialidad: "",
+    activo: false
   };
 
   msgError:string = "";

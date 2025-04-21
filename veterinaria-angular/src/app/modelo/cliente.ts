@@ -8,3 +8,4 @@ export interface Cliente {
   celular: string;
   mascotas?: Mascota[];
 }
+

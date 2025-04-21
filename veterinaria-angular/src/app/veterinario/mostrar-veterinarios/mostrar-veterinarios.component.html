@@ -1,0 +1,57 @@
+<body>
+    <h1>Veterinarios</h1>
+    <div id="seccion_busqueda_crear">
+      <section id="btn-inicial" class="acciones">
+        <a type="button" class="btn" [routerLink]="['/']"><i class='bx bx-plus-circle'></i> Agregar Veterinario</a>
+      </section>
+      <section class="busqueda">
+        <input type="text" placeholder="Buscar..." [(ngModel)]="terminoBusqueda" />
+        <select [(ngModel)]="filtroSeleccionado">
+          <option value="nombre">Nombre</option>
+          <option value="especialidad">Especialidad</option>
+          <option value="cedula">Cédula</option>
+        </select>
+      </section>
+    </div>
+  
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>Foto</th>
+            <th>Nombre</th>
+            <th>Cédula</th>
+            <th>Especialidad</th>
+            <th>Activo</th>
+
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <p *ngIf="veterinarios.length === 0">No hay veterinarios para mostrar.</p>
+  
+          <tr *ngFor="let veterinario of veterinariosFiltrados">
+            <td><img [src]="veterinario.foto" alt="Foto"></td>
+            <td>{{ veterinario.nombre }}</td>
+            <td>{{ veterinario.cedula }}</td>
+            <td>{{ veterinario.especialidad }}</td>
+          <td>
+            <b>
+              <font [color]="veterinario.activo ? 'green' : 'red'">
+                {{ veterinario.activo ? 'SI' : 'NO' }}
+              </font>
+            </b>
+          </td>
+          <!--
+            <td>
+              <button class="btn" (click)="mostrarVeterinario(veterinario)"><i class='bx bxs-show'></i></button>
+              <button class="btn" (click)="eliminarVeterinario(veterinario)"><i class='bx bx-trash'></i></button>
+              <button class="btn" [routerLink]="['/veterinario/update/', veterinario.id]"><i class='bx bx-edit'></i></button>
+            </td>
+            -->
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+  

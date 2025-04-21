@@ -15,6 +15,8 @@ import { LoginClienteComponent } from './cliente/login-cliente/login-cliente.com
 import { DashboardClienteComponent } from './cliente/dashboard-cliente/dashboard-cliente.component';
 import { LoginVeterinarioComponent } from './veterinario/login-veterinario/login-veterinario.component';
 import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
+import { DashboardAdminComponent } from './admin/dashboard-admin/dashboard-admin.component';
+import { MostrarVeterinariosComponent } from './veterinario/mostrar-veterinarios/mostrar-veterinarios.component';
 
 const routes: Routes = [
 
@@ -31,7 +33,16 @@ const routes: Routes = [
   children: [
     {path: 'mostrar-cliente/:id', component: MostrarClienteComponent},
   ]
-},
+  },
+  {path: 'admin/dashboard', component: DashboardAdminComponent,
+    children: [
+      { path: 'mascota/mascotas', component: MostrarMascotasComponent },
+      {path: 'cliente/clientes', component: MostrarClientesComponent},
+      {path: 'mascota/mostrar-mascota/:id', component: MostrarMascotaComponent},
+      {path: 'cliente/mostrar-cliente/:id', component: MostrarClienteComponent},
+      {path: 'veterinarios/mostrar-veterinarios', component: MostrarVeterinariosComponent},
+    ]
+  },
   {path: 'mascota/mostrar-mascota/:id', component: MostrarMascotaComponent},
   {path: 'home', component: HomeComponent},
   {path: 'cliente/login', component: LoginClienteComponent},

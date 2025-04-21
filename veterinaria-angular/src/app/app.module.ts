@@ -22,6 +22,8 @@ import { LoginClienteComponent } from './cliente/login-cliente/login-cliente.com
 import { DashboardClienteComponent } from './cliente/dashboard-cliente/dashboard-cliente.component';
 import { LoginVeterinarioComponent } from './veterinario/login-veterinario/login-veterinario.component';
 import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
+import { DashboardAdminComponent } from './admin/dashboard-admin/dashboard-admin.component';
+import { MostrarVeterinariosComponent } from './veterinario/mostrar-veterinarios/mostrar-veterinarios.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
     LoginClienteComponent,
     DashboardClienteComponent,
     LoginVeterinarioComponent,
-    LoginAdminComponent
+    LoginAdminComponent,
+    DashboardAdminComponent,
+    MostrarVeterinariosComponent
   ],
   imports: [
     BrowserModule,
