@@ -24,6 +24,8 @@ import puj.veterinaria.repositorios.RepositorioDroga;
 import puj.veterinaria.repositorios.RepositorioMascota;
 import puj.veterinaria.repositorios.RepositorioTratamiento;
 import puj.veterinaria.repositorios.RepositorioVeterinario;
+import puj.veterinaria.repositorios.RepositorioAdmin;
+
 
 @Controller
 @Transactional
@@ -39,6 +41,9 @@ public class DatabaseInit implements ApplicationRunner {
   RepositorioVeterinario repositorioVeterinario;
 
   @Autowired
+  RepositorioAdmin repositorioAdmin;
+
+  @Autowired
   RepositorioTratamiento repositorioTratamiento;
 
   @Autowired
@@ -51,6 +56,7 @@ public class DatabaseInit implements ApplicationRunner {
     cargarDrogas();
     cargarMascotas(); //! Se debe cargar clientes antes que mascota, puesto que toda mascota debe tener un cliente
     cargarTratamientos(); //! Se debe cargar primero Tratamiento Mascota y Veterinario, si no da error
+    crearAdminPorDefecto();
   }
 
   // Asociamos Mascota con Cliente.
@@ -255,4 +261,24 @@ public class DatabaseInit implements ApplicationRunner {
 
     return "";
   }
+
+  private void crearAdminPorDefecto() {
+    try {
+        if (repositorioAdmin.count() == 0) { // Solo lo crea si no hay admins aún
+            Administrador admin = new Administrador();
+            admin.setUsername("admin123");
+            admin.setNombre("Administrador General");
+            admin.setCorreo("admin@veterinaria.com");
+            admin.setCelular("3001234567");
+
+            repositorioAdmin.save(admin);
+            System.out.println("\n\n\n\033[32mADMINISTRADOR POR DEFECTO CREADO.\033[0m\n\n\n");
+        } else {
+            System.out.println("\n\n\n\033[33mYA EXISTEN ADMINISTRADORES EN LA BD. NO SE CREÓ NINGUNO NUEVO.\033[0m\n\n\n");
+        }
+    } catch (Exception e) {
+        System.err.println("Error al crear el administrador por defecto: " + e.getMessage());
+    }
+}
+
 }
