@@ -12,4 +12,7 @@ public interface ITratamientoServicio {
   public void updateTratamiento(Long id, Tratamiento tratamiento);
   public void updateTratamiento(Tratamiento tratamiento);
   public void deleteById(Long id);
+  public Long cantidadTratamientosUltimoMes();
+  public Long cantidadTratamientosTipoMedicamento(String medicamento);
+  public List<Tratamiento> top3TratamientosMasUnidadesVendidas();
 }

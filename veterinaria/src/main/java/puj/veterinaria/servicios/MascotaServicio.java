@@ -81,4 +81,9 @@ public class MascotaServicio implements IMascotaServicio {
     mascota.setEstadoActivo(!mascota.getEstadoActivo());
     repositorioMascota.save(mascota);
   }
+
+  @Override
+  public Long cantidadMascotasActivas() {
+    return repositorioMascota.cantidadMascotasActivas();
+  }
 }

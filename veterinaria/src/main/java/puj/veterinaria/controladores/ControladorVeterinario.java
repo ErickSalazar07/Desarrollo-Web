@@ -60,6 +60,18 @@ public class ControladorVeterinario {
     return veterinarioServicio.findByCedula(cedula);
   }
 
+  @GetMapping("/get-num-veterinarios-activos")
+  @Operation(summary = "Retorna el numero de veterinarios activos.")
+  public Long obtenerNumVeterinariosActivos() {
+    return veterinarioServicio.cantidadVeterinariosActivos();
+  }
+
+  @GetMapping("/get-num-veterinarios-inactivos")
+  @Operation(summary = "Retorna el numero de veterinarios inactivos.")
+  public Long obtenerNumVeterinariosInactivos() {
+    return veterinarioServicio.cantidadVeterinariosInactivos();
+  }
+
 // Metodos PutMapping
 
   // URL: http://localhost:8090/veterinario/update/1

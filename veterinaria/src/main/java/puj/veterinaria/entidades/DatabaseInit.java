@@ -4,8 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -102,7 +103,7 @@ public class DatabaseInit implements ApplicationRunner {
     try(BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getClassLoader().
     getResourceAsStream("init-data/tratamientos.txt")))) {
 
-      SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+      DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
       Random randVet = new Random(43);
       Random randMasc = new Random(44);
       Random randDrog = new Random(45);
@@ -113,7 +114,7 @@ public class DatabaseInit implements ApplicationRunner {
 
       while((linea = br.readLine()) != null) {
         datos = linea.split(",");
-        tratamiento = new Tratamiento(datos[0],formato.parse(datos[1]));
+        tratamiento = new Tratamiento(datos[0],LocalDate.parse(datos[1],formato));
 
         idRandVeterinario = 1L + (randVet.nextLong()%CANTIDAD_VETERINARIOS);
         if(idRandVeterinario < 1L) idRandVeterinario += CANTIDAD_VETERINARIOS;
@@ -130,7 +131,7 @@ public class DatabaseInit implements ApplicationRunner {
 
         repositorioTratamiento.save(tratamiento);
       }
-    } catch(ParseException e) {
+    } catch(DateTimeException e) {
       System.err.println("Error al interpretar el formato de la fecha: " + e.getMessage());
     } catch(Exception e) {
       System.err.println("Ocurrio un error: " + e.getMessage());

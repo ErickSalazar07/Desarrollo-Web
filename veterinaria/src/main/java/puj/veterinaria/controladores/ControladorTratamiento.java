@@ -52,6 +52,24 @@ public class ControladorTratamiento {
     return tratamientoServicio.findByMascotaId(idMascota);
   }
 
+  @GetMapping("/get-num-tratamientos-ultimo-mes")
+  @Operation(summary = "Retorna el numero de tratamientos del ultimo mes.")
+  public Long obtenerNumTratamientosUltimoMes() {
+    return tratamientoServicio.cantidadTratamientosUltimoMes();
+  }
+
+  @GetMapping("get-num-tratamientos-tipo-droga/{droga}")
+  @Operation(summary = "Retorna el numero de tratamientos que tengan asignado el tipo de droga que se pasa.")
+  public Long obtenerNumTratamientosPorTipoDroga(@PathVariable(value = "droga") String droga) {
+    return tratamientoServicio.cantidadTratamientosTipoMedicamento(droga);
+  }
+
+  @GetMapping("get-top3-tratamientos-mas-unidad-vendida")
+  @Operation(summary = "Retorna los 3 tratamientos con mas unidades vendidas.")
+  public List<Tratamiento> obtenerTop3TratamientosMasUnidadesVendidas() {
+    return tratamientoServicio.top3TratamientosMasUnidadesVendidas();
+  }
+
 // Metodos PutMapping
 
   @PutMapping("/update/{id}")

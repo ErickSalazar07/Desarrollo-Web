@@ -63,6 +63,12 @@ public class ControladorMascota {
     return mascotaServicio.findByClienteCedula(cedula);
   }
 
+  @GetMapping("/get-num-mascotas-activas")
+  @Operation(summary = "Retorna el numero de mascotas que estan activas.")
+  public Long obtenerNumMascotasActivas() {
+    return mascotaServicio.cantidadMascotasActivas();
+  }
+
 // Metodos PutMapping
 
   // ? Cambiar id por algun id dentro de los animales guardados en el repositorio

@@ -12,4 +12,6 @@ public interface IDrogaServicio {
   public void updateDroga(Droga droga);
   public void deleteById(Long id);
   public Long numDrogas();
+  public Double totalVentas();
+  public Double totalGanancias();
 }

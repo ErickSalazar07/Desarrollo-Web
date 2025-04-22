@@ -9,79 +9,33 @@ import jakarta.persistence.Id;
 @Entity
 public class Administrador {
 
-    @Id
-    @GeneratedValue
-    private Long id;
+  @Id
+  @GeneratedValue
+  private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String username;
+  @Column(nullable = false, unique = true)
+  private String username;
 
-    @Column(nullable = false)
-    private String nombre;
+  @Column(nullable = false)
+  private String nombre;
 
-    @Column(nullable = false, unique = true)
-    private String correo;
+  @Column(nullable = false, unique = true)
+  private String correo;
 
-    @Column(nullable = false)
-    private String celular;
+  @Column(nullable = false)
+  private String celular;
 
-    // Constructor vacío requerido por JPA
-    public Administrador() {}
-
-       // Getters y Setters
-
-       public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-    
-    // TODO: Implementar método
-    public void agregarVeterinario(Veterinario veterinario) {
-        // Lógica para agregar veterinario
-    }
-
-    // TODO: Implementar método
-    public Boolean eliminarVeterinario(Veterinario veterinario) {
-        return false;
-    }
-
-    // TODO: Implementar método
-    public Boolean modificarVeterinario(Integer id, Veterinario veterinarioModificado) {
-        return false;
-    }
+// Constructor vacío requerido por JPA
+  public Administrador() {}
+// Getters y Setters
+  public Long getId() { return id; }
+  public void setId(Long id) { this.id = id; }
+  public String getUsername() { return username; }
+  public void setUsername(String username) { this.username = username; }
+  public String getNombre() { return nombre; }
+  public void setNombre(String nombre) { this.nombre = nombre; }
+  public String getCorreo() { return correo; }
+  public void setCorreo(String correo) { this.correo = correo; }
+  public String getCelular() { return celular; }
+  public void setCelular(String celular) { this.celular = celular; }
 }

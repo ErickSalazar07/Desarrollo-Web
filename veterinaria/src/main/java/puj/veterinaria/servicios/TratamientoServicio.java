@@ -1,8 +1,10 @@
 package puj.veterinaria.servicios;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import puj.veterinaria.entidades.Tratamiento;
@@ -49,7 +51,7 @@ public class TratamientoServicio implements ITratamientoServicio {
 
     tratamientoActualizar.setNombreTratamiento(tratamiento.getNombreTratamiento());
     tratamientoActualizar.setVeterinarioEncargado(repositorioVeterinario.
-    findByCedula(tratamiento.getVeterinarioEncargado().getCedula()));
+    findByCedula(tratamiento.getVeterinarioEncargado().getCedula()).orElse(null));
     tratamientoActualizar.setMascota(repositorioMascota.
     findById(tratamiento.getMascota().getId()).orElse(null));
     tratamientoActualizar.setFecha(tratamiento.getFecha());
@@ -64,5 +66,20 @@ public class TratamientoServicio implements ITratamientoServicio {
   @Override
   public void deleteById(Long id) {
     repositorioTratamiento.deleteById(id);
+  }
+
+  @Override
+  public Long cantidadTratamientosUltimoMes() {
+    return repositorioTratamiento.countByFechaAfter(LocalDate.now().minusDays(30));
+  }
+
+  @Override
+  public Long cantidadTratamientosTipoMedicamento(String medicamento) {
+    return repositorioTratamiento.cantidadTratamientosPorTipoMedicamento(medicamento);
+  }
+
+  @Override
+  public List<Tratamiento> top3TratamientosMasUnidadesVendidas() {
+    return repositorioTratamiento.top3TratamientosMasUnidadesVendidas(PageRequest.of(0,3)).orElse(null);
   }
 }

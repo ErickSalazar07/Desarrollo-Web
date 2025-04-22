@@ -11,9 +11,12 @@ import puj.veterinaria.entidades.Mascota;
 
 @Repository
 public interface RepositorioMascota extends JpaRepository<Mascota, Long> {
+
   public Optional<List<Mascota>> findByClienteCedula(String cedula);
+
   public long count();
 
   @Query("SELECT COUNT(m) FROM Mascota m WHERE m.estadoActivo = TRUE")
   public long cantidadMascotasActivas();
+
 }

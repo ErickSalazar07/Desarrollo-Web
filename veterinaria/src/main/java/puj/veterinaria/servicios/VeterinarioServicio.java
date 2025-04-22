@@ -21,7 +21,7 @@ public class VeterinarioServicio implements IVeterinarioServicio {
 
   @Override
   public Veterinario findByCedula(String cedula) {
-    return repositorioVeterinario.findByCedula(cedula);
+    return repositorioVeterinario.findByCedula(cedula).orElse(null);
   }
   
   @Override
@@ -47,5 +47,15 @@ public class VeterinarioServicio implements IVeterinarioServicio {
   @Override
   public void deleteById(Long id) {
     repositorioVeterinario.deleteById(id);
+  }
+
+  @Override
+  public Long cantidadVeterinariosActivos() {
+    return repositorioVeterinario.cantidadVeterinariosActivos();
+  }
+
+  @Override
+  public Long cantidadVeterinariosInactivos() {
+    return repositorioVeterinario.cantidadVeterinariosInactivos();
   }
 }

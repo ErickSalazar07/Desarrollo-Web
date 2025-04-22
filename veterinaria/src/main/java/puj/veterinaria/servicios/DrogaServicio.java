@@ -51,4 +51,14 @@ public class DrogaServicio implements IDrogaServicio {
   public Long numDrogas() {
     return repositorioDroga.count();
   }
+
+  @Override
+  public Double totalVentas() {
+    return repositorioDroga.totalVentas();
+  }
+
+  @Override
+  public Double totalGanancias() {
+    return repositorioDroga.totalGanancias();
+  }
 }

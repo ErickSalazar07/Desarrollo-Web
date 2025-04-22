@@ -1,5 +1,6 @@
 package puj.veterinaria.repositorios;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,11 +12,17 @@ import puj.veterinaria.entidades.Tratamiento;
 
 @Repository
 public interface RepositorioTratamiento extends JpaRepository<Tratamiento, Long> {
+
   public Optional<List<Tratamiento>> findByMascotaId(Long id);
+
   public long count();
 
-  @Query(
-  value = "SELECT COUNT(*) FROM tratamiento t WHERE t.fecha >= CURRENT_DATE - INTERVAL '1 month'", 
-  nativeQuery = true)
-  public long cantidadTratamientosUltimoMes();
+  public long countByFechaAfter(LocalDate fecha);
+
+  @Query("SELECT COUNT(t) FROM Tratamiento t WHERE t.drogaAsignada.nombre = ?1")
+  public long cantidadTratamientosPorTipoMedicamento(String droga);
+
+  @Query("SELECT t FROM Tratamiento t ORDER BY t.drogaAsignada.unidadVendida DESC")
+  public Optional<List<Tratamiento>> top3TratamientosMasUnidadesVendidas(org.springframework.data.domain.Pageable pageable);
+
 }

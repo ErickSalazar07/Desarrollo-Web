@@ -14,4 +14,5 @@ public interface IMascotaServicio {
   public void addMascota(Mascota mascotas);
   public Long numeroMascotas();
   public void cambiarEstadoById(Long id);
+  public Long cantidadMascotasActivas();
 }
