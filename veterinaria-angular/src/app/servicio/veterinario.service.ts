@@ -41,4 +41,14 @@ export class VeterinarioService {
   updateVeterinarioByCedula(veterinario: Veterinario): Observable<Veterinario> {
     return this.http.put<Veterinario>(this.URL_ROOT + `/update-cc/${veterinario.cedula}`, veterinario);
   }
+
+// KPIs
+
+  obtenerNumVeterinariosActivos(): Observable<number> {
+    return this.http.get<number>(this.URL_ROOT + `/get-num-veterinarios-activos`);
+  }
+
+  obtenerNumVeterinariosInactivos(): Observable<number> {
+    return this.http.get<number>(this.URL_ROOT + `/get-num-veterinarios-inactivos`);
+  }
 }

@@ -1,0 +1,52 @@
+.num-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem;
+  gap: 2rem;
+}
+
+.back-btn {
+  background-color: #2e7d32; /* Verde oscuro */
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.back-btn:hover {
+  background-color: #1b5e20; /* Más oscuro al pasar el mouse */
+  transform: scale(1.05);
+}
+
+.card {
+  background-color: #f7faff;
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+}
+
+.icono-kpi {
+  font-size: 3rem;
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.card h2 {
+  font-size: 1.6rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.cantidad {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #007bff;
+}

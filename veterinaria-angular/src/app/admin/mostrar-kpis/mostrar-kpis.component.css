@@ -1,0 +1,53 @@
+.kpi-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.kpi-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.kpi-container h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+.kpi-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem; /* MÁS espaciado entre ítems */
+  width: 100%;
+  max-width: 1000px;
+}
+
+.kpi-list li {
+  display: flex;
+  justify-content: center;
+}
+
+.kpi-list li a {
+  display: block;
+  background-color: #f0f4f8;
+  padding: 1.2rem 1rem;
+  border-radius: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 320px;
+}
+
+.kpi-list li a:hover {
+  background-color: #cce4ff;
+  transform: scale(1.03);
+}

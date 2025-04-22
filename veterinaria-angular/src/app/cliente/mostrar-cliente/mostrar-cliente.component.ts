@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/modelo/cliente';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { ClienteService } from 'src/app/servicio/cliente.service';
 import { Mascota } from 'src/app/modelo/mascota';

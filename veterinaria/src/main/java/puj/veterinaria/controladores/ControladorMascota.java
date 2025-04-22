@@ -69,6 +69,12 @@ public class ControladorMascota {
     return mascotaServicio.cantidadMascotasActivas();
   }
 
+  @GetMapping("/get-num-mascotas")
+  @Operation(summary = "Retorna el numero de mascotas en la veterinaria.")
+  public Long obtenerNumMascotas() {
+    return mascotaServicio.numeroMascotas();
+  }
+
 // Metodos PutMapping
 
   // ? Cambiar id por algun id dentro de los animales guardados en el repositorio

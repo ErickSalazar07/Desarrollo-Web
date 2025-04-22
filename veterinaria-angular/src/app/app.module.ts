@@ -31,6 +31,10 @@ import { CrearTratamientoComponent } from './tratamiento/crear-tratamiento/crear
 import { ActualizarTratamientoComponent } from './tratamiento/actualizar-tratamiento/actualizar-tratamiento.component';
 import { AsignarTratamientoComponent } from './tratamiento/asignar-tratamiento/asignar-tratamiento.component';
 import { MostrarTratamientosComponent } from './tratamiento/mostrar-tratamientos/mostrar-tratamientos.component';
+import { MostrarKpisComponent } from './admin/mostrar-kpis/mostrar-kpis.component';
+import { MostrarNumItemsComponent } from './utils/mostrar-num-items/mostrar-num-items.component';
+import { MostrarValorDineroComponent } from './utils/mostrar-valor-dinero/mostrar-valor-dinero.component';
+import { MostrarListaItemsComponent } from './utils/mostrar-lista-items/mostrar-lista-items.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +64,11 @@ import { MostrarTratamientosComponent } from './tratamiento/mostrar-tratamientos
     CrearTratamientoComponent,
     ActualizarTratamientoComponent,
     AsignarTratamientoComponent,
-    MostrarTratamientosComponent
+    MostrarTratamientosComponent,
+    MostrarKpisComponent,
+    MostrarNumItemsComponent,
+    MostrarValorDineroComponent,
+    MostrarListaItemsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,34 @@
+<div class="kpi-container">
+  <h2>KPIs de la Veterinaria</h2>
+  <h3>Ver</h3>
+  <ul class="kpi-list">
+    <li>
+      <a [routerLink]="['/mostrar-num-items/','Tratamientos en el ultimo mes',numTratamientosUltimoMes]"
+      >Cantidad de Tratamientos en el ultimo mes</a>
+    </li>
+    <li>
+      <a [routerLink]="['/mostrar-num-items/','Veterinarios activos',numVeterinariosActivos]"
+      >Cantidad de Veterinarios activos</a>
+    </li>
+    <li>
+      <a [routerLink]="['/mostrar-num-items/','Veterinarios inactivos',numVeterinariosInactivos]"
+      >Cantidad de Veterinarios inactivos</a>
+    </li>
+    <li>
+      <a [routerLink]="['/mostrar-num-items/','Mascotas',numMascotas]"
+      >Cantidad Mascotas registradas</a>
+    </li>
+    <li>
+      <a [routerLink]="['/mostrar-num-items','Mascotas activas',numMascotasActivas]"
+      >Cantidad Mascotas activas(en tratamiento)</a>
+    </li>
+    <li>
+      <a [routerLink]="['/mostrar-valor-dinero/','Total Ventas',ventasTotales]"
+      >Total Ventas</a>
+    </li>
+    <li>
+      <a [routerLink]="['/mostrar-valor-dinero/','Total Ganancias',gananciasTotales]"
+      >Total Ganancias</a>
+    </li>
+  </ul>
+</div>

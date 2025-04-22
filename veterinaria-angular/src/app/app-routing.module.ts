@@ -21,12 +21,16 @@ import { CrearVeterinarioComponent } from './veterinario/crear-veterinario/crear
 import { ActualizarVeterinarioComponent } from './veterinario/actualizar-veterinario/actualizar-veterinario.component';
 import { MostrarTratamientosComponent } from './tratamiento/mostrar-tratamientos/mostrar-tratamientos.component';
 import { AsignarTratamientoComponent } from './tratamiento/asignar-tratamiento/asignar-tratamiento.component';
+import { MostrarKpisComponent } from './admin/mostrar-kpis/mostrar-kpis.component';
+import { MostrarNumItemsComponent } from './utils/mostrar-num-items/mostrar-num-items.component';
+import { MostrarValorDineroComponent } from './utils/mostrar-valor-dinero/mostrar-valor-dinero.component';
 
 const routes: Routes = [
 
   {path: 'veterinario/dashboard', component: DashboardComponent, // <- Este tiene el router-outlet
-  children: [
-    { path: 'mascota/mascotas', component: MostrarMascotasComponent },
+  children:
+  [
+    {path: 'mascota/mascotas', component: MostrarMascotasComponent},
     {path: 'cliente/clientes', component: MostrarClientesComponent},
     {path: 'mascota/mostrar-mascota/:id', component: MostrarMascotaComponent},
     {path: 'cliente/mostrar-cliente/:id', component: MostrarClienteComponent},
@@ -36,40 +40,40 @@ const routes: Routes = [
   },
 
   {path: 'cliente/dashboard/:id', component: DashboardClienteComponent ,
-  children: [
+  children:
+  [
     {path: 'mostrar-cliente/:id', component: MostrarClienteComponent},
   ]
   },
   {path: 'admin/dashboard', component: DashboardAdminComponent,
     children: [
-      { path: 'mascota/mascotas', component: MostrarMascotasComponent },
+      {path: 'mascota/mascotas', component: MostrarMascotasComponent},
       {path: 'cliente/clientes', component: MostrarClientesComponent},
       {path: 'mascota/mostrar-mascota/:id', component: MostrarMascotaComponent},
       {path: 'cliente/mostrar-cliente/:id', component: MostrarClienteComponent},
       {path: 'veterinarios/mostrar-veterinarios', component: MostrarVeterinariosComponent},
+      {path: 'mostrar-kpis', component: MostrarKpisComponent}
     ]
   },
-  {path: 'mascota/mostrar-mascota/:id', component: MostrarMascotaComponent},
+  {path: 'admin/login', component: LoginAdminComponent},
   {path: 'home', component: HomeComponent},
   {path: 'cliente/login', component: LoginClienteComponent},
-  {path: 'admin/login', component: LoginAdminComponent},
   {path: 'cliente/add', component: CrearClienteComponent},
   {path: 'cliente/clientes', component: MostrarClientesComponent},
   {path: 'cliente/mostrar-cliente/:id', component: MostrarClienteComponent},
   {path: 'cliente/update/:id', component: ActualizarClienteComponent},
   {path: 'mascota/mascotas', component: MostrarMascotasComponent},
+  {path: 'mascota/mostrar-mascota/:id', component: MostrarMascotaComponent},
   {path: 'mascota/add', component: CrearMascotaComponent},
   {path: 'mascota/update/:id', component: ActualizarMascotaComponent},
   {path: 'veterinario/login', component: LoginVeterinarioComponent},
-  {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: 'veterinario/add', component: CrearVeterinarioComponent},
   {path: 'veterinario/update/:id', component: ActualizarVeterinarioComponent},
   {path: 'tratamiento/asignar-tratamiento', component: AsignarTratamientoComponent},
+  {path: 'mostrar-num-items/:nombre-item/:cantidad', component: MostrarNumItemsComponent},
+  {path: 'mostrar-valor-dinero/:txt-msg/:dinero', component: MostrarValorDineroComponent},
+  {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: PagNoEncontradaComponent},
-
-
-
-
 ];
 
 @NgModule({

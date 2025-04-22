@@ -37,4 +37,21 @@ export class TratamientoService {
   deleteById(id:number): Observable<any> {
     return this.http.delete(this.URL_ROOT + `/delete/${id}`);
   }
+
+// KPIs
+
+  obtenerTop3TratamientosMasUnidadVendida(): Observable<Tratamiento[]> {
+    return this.http.get<Tratamiento[]>(
+      this.URL_ROOT + `/get-top3-tratamientos-mas-unidad-vendida`
+    );
+  }
+
+  obtenerNumTratamientosUltimoMes(): Observable<number> {
+    return this.http.get<number>(this.URL_ROOT + `/get-num-tratamientos-ultimo-mes`);
+  }
+
+  obtenerNumTratamientosTipoDroga(tipoDroga:string): Observable<number>{
+    return this.http.get<number>(this.URL_ROOT + `/get-num-tratamientos-tipo-droga/${tipoDroga}`);
+  }
+
 }

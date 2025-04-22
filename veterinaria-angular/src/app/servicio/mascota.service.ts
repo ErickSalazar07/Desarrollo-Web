@@ -39,4 +39,15 @@ export class MascotaService {
   cambiarEstadoById(mascota: Mascota): Observable<any> {
     return this.http.put(this.URL_ROOT + `/cambiar-estado/${mascota.id}`, null);
   }
+
+// KPIs
+
+  obtenerNumMascotas(): Observable<number> {
+    return this.http.get<number>(this.URL_ROOT + `/get-num-mascotas`);
+  }
+
+  obtenerNumMascotasActivas(): Observable<number> {
+    return this.http.get<number>(this.URL_ROOT + `/get-num-mascotas-activas`);
+  }
+
 }
