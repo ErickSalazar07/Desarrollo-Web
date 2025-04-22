@@ -2,7 +2,7 @@
     <h1>Veterinarios</h1>
     <div id="seccion_busqueda_crear">
       <section id="btn-inicial" class="acciones">
-        <a type="button" class="btn" [routerLink]="['/']"><i class='bx bx-plus-circle'></i> Agregar Veterinario</a>
+        <a type="button" class="btn" [routerLink]="['/veterinario/add']"><i class='bx bx-plus-circle'></i> Agregar Veterinario</a>
       </section>
       <section class="busqueda">
         <input type="text" placeholder="Buscar..." [(ngModel)]="terminoBusqueda" />
@@ -42,13 +42,18 @@
               </font>
             </b>
           </td>
-          <!--
             <td>
-              <button class="btn" (click)="mostrarVeterinario(veterinario)"><i class='bx bxs-show'></i></button>
-              <button class="btn" (click)="eliminarVeterinario(veterinario)"><i class='bx bx-trash'></i></button>
-              <button class="btn" [routerLink]="['/veterinario/update/', veterinario.id]"><i class='bx bx-edit'></i></button>
-            </td>
-            -->
+              <a (click)="cambiarEstadoVeterinario(veterinario)">
+              <button title="Cambiar Estado" class="btn">
+                <i class='bx bx-reset'></i>
+              </button>
+            </a> 
+            <a [routerLink]="['/veterinario/update/',veterinario.id]">
+              <button title="Editar" class="btn">
+                <i class='bx bx-edit'></i>
+              </button>
+            </a>
+          </td>
           </tr>
         </tbody>
       </table>

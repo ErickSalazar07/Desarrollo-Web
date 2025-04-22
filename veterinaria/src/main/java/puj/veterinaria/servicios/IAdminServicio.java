@@ -16,5 +16,6 @@ public interface IAdminServicio {
   public void deleteById(Long id);
   public Long numeroAdministradores();
 
+
 }
 

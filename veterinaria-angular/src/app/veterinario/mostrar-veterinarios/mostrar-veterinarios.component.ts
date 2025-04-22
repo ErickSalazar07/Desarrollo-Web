@@ -41,4 +41,12 @@ export class MostrarVeterinariosComponent implements OnInit {
       }
     });
   }
+
+    cambiarEstadoVeterinario(veterinario: Veterinario) {
+      this.service.cambiarEstadoByCedula(veterinario.cedula).subscribe(() => {
+        complete: this.service.findAll().subscribe(veterinarios => {
+          this.veterinarios = veterinarios;
+        });
+      });
+    }
 }

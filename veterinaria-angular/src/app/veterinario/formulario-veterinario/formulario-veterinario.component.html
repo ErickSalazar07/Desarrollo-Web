@@ -1,0 +1,40 @@
+<button class="btn btn-volver" onclick="window.history.back()">
+    <i class='bx bx-arrow-back'></i> Volver
+  </button>
+  
+  <div *ngIf="!veterinarioEncontrado">
+    <h2 class="msg-error">No se encontro el Cliente</h2>
+  </div>
+  
+  <form *ngIf="veterinario">
+    <div class="informacion-container">
+      <div class="campos">
+
+        <label for="nombre">Nombre:</label>
+        <input id="nombre" type="text" [(ngModel)]="veterinario.nombre" name="nombre" required>
+  
+        <label for="cedula">Cédula:</label>
+        <input id="cedula" type="text" [(ngModel)]="veterinario.cedula" name="cedula" required>
+  
+        <label for="especialidad">Especialidad:</label>
+        <input id="especialidad" type="text" [(ngModel)]="veterinario.especialidad" name="especialidad" required>
+  
+        <label for="contrasena">Contraseña:</label>
+        <input id="contrasena" type="password" [(ngModel)]="veterinario.contrasena" name="contrasena" required>
+  
+        <label for="imagen">Imagen:</label>
+        <input id="imagen" type="text" [(ngModel)]="veterinario.foto" name="foto" required>
+  
+        <label>Estado:</label>
+        <select [(ngModel)]="veterinario.activo" name="activo">
+          <option [value]="true">Activo</option>
+          <option [value]="false">No Activo</option>
+        </select>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-guardar" (click)="submitVeterinario()">
+          Guardar
+      </button>
+    </div>
+  </form>
+  

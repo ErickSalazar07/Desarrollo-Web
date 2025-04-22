@@ -24,6 +24,9 @@ import { LoginVeterinarioComponent } from './veterinario/login-veterinario/login
 import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
 import { DashboardAdminComponent } from './admin/dashboard-admin/dashboard-admin.component';
 import { MostrarVeterinariosComponent } from './veterinario/mostrar-veterinarios/mostrar-veterinarios.component';
+import { FormularioVeterinarioComponent } from './veterinario/formulario-veterinario/formulario-veterinario.component';
+import { CrearVeterinarioComponent } from './veterinario/crear-veterinario/crear-veterinario.component';
+import { ActualizarVeterinarioComponent } from './veterinario/actualizar-veterinario/actualizar-veterinario.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { MostrarVeterinariosComponent } from './veterinario/mostrar-veterinarios
     LoginVeterinarioComponent,
     LoginAdminComponent,
     DashboardAdminComponent,
-    MostrarVeterinariosComponent
+    MostrarVeterinariosComponent,
+    FormularioVeterinarioComponent,
+    CrearVeterinarioComponent,
+    ActualizarVeterinarioComponent
   ],
   imports: [
     BrowserModule,

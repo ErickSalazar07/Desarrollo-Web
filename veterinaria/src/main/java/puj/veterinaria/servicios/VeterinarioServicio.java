@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import puj.veterinaria.entidades.Mascota;
 import puj.veterinaria.entidades.Veterinario;
 import puj.veterinaria.repositorios.RepositorioVeterinario;
 
@@ -44,6 +45,7 @@ public class VeterinarioServicio implements IVeterinarioServicio {
     repositorioVeterinario.save(veterinario);
   }
 
+
   @Override
   public void deleteById(Long id) {
     repositorioVeterinario.deleteById(id);
@@ -57,5 +59,14 @@ public class VeterinarioServicio implements IVeterinarioServicio {
   @Override
   public Long cantidadVeterinariosInactivos() {
     return repositorioVeterinario.cantidadVeterinariosInactivos();
+  }
+
+  @Override
+  public void cambiarEstadoVeterinarioById(Long id) {
+    Veterinario veterinario = repositorioVeterinario.findById(id).orElse(null);
+    if(veterinario == null) return;
+
+    veterinario.setActivo(!veterinario.getActivo());
+    repositorioVeterinario.save(veterinario);
   }
 }

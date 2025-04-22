@@ -75,14 +75,14 @@ public class ControladorVeterinario {
 // Metodos PutMapping
 
   // URL: http://localhost:8090/veterinario/update/1
-  @PutMapping("/update/{id}")
+  @PutMapping("/update-id/{id}")
   @Operation(summary = "Actualiza un Veterinario, el cual es pasado por el cuerpo de la peticion.")
   public void actualizarVeterinario(@RequestBody Veterinario veterinario) {
     veterinarioServicio.updateVeterinario(veterinario);
   }
 
   // URL: https://localhost:8090/veterinario/update/104828483
-  @PutMapping("/update/{cedula}")
+  @PutMapping("/update-cc/{cedula}")
   @Operation(summary = "Actualiza un Veterinario, correspondiente a la cedula que se pasa.")
   public void actualizarVeterinarioPorCedula(@RequestBody Veterinario veterinario) {
     Veterinario veterinarioActualizar = veterinarioServicio.findByCedula(veterinario.getCedula());

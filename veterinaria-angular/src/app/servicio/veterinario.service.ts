@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class VeterinarioService {
 
+
   constructor(private http: HttpClient) { }
 
   veterinarios: Veterinario[] = [];
@@ -21,4 +22,23 @@ export class VeterinarioService {
     return this.http.get<Veterinario[]>(this.URL_ROOT + `/veterinarios`);
   } 
 
+  cambiarEstadoByCedula(cedula: string): Observable<Veterinario> {
+    return this.http.put<Veterinario>(this.URL_ROOT + `/update-estado/${cedula}`, {});
+  }
+
+  addVeterinario(veterinario: Veterinario): Observable<Veterinario> {
+    return this.http.post<Veterinario>(this.URL_ROOT + `/add`, veterinario);
+  }
+
+  updateVeterinarioById(veterinario: Veterinario): Observable<Veterinario> {
+    return this.http.put<Veterinario>(this.URL_ROOT + `/update-id/${veterinario.id}`, veterinario);
+  }
+
+  findById(id: number): Observable<Veterinario> {
+    return this.http.get<Veterinario>(this.URL_ROOT + `/get-veterinario/${id}`);
+  }
+
+  updateVeterinarioByCedula(veterinario: Veterinario): Observable<Veterinario> {
+    return this.http.put<Veterinario>(this.URL_ROOT + `/update-cedula/${veterinario.cedula}`, veterinario);
+  }
 }
