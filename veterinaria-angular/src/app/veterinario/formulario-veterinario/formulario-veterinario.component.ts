@@ -24,11 +24,6 @@ export class FormularioVeterinarioComponent {
   submitVeterinario() {
     this.servicioVeterinario.findByCedula(this.veterinario.cedula).
     subscribe(c => {
-      if(c === null) {
-        this.veterinarioEncontrado = false;
-        return;
-      }
-
       if(this.veterinario.id === -1) {
         this.servicioVeterinario.addVeterinario(this.veterinario).subscribe({
             complete: () => this.router.navigate(['/admin/dashboard/veterinarios/mostrar-veterinarios'])
@@ -39,7 +34,6 @@ export class FormularioVeterinarioComponent {
           complete: () => this.router.navigate(['/admin/dashboard/veterinarios/mostrar-veterinarios'])
         });
       }
-      this.veterinarioEncontrado = true;
     });
   }
 }
