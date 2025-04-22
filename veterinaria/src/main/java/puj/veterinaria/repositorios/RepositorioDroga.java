@@ -10,5 +10,10 @@ import puj.veterinaria.entidades.Droga;
 public interface RepositorioDroga extends JpaRepository<Droga, Long> {
   
   public long count();
+  
+  @Query("SELECT SUM(d.unidadVendida) FROM Droga d")
+  public double totalVentas();
 
+  @Query("SELECT SUM(d.unidadVendida*d.precioVenta) FROM Droga d")
+  public double totalGanancias();
 }
