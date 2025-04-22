@@ -39,7 +39,6 @@ export class FormularioVeterinarioComponent {
           complete: () => this.router.navigate(['/admin/dashboard/veterinarios/mostrar-veterinarios'])
         });
       }
-      this.veterinarioEncontrado = true;
     });
   }
 }

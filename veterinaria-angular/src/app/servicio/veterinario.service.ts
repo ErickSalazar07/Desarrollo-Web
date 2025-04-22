@@ -26,8 +26,8 @@ export class VeterinarioService {
     return this.http.put<Veterinario>(this.URL_ROOT + `/update-estado/${cedula}`, {});
   }
 
-  addVeterinario(veterinario: Veterinario): Observable<Veterinario> {
-    return this.http.post<Veterinario>(this.URL_ROOT + `/add`, veterinario);
+  addVeterinario(veterinario: Veterinario): Observable<any> {
+    return this.http.post(this.URL_ROOT + `/add`, veterinario);
   }
 
   updateVeterinarioById(veterinario: Veterinario): Observable<Veterinario> {
