@@ -19,6 +19,8 @@ import { DashboardAdminComponent } from './admin/dashboard-admin/dashboard-admin
 import { MostrarVeterinariosComponent } from './veterinario/mostrar-veterinarios/mostrar-veterinarios.component';
 import { CrearVeterinarioComponent } from './veterinario/crear-veterinario/crear-veterinario.component';
 import { ActualizarVeterinarioComponent } from './veterinario/actualizar-veterinario/actualizar-veterinario.component';
+import { MostrarTratamientosComponent } from './tratamiento/mostrar-tratamientos/mostrar-tratamientos.component';
+import { AsignarTratamientoComponent } from './tratamiento/asignar-tratamiento/asignar-tratamiento.component';
 
 const routes: Routes = [
 
@@ -28,6 +30,8 @@ const routes: Routes = [
     {path: 'cliente/clientes', component: MostrarClientesComponent},
     {path: 'mascota/mostrar-mascota/:id', component: MostrarMascotaComponent},
     {path: 'cliente/mostrar-cliente/:id', component: MostrarClienteComponent},
+    {path: 'tratamiento/tratamientos', component: MostrarTratamientosComponent},
+    {path: 'tratamiento/asignar-tratamiento', component: AsignarTratamientoComponent}
   ]
   },
 
@@ -60,6 +64,7 @@ const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: 'veterinario/add', component: CrearVeterinarioComponent},
   {path: 'veterinario/update/:id', component: ActualizarVeterinarioComponent},
+  {path: 'tratamiento/asignar-tratamiento', component: AsignarTratamientoComponent},
   {path: '**', component: PagNoEncontradaComponent},
 
 

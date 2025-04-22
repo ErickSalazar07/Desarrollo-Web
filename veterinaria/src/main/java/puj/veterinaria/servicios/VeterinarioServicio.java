@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import puj.veterinaria.entidades.Mascota;
 import puj.veterinaria.entidades.Veterinario;
 import puj.veterinaria.repositorios.RepositorioVeterinario;
 

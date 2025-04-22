@@ -24,7 +24,7 @@ export class FormularioVeterinarioComponent {
   submitVeterinario() {
     this.servicioVeterinario.findByCedula(this.veterinario.cedula).
     subscribe(c => {
-      if(c === null) {
+      if(this.veterinario.id !== -1 && c === null) {
         this.veterinarioEncontrado = false;
         return;
       }

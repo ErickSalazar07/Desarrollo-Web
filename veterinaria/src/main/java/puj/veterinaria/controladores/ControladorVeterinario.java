@@ -36,6 +36,7 @@ public class ControladorVeterinario {
   @PostMapping("/add")
   @Operation(summary = "Agrega un nuevo Veterinario a la db, el cual es pasado por el cuerpo de la peticion.")
   public void agregarVeterinario(@RequestBody Veterinario veterinario) {
+    veterinario.setId(null);
     veterinarioServicio.addVeterinario(veterinario);
   }
 

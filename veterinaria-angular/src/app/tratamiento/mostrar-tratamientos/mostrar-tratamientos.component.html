@@ -1,0 +1,17 @@
+<a [routerLink]="['/tratamiento/asignar-tratamiento/']">Asignar Tratamiento</a>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Fecha</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tratamiento of tratamientos">
+      <td>{{tratamiento.nombreTratamiento}}</td>
+      <td>{{tratamiento.fecha | date:"dd/MM/yyyy"}}</td>
+      <td>{{tratamiento.mascota.nombre}}</td>
+    </tr>
+  </tbody>
+</table>

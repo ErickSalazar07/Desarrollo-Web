@@ -27,6 +27,10 @@ import { MostrarVeterinariosComponent } from './veterinario/mostrar-veterinarios
 import { FormularioVeterinarioComponent } from './veterinario/formulario-veterinario/formulario-veterinario.component';
 import { CrearVeterinarioComponent } from './veterinario/crear-veterinario/crear-veterinario.component';
 import { ActualizarVeterinarioComponent } from './veterinario/actualizar-veterinario/actualizar-veterinario.component';
+import { CrearTratamientoComponent } from './tratamiento/crear-tratamiento/crear-tratamiento.component';
+import { ActualizarTratamientoComponent } from './tratamiento/actualizar-tratamiento/actualizar-tratamiento.component';
+import { AsignarTratamientoComponent } from './tratamiento/asignar-tratamiento/asignar-tratamiento.component';
+import { MostrarTratamientosComponent } from './tratamiento/mostrar-tratamientos/mostrar-tratamientos.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +56,11 @@ import { ActualizarVeterinarioComponent } from './veterinario/actualizar-veterin
     MostrarVeterinariosComponent,
     FormularioVeterinarioComponent,
     CrearVeterinarioComponent,
-    ActualizarVeterinarioComponent
+    ActualizarVeterinarioComponent,
+    CrearTratamientoComponent,
+    ActualizarTratamientoComponent,
+    AsignarTratamientoComponent,
+    MostrarTratamientosComponent
   ],
   imports: [
     BrowserModule,
