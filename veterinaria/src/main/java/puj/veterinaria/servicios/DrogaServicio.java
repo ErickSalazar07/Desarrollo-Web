@@ -7,12 +7,16 @@ import org.springframework.stereotype.Service;
 
 import puj.veterinaria.entidades.Droga;
 import puj.veterinaria.repositorios.RepositorioDroga;
+import puj.veterinaria.repositorios.RepositorioTratamiento;
 
 @Service
 public class DrogaServicio implements IDrogaServicio {
 
   @Autowired
   RepositorioDroga repositorioDroga;
+
+  @Autowired
+  RepositorioTratamiento repositorioTratamiento;
 
   @Override
   public List<Droga> findAll() {
@@ -29,12 +33,15 @@ public class DrogaServicio implements IDrogaServicio {
     repositorioDroga.save(droga);
   }
 
-  // TODO: Falta implementar esta version de actualizar una Droga dado un id.
   @Override
   public void updateDroga(Long id, Droga droga) {
     Droga drogaModificar = repositorioDroga.findById(id).orElse(null);
-
-    if(drogaModificar == null) return;
+    drogaModificar.setNombre(droga.getNombre());
+    drogaModificar.setPrecioCompra(droga.getPrecioCompra());
+    drogaModificar.setPrecioVenta(droga.getPrecioVenta());
+    drogaModificar.setUnidadDisponible(droga.getUnidadDisponible());
+    drogaModificar.setUnidadVendida(droga.getUnidadVendida());
+    repositorioDroga.save(drogaModificar);
   }
 
   @Override

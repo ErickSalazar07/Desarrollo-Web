@@ -52,18 +52,6 @@ public class Veterinario {
     this.activo = activo;
   }
 
-// Comportamiento
-
-  // TODO: Implementar funcion
-  public void asignarTratamiento() {
-
-  }
-
-  // TODO: Implementar funcion
-  public Integer numeroAtenciones() {
-    return 0;
-  }
-
 // Getters y Setters
 
   public Long getId() { return id; }
