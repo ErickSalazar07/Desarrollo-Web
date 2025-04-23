@@ -24,6 +24,7 @@ import { AsignarTratamientoComponent } from './tratamiento/asignar-tratamiento/a
 import { MostrarKpisComponent } from './admin/mostrar-kpis/mostrar-kpis.component';
 import { MostrarNumItemsComponent } from './utils/mostrar-num-items/mostrar-num-items.component';
 import { MostrarValorDineroComponent } from './utils/mostrar-valor-dinero/mostrar-valor-dinero.component';
+import { MostrarDrogasComponent } from './droga/mostrar-drogas/mostrar-drogas.component';
 
 const routes: Routes = [
 
@@ -35,7 +36,8 @@ const routes: Routes = [
     {path: 'mascota/mostrar-mascota/:id', component: MostrarMascotaComponent},
     {path: 'cliente/mostrar-cliente/:id', component: MostrarClienteComponent},
     {path: 'tratamiento/tratamientos', component: MostrarTratamientosComponent},
-    {path: 'tratamiento/asignar-tratamiento', component: AsignarTratamientoComponent}
+    {path: 'tratamiento/asignar-tratamiento', component: AsignarTratamientoComponent},
+    {path: 'droga/drogas', component: MostrarDrogasComponent}
   ]
   },
 
