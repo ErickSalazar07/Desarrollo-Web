@@ -76,7 +76,9 @@ import { MostrarDrogasComponent } from './droga/mostrar-drogas/mostrar-drogas.co
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule   
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
