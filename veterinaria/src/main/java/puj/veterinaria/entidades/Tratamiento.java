@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import puj.veterinaria.entidades.DTO.TratamientoDTO;
 
 // Entidades son un POJO (Plain Old Java Object)
 @Entity
@@ -40,6 +41,12 @@ public class Tratamiento {
   public Tratamiento(String nombreTratamiento, LocalDate fecha) {
     this.nombreTratamiento = nombreTratamiento;
     this.fecha = fecha;
+  }
+
+  public Tratamiento(TratamientoDTO tratamientoDTO) {
+    this.id = null;
+    this.nombreTratamiento = tratamientoDTO.getNombreTratamiento();
+    this.fecha = tratamientoDTO.getFecha();
   }
   
 // Comportamiento

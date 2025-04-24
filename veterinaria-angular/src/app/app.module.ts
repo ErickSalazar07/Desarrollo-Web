@@ -78,7 +78,9 @@ import { TratamientosVeterinarioComponent } from './tratamiento/tratamientos-vet
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule   
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

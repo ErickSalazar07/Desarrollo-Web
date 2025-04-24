@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Tratamiento } from '../modelo/tratamiento';
 import { Observable } from 'rxjs';
+import { TratamientoDTO } from '../modelo/tratamientoDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class TratamientoService {
     get<Tratamiento[]>(this.URL_ROOT + `/tratamientos-mascota/${idMascota}`);
   }
 
-  addTratamiento(tratamiento:Tratamiento): Observable<any> {
+  addTratamiento(tratamiento:TratamientoDTO): Observable<any> {
     return this.http.post(this.URL_ROOT + `/add`,tratamiento);
   }
 

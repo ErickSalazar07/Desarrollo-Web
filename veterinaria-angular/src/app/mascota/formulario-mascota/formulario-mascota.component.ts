@@ -1,4 +1,3 @@
-import { Cliente } from 'src/app/modelo/cliente';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Mascota } from 'src/app/modelo/mascota';
