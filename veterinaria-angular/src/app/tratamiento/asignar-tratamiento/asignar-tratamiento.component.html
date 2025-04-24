@@ -6,8 +6,9 @@
     <input
       type="text"
       id="nombreTratamiento"
-      [(ngModel)]="tratamiento.nombreTratamiento"
+      [(ngModel)]="tratamientoDTO.nombreTratamiento"
       name="nombreTratamiento"
+      required
     />
   
     <!-- Fecha -->
@@ -15,39 +16,51 @@
     <input
       type="date"
       id="fecha"
-      [(ngModel)]="tratamiento.fecha"
+      [(ngModel)]="tratamientoDTO.fecha"
       name="fecha"
+      required
     />
   
-    <!-- Mascota -->
+    <!-- Mascota (ID) -->
     <label for="mascota">Mascota:</label>
     <select
       id="mascota"
-      [(ngModel)]="tratamiento.mascota"
+      [(ngModel)]="tratamientoDTO.mascotaID"
       name="mascota"
+      required
     >
-      <option *ngFor="let m of mascotas" [value]="m">{{ m.nombre }}</option>
+      <option [value]="0" disabled selected>Seleccione una mascota</option>
+      <option *ngFor="let m of mascotas" [value]="m.id">{{ m.nombre }}</option>
     </select>
   
-    <!-- Droga -->
+    <!-- Droga (ID) -->
     <label for="droga">Droga:</label>
     <select
       id="droga"
-      [(ngModel)]="tratamiento.drogaAsignada"
+      [(ngModel)]="tratamientoDTO.drogaAsignadaID"
       name="droga"
+      required
     >
-      <option *ngFor="let d of drogas" [value]="d">{{ d.nombre }}</option>
+      <option [value]="0" disabled selected>Seleccione una droga</option>
+      <option *ngFor="let d of drogas" [value]="d.id">{{ d.nombre }}</option>
     </select>
   
-    <!-- Veterinario -->
+    <!-- Veterinario (Cédula) -->
     <label for="veterinario">Veterinario:</label>
     <select
       id="veterinario"
-      [(ngModel)]="tratamiento.veterinario"
+      [(ngModel)]="tratamientoDTO.veterinarioCedula"
       name="veterinario"
+      required
     >
-      <option *ngFor="let v of veterinarios" [value]="v">{{ v.nombre }}</option>
+      <option value="" disabled selected>Seleccione un veterinario</option>
+      <option *ngFor="let v of veterinarios" [value]="v.cedula">{{ v.nombre }}</option>
     </select>
+  
+    <!-- Error en validación -->
+    <div *ngIf="errorMensaje" class="error-mensaje">
+      {{ errorMensaje }}
+    </div>
   
     <!-- Botón para enviar -->
     <button (click)="onSubmit()">Asignar Tratamiento</button>
