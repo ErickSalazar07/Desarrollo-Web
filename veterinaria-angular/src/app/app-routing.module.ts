@@ -24,6 +24,7 @@ import { AsignarTratamientoComponent } from './tratamiento/asignar-tratamiento/a
 import { MostrarKpisComponent } from './admin/mostrar-kpis/mostrar-kpis.component';
 import { MostrarNumItemsComponent } from './utils/mostrar-num-items/mostrar-num-items.component';
 import { MostrarValorDineroComponent } from './utils/mostrar-valor-dinero/mostrar-valor-dinero.component';
+import { MostrarListaItemsComponent } from './utils/mostrar-lista-items/mostrar-lista-items.component';
 
 const routes: Routes = [
 
@@ -72,6 +73,7 @@ const routes: Routes = [
   {path: 'tratamiento/asignar-tratamiento', component: AsignarTratamientoComponent},
   {path: 'mostrar-num-items/:nombre-item/:cantidad', component: MostrarNumItemsComponent},
   {path: 'mostrar-valor-dinero/:txt-msg/:dinero', component: MostrarValorDineroComponent},
+  {path: 'mostrar-lista-items/:tipo/:mensaje', component: MostrarListaItemsComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: PagNoEncontradaComponent},
 ];

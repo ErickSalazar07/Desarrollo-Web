@@ -15,7 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
 import puj.veterinaria.entidades.Tratamiento;
+import puj.veterinaria.entidades.DTO.TratamientoDTO;
+import puj.veterinaria.servicios.IDrogaServicio;
+import puj.veterinaria.servicios.IMascotaServicio;
 import puj.veterinaria.servicios.ITratamientoServicio;
+import puj.veterinaria.servicios.IVeterinarioServicio;
 
 @RestController
 @RequestMapping("/tratamiento")
@@ -25,10 +29,23 @@ public class ControladorTratamiento {
   @Autowired
   ITratamientoServicio tratamientoServicio;
 
+  @Autowired
+  IDrogaServicio drogaServicio;
+
+  @Autowired
+  IMascotaServicio mascotaServicio;
+
+  @Autowired
+  IVeterinarioServicio veterinarioServicio;
+
 // Metodos PostMapping
   @PostMapping("/add")
   @Operation(summary = "Agrega un Tratamiento al db.")
-  public void agregarTratamiento(@RequestBody Tratamiento tratamiento) {
+  public void agregarTratamiento(@RequestBody TratamientoDTO tratamientoDTO) {
+    Tratamiento tratamiento = new Tratamiento(tratamientoDTO);
+    tratamiento.setDrogaAsignada(drogaServicio.findById(tratamientoDTO.getDrogaAsignadaID()));
+    tratamiento.setMascota(mascotaServicio.findById(tratamientoDTO.getMascotaID()));
+    tratamiento.setVeterinarioEncargado(veterinarioServicio.findByCedula(tratamientoDTO.getVeterinaroCedula()));
     tratamientoServicio.addTratamiento(tratamiento);
   }
 
