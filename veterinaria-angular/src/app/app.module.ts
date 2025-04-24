@@ -74,7 +74,9 @@ import { MostrarListaItemsComponent } from './utils/mostrar-lista-items/mostrar-
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule   
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,56 @@
-<p>asignar-tratamiento works!</p>
+<div class="formulario">
+    <h2>Asignar Tratamiento</h2>
+  
+    <!-- Nombre del tratamiento -->
+    <label for="nombreTratamiento">Nombre del Tratamiento:</label>
+    <input
+      type="text"
+      id="nombreTratamiento"
+      [(ngModel)]="tratamiento.nombreTratamiento"
+      name="nombreTratamiento"
+    />
+  
+    <!-- Fecha -->
+    <label for="fecha">Fecha:</label>
+    <input
+      type="date"
+      id="fecha"
+      [(ngModel)]="tratamiento.fecha"
+      name="fecha"
+    />
+  
+    <!-- Mascota -->
+    <label for="mascota">Mascota:</label>
+    <select
+      id="mascota"
+      [(ngModel)]="tratamiento.mascota"
+      name="mascota"
+    >
+      <option *ngFor="let m of mascotas" [value]="m">{{ m.nombre }}</option>
+    </select>
+  
+    <!-- Droga -->
+    <label for="droga">Droga:</label>
+    <select
+      id="droga"
+      [(ngModel)]="tratamiento.drogaAsignada"
+      name="droga"
+    >
+      <option *ngFor="let d of drogas" [value]="d">{{ d.nombre }}</option>
+    </select>
+  
+    <!-- Veterinario -->
+    <label for="veterinario">Veterinario:</label>
+    <select
+      id="veterinario"
+      [(ngModel)]="tratamiento.veterinario"
+      name="veterinario"
+    >
+      <option *ngFor="let v of veterinarios" [value]="v">{{ v.nombre }}</option>
+    </select>
+  
+    <!-- Botón para enviar -->
+    <button (click)="onSubmit()">Asignar Tratamiento</button>
+  </div>
+  
+  
