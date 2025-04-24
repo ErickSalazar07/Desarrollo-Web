@@ -40,6 +40,8 @@ public class ControladorTratamiento {
     return tratamientoServicio.findAll();
   }
 
+  
+
   @GetMapping("/get-tratamiento/{id}")
   @Operation(summary = "Retorna un Tratamiento, correspondiente al id que se provee.")
   public Tratamiento obtenerTratamiento(@PathVariable(value = "id") Long id) {
@@ -51,7 +53,11 @@ public class ControladorTratamiento {
   public List<Tratamiento> obtenerTratamientosMascota(@PathVariable(value = "id") Long idMascota) {
     return tratamientoServicio.findByMascotaId(idMascota);
   }
-
+  @GetMapping("/tratamientos-veterinario/{cedula}")
+  @Operation(summary = "Retorna todos los tratamientos de un Veterinario dada la cédula.")
+  public List<Tratamiento> obtenerTratamientosVeterinario(@PathVariable(value = "cedula") String cedula) {
+    return tratamientoServicio.tratamientosVeterinario(cedula);
+  }
   @GetMapping("/get-num-tratamientos-ultimo-mes")
   @Operation(summary = "Retorna el numero de tratamientos del ultimo mes.")
   public Long obtenerNumTratamientosUltimoMes() {
@@ -69,6 +75,8 @@ public class ControladorTratamiento {
   public List<Tratamiento> obtenerTop3TratamientosMasUnidadesVendidas() {
     return tratamientoServicio.top3TratamientosMasUnidadesVendidas();
   }
+
+
 
 // Metodos PutMapping
 

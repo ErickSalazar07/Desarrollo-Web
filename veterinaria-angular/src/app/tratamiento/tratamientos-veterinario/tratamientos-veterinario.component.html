@@ -1,0 +1,49 @@
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+<body>
+  <h1>Información de Tratamientos</h1>
+
+  <div id="seccion_busqueda_crear">
+    <section id="btn-inicial" class="acciones">
+      <a type="button" class="btn" id="boton-agregarMascota" [routerLink]="['/tratamiento/add']">
+        <i class='bx bx-plus-circle'></i> Agregar Tratamiento
+      </a>
+    </section>
+    <section class="busqueda">
+      <input type="text" placeholder="Buscar..." [(ngModel)]="terminoBusqueda" />
+      <select [(ngModel)]="filtroSeleccionado">
+        <option value="nombreTratamiento">Nombre Tratamiento</option>
+        <option value="drogaAsignada">Droga</option>
+        <option value="mascota">Mascota</option>
+        <option value="veterinario">Veterinario</option>
+      </select>
+    </section>
+  </div>
+
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Foto Mascota</th>
+          <th>Nombre Mascota</th>
+          <th>Enfermedad</th>
+          <th>Nombre Tratamiento</th>
+          <th>Fecha</th>
+          <th>Droga Asignada</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tratamiento of tratamientosFiltrados">
+          <td>
+            <img [src]="tratamiento.mascota?.foto" [alt]="'Foto de ' + tratamiento.mascota?.nombre">
+          </td>
+          <td>{{ tratamiento.mascota?.nombre }}</td>
+          <td>{{ tratamiento.mascota?.enfermedad }}</td>
+          <td>{{ tratamiento.nombreTratamiento }}</td>
+          <td>{{ tratamiento.fecha | date:'yyyy-MM-dd' }}</td>
+          <td>{{ tratamiento.drogaAsignada?.nombre }}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>

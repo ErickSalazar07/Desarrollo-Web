@@ -14,8 +14,8 @@ import puj.veterinaria.entidades.Tratamiento;
 public interface RepositorioTratamiento extends JpaRepository<Tratamiento, Long> {
 
   public Optional<List<Tratamiento>> findByMascotaId(Long id);
-
-  public long count();
+  
+  public Optional<List<Tratamiento>> findByVeterinarioEncargado_Cedula(String cedula);
 
   public long countByFechaAfter(LocalDate fecha);
 

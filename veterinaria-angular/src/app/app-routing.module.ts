@@ -25,10 +25,11 @@ import { MostrarKpisComponent } from './admin/mostrar-kpis/mostrar-kpis.componen
 import { MostrarNumItemsComponent } from './utils/mostrar-num-items/mostrar-num-items.component';
 import { MostrarValorDineroComponent } from './utils/mostrar-valor-dinero/mostrar-valor-dinero.component';
 import { MostrarDrogasComponent } from './droga/mostrar-drogas/mostrar-drogas.component';
+import { TratamientosVeterinarioComponent } from './tratamiento/tratamientos-veterinario/tratamientos-veterinario.component';
 
 const routes: Routes = [
 
-  {path: 'veterinario/dashboard', component: DashboardComponent, // <- Este tiene el router-outlet
+  {path: 'veterinario/dashboard/:id', component: DashboardComponent, // <- Este tiene el router-outlet
   children:
   [
     {path: 'mascota/mascotas', component: MostrarMascotasComponent},
@@ -37,7 +38,8 @@ const routes: Routes = [
     {path: 'cliente/mostrar-cliente/:id', component: MostrarClienteComponent},
     {path: 'tratamiento/tratamientos', component: MostrarTratamientosComponent},
     {path: 'tratamiento/asignar-tratamiento', component: AsignarTratamientoComponent},
-    {path: 'droga/drogas', component: MostrarDrogasComponent}
+    {path: 'droga/drogas', component: MostrarDrogasComponent},
+    {path: 'tratamientos-veterinario/:cedula', component: TratamientosVeterinarioComponent}
   ]
   },
 
@@ -47,6 +49,7 @@ const routes: Routes = [
     {path: 'mostrar-cliente/:id', component: MostrarClienteComponent},
   ]
   },
+  
   {path: 'admin/dashboard', component: DashboardAdminComponent,
     children: [
       {path: 'mascota/mascotas', component: MostrarMascotasComponent},

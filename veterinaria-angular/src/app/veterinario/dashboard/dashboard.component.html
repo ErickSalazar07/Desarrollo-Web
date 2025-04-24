@@ -15,16 +15,17 @@
       </div>
   
       <div class="sidebar-icon" data-tooltip="Tratamiento" routerLink="tratamiento/tratamientos" routerLinkActive="active" id="mascotas">
-        <i class='bx bxs-dog'></i><div id="nombre-seccion"> Tratamiento</div>
+        <i class='bx bxs-dog'></i><div id="nombre-seccion"> Tratamientos</div>
+      </div>
+
+      <div class="sidebar-icon" data-tooltip="MisTratamiento" [routerLink]="['tratamientos-veterinario', veterinario.cedula]" routerLinkActive="active" id="mascotas">
+        <i class='bx bxs-dog'></i><div id="nombre-seccion"> Mis Tratamientos</div>
       </div>
 
       <div class="sidebar-icon" data-tooltip="Drogas" routerLink="droga/drogas" routerLinkActive="active" id="drogas">
         <i class='bx bxs-capsule'></i><div id="nombre-seccion"> Drogas</div>
       </div>
 
-      <div class="sidebar-icon" data-tooltip="Perfil" routerLink="cliente/clientes" routerLinkActive="active" id="perfil">
-        <i class="bx bx-user"></i><div id="nombre-seccion"> Clientes </div>
-      </div>
   
       <div class="sidebar-icon" data-tooltip="Cerrar Sesión" routerLink="/logout" id="logout">
         <i class="bx bx-log-in-circle"></i><div id="nombre-seccion">Cerrar Sesión</div>

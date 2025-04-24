@@ -33,7 +33,7 @@ export class LoginVeterinarioComponent {
         this.msgError = "Datos incorrectos";
         return;
       }
-      this.router.navigate(["/veterinario/dashboard/mascota/mascotas"]);
+      this.router.navigate([`/veterinario/dashboard/${c.cedula}/mascota/mascotas`]);
     });
   }
 }
