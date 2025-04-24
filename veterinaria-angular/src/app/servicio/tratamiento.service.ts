@@ -55,4 +55,8 @@ export class TratamientoService {
     return this.http.get<number>(this.URL_ROOT + `/get-num-tratamientos-tipo-droga/${tipoDroga}`);
   }
 
+  obtenerTratamientosVeterinario(cedula:string): Observable<Tratamiento[]>{
+    return this.http.get<Tratamiento[]>(this.URL_ROOT + `/tratamientos-veterinario/${cedula}`);
+  }
+
 }

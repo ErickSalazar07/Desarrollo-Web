@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import puj.veterinaria.entidades.Tratamiento;
+import puj.veterinaria.entidades.Veterinario;
 import puj.veterinaria.repositorios.RepositorioMascota;
 import puj.veterinaria.repositorios.RepositorioTratamiento;
 import puj.veterinaria.repositorios.RepositorioVeterinario;
@@ -32,6 +33,13 @@ public class TratamientoServicio implements ITratamientoServicio {
   @Override
   public Tratamiento findById(Long id) {
     return repositorioTratamiento.findById(id).orElse(null);
+  }
+
+  @Override
+  public List<Tratamiento> tratamientosVeterinario(String cedula){
+    Veterinario veterinario = repositorioVeterinario.findByCedula(cedula).orElse(null);
+    return repositorioTratamiento.findByVeterinarioEncargado_Cedula(cedula).orElse(null);
+
   }
 
   @Override
@@ -81,5 +89,11 @@ public class TratamientoServicio implements ITratamientoServicio {
   @Override
   public List<Tratamiento> top3TratamientosMasUnidadesVendidas() {
     return repositorioTratamiento.top3TratamientosMasUnidadesVendidas(PageRequest.of(0,3)).orElse(null);
+  }
+
+  @Override
+  public List<Tratamiento> findByVeterinarioEncargado_Cedula(String cedula) {
+    return repositorioTratamiento.findByVeterinarioEncargado_Cedula(cedula).orElse(null);
+
   }
 }

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import puj.veterinaria.entidades.Veterinario;
-import puj.veterinaria.servicios.ITratamientoServicio;
 import puj.veterinaria.servicios.IVeterinarioServicio;
 
 @RestController
@@ -26,8 +25,6 @@ public class ControladorVeterinario {
   @Autowired
   IVeterinarioServicio veterinarioServicio;
 
-  @Autowired
-  ITratamientoServicio tratamientoServicio;
 
 // Metodos PostMapping
 
@@ -48,6 +45,7 @@ public class ControladorVeterinario {
   public List<Veterinario> obtenerVeterinarios() {
     return veterinarioServicio.findAll();
   }
+
 
   // URL: http://localhost:8090/veterinario/get-veterinario/1
   @GetMapping("/get-veterinario/{id}")

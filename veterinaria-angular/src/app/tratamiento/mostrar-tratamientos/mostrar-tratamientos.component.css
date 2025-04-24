@@ -1,0 +1,107 @@
+/* Estilo para el enlace de navegación */
+a[routerLink] {
+    display: inline-block;
+    background-color: #054f31;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+    text-align: center;
+}   
+
+a[routerLink]:hover {
+    background-color: #043a26;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+thead tr {
+    background-color: #054f31;
+    color: white;
+    text-align: left;
+    font-weight: 600;
+}
+
+th, td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+th {
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tbody tr:hover {
+    background-color: #f1f3f5;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    th, td {
+        padding: 12px;
+    }
+}  
+
+
+a.button {
+    display: inline-block;
+    background-color: #054f31;
+    color: white;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+a.button:hover {
+    background-color: #043a26;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+a.button:active {
+    transform: translateY(0);
+}

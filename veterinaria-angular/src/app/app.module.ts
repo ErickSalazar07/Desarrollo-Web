@@ -36,6 +36,7 @@ import { MostrarNumItemsComponent } from './utils/mostrar-num-items/mostrar-num-
 import { MostrarValorDineroComponent } from './utils/mostrar-valor-dinero/mostrar-valor-dinero.component';
 import { MostrarListaItemsComponent } from './utils/mostrar-lista-items/mostrar-lista-items.component';
 import { MostrarDrogasComponent } from './droga/mostrar-drogas/mostrar-drogas.component';
+import { TratamientosVeterinarioComponent } from './tratamiento/tratamientos-veterinario/tratamientos-veterinario.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { MostrarDrogasComponent } from './droga/mostrar-drogas/mostrar-drogas.co
     MostrarNumItemsComponent,
     MostrarValorDineroComponent,
     MostrarListaItemsComponent,
-    MostrarDrogasComponent
+    MostrarDrogasComponent,
+    TratamientosVeterinarioComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import puj.veterinaria.entidades.Veterinario;
+import puj.veterinaria.repositorios.RepositorioTratamiento;
 import puj.veterinaria.repositorios.RepositorioVeterinario;
 
 @Service
@@ -13,6 +14,8 @@ public class VeterinarioServicio implements IVeterinarioServicio {
 
   @Autowired
   RepositorioVeterinario repositorioVeterinario;
+
+  RepositorioTratamiento repositorioTratamiento;
 
   @Override
   public List<Veterinario> findAll() {
@@ -23,6 +26,8 @@ public class VeterinarioServicio implements IVeterinarioServicio {
   public Veterinario findByCedula(String cedula) {
     return repositorioVeterinario.findByCedula(cedula).orElse(null);
   }
+
+
   
   @Override
   public Veterinario findById(Long id) {
@@ -68,4 +73,6 @@ public class VeterinarioServicio implements IVeterinarioServicio {
     veterinario.setActivo(!veterinario.getActivo());
     repositorioVeterinario.save(veterinario);
   }
+
+
 }

@@ -15,5 +15,4 @@ public interface IVeterinarioServicio {
   public Long cantidadVeterinariosActivos();
   public Long cantidadVeterinariosInactivos();
   public void cambiarEstadoVeterinarioById(Long id);
-
 }
