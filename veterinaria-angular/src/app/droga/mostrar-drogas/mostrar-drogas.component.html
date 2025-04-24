@@ -1,0 +1,76 @@
+<body>
+    <h1>Medicamentos</h1>
+    <div id="seccion_busqueda_crear">
+      <section id="btn-inicial"class="acciones">
+        <a type="button" class="btn" [routerLink]="['/cliente/add']"><i class='bx bx-plus-circle'></i> Agregar Dueño</a>
+      </section>
+      <section class="busqueda">
+        <input type="text" placeholder="Buscar..." [(ngModel)]="terminoBusqueda" />
+        <select [(ngModel)]="filtroSeleccionado">
+          <option value="nombre">Nombre</option>
+          <option value="pVentaMayor">Precio Venta mayor a</option>
+          <option value="pVentaMenor">Precio Venta menor a</option>
+        </select>
+      </section>
+    </div>
+  
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Precio Compra</th>
+            <th>Precio Venta</th>
+            <th>No. Vendidas</th>
+            <th> No. Disponibles</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <p *ngIf="drogas.length === 0">No hay drogas para mostrar.</p>
+  
+          <tr *ngFor="let droga of drogasFiltrados">
+  
+            <td>{{ droga.nombre.charAt(0).toUpperCase() + droga.nombre.slice(1).toLowerCase() }}</td>
+            <td>{{droga.precioCompra}}</td>
+            <td>{{droga.precioVenta}} </td>
+            <td>{{droga.unidadVendida}}</td>
+            <td>
+                {{ 
+                  droga.unidadDisponible >= 10 ? '🟢' :
+                  droga.unidadDisponible > 5 && droga.unidadDisponible < 10 ? '🟡' :
+                  droga.unidadDisponible > 0 && droga.unidadDisponible <= 5 ? '🟠' :
+                  '🔴' 
+                }}{{ droga.unidadDisponible }}
+              </td>
+              
+             <!-- <td>
+            <td>
+              <a>
+                <button class="btn" (click)="mostrarCliente(cliente)"><i class='bx bxs-show'></i></button>
+              </a>
+
+            </td>
+              <a type="button" th:href="@{/cliente/mostrar-cliente/{id}(id=${cliente.id})}" class="btn">
+                <i class='bx bxs-show'></i>
+              </a>
+              <a type="button" th:href="@{/cliente/update/{id}(id=${cliente.id})}" class="btn">
+                <i class='bx bx-edit'></i>
+              </a>
+              <a type="button" th:href="@{/cliente/delete/{id}(id=${cliente.id})}" onclick="recargarDespues()" class="btn">
+                <i class='bx bx-trash' ></i>
+              </a>
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+  <script>
+    function recargarDespues() {
+        setTimeout(() => {
+            window.location.reload();
+        }, 300);
+    }
+  </script>
+  
