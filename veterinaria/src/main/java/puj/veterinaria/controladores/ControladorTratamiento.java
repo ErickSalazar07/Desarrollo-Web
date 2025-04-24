@@ -42,6 +42,9 @@ public class ControladorTratamiento {
   @PostMapping("/add")
   @Operation(summary = "Agrega un Tratamiento al db.")
   public void agregarTratamiento(@RequestBody TratamientoDTO tratamientoDTO) {
+
+    System.out.println("Veterinario cedula: "+tratamientoDTO.getVeterinaroCedula());
+
     Tratamiento tratamiento = new Tratamiento(tratamientoDTO);
     tratamiento.setDrogaAsignada(drogaServicio.findById(tratamientoDTO.getDrogaAsignadaID()));
     tratamiento.setMascota(mascotaServicio.findById(tratamientoDTO.getMascotaID()));
