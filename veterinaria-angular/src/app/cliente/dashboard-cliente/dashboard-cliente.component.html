@@ -6,20 +6,13 @@
   <div class="dashboard">
     <!-- Sidebar fija -->
     <div class="sidebar">
-      <div class="sidebar-icon" data-tooltip="Home" routerLink="/cliente/home" routerLinkActive="active" id="home">
-        <i class="bx bx-home"></i><div id="nombre-seccion">Home</div>
+  
+      <div class="sidebar-icon" data-tooltip="Perfil"  [routerLink]="['mostrar-cliente', cliente.id]" 
+      routerLinkActive="active" id="nombre-seccion">
+        <i class='bx bxs-user'></i><div id="nombre-seccion"> Perfil</div>
       </div>
   
-      <div class="sidebar-icon" data-tooltip="Mascotas"  [routerLink]="['mostrar-cliente', cliente.id]" 
-      routerLinkActive="active" id="mascotas">
-        <i class='bx bxs-dog'></i><div id="nombre-seccion"> Mis Mascotas</div>
-      </div>
-  
-      <div class="sidebar-icon" data-tooltip="Perfil" routerLink="cliente/clientes" routerLinkActive="active" id="perfil">
-        <i class='bx bx-user' ></i><div id="nombre-seccion"> Perfil </div>
-      </div>
-  
-      <div class="sidebar-icon" data-tooltip="Cerrar Sesión" routerLink="/logout" id="logout">
+      <div class="sidebar-icon" data-tooltip="Cerrar Sesión" [routerLink]="['/']" id="logout">
         <i class="bx bx-log-in-circle"></i><div id="nombre-seccion">Cerrar Sesión</div>
       </div>
     </div>

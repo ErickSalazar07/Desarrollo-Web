@@ -13,7 +13,7 @@
         <input [(ngModel)]="cliente.correo" type="email" id="correo" placeholder="Ingrese correo" required name="correo">
 
         <label for="cedula">Cédula</label>
-        <input [(ngModel)]="cliente.cedula" id="cedula" placeholder="Ingrese cédula" required name="cedula">
+        <input [(ngModel)]="cliente.cedula" type="password" id="cedula" placeholder="Ingrese cédula" required name="cedula">
 
         <p *ngIf="msgError !== ''" class="error-message">{{msgError}}</p>
 

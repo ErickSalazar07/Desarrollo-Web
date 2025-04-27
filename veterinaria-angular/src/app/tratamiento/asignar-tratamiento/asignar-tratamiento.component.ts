@@ -2,11 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { TratamientoService } from 'src/app/servicio/tratamiento.service';
 import { MascotaService } from 'src/app/servicio/mascota.service';
 import { DrogaService } from 'src/app/servicio/droga.service';
-import { VeterinarioService } from 'src/app/servicio/veterinario.service';
 import { Mascota } from 'src/app/modelo/mascota';
 import { Droga } from 'src/app/modelo/droga';
 import { Veterinario } from 'src/app/modelo/veterinario';
-import { Tratamiento } from 'src/app/modelo/tratamiento';
 import { TratamientoDTO } from 'src/app/modelo/tratamientoDTO';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
@@ -69,20 +67,6 @@ export class AsignarTratamientoComponent implements OnInit {
       return;
     }
 
-    drogaExiste.unidadDisponible--;
-    drogaExiste.unidadVendida++;
-
-    this.drogaService.updateDroga(drogaExiste).subscribe();
-
-    this.tratamientoService.addTratamiento(this.tratamientoDTO).subscribe(
-      (response) => {
-        console.log(response);
-        this.location.back();
-      },
-      (error) => {
-        this.errorMensaje = 'Ocurrió un error al asignar el tratamiento.';
-        console.error(error);
-      }
-    );
+    this.tratamientoService.addTratamiento(this.tratamientoDTO).subscribe({complete: () => {this.location.back()}});
   }
 }
