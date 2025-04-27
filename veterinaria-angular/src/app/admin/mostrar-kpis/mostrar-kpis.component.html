@@ -1,38 +1,80 @@
+<body>
+<h1>Información estadística </h1>
+
 <div class="kpi-container">
-  <h2>KPIs de la Veterinaria</h2>
-  <h3>Ver</h3>
-  <ul class="kpi-list">
-    <li>
-      <a [routerLink]="['/mostrar-num-items/','Tratamientos en el ultimo mes',numTratamientosUltimoMes]"
-      >Cantidad de Tratamientos en el ultimo mes</a>
-    </li>
-    <li>
-      <a [routerLink]="['/mostrar-num-items/','Veterinarios activos',numVeterinariosActivos]"
-      >Cantidad de Veterinarios activos</a>
-    </li>
-    <li>
-      <a [routerLink]="['/mostrar-num-items/','Veterinarios inactivos',numVeterinariosInactivos]"
-      >Cantidad de Veterinarios inactivos</a>
-    </li>
-    <li>
-      <a [routerLink]="['/mostrar-num-items/','Mascotas',numMascotas]"
-      >Cantidad Mascotas registradas</a>
-    </li>
-    <li>
-      <a [routerLink]="['/mostrar-num-items','Mascotas activas',numMascotasActivas]"
-      >Cantidad Mascotas activas(en tratamiento)</a>
-    </li>
-    <li>
-      <a [routerLink]="['/mostrar-valor-dinero/','Total Ventas',ventasTotales]"
-      >Total Ventas</a>
-    </li>
-    <li>
-      <a [routerLink]="['/mostrar-valor-dinero/','Total Ganancias',gananciasTotales]"
-      >Total Ganancias</a>
-    </li>
-    <li>
-      <a [routerLink]="['/mostrar-lista-items','tratamiento','Top 3 Tratamientos']"
-      >Top 3 Tratamientos</a>
-    </li>
-  </ul>
+  <div class="kpi-card donut-card">
+    <h3>Veterinarios</h3>
+    <div class="semi-donut-container">
+      <div class="semi-donut" [style.--percentage]="(numVeterinariosActivos / (numVeterinariosActivos + numVeterinariosInactivos)) * 100">
+        <div class="percentage-text">
+          {{ ((numVeterinariosActivos / (numVeterinariosActivos + numVeterinariosInactivos)) * 100).toFixed(0) }}%
+        </div>
+      </div>
+    </div>
+    <p class="stats">
+      <span class="active">{{ numVeterinariosActivos }} Activos</span> / 
+      <span class="inactive">{{ numVeterinariosInactivos }} Inactivos</span>
+    </p>
+  </div>
+
+  <div class="kpi-card donut-card">
+    <h3>Mascotas</h3>
+    <div class="semi-donut-container">
+      <div class="semi-donut" [style.--percentage]="(numMascotasActivas / numMascotas) * 100">
+        <div class="percentage-text">
+          {{ ((numMascotasActivas / numMascotas) * 100).toFixed(0) }}%
+        </div>
+      </div>
+    </div>
+    <p class="stats">
+      <span class="active">{{ numMascotasActivas }} Activas</span> / 
+      <span class="inactive">{{ numMascotas - numMascotasActivas }} Inactivas</span>
+    </p>
+  </div>
+
+  <div class="kpi-card finance-card">
+    <div class="icon-container">
+      <i class='bx bx-money-withdraw'></i>
+    </div>
+    <div class="content">
+      <h3>Ventas Totales</h3>
+      <p class="highlight">€ {{ ventasTotales | number:'1.2-2' }}</p>
+    </div>
+  </div>
+
+  <div class="kpi-card finance-card">
+    <div class="icon-container profit">
+      <i class='bx bx-money-withdraw'></i>
+    </div>
+    <div class="content">
+      <h3>Ganancias Totales</h3>
+      <p class="highlight">€ {{ gananciasTotales | number:'1.2-2' }}</p>
+    </div>
+  </div>
+
+  <div class="kpi-card simple-card">
+    <div class="icon-container treatment">
+      <i class='bx bx-first-aid'></i>
+    </div>
+    <div class="content">
+      <h3>Tratamientos Último Mes</h3>
+      <p class="highlight">{{ numTratamientosUltimoMes }}</p>
+    </div>
+  </div>
+
+  <div class="kpi-card top-card">
+    <div class="icon-container top">
+      <i class='bx bx-first-aid'></i>
+    </div>
+    <div class="content">
+      <h3>Top 3 Tratamientos</h3>
+      <ul class="top-list">
+        <li *ngFor="let t of top3Tratamientos; let i = index">
+          <span class="rank">{{ i + 1 }}</span>
+          <span class="treatment-name">{{ t.nombreTratamiento }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
+</body>
