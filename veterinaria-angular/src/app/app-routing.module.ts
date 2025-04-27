@@ -76,7 +76,7 @@ const routes: Routes = [
   {path: 'veterinario/login', component: LoginVeterinarioComponent},
   {path: 'veterinario/add', component: CrearVeterinarioComponent},
   {path: 'veterinario/update/:id', component: ActualizarVeterinarioComponent},
-  {path: 'tratamiento/asignar-tratamiento', component: AsignarTratamientoComponent},
+  {path: 'tratamiento/asignar-tratamiento/:cedulaVeterinario', component: AsignarTratamientoComponent},
   {path: 'mostrar-num-items/:nombre-item/:cantidad', component: MostrarNumItemsComponent},
   {path: 'mostrar-valor-dinero/:txt-msg/:dinero', component: MostrarValorDineroComponent},
   {path: 'mostrar-lista-items/:tipo/:mensaje', component: MostrarListaItemsComponent},

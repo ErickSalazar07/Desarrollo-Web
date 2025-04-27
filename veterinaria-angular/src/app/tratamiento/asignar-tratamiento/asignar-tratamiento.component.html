@@ -45,18 +45,6 @@
       <option *ngFor="let d of drogas" [value]="d.id">{{ d.nombre }}</option>
     </select>
   
-    <!-- Veterinario (Cédula) -->
-    <label for="veterinario">Veterinario:</label>
-    <select
-      id="veterinario"
-      [(ngModel)]="tratamientoDTO.veterinaroCedula"
-      name="veterinario"
-      required
-    >
-      <option value="" disabled selected>Seleccione un veterinario</option>
-      <option *ngFor="let v of veterinarios" [value]="v.cedula">{{ v.nombre }}</option>
-    </select>
-  
     <!-- Error en validación -->
     <div *ngIf="errorMensaje" class="error-mensaje">
       {{ errorMensaje }}

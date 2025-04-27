@@ -9,6 +9,7 @@ import { Veterinario } from 'src/app/modelo/veterinario';
 import { Tratamiento } from 'src/app/modelo/tratamiento';
 import { TratamientoDTO } from 'src/app/modelo/tratamientoDTO';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-asignar-tratamiento',
@@ -36,14 +37,16 @@ export class AsignarTratamientoComponent implements OnInit {
     private tratamientoService: TratamientoService,
     private mascotaService: MascotaService,
     private drogaService: DrogaService,
-    private veterinarioService: VeterinarioService,
-    private location:Location
+    private location:Location,
+    private route:ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.mascotaService.findAll().subscribe((mascotas) => this.mascotas = mascotas);
     this.drogaService.findAll().subscribe((drogas) => this.drogas = drogas);
-    this.veterinarioService.findAll().subscribe((veter) => this.veterinarios = veter);
+    const cedulaVet = this.route.snapshot.paramMap.get('cedulaVeterinario');
+    if(cedulaVet)
+      this.tratamientoDTO.veterinaroCedula = cedulaVet;
   }
 
   onSubmit(): void {
@@ -52,13 +55,11 @@ export class AsignarTratamientoComponent implements OnInit {
     this.tratamientoDTO.drogaAsignadaID = Number(this.tratamientoDTO.drogaAsignadaID) 
     const mascotaExiste = this.mascotas.find(m => m.id === this.tratamientoDTO.mascotaID);
     const drogaExiste = this.drogas.find(d => d.id === this.tratamientoDTO.drogaAsignadaID);
-    const veterinarioExiste = this.veterinarios.find(v => v.cedula === this.tratamientoDTO.veterinaroCedula);
     console.log(this.tratamientoDTO)
-    if (!mascotaExiste || !drogaExiste || !veterinarioExiste) {
+    if (!mascotaExiste || !drogaExiste) {
       let errores = [];
       if (!mascotaExiste) errores.push('la mascota');
       if (!drogaExiste) errores.push('la droga');
-      if (!veterinarioExiste) errores.push('el veterinario');
       this.errorMensaje = `Error: No se encontró ${errores.join(', ')} seleccionado(a).`;
       return;
     }
