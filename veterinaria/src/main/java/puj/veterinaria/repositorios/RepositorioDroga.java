@@ -11,7 +11,7 @@ public interface RepositorioDroga extends JpaRepository<Droga, Long> {
   
   public long count();
   
-  @Query("SELECT SUM(d.unidadVendida) FROM Droga d")
+  @Query("SELECT SUM(d.unidadVendida*d.precioVenta) FROM Droga d")
   public double totalVentas();
 
   @Query("SELECT SUM(d.unidadVendida*d.precioVenta - d.unidadDisponible*d.precioCompra) FROM Droga d")

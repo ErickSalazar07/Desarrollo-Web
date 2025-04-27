@@ -108,6 +108,10 @@ public class DatabaseInit implements ApplicationRunner {
       Random randMasc = new Random(44);
       Random randDrog = new Random(45);
 
+      Droga droga;
+      Mascota mascota;
+
+
       CANTIDAD_VETERINARIOS = repositorioVeterinario.count();
       CANTIDAD_MASCOTAS = repositorioMascota.count();
       CANTIDAD_DROGAS = repositorioDroga.count();
@@ -122,13 +126,23 @@ public class DatabaseInit implements ApplicationRunner {
         idRandMascota = 1L + (randMasc.nextLong()%CANTIDAD_MASCOTAS);
         if(idRandMascota < 1L) idRandMascota += CANTIDAD_MASCOTAS;
 
-        idRandDroga = 1L + (randDrog.nextLong()%CANTIDAD_DROGAS);
-        if(idRandDroga < 1L) idRandDroga += CANTIDAD_DROGAS;
+        do {
+          idRandDroga = 1L + (randDrog.nextLong()%CANTIDAD_DROGAS);
+          if(idRandDroga < 1L) idRandDroga += CANTIDAD_DROGAS;
+        } while(repositorioDroga.findById(idRandDroga).get().getUnidadDisponible() <= 0);
 
+        mascota = repositorioMascota.findById(idRandMascota).get();
+        mascota.setEstadoActivo(true);
+        repositorioMascota.save(mascota);
+        
+        droga = repositorioDroga.findById(idRandDroga).get();
+        droga.setUnidadDisponible(droga.getUnidadDisponible()-1);
+        droga.setUnidadVendida(droga.getUnidadVendida()+1);
+        repositorioDroga.save(droga);
+        
         tratamiento.setVeterinarioEncargado(repositorioVeterinario.findById(idRandVeterinario).get());
-        tratamiento.setMascota(repositorioMascota.findById(idRandMascota).get());
-        tratamiento.setDrogaAsignada(repositorioDroga.findById(idRandDroga).get());
-
+        tratamiento.setMascota(mascota);
+        tratamiento.setDrogaAsignada(droga);
         repositorioTratamiento.save(tratamiento);
       }
     } catch(DateTimeException e) {

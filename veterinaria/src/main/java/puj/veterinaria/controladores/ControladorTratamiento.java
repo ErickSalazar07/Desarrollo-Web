@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
+import puj.veterinaria.entidades.Droga;
+import puj.veterinaria.entidades.Mascota;
 import puj.veterinaria.entidades.Tratamiento;
 import puj.veterinaria.entidades.DTO.TratamientoDTO;
 import puj.veterinaria.servicios.IDrogaServicio;
@@ -46,6 +48,16 @@ public class ControladorTratamiento {
     System.out.println("\033[33mVeterinario cedula: "+tratamientoDTO.getVeterinaroCedula()+"\033[0m");
 
     Tratamiento tratamiento = new Tratamiento(tratamientoDTO);
+    Mascota mascota  = mascotaServicio.findById(tratamientoDTO.getMascotaID());
+    Droga droga = drogaServicio.findById(tratamientoDTO.getDrogaAsignadaID());
+
+    droga.setUnidadDisponible(droga.getUnidadDisponible()-1);
+    droga.setUnidadVendida(droga.getUnidadVendida()+1);
+    drogaServicio.updateDroga(droga);
+
+    mascota.setEstadoActivo(true);;
+    mascotaServicio.updateMascota(mascota);
+
     tratamiento.setDrogaAsignada(drogaServicio.findById(tratamientoDTO.getDrogaAsignadaID()));
     tratamiento.setMascota(mascotaServicio.findById(tratamientoDTO.getMascotaID()));
     tratamiento.setVeterinarioEncargado(veterinarioServicio.findByCedula(tratamientoDTO.getVeterinaroCedula()));
