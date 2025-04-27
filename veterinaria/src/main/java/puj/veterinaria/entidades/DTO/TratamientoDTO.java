@@ -11,7 +11,7 @@ public class TratamientoDTO {
   private Long mascotaID;
   private String veterinaroCedula;
 
-
+  public TratamientoDTO() {}
 
   public TratamientoDTO(Long id, String nombreTratamiento, LocalDate fecha, Long drogaAsignadaID, Long mascotaID,
       String veterinaroCedula) {
@@ -58,7 +58,4 @@ public class TratamientoDTO {
   public void setVeterinaroCedula(String veterinaroCedula) {
     this.veterinaroCedula = veterinaroCedula;
   }
-
-
-
 }

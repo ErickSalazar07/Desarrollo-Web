@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/modelo/cliente';
 import { ClienteService } from 'src/app/servicio/cliente.service';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-formulario-cliente',
@@ -20,7 +21,8 @@ export class FormularioClienteComponent {
 
   constructor(private servicioCliente: ClienteService,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private location:Location
   ) {}
 
   ngOnInit(): void {
@@ -29,11 +31,11 @@ export class FormularioClienteComponent {
   submitFormulario() {
     if(this.cliente.id === -1) {
       this.servicioCliente.addCliente(this.cliente).subscribe({
-        complete: () => this.router.navigate(['/veterinario/dashboard/cliente/clientes'])
+        complete: () => this.location.back()
       });
     } else {
       this.servicioCliente.updateCliente(this.cliente).subscribe({
-        complete: () => this.router.navigate(['/veterinario/dashboard/cliente/clientes'])
+        complete: () => this.location.back()
       });
     }
   }

@@ -58,7 +58,8 @@ const routes: Routes = [
       {path: 'mascota/mostrar-mascota/:id', component: MostrarMascotaComponent},
       {path: 'cliente/mostrar-cliente/:id', component: MostrarClienteComponent},
       {path: 'veterinarios/mostrar-veterinarios', component: MostrarVeterinariosComponent},
-      {path: 'mostrar-kpis', component: MostrarKpisComponent}
+      {path: 'mostrar-kpis', component: MostrarKpisComponent},
+      {path: 'droga/drogas', component: MostrarDrogasComponent}
     ]
   },
   {path: 'admin/login', component: LoginAdminComponent},

@@ -46,7 +46,7 @@ export class MostrarMascotasComponent {
   
 
   mostrarMascota(mascota: Mascota) {
-    this.router.navigate(['veterinario/dashboard/mascota/mostrar-mascota', mascota.id]);
+    this.router.navigate(['/mascota/mostrar-mascota', mascota.id]);
   }
 
   actualizarMascota(mascota: Mascota) {

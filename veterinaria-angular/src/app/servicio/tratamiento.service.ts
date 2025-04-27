@@ -28,6 +28,8 @@ export class TratamientoService {
   }
 
   addTratamiento(tratamiento:TratamientoDTO): Observable<any> {
+    console.log("IMPRIMIENDO DATOS DE TRATAMIENTO")
+    console.log(tratamiento);
     return this.http.post(this.URL_ROOT + `/add`,tratamiento);
   }
 

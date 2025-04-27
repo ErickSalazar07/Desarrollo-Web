@@ -267,10 +267,10 @@ public class DatabaseInit implements ApplicationRunner {
     try {
         if (repositorioAdmin.count() == 0) { // Solo lo crea si no hay admins aún
             Administrador admin = new Administrador();
-            admin.setUsername("admin123");
+            admin.setUsername("admin");
             admin.setNombre("Administrador General");
-            admin.setCorreo("admin@veterinaria.com");
-            admin.setCelular("3001234567");
+            admin.setCorreo("admin@veterinaria");
+            admin.setCelular("123");
 
             repositorioAdmin.save(admin);
             System.out.println("\n\n\n\033[32mADMINISTRADOR POR DEFECTO CREADO.\033[0m\n\n\n");

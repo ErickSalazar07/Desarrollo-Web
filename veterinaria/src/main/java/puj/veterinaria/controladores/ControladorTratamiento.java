@@ -43,7 +43,7 @@ public class ControladorTratamiento {
   @Operation(summary = "Agrega un Tratamiento al db.")
   public void agregarTratamiento(@RequestBody TratamientoDTO tratamientoDTO) {
 
-    System.out.println("Veterinario cedula: "+tratamientoDTO.getVeterinaroCedula());
+    System.out.println("\033[33mVeterinario cedula: "+tratamientoDTO.getVeterinaroCedula()+"\033[0m");
 
     Tratamiento tratamiento = new Tratamiento(tratamientoDTO);
     tratamiento.setDrogaAsignada(drogaServicio.findById(tratamientoDTO.getDrogaAsignadaID()));

@@ -6,6 +6,6 @@ export interface TratamientoDTO {
     fecha: string;
     drogaAsignadaID: number;
     mascotaID: number;
-    veterinarioCedula: string;
+    veterinaroCedula: string;
   }
   

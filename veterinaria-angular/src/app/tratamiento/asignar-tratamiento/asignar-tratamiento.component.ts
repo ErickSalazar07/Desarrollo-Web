@@ -8,6 +8,7 @@ import { Droga } from 'src/app/modelo/droga';
 import { Veterinario } from 'src/app/modelo/veterinario';
 import { Tratamiento } from 'src/app/modelo/tratamiento';
 import { TratamientoDTO } from 'src/app/modelo/tratamientoDTO';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-asignar-tratamiento',
@@ -22,7 +23,7 @@ export class AsignarTratamientoComponent implements OnInit {
     fecha: '',
     drogaAsignadaID: 0,
     mascotaID: 0,
-    veterinarioCedula: ''
+    veterinaroCedula: ''
   };
 
   mascotas: Mascota[] = [];
@@ -35,7 +36,8 @@ export class AsignarTratamientoComponent implements OnInit {
     private tratamientoService: TratamientoService,
     private mascotaService: MascotaService,
     private drogaService: DrogaService,
-    private veterinarioService: VeterinarioService
+    private veterinarioService: VeterinarioService,
+    private location:Location
   ) {}
 
   ngOnInit(): void {
@@ -48,9 +50,9 @@ export class AsignarTratamientoComponent implements OnInit {
     this.errorMensaje = '';
     this.tratamientoDTO.mascotaID = Number(this.tratamientoDTO.mascotaID)   
     this.tratamientoDTO.drogaAsignadaID = Number(this.tratamientoDTO.drogaAsignadaID) 
-    const mascotaExiste = this.mascotas.some(m => m.id === this.tratamientoDTO.mascotaID);
-    const drogaExiste = this.drogas.some(d => d.id === this.tratamientoDTO.drogaAsignadaID);
-    const veterinarioExiste = this.veterinarios.some(v => v.cedula === this.tratamientoDTO.veterinarioCedula);
+    const mascotaExiste = this.mascotas.find(m => m.id === this.tratamientoDTO.mascotaID);
+    const drogaExiste = this.drogas.find(d => d.id === this.tratamientoDTO.drogaAsignadaID);
+    const veterinarioExiste = this.veterinarios.find(v => v.cedula === this.tratamientoDTO.veterinaroCedula);
     console.log(this.tratamientoDTO)
     if (!mascotaExiste || !drogaExiste || !veterinarioExiste) {
       let errores = [];
@@ -61,10 +63,20 @@ export class AsignarTratamientoComponent implements OnInit {
       return;
     }
 
+    if(drogaExiste.unidadDisponible <= 0){
+      this.errorMensaje = `Error: No hay unidades disponibles de ${drogaExiste.nombre}`;
+      return;
+    }
+
+    drogaExiste.unidadDisponible--;
+    drogaExiste.unidadVendida++;
+
+    this.drogaService.updateDroga(drogaExiste).subscribe();
+
     this.tratamientoService.addTratamiento(this.tratamientoDTO).subscribe(
       (response) => {
-        alert('Tratamiento asignado correctamente');
         console.log(response);
+        this.location.back();
       },
       (error) => {
         this.errorMensaje = 'Ocurrió un error al asignar el tratamiento.';

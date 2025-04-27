@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Mascota } from 'src/app/modelo/mascota';
 import { ClienteService } from 'src/app/servicio/cliente.service';
 import { MascotaService } from 'src/app/servicio/mascota.service';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-formulario-mascota',
@@ -18,7 +19,8 @@ export class FormularioMascotaComponent implements OnInit {
   constructor(
     private servicioMascota: MascotaService,
     private servicioCliente: ClienteService,
-    private router: Router
+    private router: Router,
+    private location:Location
   ) {}
 
   ngOnInit(): void { }
@@ -33,12 +35,12 @@ export class FormularioMascotaComponent implements OnInit {
 
       if(this.mascota.id === -1) {
         this.servicioMascota.addMascota(this.mascota).subscribe({
-            complete: () => this.router.navigate(['/veterinario/dashboard/mascota/mascotas'])
+            complete: () => this.location.back()
           }
         )
       } else {
         this.servicioMascota.updateMascota(this.mascota).subscribe({
-          complete: () => this.router.navigate(['/veterinario/dashboard/mascota/mascotas'])
+          complete: () => this.location.back()
         });
       }
       this.clienteEncontrado = true;

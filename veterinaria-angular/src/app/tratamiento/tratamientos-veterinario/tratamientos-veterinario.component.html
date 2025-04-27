@@ -34,13 +34,13 @@
       <tbody>
         <tr *ngFor="let tratamiento of tratamientosFiltrados">
           <td>
-            <img [src]="tratamiento.mascota?.foto" [alt]="'Foto de ' + tratamiento.mascota?.nombre">
+            <img [src]="tratamiento.mascota.foto" [alt]="'Foto de ' + tratamiento.mascota.nombre">
           </td>
-          <td>{{ tratamiento.mascota?.nombre }}</td>
-          <td>{{ tratamiento.mascota?.enfermedad }}</td>
+          <td>{{ tratamiento.mascota.nombre }}</td>
+          <td>{{ tratamiento.mascota.enfermedad === null ? "Vacio": tratamiento.mascota.enfermedad}}</td>
           <td>{{ tratamiento.nombreTratamiento }}</td>
           <td>{{ tratamiento.fecha | date:'yyyy-MM-dd' }}</td>
-          <td>{{ tratamiento.drogaAsignada?.nombre }}</td>
+          <td>{{ tratamiento.drogaAsignada.nombre }}</td>
           
         </tr>
       </tbody>
