@@ -1,6 +1,4 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Router } from '@angular/router';
 import { Cliente } from 'src/app/modelo/cliente';
 import { ClienteService } from 'src/app/servicio/cliente.service';
 import { Location } from '@angular/common'
@@ -20,8 +18,6 @@ export class FormularioClienteComponent {
   eventoAgregarCliente = new EventEmitter<Cliente>();
 
   constructor(private servicioCliente: ClienteService,
-    private http: HttpClient,
-    private router: Router,
     private location:Location
   ) {}
 

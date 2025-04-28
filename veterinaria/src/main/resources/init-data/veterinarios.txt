@@ -1,6 +1,6 @@
 Juana,789,789,Cardiologia,https://github.com/ErickSalazar07/Web/blob/main/imagenes/veterinarios/vet1.png?raw=true,si
 Alvaro,alv435,1174466934,Oftalmologia,https://github.com/ErickSalazar07/Web/blob/main/imagenes/veterinarios/vet2.png?raw=true,si
-Juliana,123,1274476944,Cardiologia,https://github.com/ErickSalazar07/Web/blob/main/imagenes/veterinarios/vet3.png?raw=true,si
+Juliana,123,1274476944,Cardiologia,https://github.com/ErickSalazar07/Web/blob/main/imagenes/veterinarios/vet11.png?raw=true,si
 Camila,cam987,1145638921,Neurologia,https://github.com/ErickSalazar07/Web/blob/main/imagenes/veterinarios/vet9.png?raw=true,si
 Esteban,est321,1109876523,Endocrinologia,https://github.com/ErickSalazar07/Web/blob/main/imagenes/veterinarios/vet5.png?raw=true,si
 Valeria,val1234,1198765432,Traumatologia,https://github.com/ErickSalazar07/Web/blob/main/imagenes/veterinarios/vet10.png?raw=true,si

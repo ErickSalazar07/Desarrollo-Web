@@ -87,3 +87,15 @@ a button {
 a button:hover {
     background-color: #c9302c;
 }
+
+/* Estilos para el mensaje de error */
+.error-mensaje {
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: center;
+}
