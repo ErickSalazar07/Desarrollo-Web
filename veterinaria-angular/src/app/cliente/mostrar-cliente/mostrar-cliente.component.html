@@ -14,10 +14,10 @@
       <p>Celular:</p>
       <p><span>{{cliente.celular}}</span></p>
     </div>
-    <p class="msg-no-tiene-mascotas" *ngIf="mascotas && mascotas.length === 0">
+    <p class="msg-no-tiene-mascotas" *ngIf="!mascotas || mascotas.length === 0">
       No tiene mascotas registradas.
     </p>
-    <div id="mascotas" *ngIf="mascotas">
+    <div id="mascotas" *ngIf="mascotas && mascotas.length > 0">
       <h3>Mascotas Registradas</h3>
       <ul class="mascotas">
         <li *ngFor="let mascota of mascotas">

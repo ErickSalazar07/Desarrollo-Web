@@ -34,6 +34,7 @@ export class FormularioMascotaComponent implements OnInit {
       }
 
       if(this.mascota.id === -1) {
+        this.mascota.estadoActivo = false;
         this.servicioMascota.addMascota(this.mascota).subscribe({
             complete: () => this.location.back()
           }

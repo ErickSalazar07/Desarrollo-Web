@@ -27,11 +27,6 @@
       <label for="cedula-cliente">Cedula Cliente:</label>
       <input id="cedula-cliente" type="number" [(ngModel)]="mascota.cedulaCliente" name="cedula-cliente"required>
       
-      <label>Estado:</label>
-      <select [(ngModel)]="mascota.estadoActivo" name="estadoActivo">
-        <option [value]="true">Activo</option>
-        <option [value]="false">No Activo</option>
-      </select>
     </div>
     <br>
     <div *ngIf="!clienteEncontrado" class="error-mensaje">
