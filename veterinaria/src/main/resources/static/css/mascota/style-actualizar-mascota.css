@@ -101,6 +101,7 @@ button-act:hover {
 .btn-volver:hover {
   background-color: #054f31;
   color:white;
+<<<<<<< HEAD
 }
 #mensaje {
   display: none;
@@ -108,3 +109,9 @@ button-act:hover {
   font-weight: bold;
   margin-top: 10px;
 }
+=======
+}   
+
+
+
+>>>>>>> desarrollo

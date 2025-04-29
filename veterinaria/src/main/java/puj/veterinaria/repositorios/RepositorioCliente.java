@@ -9,7 +9,9 @@ import puj.veterinaria.entidades.Cliente;
 public interface RepositorioCliente extends JpaRepository<Cliente, Long> {
 
   public Cliente findByCorreoAndCedula(String correo, String cedula);
+
   public Cliente findByCedula(String cedula);
+
   public long count();
 
 }

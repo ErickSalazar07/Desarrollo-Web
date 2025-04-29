@@ -2,6 +2,9 @@ package puj.veterinaria.entidades;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import puj.veterinaria.entidades.DTO.MascotaDTO;
 
 // Entidades son un POJO (Plain Old Java Object)
 @Entity
@@ -35,14 +39,16 @@ public class Mascota {
   @Column(nullable = false)
   private String foto;
 
-  @Column(nullable = false)
+  @Column(nullable = false, name = "estado_activo")
   private Boolean estadoActivo;
 
+  @JsonIgnore
   @ManyToOne // usar cedula como foreign key
   @JoinColumn(nullable = false, name = "cliente_cedula", referencedColumnName = "cedula") 
   private Cliente cliente;
-  
-  @OneToMany
+
+  @JsonIgnore
+  @OneToMany(mappedBy = "mascota", cascade = CascadeType.ALL)
   private List<Tratamiento> tratamientos;
   
   public Mascota() { }
@@ -58,13 +64,20 @@ public class Mascota {
     this.estadoActivo = estadoActivo;
   }
 
-/*
-  Comportamiento
-*/
+// Comportamiento
 
-/*
-  Getters y Setters
-*/
+  public Mascota(MascotaDTO mascotaDTO) {
+    this.nombre = mascotaDTO.getNombre();
+    this.raza = mascotaDTO.getRaza();
+    this.edad = mascotaDTO.getEdad();
+    this.peso = mascotaDTO.getPeso();
+    this.enfermedad = mascotaDTO.getEnfermedad();
+    this.foto = mascotaDTO.getFoto();
+    this.estadoActivo = mascotaDTO.getEstadoActivo();
+  }
+
+// Getters y Setters
+
   public Long getId() { return id; }
   public void setId(Long id) { this.id = id; }
   public String getNombre() { return nombre; }

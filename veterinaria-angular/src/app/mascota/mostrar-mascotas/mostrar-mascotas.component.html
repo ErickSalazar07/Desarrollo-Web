@@ -1,0 +1,76 @@
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+<body>
+    <h1>Información de Mascotas</h1>
+  <div id="seccion_busqueda_crear">
+    <section id="btn-inicial" class="acciones">
+      <a type="button" class="btn" id="boton-agregarMascota" [routerLink]="['/mascota/add']">
+        <i class='bx bx-plus-circle'></i> Agregar Mascota
+      </a>
+    </section>
+    <section class="busqueda">
+      <input type="text" placeholder="Buscar..." [(ngModel)]="terminoBusqueda" />
+      <select [(ngModel)]="filtroSeleccionado">
+        <option value="nombre">Nombre</option>
+        <option value="edad">Edad</option>
+        <option value="enfermedad">Enfermedad</option>
+        <option value="estadoActivo">Estado</option>
+        <option value="raza">Raza</option>
+
+      </select>
+    </section>
+  </div>
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Foto</th>
+          <th>Nombre</th>
+          <th>Raza</th>
+          <th>Edad</th>
+          <th>Peso</th>
+          <th>Enfermedad</th>
+          <th>Estado Activo</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mascota of mascotasFiltradas">
+          <td>
+            <img [src]="mascota.foto" [alt]="'Foto de ' + mascota.nombre">
+          </td>
+          <td>{{mascota.nombre}}</td>
+          <td>{{mascota.raza}}</td>
+          <td>{{mascota.edad}}</td>
+          <td>{{mascota.peso}}</td>
+          <td>{{mascota.enfermedad ? mascota.enfermedad : 'Vacio'}}</td>
+          <td>
+            <b>
+              <font [color]="mascota.estadoActivo ? 'green' : 'red'">
+                {{ mascota.estadoActivo ? 'SI' : 'NO' }}
+              </font>
+            </b>
+          </td>
+          <td>
+            <a (click)="mostrarMascota(mascota)">
+              <button title="Ver" class="btn">
+                <i class='bx bxs-show'></i>
+              </button>
+              
+            </a>
+            <a [routerLink]="['/mascota/update/',mascota.id]">
+              <button title="Editar" class="btn">
+                <i class='bx bx-edit'></i>
+              </button>
+            </a>
+            <a (click)="cambiarEstadoMascota(mascota)">
+              <button title="Cambiar Estado" class="btn">
+                <i class='bx bx-reset'></i>
+              </button>
+            </a>         
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>

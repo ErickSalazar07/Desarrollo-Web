@@ -1,0 +1,35 @@
+<h2>Lista de {{ tipoObjeto | titlecase }}</h2>
+
+<button onclick="window.history.back()">
+  <a class="volver-btn">← Volver</a>
+</button>
+
+<div class="contenedor-lista" [ngSwitch]="tipoObjeto">
+
+  <!-- Caso: Tratamientos -->
+  <div *ngSwitchCase="'tratamiento'">
+    <table *ngIf="lista.length > 0" class="table-auto">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Fecha</th>
+          <th>Droga Asignada</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of lista">
+          <td>{{t.nombreTratamiento}}</td>
+          <td>{{t.fecha | date:"dd/MM/yyyy"}}</td>
+          <td>{{t.drogaAsignada.nombre}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="lista.length === 0">No hay tratamientos registrados.</p>
+  </div>
+
+  <!-- Otros casos -->
+  <div *ngSwitchDefault>
+    <p>No hay una visualización definida para el tipo "{{ tipoObjeto }}".</p>
+  </div>
+
+</div>

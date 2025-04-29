@@ -1,7 +1,7 @@
 18872435,Juan,juan@email.com,3145194072
 19812305,Pedro,pedro@email.com,3045591094
 27082133,Luis,luis@email.com,3944193373
-17190115,Juliana,juli@email.com,3305004013
+789,Juliana,juli@email.com,3305004013
 12345678,Carlos,carlos@email.com,3101234567
 23456789,Andrés,andres@email.com,3112345678
 34567890,María,maria@email.com,3123456789
@@ -11,7 +11,7 @@
 78901234,Ricardo,ricardo@email.com,3167890123
 89012345,Camila,camila@email.com,3178901234
 90123456,Fernando,fernando@email.com,3189012345
-01234567,Valentina,valentina@email.com,3190123456
+1234567,Valentina,valentina@email.com,3190123456
 11223344,Angela,angela@email.com,3401122334
 22334455,Laura,laura@email.com,3212233445
 33445566,Sebastián,sebastian@email.com,3223344556
@@ -21,7 +21,7 @@
 77889900,Pablo,pablo@email.com,3267788990
 88990011,Andrea,andrea@email.com,3278899001
 99001122,Esteban,esteban@email.com,3289900112
-00112233,Daniela,daniela@email.com,3290011223
+112233,Daniela,daniela@email.com,3290011223
 10101010,Cristina,cristina@email.com,3601010101
 20202020,Federico,federico@email.com,3612020202
 30303030,Vanessa,vanessa@email.com,3623030303

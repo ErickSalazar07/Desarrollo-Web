@@ -28,12 +28,13 @@
         <p><span id="negrilla">Estado:</span></p>
         <p><span th:text="*{estadoActivo == true ? 'Activo' : 'No Activo'}">
         </span></p>
-        <!-- <p><span id="negrilla">Tratamientos: </span> <span th:if="*{tratamientos == null or tratamientos.isEmpty()}">No hay Tratamientos</span></p>
-        <ul th:if="*{tratamientos != null and !tratamientos.isEmpty()}">
+        <p><span id="negrilla">Tratamientos: </span> <span th:if="*{tratamientos == null or tratamientos.isEmpty()}">No hay Tratamientos</span></p>
+        <ol th:if="*{tratamientos != null and !tratamientos.isEmpty()}">
           <li th:each="tratamiento: *{tratamientos}">
-            <span th:text="${tratamiento.nombreTratamiento}"></span>
+            <p><span id="negrilla">Nombre Tratamiento: </span><span th:text="${tratamiento.nombreTratamiento}"></span></p>
+            <p><span id="negrilla">Fecha Tratamiento: </span><span th:text="${tratamiento.fecha}"></span></p>
           </li>
-        </ul> -->
+        </ol>
       </div>
     </div>
   </main>

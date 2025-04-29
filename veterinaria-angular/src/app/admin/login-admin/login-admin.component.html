@@ -1,0 +1,28 @@
+<body>
+    <div id="contenedor_info">
+      <div class="image-container">
+        <img id="img_login" src="https://github.com/ErickSalazar07/Web/blob/main/imagenes/imgs-utils/ChatGPT%20Image%2016%20abr%202025,%2012_28_29.png?raw=true">
+      </div>
+    
+      <div class="login-container">
+        <section class="campos-login">
+          <img src="https://github.com/ErickSalazar07/Web/blob/main/imagenes/imgs-utils/logo.png?raw=true" alt="Logo Health Animals">
+          <h1> Bienvenido</h1>
+
+          <form method="post">
+            <label for="username">Username</label>
+            <input [(ngModel)]="admin.username"  id="username" placeholder="Ingrese usuario" required name="username">
+    
+            <label for="celular">Celular</label>
+            <input [(ngModel)]="admin.celular" id="celular" placeholder="Ingrese celular" required name="celular">
+    
+            <p *ngIf="msgError !== ''" class="error-message">{{msgError}}</p>
+    
+            <button type="submit" (click)="logearAdmin()">Ingresar</button>
+          </form>
+        </section>
+      </div>
+    </div>
+    </body> 
+    
+    

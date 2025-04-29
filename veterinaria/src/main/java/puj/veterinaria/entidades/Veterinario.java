@@ -2,6 +2,8 @@ package puj.veterinaria.entidades;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,41 +21,38 @@ public class Veterinario {
   
   @Column(nullable = false, unique = true)
   private String cedula;
-  private String nombre;
-  private String contrasena;
-  private String especialidad;
-  private String foto;
   
+  @Column(nullable = false)
+  private String nombre;
+  
+  @Column(nullable = false)
+  private String contrasena;
+  
+  @Column(nullable = false)
+  private String especialidad;
+  
+  @Column(nullable = false)
+  private String foto;
+
+  @Column(nullable = false)
+  private Boolean activo; // Propiedad que indica si el veterinario esta activo o no
+
+  @JsonIgnore
   @OneToMany(mappedBy = "veterinarioEncargado", cascade = CascadeType.ALL)
   private List<Tratamiento> tratamientos;
 
   public Veterinario() { }
 
-  public Veterinario(String cedula, String nombre, String contrasena, String especialidad, String foto) {
+  public Veterinario(String cedula, String nombre, String contrasena, String especialidad, String foto, Boolean activo) {
     this.cedula = cedula;
     this.nombre = nombre;
     this.contrasena = contrasena;
     this.especialidad = especialidad;
     this.foto = foto;
+    this.activo = activo;
   }
 
-/*
-  Comportamiento
-*/
-
-  // TODO: Implementar funcion
-  public void asignarTratamiento() {
-
-  }
-
-  // TODO: Implementar funcion
-  public Integer numeroAtenciones() {
-    return 0;
-  }
-
-/*
-  Getters y Setters
-*/
+// Getters y Setters
 
   public Long getId() { return id; }
   public void setId(Long id) { this.id = id; }
@@ -67,6 +66,8 @@ public class Veterinario {
   public void setEspecialidad(String especialidad) { this.especialidad = especialidad; }
   public String getFoto() { return foto; }
   public void setFoto(String foto) { this.foto = foto; }
+  public Boolean getActivo() { return activo; }
+  public void setActivo(Boolean activo) { this.activo = activo; }
   public List<Tratamiento> getTratamientos() { return tratamientos; }
   public void setTratamientos(List<Tratamiento> tratamientos) { this.tratamientos = tratamientos; }
 }

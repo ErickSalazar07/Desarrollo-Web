@@ -1,0 +1,43 @@
+<!-- dashboard.component.html (Angular) -->
+<div class="logo-container">
+    <img src="https://github.com/ErickSalazar07/Web/blob/main/imagenes/imgs-utils/logo.png?raw=true" alt="Logo" class="logo" />
+  </div>
+  
+  <div class="dashboard">
+    <!-- Sidebar fija -->
+    <div class="sidebar">
+      <!-- <div class="sidebar-icon" data-tooltip="Home" routerLink="/cliente/home" routerLinkActive="active" id="home">
+        <i class="bx bx-home"></i><div id="nombre-seccion">Home</div>
+      </div> -->
+  
+      <!-- <div class="sidebar-icon" data-tooltip="Mascotas" routerLink="mascota/mascotas" routerLinkActive="active" id="mascotas">
+        <i class='bx bxs-dog'></i><div id="nombre-seccion"> Mascotas</div>
+      </div> -->
+
+      <div class="sidebar-icon" data-tooltip="Veterinarios" routerLink="veterinarios/mostrar-veterinarios" routerLinkActive="active" id="veterinarios">
+        <i class='bx bx-glasses'></i><div id="nombre-seccion"> Veterinarios</div>
+      </div>
+
+      <div class="sidebar-icon" data-tooltip="Drogas" routerLink="droga/drogas" routerLinkActive="active" id="drogas">
+        <i class='bx bxs-capsule'></i><div id="nombre-seccion"> Drogas</div>
+      </div>
+  
+      <!-- <div class="sidebar-icon" data-tooltip="Perfil" routerLink="cliente/clientes" routerLinkActive="active" id="perfil">
+        <i class="bx bx-user"></i><div id="nombre-seccion"> Clientes </div>
+      </div> -->
+      
+      <div class="sidebar-icon" data-tooltip="KPIs" routerLink="mostrar-kpis" routerLinkActive="active" id="kpis">
+        <i class="bx bx-bar-chart-alt-2"></i><div id="nombre-seccion"> KPIs</div>
+      </div>
+
+      <div class="sidebar-icon" data-tooltip="Cerrar Sesión" [routerLink]="['/']" id="logout">
+        <i class="bx bx-log-in-circle"></i><div id="nombre-seccion">Cerrar Sesión</div>
+      </div>
+    </div>
+  
+    <!-- Contenedor donde se carga el contenido -->
+    <div id="contenido" class="contenido">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  

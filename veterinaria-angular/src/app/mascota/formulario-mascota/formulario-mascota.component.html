@@ -1,0 +1,39 @@
+<button class="btn btn-volver" onclick="window.history.back()">
+  <i class='bx bx-arrow-back'></i> Volver
+</button>
+
+
+<form>
+  <div class="informacion-container">
+    <div class="campos">
+      <label for="nombre">Nombre:</label>
+      <input id="nombre" type="text" [(ngModel)]="mascota.nombre" name="nombre" required>
+      
+      <label for="raza">Raza:</label>
+      <input id="raza" type="text" [(ngModel)]="mascota.raza" name="raza" required>
+      
+      <label for="edad">Edad:</label>
+      <input id="edad" type="number" [(ngModel)]="mascota.edad" name="edad" required>
+      
+      <label for="peso">Peso:</label>
+      <input id="peso" type="number" [(ngModel)]="mascota.peso" name="peso" required>
+      
+      <label for="imagen">Imagen:</label>
+      <input id="imagen" type="text" [(ngModel)]="mascota.foto" name="foto" required>
+      
+      <label for="enfermedad">Enfermedad:</label>
+      <input id="enfermedad" type="text" [(ngModel)]="mascota.enfermedad" name="enfermedad">
+      
+      <label for="cedula-cliente">Cedula Cliente:</label>
+      <input id="cedula-cliente" type="number" [(ngModel)]="mascota.cedulaCliente" name="cedula-cliente"required>
+      
+    </div>
+    <br>
+    <div *ngIf="!clienteEncontrado" class="error-mensaje">
+      Error: No se encontro el cliente.
+    </div>
+    <button type="submit" class="btn btn-guardar" (click)="submitMascota()">
+        Guardar
+    </button>
+  </div>
+</form>

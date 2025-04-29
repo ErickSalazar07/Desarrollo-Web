@@ -1,0 +1,35 @@
+<body>
+<h1>Información Dueño</h1>
+<button class="btn btn-volver" onclick="window.history.back()"><i class='bx bx-arrow-back'></i>Volver</button>
+<main>
+  <section class="informacion">
+    <div class="campos">
+      <ng-container *ngIf="!cliente"><h1>Este cliente no existe</h1></ng-container>
+      <p>Nombre:</p>
+      <p><span>{{cliente.nombre}}</span></p>
+      <p>Correo:</p>
+      <p><span>{{cliente.correo}}</span></p>
+      <p>Cédula:</p>
+      <p><span>{{cliente.cedula}}</span></p>
+      <p>Celular:</p>
+      <p><span>{{cliente.celular}}</span></p>
+    </div>
+    <p class="msg-no-tiene-mascotas" *ngIf="!mascotas || mascotas.length === 0">
+      No tiene mascotas registradas.
+    </p>
+    <div id="mascotas" *ngIf="mascotas && mascotas.length > 0">
+      <h3>Mascotas Registradas</h3>
+      <ul class="mascotas">
+        <li *ngFor="let mascota of mascotas">
+          <img [src]="mascota.foto" [alt]="'Imagen de mascota ' + mascota.nombre" />
+          <div id="datos-animal">
+            <p>{{mascota.nombre}}</p>
+            <p>{{mascota.raza}}</p>
+          </div>
+          <a id="boton-ver-mascota" [routerLink]="['/mascota/mostrar-mascota/',mascota.id]">Ver Mascota</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>
+</body>

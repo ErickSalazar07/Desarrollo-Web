@@ -1,0 +1,226 @@
+body {
+  font-family: "PP Neue Montreal", serif;
+  padding: 30px;
+  background-color: #f9f9f9;
+
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 7px;
+  color: #000000;
+}
+
+.kpi-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  padding: 24px;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.kpi-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.kpi-card h3 {
+  margin-bottom: 16px;
+  font-size: 1.4rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Estilos para tarjetas de donut */
+.donut-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.semi-donut-container {
+  position: relative;
+  width: 160px;
+  height: 90px;
+  margin: 10px auto;
+}
+
+.semi-donut {
+  position: relative;
+  width: 160px;
+  height: 80px;
+  background: #f0f3f6;
+  border-top-left-radius: 80px;
+  border-top-right-radius: 80px;
+  overflow: hidden;
+}
+
+.semi-donut::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 160px;
+  height: 80px;
+  background: conic-gradient(
+    #3498db 0% calc(var(--percentage) * 1%),
+    transparent calc(var(--percentage) * 1%) 100%
+  );
+  border-top-left-radius: 80px;
+  border-top-right-radius: 80px;
+  transform-origin: center bottom;
+}
+
+.percentage-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.stats {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: #7f8c8d;
+}
+
+.active {
+  color: #3498db;
+  font-weight: 600;
+}
+
+.inactive {
+  color: #95a5a6;
+}
+
+/* Estilos para tarjetas financieras */
+.finance-card, .simple-card, .top-card {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding: 24px 20px;
+}
+
+.icon-container {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #3498db;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+
+.icon-container i {
+  font-size: 24px;
+}
+
+.icon-container.profit {
+  background-color: #2ecc71;
+}
+
+.icon-container.treatment {
+  background-color: #9b59b6;
+}
+
+.icon-container.top {
+  background-color: #f39c12;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.content h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+.highlight {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 8px 0 0;
+}
+
+/* Estilos para la lista de top tratamientos */
+.top-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+
+.top-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f3f6;
+}
+
+.top-list li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.rank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #f39c12;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.treatment-name {
+  color: #34495e;
+  font-weight: 500;
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+  .kpi-container {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+  
+  .finance-card, .simple-card, .top-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .icon-container {
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+  
+  .content h3 {
+    text-align: center;
+  }
+  
+  .top-list li {
+    justify-content: center;
+  }
+}
