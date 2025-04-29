@@ -18,7 +18,7 @@
       No tiene mascotas registradas.
     </p>
     <div id="mascotas" *ngIf="mascotas">
-      <h3>Mascotas Registras</h3>
+      <h3>Mascotas Registradas</h3>
       <ul class="mascotas">
         <li *ngFor="let mascota of mascotas">
           <img [src]="mascota.foto" [alt]="'Imagen de mascota ' + mascota.nombre" />
