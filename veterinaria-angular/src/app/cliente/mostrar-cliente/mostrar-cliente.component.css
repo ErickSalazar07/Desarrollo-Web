@@ -5,7 +5,7 @@ body {
   font-family: "PP Neue Montreal", serif;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
   padding: 30px;
   margin: 0;
   background-color: #f9f9f9;
@@ -22,11 +22,11 @@ header {
 
 h1 {
   font-family: "PP Neue Montreal", serif;
-  font-size: 36px;
+  font-size: 40px;
   margin-top: 15px;
-  text-align: left;
-  justify-content: left;
-  align-self: start;
+  text-align: center;
+  justify-content: center;
+  align-self: center;
 }
 
 /* Contenido principal */
@@ -36,14 +36,17 @@ main {
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   width: 90%;
+  max-width: 1200px;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   margin-top: 30px;
+  position: relative;
 }
 
 i {
-  font-size: 17px;
+  font-size: 20px;
   margin-right: 5px;
 }
 
@@ -52,34 +55,65 @@ i {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  text-align: left;
+  gap: 20px;
+  position: relative;
 }
 
 .campos {
   flex: 1;
-  padding-right: 20px;
+  min-width: 250px;
+  text-align: left;
 }
 
 .campos p {
-  font-size: 17px;
+  font-size: 20px;
   margin: 5px 0;
   color: #333;
   font-weight: 600;
 }
 
 .campos span {
-  font-size: 16px;
+  font-size: 18px;
   color: #555555;
   font-weight: 400;
+}
+
+/* Botón Volver arriba de Nombre */
+.btn-volver {
+  margin-bottom: 20px;
+  margin-left: 305px;
+  border: 1px solid #054f31;
+  padding: 10px 30px;
+  background-color: white;
+  color: #054f31;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.btn-volver:hover {
+  background-color: #054f31;
+  color: white;
 }
 
 /* Sección de mascotas */
 #mascotas {
   flex: 2;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  flex-wrap: nowrap;
   justify-content: flex-start;
+  align-items: center;
   gap: 20px;
   width: 100%;
+  max-height: 400px; /* altura máxima visible */
+  overflow-y: auto;  /* scroll vertical si hay muchas mascotas */
+  margin-top: 0px;
 }
 
 .mascotas {
@@ -88,8 +122,8 @@ i {
   gap: 20px;
   list-style: none;
   padding: 0;
-  flex-direction: column;
   width: 100%;
+  justify-content: center;
 }
 
 .mascotas li {
@@ -103,7 +137,7 @@ i {
   align-items: center;
   text-align: left;
   width: 100%;
-  max-width: 1000px;
+  max-width: 700px;
   justify-content: space-between;
 }
 
@@ -113,8 +147,8 @@ i {
 }
 
 .mascotas li img {
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   object-fit: cover;
   margin-right: 15px;
@@ -128,7 +162,7 @@ i {
 }
 
 #datos-animal p {
-  font-size: 16px;
+  font-size: 18px;
   color: #333;
   margin: 2px 0;
   font-weight: 500;
@@ -137,7 +171,7 @@ i {
 .mascotas li a {
   text-decoration: none;
   color: white;
-  font-size: 14px;
+  font-size: 16px;
   padding: 8px 16px;
   border-radius: 20px;
   background-color: #054f31;
@@ -150,9 +184,8 @@ i {
 }
 
 /* Mensaje cuando no hay mascotas */
-/* Mensaje cuando no hay mascotas */
 .msg-no-tiene-mascotas {
-  font-size: 20px;
+  font-size: 22px;
   color: #666;
   font-style: italic;
   padding: 40px;
@@ -170,43 +203,22 @@ i {
   transition: all 0.3s ease;
 }
 
-/* Icono emoji grande */
 .msg-no-tiene-mascotas::before {
   content: '😿';
-  font-size: 50px;
+  font-size: 55px;
   line-height: 1;
 }
 
-
 .msg-no-tiene-mascotas i {
-  font-size: 22px;
+  font-size: 24px;
   color: #bbb;
   vertical-align: middle;
 }
 
-/* Aplica estilo general al contenedor vacío */
 #mascotas:has(.msg-no-tiene-mascotas) {
   justify-content: center;
   align-items: center;
   min-height: 120px;
-}
-
-/* Botón Volver */
-.btn-volver {
-  border: 1px solid #054f31;
-  padding: 10px 30px;
-  background-color: white;
-  color: #054f31;
-  font-size: 15px;
-  font-weight: bold;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-volver:hover {
-  background-color: #054f31;
-  color: white;
 }
 
 /* Footer */
@@ -216,6 +228,6 @@ footer {
   padding: 20px;
   margin-top: 20px;
   background-color: #f8f8f8;
-  font-size: 14px;
+  font-size: 15px;
   color: #666;
 }
