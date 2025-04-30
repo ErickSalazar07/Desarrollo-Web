@@ -94,5 +94,34 @@ public class VeterinarioRepositorioTest {
     }
 
     //PRUEBAS QUERYS-----------------------------------------------------------------------------------------------
-    
+
+    @Test
+    public void veterinarioRepositorio_cantidadVeterinariosActivos_long(){
+        //arrane
+        Veterinario veterinario1 = new Veterinario("12343187634534", "nuevoVeterinario", "1234","nuevaEspecialidad", "foto", true);
+        Veterinario veterinario2 = new Veterinario("12343256354", "nuevoVeterinario2", "1234","nuevaEspecialidad2", "foto2", true);
+        Veterinario veterinario3 = new Veterinario("1234333563456", "nuevoVeterinario3", "1234","nuevaEspecialidad3", "foto3", false);
+        repositorioVeterinario.save(veterinario1);
+        repositorioVeterinario.save(veterinario2);
+        repositorioVeterinario.save(veterinario3);
+        //Act
+        long cantidadVeterinariosActivos = repositorioVeterinario.cantidadVeterinariosActivos();
+        //Assert
+        Assertions.assertThat(cantidadVeterinariosActivos).isEqualTo(2);
+    }
+
+    @Test
+    public void veterinarioRepositorio_cantidadVeterinariosInactivos_long(){
+        //arrane
+        Veterinario veterinario1 = new Veterinario("12343187634534", "nuevoVeterinario", "1234","nuevaEspecialidad", "foto", true);
+        Veterinario veterinario2 = new Veterinario("12343256354", "nuevoVeterinario2", "1234","nuevaEspecialidad2", "foto2", true);
+        Veterinario veterinario3 = new Veterinario("1234333563456", "nuevoVeterinario3", "1234","nuevaEspecialidad3", "foto3", false);
+        repositorioVeterinario.save(veterinario1);
+        repositorioVeterinario.save(veterinario2);
+        repositorioVeterinario.save(veterinario3);
+        //Act
+        long cantidadVeterinariosInactivos = repositorioVeterinario.cantidadVeterinariosInactivos();
+        //Assert
+        Assertions.assertThat(cantidadVeterinariosInactivos).isEqualTo(1);
+    }
 }
