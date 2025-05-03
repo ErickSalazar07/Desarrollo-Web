@@ -3,6 +3,8 @@ package puj.veterinaria.controladores;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -68,45 +70,59 @@ public class ControladorTratamiento {
 
   @GetMapping("/tratamientos")
   @Operation(summary = "Retorna los Tratamientos de la db.")
-  public List<Tratamiento> obtenerTratamientos() {
-    return tratamientoServicio.findAll();
+  public ResponseEntity<List<Tratamiento>> obtenerTratamientos() {
+      List<Tratamiento> lista = tratamientoServicio.findAll();
+      ResponseEntity<List<Tratamiento>> response = new ResponseEntity<>(lista, HttpStatus.OK);
+      return response;
   }
 
   
 
   @GetMapping("/get-tratamiento/{id}")
   @Operation(summary = "Retorna un Tratamiento, correspondiente al id que se provee.")
-  public Tratamiento obtenerTratamiento(@PathVariable(value = "id") Long id) {
-    return tratamientoServicio.findById(id);
+  public ResponseEntity<Tratamiento> obtenerTratamiento(@PathVariable(value = "id") Long id) {
+    ResponseEntity<Tratamiento> response = new ResponseEntity<>(tratamientoServicio.findById(id), HttpStatus.OK);
+    return response;
   }
 
   @GetMapping("/tratamientos-mascota/{id}")
   @Operation(summary = "Retorna los Tratamientos de una Mascota, la cual corresponde al id.")
-  public List<Tratamiento> obtenerTratamientosMascota(@PathVariable(value = "id") Long idMascota) {
-    return tratamientoServicio.findByMascotaId(idMascota);
+  public ResponseEntity<List<Tratamiento>> obtenerTratamientosMascota(@PathVariable(value = "id") Long idMascota) {
+    ResponseEntity<List<Tratamiento>> response = new ResponseEntity<>(tratamientoServicio.findByMascotaId(idMascota), HttpStatus.OK);
+    return response;
   }
   @GetMapping("/tratamientos-veterinario/{cedula}")
   @Operation(summary = "Retorna todos los tratamientos de un Veterinario dada la cédula.")
-  public List<Tratamiento> obtenerTratamientosVeterinario(@PathVariable(value = "cedula") String cedula) {
-    return tratamientoServicio.tratamientosVeterinario(cedula);
+  public ResponseEntity<List<Tratamiento>> obtenerTratamientosVeterinario(@PathVariable(value = "cedula") String cedula) {
+    ResponseEntity<List<Tratamiento>> response = new ResponseEntity<>(tratamientoServicio.tratamientosVeterinario(cedula), HttpStatus.OK);
+    return response;
   }
   @GetMapping("/get-num-tratamientos-ultimo-mes")
   @Operation(summary = "Retorna el numero de tratamientos del ultimo mes.")
-  public Long obtenerNumTratamientosUltimoMes() {
-    return tratamientoServicio.cantidadTratamientosUltimoMes();
+  public ResponseEntity<Long> obtenerNumTratamientosUltimoMes() {
+    ResponseEntity<Long> response = new ResponseEntity<>(tratamientoServicio.cantidadTratamientosUltimoMes(), HttpStatus.OK);
+    return response;
   }
 
+/*************  ✨ Windsurf Command ⭐  *************/
+  /**
+   * Retorna el numero de tratamientos que tengan asignado el tipo de droga que se pasa.
+   * @param droga El nombre del tipo de droga a buscar.
+   * @return El numero de tratamientos que tengan asignado el tipo de droga que se pasa.
+   */
+/*******  896292f9-e4d4-4897-a10b-bf3b665bfccf  *******/
   @GetMapping("get-num-tratamientos-tipo-droga/{droga}")
   @Operation(summary = "Retorna el numero de tratamientos que tengan asignado el tipo de droga que se pasa.")
-  public Long obtenerNumTratamientosPorTipoDroga(@PathVariable(value = "droga") String droga) {
-    return tratamientoServicio.cantidadTratamientosTipoMedicamento(droga);
+  public ResponseEntity<Long> obtenerNumTratamientosPorTipoDroga(@PathVariable(value = "droga") String droga) {
+    ResponseEntity<Long> response = new ResponseEntity<>(tratamientoServicio.cantidadTratamientosTipoMedicamento(droga), HttpStatus.OK);
+    return response;
   }
 
   @GetMapping("get-top3-tratamientos-mas-unidad-vendida")
   @Operation(summary = "Retorna los 3 tratamientos con mas unidades vendidas.")
-  public List<Tratamiento> obtenerTop3TratamientosMasUnidadesVendidas() {
-    return tratamientoServicio.top3TratamientosMasUnidadesVendidas();
-  }
+  public ResponseEntity<List<Tratamiento>> obtenerTop3TratamientosMasUnidadesVendidas() {
+    ResponseEntity<List<Tratamiento>> response = new ResponseEntity<>(tratamientoServicio.top3TratamientosMasUnidadesVendidas(), HttpStatus.OK);
+    return response;}
 
 
 
