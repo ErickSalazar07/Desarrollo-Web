@@ -35,7 +35,6 @@ public class ControladorTratamiento {
 
   @Autowired
   IDrogaServicio drogaServicio;
-
   @Autowired
   IMascotaServicio mascotaServicio;
 
@@ -45,7 +44,7 @@ public class ControladorTratamiento {
 // Metodos PostMapping
   @PostMapping("/add")
   @Operation(summary = "Agrega un Tratamiento al db.")
-  public void agregarTratamiento(@RequestBody TratamientoDTO tratamientoDTO) {
+  public ResponseEntity<String> agregarTratamiento(@RequestBody TratamientoDTO tratamientoDTO) {
 
     System.out.println("\033[33mVeterinario cedula: "+tratamientoDTO.getVeterinaroCedula()+"\033[0m");
 
@@ -64,6 +63,9 @@ public class ControladorTratamiento {
     tratamiento.setMascota(mascotaServicio.findById(tratamientoDTO.getMascotaID()));
     tratamiento.setVeterinarioEncargado(veterinarioServicio.findByCedula(tratamientoDTO.getVeterinaroCedula()));
     tratamientoServicio.addTratamiento(tratamiento);
+
+    ResponseEntity<String> response = new ResponseEntity<>("Tratamiento Agregado", HttpStatus.CREATED);
+    return response;
   }
 
 // Metodos GetMapping
@@ -104,13 +106,6 @@ public class ControladorTratamiento {
     return response;
   }
 
-/*************  ✨ Windsurf Command ⭐  *************/
-  /**
-   * Retorna el numero de tratamientos que tengan asignado el tipo de droga que se pasa.
-   * @param droga El nombre del tipo de droga a buscar.
-   * @return El numero de tratamientos que tengan asignado el tipo de droga que se pasa.
-   */
-/*******  896292f9-e4d4-4897-a10b-bf3b665bfccf  *******/
   @GetMapping("get-num-tratamientos-tipo-droga/{droga}")
   @Operation(summary = "Retorna el numero de tratamientos que tengan asignado el tipo de droga que se pasa.")
   public ResponseEntity<Long> obtenerNumTratamientosPorTipoDroga(@PathVariable(value = "droga") String droga) {
@@ -130,15 +125,17 @@ public class ControladorTratamiento {
 
   @PutMapping("/update/{id}")
   @Operation(summary = "Actualiza un Tratamiento, correspondiente al id que se provee.")
-  public void actualizarTratamiento(@RequestBody Tratamiento tratamiento) {
-    tratamientoServicio.updateTratamiento(tratamiento);
-  }
+  public ResponseEntity<String> actualizarTratamiento(@RequestBody Tratamiento tratamiento) {
+    ResponseEntity<String> response = new ResponseEntity<>("Tratamiento Actualizado", HttpStatus.OK);
+    return response;}
 
 // Metodos DeleteMapping
 
   @DeleteMapping("/delete/{id}")
   @Operation(summary = "Elimina un Tratamiento, de la db, correspondiente al id.")
-  public void eliminarTratamiento(@PathVariable(value = "id") Long id) {
+  public ResponseEntity<String> eliminarTratamiento(@PathVariable(value = "id") Long id) {
     tratamientoServicio.deleteById(id);
+    ResponseEntity<String> response = new ResponseEntity<>("Tratamiento Eliminado", HttpStatus.OK);
+    return response;
   }
 }
