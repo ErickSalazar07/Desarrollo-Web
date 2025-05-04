@@ -20,15 +20,15 @@ public class VeterinarioRepositorioTest {
     @Autowired
     private RepositorioVeterinario repositorioVeterinario;
 
-    @BeforeEach
-    public void init(){
-        Veterinario veterinario1 = new Veterinario("12343187634534", "nuevoVeterinario", "1234","nuevaEspecialidad", "foto", true);
-        Veterinario veterinario2 = new Veterinario("12343256354", "nuevoVeterinario2", "1234","nuevaEspecialidad2", "foto2", true);
-        Veterinario veterinario3 = new Veterinario("1234333563456", "nuevoVeterinario3", "1234","nuevaEspecialidad3", "foto3", true);
-        repositorioVeterinario.save(veterinario1);
-        repositorioVeterinario.save(veterinario2);
-        repositorioVeterinario.save(veterinario3);
-    }
+    // @BeforeEach
+    // public void init(){
+    //     Veterinario veterinario1 = new Veterinario("12343187634534", "nuevoVeterinario", "1234","nuevaEspecialidad", "foto", true);
+    //     Veterinario veterinario2 = new Veterinario("12343256354", "nuevoVeterinario2", "1234","nuevaEspecialidad2", "foto2", true);
+    //     Veterinario veterinario3 = new Veterinario("1234333563456", "nuevoVeterinario3", "1234","nuevaEspecialidad3", "foto3", true);
+    //     repositorioVeterinario.save(veterinario1);
+    //     repositorioVeterinario.save(veterinario2);
+    //     repositorioVeterinario.save(veterinario3);
+    // }
     
 
     //PRUEBAS CRUD VETERINARIO ----------------------------------------------------------------

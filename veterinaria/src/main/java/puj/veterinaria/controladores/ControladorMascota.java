@@ -3,6 +3,8 @@ package puj.veterinaria.controladores;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,8 +46,9 @@ public class ControladorMascota {
   // URL: http://localhost:8090/mascota/mascotas
   @GetMapping("/mascotas")
   @Operation(summary = "Retornar todas las Mascotas en la db.")
-  public List<Mascota> obtenerMascotas() {
-    return mascotaServicio.findAll();
+  public ResponseEntity<List<Mascota>> obtenerMascotas() {
+    ResponseEntity<List<Mascota>> response = new ResponseEntity<>(mascotaServicio.findAll(), HttpStatus.OK);  
+    return response;
   }
   
   // ? Cambiar id por algun id dentro de los animales guardados en el repositorio
