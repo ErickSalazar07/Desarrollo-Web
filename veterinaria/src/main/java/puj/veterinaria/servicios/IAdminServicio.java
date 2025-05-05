@@ -10,9 +10,9 @@ public interface IAdminServicio {
   public List<Administrador> findAll();
   public Administrador findByCorreo(String correo);
   public Administrador findByUsername(String username);
-  public void addAdministrador(Administrador admin);
-  public void updateAdministrador(Long id, Administrador admin);
-  public void updateAdministrador(Administrador admin);
+  public Administrador addAdministrador(Administrador admin);
+  public Administrador updateAdministrador(Long id, Administrador admin);
+  public Administrador updateAdministrador(Administrador admin);
   public void deleteById(Long id);
   public Long numeroAdministradores();
 

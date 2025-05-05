@@ -35,13 +35,13 @@ public class ClienteServicio implements IClienteServicio {
   }
 
   @Override
-  public void addCliente(Cliente cliente) {
-    repositorioCliente.save(cliente);
+  public Cliente addCliente(Cliente cliente) {
+    return repositorioCliente.save(cliente);
   }
 
   @Transactional
   @Override
-  public void updateCliente(Long id, Cliente nuevoCliente) {
+  public Cliente updateCliente(Long id, Cliente nuevoCliente) {
     Cliente cliente = repositorioCliente.findById(id)
         .orElseThrow(() -> new RuntimeException("Cliente no encontrado con ID: " + id));
 
@@ -49,12 +49,12 @@ public class ClienteServicio implements IClienteServicio {
     cliente.setCorreo(nuevoCliente.getCorreo());
     cliente.setCelular(nuevoCliente.getCelular());
 
-    repositorioCliente.save(cliente);
+    return repositorioCliente.save(cliente);
   }
 
   @Override
-  public void updateCliente(Cliente cliente) {
-    repositorioCliente.save(cliente);
+  public Cliente updateCliente(Cliente cliente) {
+    return repositorioCliente.save(cliente);
   }
 
   @Override

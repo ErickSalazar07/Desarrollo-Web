@@ -36,13 +36,13 @@ public class AdminServicio implements IAdminServicio {
     }
 
     @Override
-    public void addAdministrador(Administrador admin) {
-        repositorioAdministrador.save(admin);
+    public Administrador addAdministrador(Administrador admin) {
+        return repositorioAdministrador.save(admin);
     }
 
     @Transactional
     @Override
-    public void updateAdministrador(Long id, Administrador nuevoAdmin) {
+    public Administrador updateAdministrador(Long id, Administrador nuevoAdmin) {
         Administrador admin = repositorioAdministrador.findById(id)
             .orElseThrow(() -> new RuntimeException("Administrador no encontrado con ID: " + id));
 
@@ -51,12 +51,12 @@ public class AdminServicio implements IAdminServicio {
         admin.setCelular(nuevoAdmin.getCelular());
         admin.setUsername(nuevoAdmin.getUsername());
 
-        repositorioAdministrador.save(admin);
+        return repositorioAdministrador.save(admin);
     }
 
     @Override
-    public void updateAdministrador(Administrador admin) {
-        repositorioAdministrador.save(admin);
+    public Administrador updateAdministrador(Administrador admin) {
+        return repositorioAdministrador.save(admin);
     }
 
     @Override

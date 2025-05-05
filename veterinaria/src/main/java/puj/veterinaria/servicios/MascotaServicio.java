@@ -41,10 +41,10 @@ public class MascotaServicio implements IMascotaServicio {
 
   @Transactional
   @Override
-  public void updateMascota(Long id,Mascota nuevaMascota) {
+  public Mascota updateMascota(Long id,Mascota nuevaMascota) {
     Mascota mascota = repositorioMascota.findById(id).orElse(null);
 
-    if(mascota == null) return;
+    if(mascota == null) return null;
 
     mascota.setNombre(nuevaMascota.getNombre());
     mascota.setRaza(nuevaMascota.getRaza());
@@ -55,17 +55,17 @@ public class MascotaServicio implements IMascotaServicio {
     mascota.setCliente(repositorioCliente.findByCedula(nuevaMascota.getCliente().getCedula()));
     mascota.setEstadoActivo(nuevaMascota.getEstadoActivo());
 
-    repositorioMascota.save(mascota);
+    return repositorioMascota.save(mascota);
   }
 
   @Override
-  public void updateMascota(Mascota mascota) {
-    repositorioMascota.save(mascota);
+  public Mascota updateMascota(Mascota mascota) {
+    return repositorioMascota.save(mascota);
   }
 
   @Override
-  public void addMascota(Mascota mascota) {
-    repositorioMascota.save(mascota);
+  public Mascota addMascota(Mascota mascota) {
+    return repositorioMascota.save(mascota);
   }
 
   @Override

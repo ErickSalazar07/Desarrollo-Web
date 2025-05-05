@@ -8,9 +8,9 @@ public interface IVeterinarioServicio {
   public List<Veterinario> findAll();
   public Veterinario findById(Long id);
   public Veterinario findByCedula(String cedula);
-  public void addVeterinario(Veterinario veterinario);
-  public void updateVeterinario(Long id, Veterinario veterinario);
-  public void updateVeterinario(Veterinario veterinario);
+  public Veterinario addVeterinario(Veterinario veterinario);
+  public Veterinario updateVeterinario(Long id, Veterinario veterinario);
+  public Veterinario updateVeterinario(Veterinario veterinario);
   public void deleteById(Long id);
   public Long cantidadVeterinariosActivos();
   public Long cantidadVeterinariosInactivos();
