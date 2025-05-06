@@ -11,7 +11,10 @@ import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+<<<<<<< HEAD
 import org.mockito.Mockito;
+=======
+>>>>>>> 7b1e2b696cfa280893bfc2a34dd96495802e5ad8
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -41,9 +44,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RunWith(SpringRunner.class)
 public class TratamientoControladorTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+  @Autowired
+  private MockMvc mockMvc;
 
+<<<<<<< HEAD
     @MockBean
     private ITratamientoServicio tratamientoServicio;
 
@@ -167,4 +171,9 @@ public class TratamientoControladorTest {
         .andExpect(content().contentType("application/json"))
         .andExpect(content().json(objectMapper.writeValueAsString(tratamiento)));
     }
+=======
+  @MockBean
+  private TratamientoServicio tratamientoServicio;
+
+>>>>>>> 7b1e2b696cfa280893bfc2a34dd96495802e5ad8
 }
