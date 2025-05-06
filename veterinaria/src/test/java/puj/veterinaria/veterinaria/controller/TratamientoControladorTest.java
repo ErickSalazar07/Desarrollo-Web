@@ -1,7 +1,6 @@
 package puj.veterinaria.veterinaria.controller;
 
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -15,12 +14,10 @@ import puj.veterinaria.servicios.TratamientoServicio;
 @RunWith(SpringRunner.class)
 public class TratamientoControladorTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+  @Autowired
+  private MockMvc mockMvc;
 
-    @MockBean
-    private TratamientoServicio tratamientoServicio;
+  @MockBean
+  private TratamientoServicio tratamientoServicio;
 
-    
-    
 }
