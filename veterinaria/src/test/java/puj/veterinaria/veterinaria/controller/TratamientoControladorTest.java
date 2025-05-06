@@ -11,10 +11,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-<<<<<<< HEAD
 import org.mockito.Mockito;
-=======
->>>>>>> 7b1e2b696cfa280893bfc2a34dd96495802e5ad8
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -47,8 +44,7 @@ public class TratamientoControladorTest {
   @Autowired
   private MockMvc mockMvc;
 
-<<<<<<< HEAD
-    @MockBean
+  @MockBean
     private ITratamientoServicio tratamientoServicio;
 
     @MockBean
@@ -81,13 +77,14 @@ public class TratamientoControladorTest {
         tratamientoDTO1.setVeterinaroCedula(veterinario1.getCedula()); 
         tratamientoDTO1.setMascotaID(mascota1.getId());
 
+        Tratamiento tratamiento1 = new Tratamiento(tratamientoDTO1);
+
         when(mascotaServicio.findById(Mockito.anyLong())).thenReturn(mascota1);
         when(drogaServicio.findById(Mockito.anyLong())).thenReturn(drogaPrueba1);
         when(veterinarioServicio.findByCedula(Mockito.anyString())).thenReturn(veterinario1);
-        doNothing().when(mascotaServicio).updateMascota(Mockito.any(Mascota.class));
-        doNothing().when(tratamientoServicio).addTratamiento(Mockito.any(Tratamiento.class));
-        doNothing().when(drogaServicio).updateDroga(Mockito.any(Droga.class));
-        doNothing().when(tratamientoServicio).addTratamiento(Mockito.any(Tratamiento.class));
+        when(mascotaServicio.updateMascota(Mockito.any(Mascota.class))).thenReturn(mascota1);
+        when(tratamientoServicio.addTratamiento(Mockito.any(Tratamiento.class))).thenReturn(tratamiento1);
+        when(drogaServicio.updateDroga(Mockito.any(Droga.class))).thenReturn(drogaPrueba1);
 
          ResultActions response = mockMvc.perform(
             post("/tratamiento/add")
@@ -171,9 +168,4 @@ public class TratamientoControladorTest {
         .andExpect(content().contentType("application/json"))
         .andExpect(content().json(objectMapper.writeValueAsString(tratamiento)));
     }
-=======
-  @MockBean
-  private TratamientoServicio tratamientoServicio;
-
->>>>>>> 7b1e2b696cfa280893bfc2a34dd96495802e5ad8
 }
