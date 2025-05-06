@@ -11,10 +11,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-<<<<<<< HEAD
 import org.mockito.Mockito;
-=======
->>>>>>> 7b1e2b696cfa280893bfc2a34dd96495802e5ad8
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -30,13 +27,10 @@ import puj.veterinaria.entidades.Tratamiento;
 import puj.veterinaria.entidades.Veterinario;
 import puj.veterinaria.entidades.DTO.MascotaDTO;
 import puj.veterinaria.entidades.DTO.TratamientoDTO;
-import puj.veterinaria.servicios.DrogaServicio;
 import puj.veterinaria.servicios.IDrogaServicio;
 import puj.veterinaria.servicios.IMascotaServicio;
 import puj.veterinaria.servicios.ITratamientoServicio;
 import puj.veterinaria.servicios.IVeterinarioServicio;
-import puj.veterinaria.servicios.MascotaServicio;
-import puj.veterinaria.servicios.TratamientoServicio;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -47,7 +41,6 @@ public class TratamientoControladorTest {
   @Autowired
   private MockMvc mockMvc;
 
-<<<<<<< HEAD
     @MockBean
     private ITratamientoServicio tratamientoServicio;
 
@@ -171,9 +164,4 @@ public class TratamientoControladorTest {
         .andExpect(content().contentType("application/json"))
         .andExpect(content().json(objectMapper.writeValueAsString(tratamiento)));
     }
-=======
-  @MockBean
-  private TratamientoServicio tratamientoServicio;
-
->>>>>>> 7b1e2b696cfa280893bfc2a34dd96495802e5ad8
 }
