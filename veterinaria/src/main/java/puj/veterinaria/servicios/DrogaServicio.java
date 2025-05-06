@@ -29,24 +29,24 @@ public class DrogaServicio implements IDrogaServicio {
   }
 
   @Override
-  public void addDroga(Droga droga) {
-    repositorioDroga.save(droga);
+  public Droga addDroga(Droga droga) {
+    return repositorioDroga.save(droga);
   }
 
   @Override
-  public void updateDroga(Long id, Droga droga) {
+  public Droga updateDroga(Long id, Droga droga) {
     Droga drogaModificar = repositorioDroga.findById(id).orElse(null);
     drogaModificar.setNombre(droga.getNombre());
     drogaModificar.setPrecioCompra(droga.getPrecioCompra());
     drogaModificar.setPrecioVenta(droga.getPrecioVenta());
     drogaModificar.setUnidadDisponible(droga.getUnidadDisponible());
     drogaModificar.setUnidadVendida(droga.getUnidadVendida());
-    repositorioDroga.save(drogaModificar);
+    return repositorioDroga.save(drogaModificar);
   }
 
   @Override
-  public void updateDroga(Droga droga) {
-    repositorioDroga.save(droga);
+  public Droga updateDroga(Droga droga) {
+    return repositorioDroga.save(droga);
   }
 
   @Override

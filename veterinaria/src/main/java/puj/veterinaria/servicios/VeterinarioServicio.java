@@ -26,8 +26,6 @@ public class VeterinarioServicio implements IVeterinarioServicio {
   public Veterinario findByCedula(String cedula) {
     return repositorioVeterinario.findByCedula(cedula).orElse(null);
   }
-
-
   
   @Override
   public Veterinario findById(Long id) {
@@ -35,18 +33,18 @@ public class VeterinarioServicio implements IVeterinarioServicio {
   }
 
   @Override
-  public void addVeterinario(Veterinario veterinario) {
-    repositorioVeterinario.save(veterinario);
+  public Veterinario addVeterinario(Veterinario veterinario) {
+    return repositorioVeterinario.save(veterinario);
   }
 
   @Override
-  public void updateVeterinario(Long id, Veterinario veterinario) {
-    repositorioVeterinario.save(veterinario);
+  public Veterinario updateVeterinario(Long id, Veterinario veterinario) {
+    return repositorioVeterinario.save(veterinario);
   }
 
   @Override
-  public void updateVeterinario(Veterinario veterinario) {
-    repositorioVeterinario.save(veterinario);
+  public Veterinario updateVeterinario(Veterinario veterinario) {
+    return repositorioVeterinario.save(veterinario);
   }
 
 

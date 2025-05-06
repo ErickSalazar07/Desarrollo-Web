@@ -9,9 +9,9 @@ public interface IMascotaServicio {
   public List<Mascota> findAll();
   public List<Mascota> findByClienteCedula(String cedula);
   public void deleteById(Long id);
-  public void updateMascota(Long id, Mascota mascota);
-  public void updateMascota(Mascota mascota);
-  public void addMascota(Mascota mascotas);
+  public Mascota updateMascota(Long id, Mascota mascota);
+  public Mascota updateMascota(Mascota mascota);
+  public Mascota addMascota(Mascota mascotas);
   public Long numeroMascotas();
   public void cambiarEstadoById(Long id);
   public Long cantidadMascotasActivas();

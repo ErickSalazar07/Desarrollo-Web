@@ -9,9 +9,9 @@ public interface ITratamientoServicio {
   public Tratamiento findById(Long id);
   public List<Tratamiento> findByMascotaId(Long id);
   public List<Tratamiento> findByVeterinarioEncargado_Cedula(String cedula);
-  public void addTratamiento(Tratamiento tratamiento);
-  public void updateTratamiento(Long id, Tratamiento tratamiento);
-  public void updateTratamiento(Tratamiento tratamiento);
+  public Tratamiento addTratamiento(Tratamiento tratamiento);
+  public Tratamiento updateTratamiento(Long id, Tratamiento tratamiento);
+  public Tratamiento updateTratamiento(Tratamiento tratamiento);
   public void deleteById(Long id);
   public Long cantidadTratamientosUltimoMes();
   public Long cantidadTratamientosTipoMedicamento(String medicamento);

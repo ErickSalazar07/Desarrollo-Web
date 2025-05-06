@@ -45,14 +45,14 @@ public class TratamientoServicio implements ITratamientoServicio {
   }
 
   @Override
-  public void addTratamiento(Tratamiento tratamiento) {
-    repositorioTratamiento.save(tratamiento);
+  public Tratamiento addTratamiento(Tratamiento tratamiento) {
+    return repositorioTratamiento.save(tratamiento);
   }
 
   @Override
-  public void updateTratamiento(Long id, Tratamiento tratamiento) {
+  public Tratamiento updateTratamiento(Long id, Tratamiento tratamiento) {
     Tratamiento tratamientoActualizar = repositorioTratamiento.findById(id).orElse(null);
-    if(tratamientoActualizar == null) return;
+    if(tratamientoActualizar == null) return null;
 
     tratamientoActualizar.setNombreTratamiento(tratamiento.getNombreTratamiento());
     tratamientoActualizar.setVeterinarioEncargado(repositorioVeterinario.
@@ -60,12 +60,12 @@ public class TratamientoServicio implements ITratamientoServicio {
     tratamientoActualizar.setMascota(repositorioMascota.
     findById(tratamiento.getMascota().getId()).orElse(null));
     tratamientoActualizar.setFecha(tratamiento.getFecha());
-    repositorioTratamiento.save(tratamiento);
+    return repositorioTratamiento.save(tratamiento);
   }
 
   @Override
-  public void updateTratamiento(Tratamiento tratamiento) {
-    repositorioTratamiento.save(tratamiento);
+  public Tratamiento updateTratamiento(Tratamiento tratamiento) {
+    return repositorioTratamiento.save(tratamiento);
   }
 
   @Override

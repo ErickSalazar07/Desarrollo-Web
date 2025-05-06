@@ -5,8 +5,8 @@ target/
 !**/src/test/**/target/
 
 # h2 data base
-mydatabase.mv.db
-mydatabase.trace.db
+*mv.db
+*trace.db
 
 ### STS ###
 .apt_generated
