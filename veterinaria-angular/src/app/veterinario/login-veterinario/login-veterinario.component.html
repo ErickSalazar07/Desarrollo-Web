@@ -1,0 +1,27 @@
+<body>
+    <div id="contenedor_info">
+      <div class="image-container">
+        <img id="img_login" src="https://github.com/ErickSalazar07/Web/blob/main/imagenes/imgs-utils/ChatGPT%20Image%2015%20abr%202025,%2018_06_15.png?raw=true">
+      </div>
+    
+      <div class="login-container">
+        <section class="campos-login">
+          <img src="https://github.com/ErickSalazar07/Web/blob/main/imagenes/imgs-utils/logo.png?raw=true" alt="Logo Health Animals">
+          <h1> Bienvenido</h1>
+          <form method="post">
+            <label for="cedula">Cédula</label>
+            <input [(ngModel)]="veterinario.cedula" id="correo" placeholder="Ingrese cedula" required name="cedula">
+    
+            <label for="contrasena">Contraseña</label>
+            <input [(ngModel)]="veterinario.contrasena" type="password" id="cedula" placeholder="Ingrese contraseña" required name="contrasena">
+    
+            <p *ngIf="msgError !== ''" class="error-message">{{msgError}}</p>
+    
+            <button type="submit" (click)="logearVeterinario()">Ingresar</button>
+          </form>
+        </section>
+      </div>
+    </div>
+    </body> 
+    
+    

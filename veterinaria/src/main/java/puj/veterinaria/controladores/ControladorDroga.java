@@ -48,6 +48,18 @@ public class ControladorDroga {
     return drogaServicio.findById(id);
   }
 
+  @GetMapping("/get-total-ventas")
+  @Operation(summary = "Retorna el total de ventas de drogas.")
+  public Double obtenerTotalVentas() {
+    return drogaServicio.totalVentas();
+  }
+
+  @GetMapping("/get-total-ganancias")
+  @Operation(summary = "Retorna el total de ganancias de drogas.")
+  public Double obtenerTotalGanancias() {
+    return drogaServicio.totalGanancias();
+  }
+
 // Metodos PutMapping
 
   @PutMapping("/update/{id}")

@@ -1,0 +1,13 @@
+<div class="money-container">
+  <button class="back-button" onclick="window.history.back()">
+    <i class="bx bx-arrow-back"></i> Volver
+  </button>
+
+  <div class="money-card">
+    <i class='bx bx-dollar-circle icon'></i>
+    <h2>{{txtMostrar}}</h2>
+    <p class="amount" [ngStyle]="{'color': dinero >= 0 ? '#2e7d32' : '#d32f2f'}">
+      $  {{dinero}}
+    </p>
+  </div>
+</div>

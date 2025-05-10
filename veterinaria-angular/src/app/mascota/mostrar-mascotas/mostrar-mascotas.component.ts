@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Mascota } from 'src/app/modelo/mascota';
 import { MascotaService } from 'src/app/servicio/mascota.service';
+import {HttpClient} from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mostrar-mascotas',
@@ -8,14 +10,21 @@ import { MascotaService } from 'src/app/servicio/mascota.service';
   styleUrls: ['./mostrar-mascotas.component.css']
 })
 export class MostrarMascotasComponent {
+
   mascotaSeleccionadaMostrar!: Mascota;
   mascotaSeleccionadaModificar?: Mascota | null =  null;
-  mascotas!: Mascota[];
+  mascotas: Mascota[]  = [];
   showFormulario = false;
-  constructor(private mascotaServicio: MascotaService) { }
+  
+  terminoBusqueda: string = '';
+  filtroSeleccionado: string = 'nombre';
+
+  constructor(private http: HttpClient, private service: MascotaService, private router: Router) { }
 
   ngOnInit() {
-    this.mascotas = this.mascotaServicio.findAll();
+    this.service.findAll().subscribe(mascotas => {
+      this.mascotas = mascotas;
+    });
   }
 
   crearMascota() {
@@ -27,13 +36,17 @@ export class MostrarMascotasComponent {
   }
 
 
-  eliminarMascota(mascota: Mascota) {
-    this.mascotaServicio.deleteById(mascota.id);
-    this.mascotas = this.mascotaServicio.findAll();
+  cambiarEstadoMascota(mascota: Mascota) {
+    this.service.cambiarEstadoById(mascota).subscribe(() => {
+      complete: this.service.findAll().subscribe(mascotas => {
+        this.mascotas = mascotas;
+      });
+    });
   }
+  
 
   mostrarMascota(mascota: Mascota) {
-    this.mascotaSeleccionadaMostrar = mascota;
+    this.router.navigate(['/mascota/mostrar-mascota', mascota.id]);
   }
 
   actualizarMascota(mascota: Mascota) {
@@ -44,4 +57,27 @@ export class MostrarMascotasComponent {
   toggleFormulario() {
     this.showFormulario = !this.showFormulario;
   }
+  get mascotasFiltradas() {
+    if (!this.terminoBusqueda) return this.mascotas;
+  
+    return this.mascotas.filter(mascota => {
+      const valor = this.terminoBusqueda.toLowerCase();
+  
+      switch (this.filtroSeleccionado) {
+        case 'nombre':
+          return mascota.nombre.toLowerCase().includes(valor);
+        case 'edad':
+          return mascota.edad.toString().includes(valor);
+        case 'enfermedad':
+          return (mascota.enfermedad || '').toLowerCase().includes(valor);
+        case 'estadoActivo':
+          return (mascota.estadoActivo ? 'si' : 'no').includes(valor);
+        case 'raza':
+          return mascota.raza.toLowerCase().includes(valor);
+        default:
+          return true;
+      }
+    });
+  }
 }
+

@@ -1,57 +1,39 @@
 import { Injectable } from '@angular/core';
 import { Cliente } from '../modelo/cliente';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  clientes: Cliente[] = [
-    {
-      id: 1,
-      cedula: "18872435",
-      nombre: "Juan",
-      correo: "juan@email.com",
-      celular: "3145194072"
-    },
-    {
-      id: 2,
-      cedula: "19812305",
-      nombre: "Pedro",
-      correo: "pedro@email.com",
-      celular: "3045591094"
-    },
-    {
-      id: 3,
-      cedula: "27082133",
-      nombre: "Luis",
-      correo: "luis@email.com",
-      celular: "3944193373"
-    },
-    {
-      id: 4,
-      cedula: "17190115",
-      nombre: "Jualiana",
-      correo: "juli@email.com",
-      celular: "3305004013"
-    }
-  ];
+  clientes: Cliente[] = [];
+  URL_ROOT:string = "http://localhost:8090/cliente";
 
-  findAll(): Cliente[] {
-    return this.clientes;
+  addCliente(cliente: Cliente): Observable<Cliente> {
+    return this.http.post<Cliente>(this.URL_ROOT + `/add`,cliente);
   }
 
-  findById(id: number) {
-    const cliente = this.clientes.find(c => c.id === id);
-    if(cliente == undefined) return null;
-    return cliente;
+  findAll(): Observable<Cliente[]> {
+    return this.http.get<Cliente[]>(this.URL_ROOT + `/clientes`);
   }
 
-  deleteById(id: number) {
-    const cliente = this.clientes.find(c => c.id === id);
-    if(cliente == undefined) return;
-    this.clientes = this.clientes.filter(c => c.id !== id);
+  findById(id: number): Observable<Cliente> {
+    return this.http.get<Cliente>(this.URL_ROOT + `/get-cliente/${id}`);
+  }
+
+  findByCedula(cedula:string): Observable<Cliente> {
+    return this.http.get<Cliente>(this.URL_ROOT + `/get-cliente-cedula/${cedula}`);
+  }
+
+  updateCliente(cliente: Cliente): Observable<Cliente> {
+    return this.http.put<Cliente>(this.URL_ROOT + `/update/${cliente.id}`,cliente);
+  }
+
+  deleteById(id: number): Observable<any> {
+    return this.http.delete(this.URL_ROOT + `/delete/${id}`);
   }
 }

@@ -1,8 +1,6 @@
 package puj.veterinaria.entidades;
 
-import java.util.Date;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import puj.veterinaria.entidades.DTO.TratamientoDTO;
 
 // Entidades son un POJO (Plain Old Java Object)
 @Entity
@@ -23,28 +22,31 @@ public class Tratamiento {
   private String nombreTratamiento;
   
   @Column(nullable = false)
-  private Date fecha;
+  private LocalDate fecha;
   
-  @JsonIgnore
   @ManyToOne
   @JoinColumn(nullable = false, name = "id_droga", referencedColumnName = "id")
   private Droga drogaAsignada;
 
-  @JsonIgnore
   @ManyToOne
   @JoinColumn(nullable = false, name = "id_mascota", referencedColumnName = "id")
   private Mascota mascota;
 
-  @JsonIgnore
   @ManyToOne // Se usa la cedula del Veterinario como (foreign-key)
   @JoinColumn(nullable = false, name = "cedula_veterinario", referencedColumnName = "cedula")
   private Veterinario veterinarioEncargado;
   
   public Tratamiento() { }
 
-  public Tratamiento(String nombreTratamiento, Date fecha) {
+  public Tratamiento(String nombreTratamiento, LocalDate fecha) {
     this.nombreTratamiento = nombreTratamiento;
     this.fecha = fecha;
+  }
+
+  public Tratamiento(TratamientoDTO tratamientoDTO) {
+    this.id = null;
+    this.nombreTratamiento = tratamientoDTO.getNombreTratamiento();
+    this.fecha = tratamientoDTO.getFecha();
   }
   
 // Comportamiento
@@ -59,8 +61,8 @@ public class Tratamiento {
   public void setNombreTratamiento(String nombreTratamiento) { this.nombreTratamiento = nombreTratamiento; }
   public Veterinario getVeterinarioEncargado() { return veterinarioEncargado; }
   public void setVeterinarioEncargado(Veterinario veterinarioEncargado) { this.veterinarioEncargado = veterinarioEncargado; }
-  public Date getFecha() { return fecha; }
-  public void setFecha(Date fecha) { this.fecha = fecha; }
+  public LocalDate getFecha() { return fecha; }
+  public void setFecha(LocalDate fecha) { this.fecha = fecha; }
   public Mascota getMascota() { return mascota; }
   public void setMascota(Mascota mascota) { this.mascota = mascota; }
 }

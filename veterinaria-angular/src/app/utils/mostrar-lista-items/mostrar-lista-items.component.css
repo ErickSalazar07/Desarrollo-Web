@@ -1,0 +1,98 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 3rem 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1f2937;
+}
+
+/* Título principal */
+h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #065f46;
+  margin-bottom: 1.2rem;
+  border-left: 6px solid #10b981;
+  padding-left: 1rem;
+}
+
+/* Botón contenedor */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 2rem;
+  cursor: pointer;
+}
+
+/* Estilo del enlace dentro del botón */
+.volver-btn {
+  display: inline-block;
+  background-color: #047857;
+  color: white;
+  text-decoration: none;
+  padding: 0.6rem 1.4rem;
+  font-weight: bold;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+button:hover .volver-btn {
+  background-color: #059669;
+  transform: scale(1.05);
+}
+
+/* Contenedor decorativo de la lista */
+.contenedor-lista {
+  background-color: #f0fdf4;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 0.5s ease;
+}
+
+/* Tabla estilizada */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #bbf7d0;
+  color: #065f46;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px #d1fae5;
+}
+
+th, td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #a7f3d0;
+}
+
+thead {
+  background-color: #6ee7b7;
+  color: #064e3b;
+}
+
+tbody tr:hover {
+  background-color: #a7f3d0;
+}
+
+/* Mensajes de estado */
+p {
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  color: #374151;
+  background-color: #fef3c7;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid #f59e0b;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,57 @@
+<div class="formulario">
+    <h2>Asignar Tratamiento</h2>
+  
+    <!-- Nombre del tratamiento -->
+    <label for="nombreTratamiento">Nombre del Tratamiento:</label>
+    <input
+      type="text"
+      id="nombreTratamiento"
+      [(ngModel)]="tratamientoDTO.nombreTratamiento"
+      name="nombreTratamiento"
+      required
+    />
+  
+    <!-- Fecha -->
+    <label for="fecha">Fecha:</label>
+    <input
+      type="date"
+      id="fecha"
+      [(ngModel)]="tratamientoDTO.fecha"
+      name="fecha"
+      required
+    />
+  
+    <!-- Mascota (ID) -->
+    <label for="mascota">Mascota:</label>
+    <select
+      id="mascota"
+      [(ngModel)]="tratamientoDTO.mascotaID"
+      name="mascota"
+      required
+    >
+      <option [value]="0" disabled selected>Seleccione una mascota</option>
+      <option *ngFor="let m of mascotas" [value]="m.id">{{ m.nombre }}</option>
+    </select>
+  
+    <!-- Droga (ID) -->
+    <label for="droga">Droga:</label>
+    <select
+      id="droga"
+      [(ngModel)]="tratamientoDTO.drogaAsignadaID"
+      name="droga"
+      required
+    >
+      <option [value]="0" disabled selected>Seleccione una droga</option>
+      <option *ngFor="let d of drogas" [value]="d.id">{{ d.nombre }}</option>
+    </select>
+  
+    <!-- Error en validación -->
+    <div *ngIf="errorMensaje" class="error-mensaje">
+      {{ errorMensaje }}
+    </div>
+  
+    <!-- Botón para enviar -->
+    <button (click)="onSubmit()">Asignar Tratamiento</button>
+  </div>
+  
+  

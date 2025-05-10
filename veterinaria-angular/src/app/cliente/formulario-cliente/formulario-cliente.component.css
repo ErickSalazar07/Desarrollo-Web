@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Atkinson Hyperlegible Next', sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Centrar el título "Crear Cliente" */
+h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #054f31;
+  text-align: center; /* Asegura que el texto esté centrado */
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* Centrar el label "Nombre" */
+label {
+  font-weight: 600;
+  color: #333;
+  text-align: center; /* Centra el texto del label */
+  display: block; /* Hace que ocupe toda la línea */
+  margin: 0 auto 10px; /* Centrado horizontal con margen inferior */
+  width: fit-content; /* Ancho ajustado al contenido */
+}
+
+/* Cent
+
+/* Estilizando el formulario */
+form {
+    background: white;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+label {
+    font-weight: 600;
+    color: #333;
+    text-align: left;
+    width: 100%;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border 0.3s;
+    box-sizing: border-box;
+}
+
+input:focus,
+select:focus {
+    border: 1px solid #054f31;
+    outline: none;
+}
+
+/* Estilos para radio buttons */
+.radio-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+}
+
+input[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+/* Botón de guardar */
+button {
+    background-color: #054f31;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    width: 100%;
+    max-width: 500px;
+    margin: 10px auto;
+    display: block;
+}
+/* Contenedor para centrar los botones */
+.button-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

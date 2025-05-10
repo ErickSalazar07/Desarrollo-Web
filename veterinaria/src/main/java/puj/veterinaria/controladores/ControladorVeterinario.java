@@ -14,19 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import puj.veterinaria.entidades.Veterinario;
-import puj.veterinaria.servicios.ITratamientoServicio;
 import puj.veterinaria.servicios.IVeterinarioServicio;
 
 @RestController
 @RequestMapping("/veterinario")
-@CrossOrigin("https://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
+
 public class ControladorVeterinario {
 
   @Autowired
   IVeterinarioServicio veterinarioServicio;
 
-  @Autowired
-  ITratamientoServicio tratamientoServicio;
 
 // Metodos PostMapping
 
@@ -35,6 +33,7 @@ public class ControladorVeterinario {
   @PostMapping("/add")
   @Operation(summary = "Agrega un nuevo Veterinario a la db, el cual es pasado por el cuerpo de la peticion.")
   public void agregarVeterinario(@RequestBody Veterinario veterinario) {
+    veterinario.setId(null);
     veterinarioServicio.addVeterinario(veterinario);
   }
 
@@ -47,6 +46,7 @@ public class ControladorVeterinario {
     return veterinarioServicio.findAll();
   }
 
+
   // URL: http://localhost:8090/veterinario/get-veterinario/1
   @GetMapping("/get-veterinario/{id}")
   @Operation(summary = "Retorna un Veterinario, el cual corresponde al id que se para por la URL.")
@@ -54,12 +54,50 @@ public class ControladorVeterinario {
     return veterinarioServicio.findById(id);
   }
 
+  @GetMapping("/get-veterinario-cedula/{cedula}")
+  @Operation(summary = "Retorna un Veterinario, el cual corresponde a la cedula que se pasa por la URL.")
+  public Veterinario obtenerVeterinarioCedula(@PathVariable(value = "cedula") String cedula) {
+    return veterinarioServicio.findByCedula(cedula);
+  }
+
+  @GetMapping("/get-num-veterinarios-activos")
+  @Operation(summary = "Retorna el numero de veterinarios activos.")
+  public Long obtenerNumVeterinariosActivos() {
+    return veterinarioServicio.cantidadVeterinariosActivos();
+  }
+
+  @GetMapping("/get-num-veterinarios-inactivos")
+  @Operation(summary = "Retorna el numero de veterinarios inactivos.")
+  public Long obtenerNumVeterinariosInactivos() {
+    return veterinarioServicio.cantidadVeterinariosInactivos();
+  }
+
 // Metodos PutMapping
 
   // URL: http://localhost:8090/veterinario/update/1
-  @PutMapping("/update/{id}")
+  @PutMapping("/update-id/{id}")
   @Operation(summary = "Actualiza un Veterinario, el cual es pasado por el cuerpo de la peticion.")
   public void actualizarVeterinario(@RequestBody Veterinario veterinario) {
+    veterinarioServicio.updateVeterinario(veterinario);
+  }
+
+  // URL: https://localhost:8090/veterinario/update/104828483
+  @PutMapping("/update-cc/{cedula}")
+  @Operation(summary = "Actualiza un Veterinario, correspondiente a la cedula que se pasa.")
+  public void actualizarVeterinarioPorCedula(@RequestBody Veterinario veterinario) {
+    Veterinario veterinarioActualizar = veterinarioServicio.findByCedula(veterinario.getCedula());
+    veterinarioActualizar.setNombre(veterinario.getNombre());
+    veterinarioActualizar.setActivo(veterinario.getActivo());
+    veterinarioActualizar.setContrasena(veterinario.getContrasena());
+    veterinarioActualizar.setEspecialidad(veterinario.getEspecialidad());
+    veterinarioActualizar.setFoto(veterinario.getFoto());
+    veterinarioServicio.updateVeterinario(veterinarioActualizar);
+  }
+  
+  @PutMapping("/update-estado/{cedula}")
+  public void cambiarEstadoVeterinarioPorCedula(@PathVariable(value = "cedula") String cedula) {
+    Veterinario veterinario = veterinarioServicio.findByCedula(cedula);
+    veterinario.setActivo(!veterinario.getActivo());
     veterinarioServicio.updateVeterinario(veterinario);
   }
 

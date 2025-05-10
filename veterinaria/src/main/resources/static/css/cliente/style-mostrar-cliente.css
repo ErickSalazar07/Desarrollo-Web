@@ -1,10 +1,8 @@
 /* Importar estilos generales y fuentes */
-@import url("../style-general.css");
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap');
 @import url('https://fonts.cdnfonts.com/css/pp-neue-montreal');
 
 body {
-  background-image: url("../images/fondoTabla.png");
   font-family: "PP Neue Montreal", sans-serif;
   margin: 0;
   padding: 0;

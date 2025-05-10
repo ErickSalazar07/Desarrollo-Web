@@ -1,7 +1,7 @@
 <header>
   <nav>
     <div class="ir-inicio">
-      <a [routerLink]="['/home']">
+      <a [routerLink]="['/veterinario/dashboard/mascota/mascotas']">
         <img src="https://github.com/ErickSalazar07/Web/blob/main/imagenes/imgs-utils/logo.png?raw=true" alt="Logo Health Animals">
       </a>
     </div>
@@ -12,9 +12,16 @@
       <a [routerLink]="['/cliente/clientes']">Ver Clientes</a>
     </div>
   </nav>
-  <button type="button" class="boton_empezar">
-    <a class="btn-ingresar" [routerLink]="['/cliente/login']">Ingresar</a>
-  </button>
+
+  <div class="dropdown">
+    <button type="button" class="boton_empezar">Ingresar</button>
+    <div class="dropdown-content">
+      <a [routerLink]="['/cliente/login']">Usuario</a>
+      <a [routerLink]="['/veterinario/login']">Veterinario</a>
+      <a [routerLink]="['/admin/login']">Admin</a>
+    </div>
+  </div>
+  
 </header>
 <main>
   <div id="LandPagePrincipal">

@@ -1,7 +1,9 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Mascota } from 'src/app/modelo/mascota';
+import { ClienteService } from 'src/app/servicio/cliente.service';
 import { MascotaService } from 'src/app/servicio/mascota.service';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-formulario-mascota',
@@ -9,50 +11,40 @@ import { MascotaService } from 'src/app/servicio/mascota.service';
   styleUrls: ['./formulario-mascota.component.css']
 })
 export class FormularioMascotaComponent implements OnInit {
-  @Input() mascota!: Mascota;
-  @Output() formularioCerrado = new EventEmitter<void>();  // Evento para cerrar el formulario
 
-  mascotaForm: Mascota = this.crearNuevaMascota();
-  esEdicion: boolean = false;
+  @Input()
+  mascota!: Mascota;
+  clienteEncontrado: boolean = true;
 
   constructor(
     private servicioMascota: MascotaService,
-    private router: Router
+    private servicioCliente: ClienteService,
+    private router: Router,
+    private location:Location
   ) {}
 
-  ngOnInit() {
-    if (this.mascota && this.mascota.nombre !== '') {
-      this.mascotaForm = { ...this.mascota };
-      this.esEdicion = true;
-    } else {
-      this.mascotaForm = this.crearNuevaMascota();
-      this.esEdicion = false;
-    }
-  }
+  ngOnInit(): void { }
 
-  guardarMascota() {
-    if (this.esEdicion) {
-      this.servicioMascota.updateMascota(this.mascotaForm)
-      this.router.navigate(['/mascota/mascotas']);
-    } else {
-      this.servicioMascota.guardarMascota(this.mascotaForm);
-      this.router.navigate(['/mascota/mascotas']);
-    }
-    this.servicioMascota.findAll();
-    this.formularioCerrado.emit();
-    this.router.navigate(['/mascota/mascotas']);
-  }
+  submitMascota() {
+    this.servicioCliente.findByCedula(this.mascota.cedulaCliente).
+    subscribe(c => {
+      if(c === null) {
+        this.clienteEncontrado = false;
+        return;
+      }
 
-  private crearNuevaMascota(): Mascota {
-    return {
-      id: -1,
-      nombre: '',
-      raza: '',
-      edad: 0,
-      peso: 0,
-      cedulaCliente: '',
-      foto: '',
-      estadoActivo: false
-    };
+      if(this.mascota.id === -1) {
+        this.mascota.estadoActivo = false;
+        this.servicioMascota.addMascota(this.mascota).subscribe({
+            complete: () => this.location.back()
+          }
+        )
+      } else {
+        this.servicioMascota.updateMascota(this.mascota).subscribe({
+          complete: () => this.location.back()
+        });
+      }
+      this.clienteEncontrado = true;
+    });
   }
 }

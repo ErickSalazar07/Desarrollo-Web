@@ -20,7 +20,7 @@ import puj.veterinaria.servicios.ClienteServicio;
 
 @RestController
 @RequestMapping("/cliente")
-@CrossOrigin(origins = "https://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ControladorCliente {
 
   @Autowired
@@ -32,6 +32,7 @@ public class ControladorCliente {
   @PostMapping("/add")
   @Operation(summary = "Agrega un nuevo Cliente, pasado por el body.")
   public void agregarCliente(@RequestBody Cliente cliente) {
+    cliente.setId(null);
     clienteServicio.addCliente(cliente);
   }
 
@@ -52,6 +53,13 @@ public class ControladorCliente {
     return clienteServicio.findById(id);
   }
 
+  @GetMapping("/get-cliente-cedula/{cedula}")
+  @Operation(summary = "Retorna 1 Cliente, correspondiente a la cedula.")
+  public Cliente obtenerClientePorCedula(@PathVariable(value = "cedula") String cedula) {
+    return clienteServicio.findByCedula(cedula);
+  }
+
+
 // Metodos PutMapping
 
   // ? Cambiar id por algun id dentro de los clientes guardados en el repositorio
@@ -59,7 +67,13 @@ public class ControladorCliente {
   @PutMapping("/update/{id}")
   @Operation(summary = "Actualiza un Cliente existente en la base de datos.")
   public void actualizarCliente(@RequestBody Cliente cliente) {
-    clienteServicio.updateCliente(cliente);
+    Cliente clienteActualizar = clienteServicio.findById(cliente.getId());
+
+    clienteActualizar.setNombre(cliente.getNombre());
+    clienteActualizar.setCorreo(cliente.getCorreo());
+    clienteActualizar.setCelular(cliente.getCelular());
+
+    clienteServicio.updateCliente(clienteActualizar);
   }
 
 // Metodos DeleteMapping

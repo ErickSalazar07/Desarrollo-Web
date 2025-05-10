@@ -9,21 +9,19 @@ import { MascotaService } from 'src/app/servicio/mascota.service';
   styleUrls: ['./actualizar-mascota.component.css']
 })
 export class ActualizarMascotaComponent {
-  @Input()
-  actualizarMascota!: any;
+
+  actualizarMascota!: Mascota;
 
   constructor(
     private servicioMascota: MascotaService,
     private route: ActivatedRoute,
     private router: Router
-  ) {
-
-  }
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      const id = Number(params.get('id'));
-      this.actualizarMascota = this.servicioMascota.findById(id);
-    })
+      this.servicioMascota.findById(Number(params.get("id"))).
+      subscribe(m => this.actualizarMascota = m)
+    });
   }
 }

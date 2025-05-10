@@ -34,30 +34,22 @@ public class Veterinario {
   @Column(nullable = false)
   private String foto;
 
+  @Column(nullable = false)
+  private Boolean activo; // Propiedad que indica si el veterinario esta activo o no
+
   @JsonIgnore
   @OneToMany(mappedBy = "veterinarioEncargado", cascade = CascadeType.ALL)
   private List<Tratamiento> tratamientos;
 
   public Veterinario() { }
 
-  public Veterinario(String cedula, String nombre, String contrasena, String especialidad, String foto) {
+  public Veterinario(String cedula, String nombre, String contrasena, String especialidad, String foto, Boolean activo) {
     this.cedula = cedula;
     this.nombre = nombre;
     this.contrasena = contrasena;
     this.especialidad = especialidad;
     this.foto = foto;
-  }
-
-// Comportamiento
-
-  // TODO: Implementar funcion
-  public void asignarTratamiento() {
-
-  }
-
-  // TODO: Implementar funcion
-  public Integer numeroAtenciones() {
-    return 0;
+    this.activo = activo;
   }
 
 // Getters y Setters
@@ -74,6 +66,8 @@ public class Veterinario {
   public void setEspecialidad(String especialidad) { this.especialidad = especialidad; }
   public String getFoto() { return foto; }
   public void setFoto(String foto) { this.foto = foto; }
+  public Boolean getActivo() { return activo; }
+  public void setActivo(Boolean activo) { this.activo = activo; }
   public List<Tratamiento> getTratamientos() { return tratamientos; }
   public void setTratamientos(List<Tratamiento> tratamientos) { this.tratamientos = tratamientos; }
 }

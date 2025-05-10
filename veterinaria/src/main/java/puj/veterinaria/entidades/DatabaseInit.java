@@ -4,8 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -16,6 +17,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 
 import jakarta.transaction.Transactional;
@@ -24,9 +26,12 @@ import puj.veterinaria.repositorios.RepositorioDroga;
 import puj.veterinaria.repositorios.RepositorioMascota;
 import puj.veterinaria.repositorios.RepositorioTratamiento;
 import puj.veterinaria.repositorios.RepositorioVeterinario;
+import puj.veterinaria.repositorios.RepositorioAdmin;
+
 
 @Controller
 @Transactional
+@Profile("default")
 public class DatabaseInit implements ApplicationRunner {
 
   @Autowired
@@ -37,6 +42,9 @@ public class DatabaseInit implements ApplicationRunner {
 
   @Autowired
   RepositorioVeterinario repositorioVeterinario;
+
+  @Autowired
+  RepositorioAdmin repositorioAdmin;
 
   @Autowired
   RepositorioTratamiento repositorioTratamiento;
@@ -51,6 +59,7 @@ public class DatabaseInit implements ApplicationRunner {
     cargarDrogas();
     cargarMascotas(); //! Se debe cargar clientes antes que mascota, puesto que toda mascota debe tener un cliente
     cargarTratamientos(); //! Se debe cargar primero Tratamiento Mascota y Veterinario, si no da error
+    crearAdminPorDefecto();
   }
 
   // Asociamos Mascota con Cliente.
@@ -96,10 +105,14 @@ public class DatabaseInit implements ApplicationRunner {
     try(BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getClassLoader().
     getResourceAsStream("init-data/tratamientos.txt")))) {
 
-      SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+      DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
       Random randVet = new Random(43);
       Random randMasc = new Random(44);
       Random randDrog = new Random(45);
+
+      Droga droga;
+      Mascota mascota;
+
 
       CANTIDAD_VETERINARIOS = repositorioVeterinario.count();
       CANTIDAD_MASCOTAS = repositorioMascota.count();
@@ -107,7 +120,7 @@ public class DatabaseInit implements ApplicationRunner {
 
       while((linea = br.readLine()) != null) {
         datos = linea.split(",");
-        tratamiento = new Tratamiento(datos[0],formato.parse(datos[1]));
+        tratamiento = new Tratamiento(datos[0],LocalDate.parse(datos[1],formato));
 
         idRandVeterinario = 1L + (randVet.nextLong()%CANTIDAD_VETERINARIOS);
         if(idRandVeterinario < 1L) idRandVeterinario += CANTIDAD_VETERINARIOS;
@@ -115,16 +128,26 @@ public class DatabaseInit implements ApplicationRunner {
         idRandMascota = 1L + (randMasc.nextLong()%CANTIDAD_MASCOTAS);
         if(idRandMascota < 1L) idRandMascota += CANTIDAD_MASCOTAS;
 
-        idRandDroga = 1L + (randDrog.nextLong()%CANTIDAD_DROGAS);
-        if(idRandDroga < 1L) idRandDroga += CANTIDAD_DROGAS;
+        do {
+          idRandDroga = 1L + (randDrog.nextLong()%CANTIDAD_DROGAS);
+          if(idRandDroga < 1L) idRandDroga += CANTIDAD_DROGAS;
+        } while(repositorioDroga.findById(idRandDroga).get().getUnidadDisponible() <= 0);
 
+        mascota = repositorioMascota.findById(idRandMascota).get();
+        mascota.setEstadoActivo(true);
+        repositorioMascota.save(mascota);
+        
+        droga = repositorioDroga.findById(idRandDroga).get();
+        droga.setUnidadDisponible(droga.getUnidadDisponible()-1);
+        droga.setUnidadVendida(droga.getUnidadVendida()+1);
+        repositorioDroga.save(droga);
+        
         tratamiento.setVeterinarioEncargado(repositorioVeterinario.findById(idRandVeterinario).get());
-        tratamiento.setMascota(repositorioMascota.findById(idRandMascota).get());
-        tratamiento.setDrogaAsignada(repositorioDroga.findById(idRandDroga).get());
-
+        tratamiento.setMascota(mascota);
+        tratamiento.setDrogaAsignada(droga);
         repositorioTratamiento.save(tratamiento);
       }
-    } catch(ParseException e) {
+    } catch(DateTimeException e) {
       System.err.println("Error al interpretar el formato de la fecha: " + e.getMessage());
     } catch(Exception e) {
       System.err.println("Ocurrio un error: " + e.getMessage());
@@ -153,7 +176,7 @@ public class DatabaseInit implements ApplicationRunner {
       String datos[];
       while((linea = br.readLine()) != null) {
         datos = linea.split(",");
-        repositorioVeterinario.save(new Veterinario(datos[2],datos[0],datos[1],datos[3],datos[4]));
+        repositorioVeterinario.save(new Veterinario(datos[2],datos[0],datos[1],datos[3],datos[4],datos[5].equalsIgnoreCase("si")));
       }
       System.out.println("\n\n\n\033[36mSE CARGARON LOS VETERINARIOS.\033[0m\n\n\n");
     } catch(Exception e) {
@@ -255,4 +278,24 @@ public class DatabaseInit implements ApplicationRunner {
 
     return "";
   }
+
+  private void crearAdminPorDefecto() {
+    try {
+        if (repositorioAdmin.count() == 0) { // Solo lo crea si no hay admins aún
+            Administrador admin = new Administrador();
+            admin.setUsername("admin");
+            admin.setNombre("Administrador General");
+            admin.setCorreo("admin@veterinaria");
+            admin.setCelular("123");
+
+            repositorioAdmin.save(admin);
+            System.out.println("\n\n\n\033[32mADMINISTRADOR POR DEFECTO CREADO.\033[0m\n\n\n");
+        } else {
+            System.out.println("\n\n\n\033[33mYA EXISTEN ADMINISTRADORES EN LA BD. NO SE CREÓ NINGUNO NUEVO.\033[0m\n\n\n");
+        }
+    } catch (Exception e) {
+        System.err.println("Error al crear el administrador por defecto: " + e.getMessage());
+    }
+}
+
 }
