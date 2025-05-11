@@ -17,6 +17,9 @@ export class FormularioClienteComponent {
   @Output()
   eventoAgregarCliente = new EventEmitter<Cliente>();
 
+    msgError:string = "";
+
+
   constructor(private servicioCliente: ClienteService,
     private location:Location
   ) {}
@@ -26,13 +29,22 @@ export class FormularioClienteComponent {
   }
   submitFormulario() {
     if(this.cliente.id === -1) {
-      this.servicioCliente.addCliente(this.cliente).subscribe({
-        complete: () => this.location.back()
-      });
+      if(this.cliente.nombre === "" || this.cliente.correo === "" || this.cliente.celular === "" || this.cliente.cedula === ""){
+          this.msgError = "Datos incompletos";
+      } else {
+        this.servicioCliente.addCliente(this.cliente).subscribe({
+          complete: () => this.location.back()
+        });
+      }
     } else {
-      this.servicioCliente.updateCliente(this.cliente).subscribe({
-        complete: () => this.location.back()
+      if(this.cliente.nombre === "" || this.cliente.correo === "" || this.cliente.celular === "" || this.cliente.cedula === ""){
+        this.msgError = "Datos incompletos";
+      } else {
+        this.servicioCliente.updateCliente(this.cliente).subscribe({
+          complete: () => this.location.back()
       });
+      }
+
     }
   }
 }
