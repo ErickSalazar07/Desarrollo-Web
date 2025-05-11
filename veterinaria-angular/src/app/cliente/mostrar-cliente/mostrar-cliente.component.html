@@ -23,7 +23,7 @@
         <li *ngFor="let mascota of mascotas">
           <img [src]="mascota.foto" [alt]="'Imagen de mascota ' + mascota.nombre" />
           <div id="datos-animal">
-            <p>{{mascota.nombre}}</p>
+            <p class="miMascota-nombre">{{mascota.nombre}}</p>
             <p>{{mascota.raza}}</p>
           </div>
           <a id="boton-ver-mascota" [routerLink]="['/mascota/mostrar-mascota/',mascota.id]">Ver Mascota</a>

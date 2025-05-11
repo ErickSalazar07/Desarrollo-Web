@@ -9,6 +9,8 @@
   </ng-container>
   <label for="celular">Celular</label>
   <input [(ngModel)]="cliente.celular" name="celular" type="number" id="celular" placeholder="Ingrese su celular" required>
+  <p *ngIf="msgError !== ''" class="error-message">{{msgError}}</p>
+
   <button class="btn" type="submit" (click)="submitFormulario()">
     {{cliente.id === -1 ? "Agregar":"Actualizar"}}
     </button>
