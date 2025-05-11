@@ -77,10 +77,10 @@ public class TratamientoControladorTest {
         when(mascotaServicio.findById(Mockito.anyLong())).thenReturn(mascota1);
         when(drogaServicio.findById(Mockito.anyLong())).thenReturn(drogaPrueba1);
         when(veterinarioServicio.findByCedula(Mockito.anyString())).thenReturn(veterinario1);
-        doNothing().when(mascotaServicio).updateMascota(Mockito.any(Mascota.class));
-        doNothing().when(tratamientoServicio).addTratamiento(Mockito.any(Tratamiento.class));
-        doNothing().when(drogaServicio).updateDroga(Mockito.any(Droga.class));
-        doNothing().when(tratamientoServicio).addTratamiento(Mockito.any(Tratamiento.class));
+        //doNothing().when(mascotaServicio).updateMascota(Mockito.any(Mascota.class));
+        //doNothing().when(tratamientoServicio).addTratamiento(Mockito.any(Tratamiento.class));
+        //doNothing().when(drogaServicio).updateDroga(Mockito.any(Droga.class));
+        //doNothing().when(tratamientoServicio).addTratamiento(Mockito.any(Tratamiento.class));
 
          ResultActions response = mockMvc.perform(
             post("/tratamiento/add")
