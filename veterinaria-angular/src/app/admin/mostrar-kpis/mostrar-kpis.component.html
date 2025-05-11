@@ -2,7 +2,7 @@
 <h1>Información estadística </h1>
 
 <div class="kpi-container">
-  <div class="kpi-card donut-card">
+  <div class="kpi-card donut-card" id="seccion-veterinarios">
     <h3>Veterinarios</h3>
     <div class="semi-donut-container">
       <div class="semi-donut" [style.--percentage]="(numVeterinariosActivos / (numVeterinariosActivos + numVeterinariosInactivos)) * 100">
@@ -17,7 +17,7 @@
     </p>
   </div>
 
-  <div class="kpi-card donut-card">
+  <div class="kpi-card donut-card" id="seccion-mascotas">
     <h3>Mascotas</h3>
     <div class="semi-donut-container">
       <div class="semi-donut" [style.--percentage]="(numMascotasActivas / numMascotas) * 100">
@@ -32,7 +32,7 @@
     </p>
   </div>
 
-  <div class="kpi-card finance-card">
+  <div class="kpi-card finance-card" id="seccion-ventas">
     <div class="icon-container">
       <i class='bx bx-money-withdraw'></i>
     </div>
@@ -42,7 +42,7 @@
     </div>
   </div>
 
-  <div class="kpi-card finance-card">
+  <div class="kpi-card finance-card" id="seccion-ganancias">
     <div class="icon-container profit">
       <i class='bx bx-money-withdraw'></i>
     </div>
@@ -52,7 +52,7 @@
     </div>
   </div>
 
-  <div class="kpi-card simple-card">
+  <div class="kpi-card simple-card" id="seccion-tratamientos">
     <div class="icon-container treatment">
       <i class='bx bx-first-aid'></i>
     </div>
@@ -62,7 +62,7 @@
     </div>
   </div>
 
-  <div class="kpi-card top-card">
+  <div class="kpi-card top-card" id="seccion-top3-tratamientos">
     <div class="icon-container top">
       <i class='bx bx-first-aid'></i>
     </div>
