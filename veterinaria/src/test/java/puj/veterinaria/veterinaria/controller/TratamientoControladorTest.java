@@ -158,10 +158,6 @@ public class TratamientoControladorTest {
     response.andExpect(status().isOk())
         .andExpect(content().contentType("application/json"))
         .andExpect(content().json(objectMapper.writeValueAsString(tratamiento)));
-<<<<<<< HEAD
     }
-=======
-  }
->>>>>>> 4f0164b13e81dc38004d37d22530b715bf297557
 }
  
