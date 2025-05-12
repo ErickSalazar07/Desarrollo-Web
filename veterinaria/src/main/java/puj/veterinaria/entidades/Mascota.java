@@ -12,6 +12,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import puj.veterinaria.entidades.DTO.MascotaDTO;
@@ -19,6 +21,8 @@ import puj.veterinaria.entidades.DTO.MascotaDTO;
 // Entidades son un POJO (Plain Old Java Object)
 @Entity
 @Data
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class Mascota {
   

@@ -78,9 +78,15 @@ public class DatabaseInit implements ApplicationRunner {
       String datos[];
       while((linea = br.readLine()) != null) {
         datos = linea.split(",");
-        mascota = new Mascota(datos[0],datos[1],Integer.parseInt(datos[2]),Double.parseDouble(datos[3]),
-                  datos[4].equalsIgnoreCase("null") ? null:datos[4],datos[5],
-                  Boolean.parseBoolean(datos[6]));
+        mascota = Mascota.builder()
+          .nombre(datos[0])
+          .raza(datos[1])
+          .edad(Integer.parseInt(datos[2]))
+          .peso(Double.parseDouble(datos[3]))
+          .enfermedad(datos[4].equalsIgnoreCase("null") ? null:datos[4])
+          .foto(datos[5])
+          .estadoActivo(Boolean.parseBoolean(datos[6]))
+          .build();
         random = 1L + (rng.nextLong() % CANTIDAD_CLIENTES); 
 
         if(random < 1L) random += CANTIDAD_CLIENTES;
@@ -105,7 +111,6 @@ public class DatabaseInit implements ApplicationRunner {
     try(BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getClassLoader().
     getResourceAsStream("init-data/tratamientos.txt")))) {
 
-      DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
       Random randVet = new Random(43);
       Random randMasc = new Random(44);
       Random randDrog = new Random(45);
@@ -120,7 +125,10 @@ public class DatabaseInit implements ApplicationRunner {
 
       while((linea = br.readLine()) != null) {
         datos = linea.split(",");
-        tratamiento = new Tratamiento(datos[0],LocalDate.parse(datos[1],formato));
+        tratamiento = Tratamiento.builder()
+          .nombreTratamiento(datos[0])
+          .fecha(LocalDate.parse(datos[1],DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+          .build();
 
         idRandVeterinario = 1L + (randVet.nextLong()%CANTIDAD_VETERINARIOS);
         if(idRandVeterinario < 1L) idRandVeterinario += CANTIDAD_VETERINARIOS;
@@ -161,7 +169,12 @@ public class DatabaseInit implements ApplicationRunner {
       String datos[];
       while((linea = br.readLine()) != null) {
         datos = linea.split(",");
-        repositorioCliente.save(new Cliente(datos[0],datos[1],datos[2],datos[3]));
+        repositorioCliente.save(Cliente.builder()
+          .cedula(datos[0])
+          .nombre(datos[1])
+          .correo(datos[2])
+          .celular(datos[3])
+          .build());
       }
       System.out.println("\n\n\n\033[36mSE CARGARON LOS CLIENTES.\033[0m\n\n\n");
     } catch(Exception e) {
@@ -176,7 +189,14 @@ public class DatabaseInit implements ApplicationRunner {
       String datos[];
       while((linea = br.readLine()) != null) {
         datos = linea.split(",");
-        repositorioVeterinario.save(new Veterinario(datos[2],datos[0],datos[1],datos[3],datos[4],datos[5].equalsIgnoreCase("si")));
+        repositorioVeterinario.save(Veterinario.builder()
+          .nombre(datos[0])
+          .contrasena(datos[1])
+          .cedula(datos[2])
+          .especialidad(datos[3])
+          .foto(datos[4])
+          .activo(datos[5].equalsIgnoreCase("si"))
+          .build());
       }
       System.out.println("\n\n\n\033[36mSE CARGARON LOS VETERINARIOS.\033[0m\n\n\n");
     } catch(Exception e) {
@@ -209,8 +229,13 @@ public class DatabaseInit implements ApplicationRunner {
         precioCompra = parsearPrecio(precioCompraStr);
         precioVenta = parsearPrecio(precioVentaStr);
 
-        repositorioDroga.
-        save(new Droga(nombre,precioCompra,precioVenta,unidadDisponible,unidadVendida));
+        repositorioDroga.save(Droga.builder()
+          .nombre(nombre)
+          .precioCompra(precioCompra)
+          .precioVenta(precioVenta)
+          .unidadDisponible(unidadDisponible)
+          .unidadVendida(unidadVendida)
+          .build());
       }
       libro.close();
       System.out.println("\n\n\n\033[36mSE CARGARON LAS DROGAS.\033[0m\n\n\n");
@@ -281,21 +306,20 @@ public class DatabaseInit implements ApplicationRunner {
 
   private void crearAdminPorDefecto() {
     try {
-        if (repositorioAdmin.count() == 0) { // Solo lo crea si no hay admins aún
-            Administrador admin = new Administrador();
-            admin.setUsername("admin");
-            admin.setNombre("Administrador General");
-            admin.setCorreo("admin@veterinaria");
-            admin.setCelular("123");
-
-            repositorioAdmin.save(admin);
-            System.out.println("\n\n\n\033[32mADMINISTRADOR POR DEFECTO CREADO.\033[0m\n\n\n");
-        } else {
-            System.out.println("\n\n\n\033[33mYA EXISTEN ADMINISTRADORES EN LA BD. NO SE CREÓ NINGUNO NUEVO.\033[0m\n\n\n");
-        }
+      if (repositorioAdmin.count() == 0) { // Solo lo crea si no hay admins aún
+        Administrador admin = Administrador.builder()
+          .username("admin")
+          .nombre("Administrador General")
+          .correo("admin@veterinaria")
+          .celular("123")
+          .build();
+        repositorioAdmin.save(admin);
+        System.out.println("\n\n\n\033[32mADMINISTRADOR POR DEFECTO CREADO.\033[0m\n\n\n");
+      } else 
+        System.out.println("\n\n\n\033[33mYA EXISTEN ADMINISTRADORES EN LA BD. NO SE CREÓ NINGUNO NUEVO.\033[0m\n\n\n");
     } catch (Exception e) {
-        System.err.println("Error al crear el administrador por defecto: " + e.getMessage());
+      System.err.println("Error al crear el administrador por defecto: " + e.getMessage());
     }
-}
+  }
 
 }

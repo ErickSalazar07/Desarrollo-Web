@@ -1,6 +1,5 @@
 package puj.veterinaria.entidades;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -11,12 +10,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 // Entidades son un POJO (Plain Old Java Object)
 @Entity
 @Data
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class Droga {
 
@@ -41,7 +44,7 @@ public class Droga {
 
   @JsonIgnore
   @OneToMany(mappedBy = "drogaAsignada", cascade = CascadeType.ALL)
-  private List<Tratamiento> tratamientos = new ArrayList<>();
+  private List<Tratamiento> tratamientos;
 
   public Droga(String nombre, Double precioCompra, Double precioVenta,
       Integer unidadDisponible, Integer unidadVendida) {

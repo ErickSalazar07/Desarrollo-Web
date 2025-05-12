@@ -1,6 +1,5 @@
 package puj.veterinaria.entidades;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -11,12 +10,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 // Entidades son un POJO (Plain Old Java Object)
 @Entity
 @Data
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class Cliente {
 
@@ -38,7 +41,7 @@ public class Cliente {
 
   @JsonIgnore
   @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Mascota> mascotas = new ArrayList<>();
+  private List<Mascota> mascotas;
   
   public Cliente(String cedula, String nombre, String correo, String celular) {
     this.cedula = cedula;
