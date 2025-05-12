@@ -4,7 +4,6 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,14 +47,13 @@ public class TratamientoControladorTest {
   private IMascotaServicio mascotaServicio;
 
   @MockBean
-  private IDrogaServicio  drogaServicio;
+  private IDrogaServicio drogaServicio;
 
   @Autowired
   ObjectMapper objectMapper;
 
   @MockBean
   private IVeterinarioServicio veterinarioServicio;
-
 
   @Test
   public void tratamientoControlador_agregarTratamiento_ok() throws Exception {
@@ -85,9 +83,9 @@ public class TratamientoControladorTest {
     when(drogaServicio.updateDroga(Mockito.any(Droga.class))).thenReturn(drogaPrueba1);
 
     ResultActions response = mockMvc.perform(
-        post("/tratamiento/add")
-            .contentType("application/json")
-            .content(objectMapper.writeValueAsString(tratamientoDTO1)));
+      post("/tratamiento/add")
+        .contentType("application/json")
+        .content(objectMapper.writeValueAsString(tratamientoDTO1)));
     response.andExpect(status().isCreated());
   }
 
@@ -99,15 +97,14 @@ public class TratamientoControladorTest {
     List<Tratamiento> tratamientos = new ArrayList<>();
     tratamientos.add(tratamiento1);
     tratamientos.add(tratamiento2);
-
     when(tratamientoServicio.findAll()).thenReturn(tratamientos);
 
     ResultActions response = mockMvc.perform(
-        get("/tratamiento/tratamientos")
-            .contentType("application/json"));
+      get("/tratamiento/tratamientos")
+        .contentType("application/json"));
     response.andExpect(status().isOk())
-        .andExpect(content().contentType("application/json"))
-        .andExpect(content().json(objectMapper.writeValueAsString(tratamientos)));
+      .andExpect(content().contentType("application/json"))
+      .andExpect(content().json(objectMapper.writeValueAsString(tratamientos)));
 
   }
 
@@ -115,11 +112,9 @@ public class TratamientoControladorTest {
   public void tratamientoControlador_eliminarTratamiento_ok() throws Exception {
 
     doNothing().when(tratamientoServicio).deleteById(Mockito.anyLong());
-
     ResultActions response = mockMvc.perform(
-        delete("/tratamiento/delete/1")
-            .contentType("application/json"));
-
+      delete("/tratamiento/delete/1")
+        .contentType("application/json"));
     response.andExpect(status().isOk());
   }
 
@@ -137,27 +132,24 @@ public class TratamientoControladorTest {
     when(tratamientoServicio.top3TratamientosMasUnidadesVendidas()).thenReturn(tratamientos);
 
     ResultActions response = mockMvc.perform(
-        get("/tratamiento/get-top3-tratamientos-mas-unidad-vendida")
-            .contentType("application/json"));
+      get("/tratamiento/get-top3-tratamientos-mas-unidad-vendida")
+        .contentType("application/json"));
     response.andExpect(status().isOk())
-        .andExpect(content().contentType("application/json"))
-        .andExpect(content().json(objectMapper.writeValueAsString(tratamientos)));
-
+      .andExpect(content().contentType("application/json"))
+      .andExpect(content().json(objectMapper.writeValueAsString(tratamientos)));
   }
 
   @Test
   public void tratamientoControlador_obtenerTratamiento_Tratamiento() throws Exception {
     Tratamiento tratamiento = new Tratamiento("tratamiento1", LocalDate.now());
-
     when(tratamientoServicio.findById(Mockito.anyLong())).thenReturn(tratamiento);
 
     ResultActions response = mockMvc.perform(
-        get("/tratamiento/get-tratamiento/1")
-            .contentType("application/json"));
+      get("/tratamiento/get-tratamiento/1")
+        .contentType("application/json"));
 
     response.andExpect(status().isOk())
-        .andExpect(content().contentType("application/json"))
-        .andExpect(content().json(objectMapper.writeValueAsString(tratamiento)));
-    }
+      .andExpect(content().contentType("application/json"))
+      .andExpect(content().json(objectMapper.writeValueAsString(tratamiento)));
+  }
 }
- 

@@ -41,7 +41,7 @@ export class AsignarTratamientoComponent implements OnInit {
 
   ngOnInit(): void {
     this.mascotaService.findAll().subscribe((mascotas) => this.mascotas = mascotas);
-    this.drogaService.findAll().subscribe((drogas) => this.drogas = drogas);
+    this.drogaService.findAll().subscribe((drogas) => this.drogas = drogas.filter(d => d.unidadDisponible > 0));
     const cedulaVet = this.route.snapshot.paramMap.get('cedulaVeterinario');
     if(cedulaVet)
       this.tratamientoDTO.veterinaroCedula = cedulaVet;
@@ -67,6 +67,15 @@ export class AsignarTratamientoComponent implements OnInit {
       return;
     }
 
-    this.tratamientoService.addTratamiento(this.tratamientoDTO).subscribe({complete: () => {this.location.back()}});
+    this.tratamientoService.addTratamiento(this.tratamientoDTO).subscribe({
+      next: response => {
+        console.log("Respuesta backend:",response);
+        this.location.back();
+      },
+      error: e => {
+        console.log("Error en la peticion:",e);
+        this.errorMensaje = "Hubo un error al guardar el tratamiento.";
+      }
+    });
   }
 }

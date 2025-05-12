@@ -1,6 +1,7 @@
 package puj.veterinaria.controladores;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,9 +45,7 @@ public class ControladorTratamiento {
 // Metodos PostMapping
   @PostMapping("/add")
   @Operation(summary = "Agrega un Tratamiento al db.")
-  public ResponseEntity<String> agregarTratamiento(@RequestBody TratamientoDTO tratamientoDTO) {
-
-    System.out.println("\033[33mVeterinario cedula: "+tratamientoDTO.getVeterinaroCedula()+"\033[0m");
+  public ResponseEntity<Map<String,String>> agregarTratamiento(@RequestBody TratamientoDTO tratamientoDTO) {
 
     Tratamiento tratamiento = new Tratamiento(tratamientoDTO);
     Mascota mascota  = mascotaServicio.findById(tratamientoDTO.getMascotaID());
@@ -64,8 +63,8 @@ public class ControladorTratamiento {
     tratamiento.setVeterinarioEncargado(veterinarioServicio.findByCedula(tratamientoDTO.getVeterinaroCedula()));
     tratamientoServicio.addTratamiento(tratamiento);
 
-    ResponseEntity<String> response = new ResponseEntity<>("Tratamiento Agregado", HttpStatus.CREATED);
-    return response;
+    Map<String,String> response = Map.of("mensaje","Tratamiento agregado");
+    return new ResponseEntity<>(response,HttpStatus.CREATED);
   }
 
 // Metodos GetMapping
