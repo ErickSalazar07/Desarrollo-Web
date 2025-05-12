@@ -1,4 +1,4 @@
-package puj.veterinaria.servicios;
+package puj.veterinaria.servicios.veterinario;
 
 import java.util.List;
 

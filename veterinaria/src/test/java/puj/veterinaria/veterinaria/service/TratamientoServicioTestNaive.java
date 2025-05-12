@@ -18,11 +18,11 @@ import puj.veterinaria.entidades.Droga;
 import puj.veterinaria.entidades.Mascota;
 import puj.veterinaria.entidades.Tratamiento;
 import puj.veterinaria.entidades.Veterinario;
-import puj.veterinaria.servicios.ClienteServicio;
-import puj.veterinaria.servicios.DrogaServicio;
-import puj.veterinaria.servicios.MascotaServicio;
-import puj.veterinaria.servicios.TratamientoServicio;
-import puj.veterinaria.servicios.VeterinarioServicio;
+import puj.veterinaria.servicios.cliente.ClienteServicio;
+import puj.veterinaria.servicios.droga.DrogaServicio;
+import puj.veterinaria.servicios.mascota.MascotaServicio;
+import puj.veterinaria.servicios.tratamiento.TratamientoServicio;
+import puj.veterinaria.servicios.veterinario.VeterinarioServicio;
 
 @SpringBootTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)

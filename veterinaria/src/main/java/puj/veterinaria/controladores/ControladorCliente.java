@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
 import puj.veterinaria.entidades.Cliente;
-import puj.veterinaria.servicios.ClienteServicio;
+import puj.veterinaria.servicios.cliente.ClienteServicio;
 
 
 @RestController

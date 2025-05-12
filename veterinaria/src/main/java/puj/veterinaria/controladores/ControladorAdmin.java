@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.Operation;
 import puj.veterinaria.entidades.Administrador;
-import puj.veterinaria.servicios.AdminServicio;
+import puj.veterinaria.servicios.administrador.AdminServicio;
 
 @RestController
 @RequestMapping("/admin")

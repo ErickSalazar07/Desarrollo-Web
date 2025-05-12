@@ -26,10 +26,10 @@ import puj.veterinaria.entidades.Tratamiento;
 import puj.veterinaria.entidades.Veterinario;
 import puj.veterinaria.entidades.DTO.MascotaDTO;
 import puj.veterinaria.entidades.DTO.TratamientoDTO;
-import puj.veterinaria.servicios.IDrogaServicio;
-import puj.veterinaria.servicios.IMascotaServicio;
-import puj.veterinaria.servicios.ITratamientoServicio;
-import puj.veterinaria.servicios.IVeterinarioServicio;
+import puj.veterinaria.servicios.droga.IDrogaServicio;
+import puj.veterinaria.servicios.mascota.IMascotaServicio;
+import puj.veterinaria.servicios.tratamiento.ITratamientoServicio;
+import puj.veterinaria.servicios.veterinario.IVeterinarioServicio;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

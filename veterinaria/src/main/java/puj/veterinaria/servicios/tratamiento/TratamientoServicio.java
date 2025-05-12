@@ -1,4 +1,4 @@
-package puj.veterinaria.servicios;
+package puj.veterinaria.servicios.tratamiento;
 
 import java.time.LocalDate;
 import java.util.List;

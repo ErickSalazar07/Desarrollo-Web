@@ -21,7 +21,7 @@ import puj.veterinaria.entidades.Mascota;
 import puj.veterinaria.entidades.Tratamiento;
 import puj.veterinaria.entidades.Veterinario;
 import puj.veterinaria.repositorios.RepositorioTratamiento;
-import puj.veterinaria.servicios.TratamientoServicio;
+import puj.veterinaria.servicios.tratamiento.TratamientoServicio;
 
 @ActiveProfiles("test")
 @ExtendWith(MockitoExtension.class)

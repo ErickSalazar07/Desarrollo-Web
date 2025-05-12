@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import puj.veterinaria.entidades.Mascota;
 import puj.veterinaria.entidades.DTO.MascotaDTO;
-import puj.veterinaria.servicios.IClienteServicio;
-import puj.veterinaria.servicios.IMascotaServicio;
+import puj.veterinaria.servicios.cliente.IClienteServicio;
+import puj.veterinaria.servicios.mascota.IMascotaServicio;
 
 @RestController
 @RequestMapping("/mascota")

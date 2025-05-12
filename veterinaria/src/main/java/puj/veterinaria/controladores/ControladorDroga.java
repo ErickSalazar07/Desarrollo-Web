@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
 import puj.veterinaria.entidades.Droga;
-import puj.veterinaria.servicios.IDrogaServicio;
+import puj.veterinaria.servicios.droga.IDrogaServicio;
 
 @RestController
 @RequestMapping("/droga")
