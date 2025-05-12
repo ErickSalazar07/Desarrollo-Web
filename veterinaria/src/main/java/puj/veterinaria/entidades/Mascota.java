@@ -12,10 +12,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import puj.veterinaria.entidades.DTO.MascotaDTO;
 
 // Entidades son un POJO (Plain Old Java Object)
 @Entity
+@Data
+@NoArgsConstructor
 public class Mascota {
   
   @Id
@@ -51,10 +55,8 @@ public class Mascota {
   @OneToMany(mappedBy = "mascota", cascade = CascadeType.ALL)
   private List<Tratamiento> tratamientos;
   
-  public Mascota() { }
-  
   public Mascota(String nombre, String raza, Integer edad, Double peso, String enfermedad, String foto, 
-  Boolean estadoActivo) {
+    Boolean estadoActivo) {
     this.nombre = nombre;
     this.raza = raza;
     this.edad = edad;
@@ -75,27 +77,4 @@ public class Mascota {
     this.foto = mascotaDTO.getFoto();
     this.estadoActivo = mascotaDTO.getEstadoActivo();
   }
-
-// Getters y Setters
-
-  public Long getId() { return id; }
-  public void setId(Long id) { this.id = id; }
-  public String getNombre() { return nombre; }
-  public void setNombre(String nombre) { this.nombre = nombre; }
-  public String getRaza() { return raza; }
-  public void setRaza(String raza) { this.raza = raza; }
-  public Integer getEdad() { return edad; }
-  public void setEdad(Integer edad) { this.edad = edad; }
-  public Double getPeso() { return peso; }
-  public void setPeso(Double peso) { this.peso = peso; }
-  public String getEnfermedad() { return enfermedad; }
-  public void setEnfermedad(String enfermedad) { this.enfermedad = enfermedad; }
-  public String getFoto() { return foto; }
-  public void setFoto(String foto) { this.foto = foto; }
-  public Cliente getCliente() { return cliente; }
-  public void setCliente(Cliente cliente) { this.cliente = cliente; }
-  public List<Tratamiento> getTratamientos() { return tratamientos; }
-  public void setTratamientos(List<Tratamiento> tratamientos) { this.tratamientos = tratamientos; }
-  public Boolean getEstadoActivo() { return estadoActivo; }
-  public void setEstadoActivo(Boolean estadoActivo) { this.estadoActivo = estadoActivo; }
 }

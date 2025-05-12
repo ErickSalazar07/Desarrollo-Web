@@ -11,9 +11,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 // Entidades son un POJO (Plain Old Java Object)
 @Entity
+@Data
+@NoArgsConstructor
 public class Droga {
 
   @Id
@@ -39,8 +43,6 @@ public class Droga {
   @OneToMany(mappedBy = "drogaAsignada", cascade = CascadeType.ALL)
   private List<Tratamiento> tratamientos = new ArrayList<>();
 
-  public Droga() { }
-
   public Droga(String nombre, Double precioCompra, Double precioVenta,
       Integer unidadDisponible, Integer unidadVendida) {
     this.nombre = nombre;
@@ -49,21 +51,4 @@ public class Droga {
     this.unidadDisponible = unidadDisponible;
     this.unidadVendida = unidadVendida;
   }
-
-// Getters y Setters
-
-  public Long getId() { return id; }
-  public void setId(Long id) { this.id = id; }
-  public String getNombre() { return nombre; }
-  public void setNombre(String nombre) { this.nombre = nombre; }
-  public Double getPrecioCompra() { return precioCompra; }
-  public void setPrecioCompra(Double precioCompra) { this.precioCompra = precioCompra; }
-  public Double getPrecioVenta() { return precioVenta; }
-  public void setPrecioVenta(Double precioVenta) { this.precioVenta = precioVenta; }
-  public Integer getUnidadDisponible() { return unidadDisponible; }
-  public void setUnidadDisponible(Integer unidadDisponible) { this.unidadDisponible = unidadDisponible; }
-  public Integer getUnidadVendida() { return unidadVendida; }
-  public void setUnidadVendida(Integer unidadVendida) { this.unidadVendida = unidadVendida; }
-  public List<Tratamiento> getTratamientos() { return tratamientos; }
-  public void setTratamientos(List<Tratamiento> tratamientos) { this.tratamientos = tratamientos; }
 }
