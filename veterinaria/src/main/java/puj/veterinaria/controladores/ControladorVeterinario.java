@@ -1,8 +1,11 @@
 package puj.veterinaria.controladores;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,9 +35,9 @@ public class ControladorVeterinario {
   // URL: http://localhost:8090/veterinario/add
   @PostMapping("/add")
   @Operation(summary = "Agrega un nuevo Veterinario a la db, el cual es pasado por el cuerpo de la peticion.")
-  public void agregarVeterinario(@RequestBody Veterinario veterinario) {
+  public ResponseEntity<Veterinario> agregarVeterinario(@RequestBody Veterinario veterinario) {
     veterinario.setId(null);
-    veterinarioServicio.addVeterinario(veterinario);
+    return new ResponseEntity<>(veterinarioServicio.addVeterinario(veterinario),HttpStatus.CREATED);
   }
 
 // Metodos GetMapping
@@ -42,34 +45,34 @@ public class ControladorVeterinario {
   // URL: http://localhost:8090/veterinario/veterinarios
   @GetMapping("/veterinarios")
   @Operation(summary = "Retorna todos los Veterinarios de la db.")
-  public List<Veterinario> obtenerVeterinarios() {
-    return veterinarioServicio.findAll();
+  public ResponseEntity<List<Veterinario>> obtenerVeterinarios() {
+    return new ResponseEntity<>(veterinarioServicio.findAll(),HttpStatus.OK);
   }
 
 
   // URL: http://localhost:8090/veterinario/get-veterinario/1
   @GetMapping("/get-veterinario/{id}")
   @Operation(summary = "Retorna un Veterinario, el cual corresponde al id que se para por la URL.")
-  public Veterinario obtenerVeterinario(@PathVariable(value = "id") Long id) {
-    return veterinarioServicio.findById(id);
+  public ResponseEntity<Veterinario> obtenerVeterinario(@PathVariable(value = "id") Long id) {
+    return new ResponseEntity<>(veterinarioServicio.findById(id),HttpStatus.OK);
   }
 
   @GetMapping("/get-veterinario-cedula/{cedula}")
   @Operation(summary = "Retorna un Veterinario, el cual corresponde a la cedula que se pasa por la URL.")
-  public Veterinario obtenerVeterinarioCedula(@PathVariable(value = "cedula") String cedula) {
-    return veterinarioServicio.findByCedula(cedula);
+  public ResponseEntity<Veterinario> obtenerVeterinarioCedula(@PathVariable(value = "cedula") String cedula) {
+    return new ResponseEntity<>(veterinarioServicio.findByCedula(cedula),HttpStatus.OK);
   }
 
   @GetMapping("/get-num-veterinarios-activos")
   @Operation(summary = "Retorna el numero de veterinarios activos.")
-  public Long obtenerNumVeterinariosActivos() {
-    return veterinarioServicio.cantidadVeterinariosActivos();
+  public ResponseEntity<Long> obtenerNumVeterinariosActivos() {
+    return new ResponseEntity<>(veterinarioServicio.cantidadVeterinariosActivos(),HttpStatus.OK);
   }
 
   @GetMapping("/get-num-veterinarios-inactivos")
   @Operation(summary = "Retorna el numero de veterinarios inactivos.")
-  public Long obtenerNumVeterinariosInactivos() {
-    return veterinarioServicio.cantidadVeterinariosInactivos();
+  public ResponseEntity<Long> obtenerNumVeterinariosInactivos() {
+    return new ResponseEntity<>(veterinarioServicio.cantidadVeterinariosInactivos(),HttpStatus.OK);
   }
 
 // Metodos PutMapping
@@ -77,28 +80,28 @@ public class ControladorVeterinario {
   // URL: http://localhost:8090/veterinario/update/1
   @PutMapping("/update-id/{id}")
   @Operation(summary = "Actualiza un Veterinario, el cual es pasado por el cuerpo de la peticion.")
-  public void actualizarVeterinario(@RequestBody Veterinario veterinario) {
-    veterinarioServicio.updateVeterinario(veterinario);
+  public ResponseEntity<Veterinario> actualizarVeterinario(@RequestBody Veterinario veterinario) {
+    return new ResponseEntity<>(veterinarioServicio.updateVeterinario(veterinario),HttpStatus.OK);
   }
 
   // URL: https://localhost:8090/veterinario/update/104828483
   @PutMapping("/update-cc/{cedula}")
   @Operation(summary = "Actualiza un Veterinario, correspondiente a la cedula que se pasa.")
-  public void actualizarVeterinarioPorCedula(@RequestBody Veterinario veterinario) {
+  public ResponseEntity<Veterinario> actualizarVeterinarioPorCedula(@RequestBody Veterinario veterinario) {
     Veterinario veterinarioActualizar = veterinarioServicio.findByCedula(veterinario.getCedula());
     veterinarioActualizar.setNombre(veterinario.getNombre());
     veterinarioActualizar.setActivo(veterinario.getActivo());
     veterinarioActualizar.setContrasena(veterinario.getContrasena());
     veterinarioActualizar.setEspecialidad(veterinario.getEspecialidad());
     veterinarioActualizar.setFoto(veterinario.getFoto());
-    veterinarioServicio.updateVeterinario(veterinarioActualizar);
+    return new ResponseEntity<>(veterinarioServicio.updateVeterinario(veterinarioActualizar),HttpStatus.OK);
   }
   
   @PutMapping("/update-estado/{cedula}")
-  public void cambiarEstadoVeterinarioPorCedula(@PathVariable(value = "cedula") String cedula) {
+  public ResponseEntity<Veterinario> cambiarEstadoVeterinarioPorCedula(@PathVariable(value = "cedula") String cedula) {
     Veterinario veterinario = veterinarioServicio.findByCedula(cedula);
     veterinario.setActivo(!veterinario.getActivo());
-    veterinarioServicio.updateVeterinario(veterinario);
+    return new ResponseEntity<>(veterinarioServicio.updateVeterinario(veterinario),HttpStatus.OK);
   }
 
 // Metodos DeleteMapping
@@ -106,7 +109,8 @@ public class ControladorVeterinario {
   // URL: http://localhost:8090/veterinario/delete/1
   @DeleteMapping("/delete/{id}")
   @Operation(summary = "Elimina un Cliente de la db, el cual corresponde al id pasado por la URL.")
-  public void eliminarVeterinario(@PathVariable(value = "id") Long id) {
+  public ResponseEntity<Map<String,String>> eliminarVeterinario(@PathVariable(value = "id") Long id) {
     veterinarioServicio.deleteById(id);
+    return new ResponseEntity<>(Map.of("mensaje","eliminado"),HttpStatus.OK);
   }
 }

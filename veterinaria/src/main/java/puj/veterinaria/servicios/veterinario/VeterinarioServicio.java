@@ -64,12 +64,12 @@ public class VeterinarioServicio implements IVeterinarioServicio {
   }
 
   @Override
-  public void cambiarEstadoVeterinarioById(Long id) {
+  public Veterinario cambiarEstadoVeterinarioById(Long id) {
     Veterinario veterinario = repositorioVeterinario.findById(id).orElse(null);
-    if(veterinario == null) return;
+    if(veterinario == null) return null;
 
     veterinario.setActivo(!veterinario.getActivo());
-    repositorioVeterinario.save(veterinario);
+    return repositorioVeterinario.save(veterinario);
   }
 
 

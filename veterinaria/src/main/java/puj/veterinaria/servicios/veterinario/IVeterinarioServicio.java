@@ -14,5 +14,5 @@ public interface IVeterinarioServicio {
   public void deleteById(Long id);
   public Long cantidadVeterinariosActivos();
   public Long cantidadVeterinariosInactivos();
-  public void cambiarEstadoVeterinarioById(Long id);
+  public Veterinario cambiarEstadoVeterinarioById(Long id);
 }

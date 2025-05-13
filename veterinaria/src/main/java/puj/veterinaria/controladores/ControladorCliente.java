@@ -1,8 +1,11 @@
 package puj.veterinaria.controladores;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,9 +34,9 @@ public class ControladorCliente {
   // URL: http://localhost:8090/cliente/add
   @PostMapping("/add")
   @Operation(summary = "Agrega un nuevo Cliente, pasado por el body.")
-  public void agregarCliente(@RequestBody Cliente cliente) {
+  public ResponseEntity<Cliente> agregarCliente(@RequestBody Cliente cliente) {
     cliente.setId(null);
-    clienteServicio.addCliente(cliente);
+    return new ResponseEntity<>(clienteServicio.addCliente(cliente),HttpStatus.CREATED);
   }
 
 // Metodos GetMapping
@@ -41,22 +44,22 @@ public class ControladorCliente {
   // URL: http://localhost:8090/cliente/clientes
   @GetMapping("/clientes")
   @Operation(summary = "Retorna todos los Clientes de la bd.")
-  public List<Cliente> obtenerClientes() {
-    return clienteServicio.findAll();
+  public ResponseEntity<List<Cliente>> obtenerClientes() {
+    return new ResponseEntity<>(clienteServicio.findAll(),HttpStatus.OK);
   }
 
   // ? Cambiar id por algun id dentro de los clientes guardados en el repositorio
   // URL: http://localhost:8090/cliente/get-cliente/1
   @GetMapping("/get-cliente/{id}")
   @Operation(summary = "Retorna 1 Cliente, el cual tiene el id, que se especifica.")
-  public Cliente obtenerCliente(@PathVariable(value = "id") Long id) {
-    return clienteServicio.findById(id);
+  public ResponseEntity<Cliente> obtenerCliente(@PathVariable(value = "id") Long id) {
+    return new ResponseEntity<>(clienteServicio.findById(id),HttpStatus.OK);
   }
 
   @GetMapping("/get-cliente-cedula/{cedula}")
   @Operation(summary = "Retorna 1 Cliente, correspondiente a la cedula.")
-  public Cliente obtenerClientePorCedula(@PathVariable(value = "cedula") String cedula) {
-    return clienteServicio.findByCedula(cedula);
+  public ResponseEntity<Cliente> obtenerClientePorCedula(@PathVariable(value = "cedula") String cedula) {
+    return new ResponseEntity<>(clienteServicio.findByCedula(cedula),HttpStatus.OK);
   }
 
 
@@ -66,14 +69,14 @@ public class ControladorCliente {
   // URL: http://localhost:8090/cliente/update/1
   @PutMapping("/update/{id}")
   @Operation(summary = "Actualiza un Cliente existente en la base de datos.")
-  public void actualizarCliente(@RequestBody Cliente cliente) {
+  public ResponseEntity<Cliente> actualizarCliente(@RequestBody Cliente cliente) {
     Cliente clienteActualizar = clienteServicio.findById(cliente.getId());
 
     clienteActualizar.setNombre(cliente.getNombre());
     clienteActualizar.setCorreo(cliente.getCorreo());
     clienteActualizar.setCelular(cliente.getCelular());
 
-    clienteServicio.updateCliente(clienteActualizar);
+    return new ResponseEntity<>(clienteServicio.updateCliente(clienteActualizar),HttpStatus.OK);
   }
 
 // Metodos DeleteMapping
@@ -82,7 +85,8 @@ public class ControladorCliente {
   // URL: http://localhost:8090/cliente/delete/1
   @DeleteMapping("/delete/{id}")
   @Operation(summary = "Elimina un Cliente, el cual corresponde al id que se especifica.")
-  public void eliminarCliente(@PathVariable("id") Long id) {
+  public ResponseEntity<Map<String,String>> eliminarCliente(@PathVariable("id") Long id) {
     clienteServicio.deleteById(id);
+    return new ResponseEntity<>(Map.of("mensaje","eliminado"),HttpStatus.OK);
   }
 } 

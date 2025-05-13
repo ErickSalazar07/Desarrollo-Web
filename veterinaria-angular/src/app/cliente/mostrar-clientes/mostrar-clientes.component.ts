@@ -16,7 +16,11 @@ export class MostrarClientesComponent implements OnInit {
   terminoBusqueda: string = '';
   filtroSeleccionado: string = 'nombre';
   
-  constructor(private http: HttpClient, private router: Router, private service: ClienteService) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private service: ClienteService
+  ) {}
 
 
   ngOnInit(): void {
@@ -32,10 +36,8 @@ export class MostrarClientesComponent implements OnInit {
 
   eliminarCliente(cliente: Cliente) {
     console.warn("Entro a eliminar cliente");
-    this.service.deleteById(cliente.id).subscribe(() => {
-    this.service.findAll().subscribe(clientes => {
-        this.clientes = clientes;
-      })
+    this.service.deleteById(cliente.id).subscribe({
+      complete: () => this.service.findAll().subscribe(clientes => this.clientes = clientes)
     });
   }
   get clientesFiltrados() {

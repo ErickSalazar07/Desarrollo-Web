@@ -32,7 +32,7 @@ export class LoginAdminComponent {
         this.msgError = "Datos incorrectos";
         return;
       }
-      this.router.navigate([`/admin/dashboard/cliente/clientes`]);
+      this.router.navigate([`/admin/dashboard/veterinarios/mostrar-veterinarios`]);
     });
   }
     

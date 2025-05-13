@@ -1,6 +1,7 @@
 package puj.veterinaria.controladores;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,10 +36,10 @@ public class ControladorMascota {
 
   @PostMapping("/add")
   @Operation(summary = "Agrega una Mascota a la db, la cual es pasado por el cuerpo de la peticion.")
-  public void agregarMascota(@RequestBody MascotaDTO mascotaPeticion) {
+  public ResponseEntity<Mascota> agregarMascota(@RequestBody MascotaDTO mascotaPeticion) {
     Mascota mascotaAgregar = new Mascota(mascotaPeticion);
     mascotaAgregar.setCliente(clienteServicio.findByCedula(mascotaPeticion.getCedulaCliente()));
-    mascotaServicio.addMascota(mascotaAgregar);
+    return new ResponseEntity<>(mascotaServicio.addMascota(mascotaAgregar),HttpStatus.CREATED);
   }
 
 // Metodos @GetMapping
@@ -47,35 +48,34 @@ public class ControladorMascota {
   @GetMapping("/mascotas")
   @Operation(summary = "Retornar todas las Mascotas en la db.")
   public ResponseEntity<List<Mascota>> obtenerMascotas() {
-    ResponseEntity<List<Mascota>> response = new ResponseEntity<>(mascotaServicio.findAll(), HttpStatus.OK);  
-    return response;
+    return new ResponseEntity<>(mascotaServicio.findAll(), HttpStatus.OK);  
   }
   
   // ? Cambiar id por algun id dentro de los animales guardados en el repositorio
   // URL: http://localhost:8090/mascota/get-mascota/1 
   @GetMapping("/get-mascota/{id}")
   @Operation(summary = "Retornar una Mascota la cual corresponda con el id, que se pasa por la URL.")
-  public MascotaDTO obtenerMascota(@PathVariable(value = "id") Long id) {
-    return new MascotaDTO(mascotaServicio.findById(id));
+  public ResponseEntity<MascotaDTO> obtenerMascota(@PathVariable(value = "id") Long id) {
+    return new ResponseEntity<>(new MascotaDTO(mascotaServicio.findById(id)),HttpStatus.OK);
   }
 
   // URL: http://localhost:8090/mascota/mascotas-cliente/1 
   @GetMapping("/mascotas-cliente/{cedula}")
   @Operation(summary = "Retorna todas las Mascotas de un Cliente, por la cedula del Cliente.")
-  public List<Mascota> obtenerMascotasCliente(@PathVariable(value = "cedula") String cedula) {
-    return mascotaServicio.findByClienteCedula(cedula);
+  public ResponseEntity<List<Mascota>> obtenerMascotasCliente(@PathVariable(value = "cedula") String cedula) {
+    return new ResponseEntity<>(mascotaServicio.findByClienteCedula(cedula),HttpStatus.OK);
   }
 
   @GetMapping("/get-num-mascotas-activas")
   @Operation(summary = "Retorna el numero de mascotas que estan activas.")
-  public Long obtenerNumMascotasActivas() {
-    return mascotaServicio.cantidadMascotasActivas();
+  public ResponseEntity<Long> obtenerNumMascotasActivas() {
+    return new ResponseEntity<>(mascotaServicio.cantidadMascotasActivas(),HttpStatus.OK);
   }
 
   @GetMapping("/get-num-mascotas")
   @Operation(summary = "Retorna el numero de mascotas en la veterinaria.")
-  public Long obtenerNumMascotas() {
-    return mascotaServicio.numeroMascotas();
+  public ResponseEntity<Long> obtenerNumMascotas() {
+    return new ResponseEntity<>(mascotaServicio.numeroMascotas(),HttpStatus.OK);
   }
 
 // Metodos PutMapping
@@ -84,13 +84,13 @@ public class ControladorMascota {
   // URL: http://localhost:8090/mascota/cambiar-estado/1
   @PutMapping("/cambiar-estado/{id}")
   @Operation(summary = "Cambia el estado de una Mascota, la cual corresponda al id, que se pasa por la URL.")
-  public void cambiarEstado(@PathVariable("id") Long id) {
-    mascotaServicio.cambiarEstadoById(id);
+  public ResponseEntity<Mascota> cambiarEstado(@PathVariable("id") Long id) {
+    return new ResponseEntity<>(mascotaServicio.cambiarEstadoById(id),HttpStatus.OK);
   }
 
   @PutMapping("/update/{id}")
   @Operation(summary = "Actualiza una Mascota, la cual se pasa por el cuerpo de la peticion.")
-  public void actualizarMascota(@RequestBody MascotaDTO mascotaDTO) {
+  public ResponseEntity<Mascota> actualizarMascota(@RequestBody MascotaDTO mascotaDTO) {
     Mascota mascotaActualizar = mascotaServicio.findById(mascotaDTO.getId());
 
     mascotaActualizar.setNombre(mascotaDTO.getNombre());
@@ -102,7 +102,7 @@ public class ControladorMascota {
     mascotaActualizar.setEstadoActivo(mascotaDTO.getEstadoActivo());
     mascotaActualizar.setCliente(clienteServicio.findByCedula(mascotaDTO.getCedulaCliente()));
 
-    mascotaServicio.updateMascota(mascotaActualizar);
+    return new ResponseEntity<>(mascotaServicio.updateMascota(mascotaActualizar),HttpStatus.OK);
   }
 
 // Metodos DeleteMapping
@@ -111,7 +111,8 @@ public class ControladorMascota {
   // URL: http://localhost:8090/mascota/delete/1
   @DeleteMapping("/delete/{id}")
   @Operation(summary = "Elimina una Mascota en la db, la cual corresponde al id que se pasa por la URL.")
-  public void eliminarMascota(@PathVariable("id") Long id) {
+  public ResponseEntity<Map<String,String>> eliminarMascota(@PathVariable("id") Long id) {
     mascotaServicio.deleteById(id);
+    return new ResponseEntity<>(Map.of("mensaje","eliminado"),HttpStatus.OK);
   }
 }

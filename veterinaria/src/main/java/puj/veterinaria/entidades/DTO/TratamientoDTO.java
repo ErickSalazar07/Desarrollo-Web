@@ -2,6 +2,8 @@ package puj.veterinaria.entidades.DTO;
 
 import java.time.LocalDate;
 
+import puj.veterinaria.entidades.Tratamiento;
+
 public class TratamientoDTO {
   
   private Long id;
@@ -22,12 +24,16 @@ public class TratamientoDTO {
     this.mascotaID = mascotaID;
     this.veterinaroCedula = veterinaroCedula;
   }
+
+
   public Long getId() {
     return id;
   }
+
   public void setId(Long id) {
     this.id = id;
   }
+
   public String getNombreTratamiento() {
     return nombreTratamiento;
   }

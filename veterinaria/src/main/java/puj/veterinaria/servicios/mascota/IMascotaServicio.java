@@ -13,6 +13,6 @@ public interface IMascotaServicio {
   public Mascota updateMascota(Mascota mascota);
   public Mascota addMascota(Mascota mascotas);
   public Long numeroMascotas();
-  public void cambiarEstadoById(Long id);
+  public Mascota cambiarEstadoById(Long id);
   public Long cantidadMascotasActivas();
 }

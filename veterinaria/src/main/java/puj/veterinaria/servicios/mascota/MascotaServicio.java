@@ -74,12 +74,12 @@ public class MascotaServicio implements IMascotaServicio {
   }
 
   @Override
-  public void cambiarEstadoById(Long id) {
+  public Mascota cambiarEstadoById(Long id) {
     Mascota mascota = repositorioMascota.findById(id).orElse(null);
-    if(mascota == null) return;
+    if(mascota == null) return null;
 
     mascota.setEstadoActivo(!mascota.getEstadoActivo());
-    repositorioMascota.save(mascota);
+    return repositorioMascota.save(mascota);
   }
 
   @Override
