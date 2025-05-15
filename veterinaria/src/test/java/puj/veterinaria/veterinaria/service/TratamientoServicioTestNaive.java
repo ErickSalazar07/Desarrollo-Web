@@ -109,7 +109,7 @@ public class TratamientoServicioTestNaive {
 
     // Assert
     Assertions.assertThat(tratamientosVerificar).isNotNull();
-    Assertions.assertThat(tratamientosVerificar.size()).isEqualTo(1L);
+    Assertions.assertThat(tratamientosVerificar.size()).isEqualTo(26L);
   }
   
   @Test

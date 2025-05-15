@@ -158,6 +158,7 @@ public class RegistroClienteyMascota {
     List<WebElement> nombresMascotasCliente = driver.findElements(By.className("miMascota-nombre"));
     Assertions.assertThat(nombresMascotasCliente.get(nombresMascotasCliente.size() - 1).getText())
         .isEqualTo("Pedrinchis");
+    driver.quit();
   }
 
   @AfterEach
