@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Random;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -182,6 +183,7 @@ public class DatabaseInit implements ApplicationRunner {
       String datos[];
       Cliente cliente = null;
       UserEntity usuario = null;
+
       while((linea = br.readLine()) != null) {
         datos = linea.split(",");
         cliente = Cliente.builder()
@@ -190,11 +192,11 @@ public class DatabaseInit implements ApplicationRunner {
           .correo(datos[2])
           .celular(datos[3])
           .build();
-        cliente = repositorioCliente.save(cliente);
 
         usuario = new UserEntity();
         usuario.setUsername(cliente.getCorreo());
         usuario.setPassword(passwordEncoder.encode(cliente.getCedula()));
+        usuario.setRoles(List.of(repositorioRole.findByName("CLIENTE").orElse(null)));
         repositorioUserEntity.save(usuario);
 
         cliente.setUser(usuario);
@@ -213,6 +215,7 @@ public class DatabaseInit implements ApplicationRunner {
       String datos[];
       Veterinario veterinario = null;
       UserEntity usuario = null;
+
       while((linea = br.readLine()) != null) {
         datos = linea.split(",");
         veterinario = Veterinario.builder()
@@ -223,11 +226,11 @@ public class DatabaseInit implements ApplicationRunner {
           .foto(datos[4])
           .activo(datos[5].equalsIgnoreCase("si"))
           .build();
-        veterinario = repositorioVeterinario.save(veterinario);
 
         usuario = new UserEntity();
         usuario.setUsername(veterinario.getCedula());
         usuario.setPassword(passwordEncoder.encode(veterinario.getContrasena()));
+        usuario.setRoles(List.of(repositorioRole.findByName("VETERINARIO").orElse(null)));
         repositorioUserEntity.save(usuario);
         
         veterinario.setUser(usuario);
@@ -349,10 +352,10 @@ public class DatabaseInit implements ApplicationRunner {
           .correo("admin@veterinaria")
           .celular("123")
           .build();
-        admin = repositorioAdmin.save(admin);
 
         usuario.setUsername(admin.getUsername());
         usuario.setPassword(passwordEncoder.encode(admin.getCelular()));
+        usuario.setRoles(List.of(repositorioRole.findByName("ADMINISTRADOR").orElse(null)));
         repositorioUserEntity.save(usuario);
 
         admin.setUser(usuario);
