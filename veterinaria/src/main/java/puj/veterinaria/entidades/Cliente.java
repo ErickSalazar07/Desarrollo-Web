@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -42,6 +43,9 @@ public class Cliente {
   @JsonIgnore
   @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Mascota> mascotas;
+  
+  @OneToOne(cascade = CascadeType.ALL)
+  private UserEntity user;
   
   public Cliente(String cedula, String nombre, String correo, String celular) {
     this.cedula = cedula;

@@ -18,13 +18,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 
 import jakarta.transaction.Transactional;
 import puj.veterinaria.repositorios.RepositorioCliente;
 import puj.veterinaria.repositorios.RepositorioDroga;
 import puj.veterinaria.repositorios.RepositorioMascota;
+import puj.veterinaria.repositorios.RepositorioRole;
 import puj.veterinaria.repositorios.RepositorioTratamiento;
+import puj.veterinaria.repositorios.RepositorioUserEntity;
 import puj.veterinaria.repositorios.RepositorioVeterinario;
 import puj.veterinaria.repositorios.RepositorioAdmin;
 
@@ -52,8 +55,18 @@ public class DatabaseInit implements ApplicationRunner {
   @Autowired
   RepositorioDroga repositorioDroga;
 
+  @Autowired
+  PasswordEncoder passwordEncoder;
+
+  @Autowired
+  RepositorioUserEntity repositorioUserEntity;
+  
+  @Autowired
+  RepositorioRole repositorioRole;
+
   @Override
   public void run(ApplicationArguments args) throws Exception {
+    cargarRoles();
     cargarVeterinarios();
     cargarClientes();
     cargarDrogas();
@@ -167,14 +180,25 @@ public class DatabaseInit implements ApplicationRunner {
     getResourceAsStream("init-data/clientes.txt")))) {
       String linea;
       String datos[];
+      Cliente cliente = null;
+      UserEntity usuario = null;
       while((linea = br.readLine()) != null) {
         datos = linea.split(",");
-        repositorioCliente.save(Cliente.builder()
+        cliente = Cliente.builder()
           .cedula(datos[0])
           .nombre(datos[1])
           .correo(datos[2])
           .celular(datos[3])
-          .build());
+          .build();
+        cliente = repositorioCliente.save(cliente);
+
+        usuario = new UserEntity();
+        usuario.setUsername(cliente.getCorreo());
+        usuario.setPassword(passwordEncoder.encode(cliente.getCedula()));
+        repositorioUserEntity.save(usuario);
+
+        cliente.setUser(usuario);
+        repositorioCliente.save(cliente);
       }
       System.out.println("\n\n\n\033[36mSE CARGARON LOS CLIENTES.\033[0m\n\n\n");
     } catch(Exception e) {
@@ -187,16 +211,27 @@ public class DatabaseInit implements ApplicationRunner {
     getResourceAsStream("init-data/veterinarios.txt")))) {
       String linea;
       String datos[];
+      Veterinario veterinario = null;
+      UserEntity usuario = null;
       while((linea = br.readLine()) != null) {
         datos = linea.split(",");
-        repositorioVeterinario.save(Veterinario.builder()
+        veterinario = Veterinario.builder()
           .nombre(datos[0])
           .contrasena(datos[1])
           .cedula(datos[2])
           .especialidad(datos[3])
           .foto(datos[4])
           .activo(datos[5].equalsIgnoreCase("si"))
-          .build());
+          .build();
+        veterinario = repositorioVeterinario.save(veterinario);
+
+        usuario = new UserEntity();
+        usuario.setUsername(veterinario.getCedula());
+        usuario.setPassword(passwordEncoder.encode(veterinario.getContrasena()));
+        repositorioUserEntity.save(usuario);
+        
+        veterinario.setUser(usuario);
+        repositorioVeterinario.save(veterinario);
       }
       System.out.println("\n\n\n\033[36mSE CARGARON LOS VETERINARIOS.\033[0m\n\n\n");
     } catch(Exception e) {
@@ -307,19 +342,34 @@ public class DatabaseInit implements ApplicationRunner {
   private void crearAdminPorDefecto() {
     try {
       if (repositorioAdmin.count() == 0) { // Solo lo crea si no hay admins aún
+        UserEntity usuario = new UserEntity();
         Administrador admin = Administrador.builder()
           .username("admin")
           .nombre("Administrador General")
           .correo("admin@veterinaria")
           .celular("123")
           .build();
+        admin = repositorioAdmin.save(admin);
+
+        usuario.setUsername(admin.getUsername());
+        usuario.setPassword(passwordEncoder.encode(admin.getCelular()));
+        repositorioUserEntity.save(usuario);
+
+        admin.setUser(usuario);
         repositorioAdmin.save(admin);
+
         System.out.println("\n\n\n\033[32mADMINISTRADOR POR DEFECTO CREADO.\033[0m\n\n\n");
       } else 
         System.out.println("\n\n\n\033[33mYA EXISTEN ADMINISTRADORES EN LA BD. NO SE CREÓ NINGUNO NUEVO.\033[0m\n\n\n");
     } catch (Exception e) {
       System.err.println("Error al crear el administrador por defecto: " + e.getMessage());
     }
+  }
+
+  private void cargarRoles() {
+    repositorioRole.save(new Role("ADMINISTRADOR"));
+    repositorioRole.save(new Role("VETERINARIO"));
+    repositorioRole.save(new Role("CLIENTE"));
   }
 
 }
