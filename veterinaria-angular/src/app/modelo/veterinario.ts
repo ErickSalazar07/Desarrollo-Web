@@ -1,4 +1,5 @@
 import { Tratamiento } from "./tratamiento";
+import { UserEntity } from "./UserEntity";
 
 export interface Veterinario {
   id: number;
@@ -8,5 +9,6 @@ export interface Veterinario {
   especialidad: string;
   activo: boolean;
   foto: string;
+  user: UserEntity;
   tratamientos?: Tratamiento[];
 }

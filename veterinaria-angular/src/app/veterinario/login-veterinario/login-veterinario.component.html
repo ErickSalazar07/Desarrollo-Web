@@ -10,10 +10,10 @@
           <h1> Bienvenido</h1>
           <form method="post">
             <label for="cedula">Cédula</label>
-            <input [(ngModel)]="veterinario.cedula" id="correo" placeholder="Ingrese cedula" required name="cedula">
+            <input [(ngModel)]="veterinario.user.username" id="correo" placeholder="Ingrese cedula" required name="cedula">
     
             <label for="contrasena">Contraseña</label>
-            <input [(ngModel)]="veterinario.contrasena" type="password" id="cedula" placeholder="Ingrese contraseña" required name="contrasena">
+            <input [(ngModel)]="veterinario.user.password" type="password" id="cedula" placeholder="Ingrese contraseña" required name="contrasena">
     
             <p *ngIf="msgError !== ''" class="error-message">{{msgError}}</p>
     

@@ -17,7 +17,12 @@ export class LoginVeterinarioComponent {
     contrasena: "",
     foto: "",
     especialidad: "",
-    activo: false
+    activo: false,
+    user: {
+      id: -1,
+      username: "",
+      password: ""
+    }
   };
 
   msgError:string = "";
@@ -28,12 +33,16 @@ export class LoginVeterinarioComponent {
   ) {}
 
   logearVeterinario() {
-    this.servicioVeterinario.findByCedula(this.veterinario.cedula).subscribe(c => {
-      if(c == null || this.veterinario.contrasena !== c.contrasena)  {
+    this.servicioVeterinario.findByCedula(this.veterinario.user.username).subscribe(c => {
+      /*if(c == null || this.veterinario.contrasena !== c.contrasena)  {
+        this.msgError = "Datos incorrectos";
+        return;
+      }*/
+      if(!c) { 
         this.msgError = "Datos incorrectos";
         return;
       }
-      this.router.navigate([`/veterinario/dashboard/${c.cedula}/mascota/mascotas`]);
+      this.router.navigate([`/veterinario/dashboard/${c.user.username}/mascota/mascotas`]);
     });
   }
 }

@@ -15,7 +15,12 @@ export class CrearVeterinarioComponent {
     foto: "",
     cedula: "",
     especialidad: "",
-    contrasena: ""
+    contrasena: "",
+    user: {
+      id: -1,
+      username: "",
+      password: ""
+    }
   }
 
 }
