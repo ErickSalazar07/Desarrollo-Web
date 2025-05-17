@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Admin;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,6 +34,9 @@ public class ControladorAdmin {
     @Autowired
     RepositorioUserEntity userRepository;
 
+    @Autowired
+     AuthenticationManager authenticationManager;
+
     // POST
     // URL: http://localhost:8090/admin/add
     @PostMapping("/add")
@@ -47,6 +54,20 @@ public class ControladorAdmin {
         administrador.setId(null);
         return new ResponseEntity<>(administradorServicio.addAdministrador(administrador),HttpStatus.CREATED); 
     }
+    
+  // URL: http://localhost:8090/admin/login
+   @PostMapping("/login")
+  @Operation(summary = "Permite loguear un Admin, pasado por el body.")
+   public ResponseEntity login(@RequestBody Administrador admin) {
+    Authentication authentication = authenticationManager.authenticate(
+      new UsernamePasswordAuthenticationToken(admin.getUsername(), admin.getCelular())
+    );
+
+    SecurityContextHolder.getContext().setAuthentication(authentication);
+
+    return new ResponseEntity<String>("Admin ingresa con éxito", HttpStatus.OK);
+   }
+
 
     // GET
     // URL: http://localhost:8090/admin/admins

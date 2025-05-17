@@ -6,6 +6,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +42,9 @@ public class ControladorCliente {
   @Autowired
   private CustomUserDetailService customUserDetailService;
 
+  @Autowired
+  AuthenticationManager authenticationManager;
+
 // Metodos PostMapping
 
   // URL: http://localhost:8090/cliente/add
@@ -55,6 +62,18 @@ public class ControladorCliente {
     cliente.setUser(userEntity);
     cliente.setId(null);
     return new ResponseEntity<>(clienteServicio.addCliente(cliente),HttpStatus.CREATED); 
+   }
+  // URL: http://localhost:8090/cliente/login
+   @PostMapping("/login")
+  @Operation(summary = "Permite loguear un Cliente, pasado por el body.")
+   public ResponseEntity login(@RequestBody Cliente cliente) {
+    Authentication authentication = authenticationManager.authenticate(
+      new UsernamePasswordAuthenticationToken(cliente.getCorreo(), cliente.getCedula())
+    );
+
+    SecurityContextHolder.getContext().setAuthentication(authentication);
+
+    return new ResponseEntity<String>("Usuario ingresa con éxito", HttpStatus.OK);
    }
 
 // Metodos GetMapping

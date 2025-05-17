@@ -6,6 +6,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
+import puj.veterinaria.entidades.Administrador;
 import puj.veterinaria.entidades.UserEntity;
 import puj.veterinaria.entidades.Veterinario;
 import puj.veterinaria.repositorios.RepositorioUserEntity;
@@ -37,6 +42,9 @@ public class ControladorVeterinario {
   @Autowired
   private RepositorioUserEntity userRepository;
 
+  @Autowired
+  private AuthenticationManager authenticationManager;
+
 
 // Metodos PostMapping
 
@@ -55,6 +63,18 @@ public class ControladorVeterinario {
     return new ResponseEntity<>(veterinarioServicio.addVeterinario(veterinario),HttpStatus.CREATED);
 
   }
+  // URL: http://localhost:8090/veterinario/login
+   @PostMapping("/login")
+  @Operation(summary = "Permite loguear un Veterinario, pasado por el body.")
+   public ResponseEntity login(@RequestBody Veterinario vet) {
+    Authentication authentication = authenticationManager.authenticate(
+      new UsernamePasswordAuthenticationToken(vet.getCedula(), vet.getContrasena())
+    );
+
+    SecurityContextHolder.getContext().setAuthentication(authentication);
+
+    return new ResponseEntity<String>("Veterinario ingresa con éxito", HttpStatus.OK);
+   }
 
 // Metodos GetMapping
 
