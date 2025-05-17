@@ -3,10 +3,17 @@ package puj.veterinaria.controladores;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Admin;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.Operation;
 import puj.veterinaria.entidades.Administrador;
+import puj.veterinaria.entidades.Cliente;
+import puj.veterinaria.entidades.UserEntity;
+import puj.veterinaria.repositorios.RepositorioUserEntity;
+import puj.veterinaria.seguridad.CustomUserDetailService;
 import puj.veterinaria.servicios.administrador.AdminServicio;
 
 @RestController
@@ -17,13 +24,28 @@ public class ControladorAdmin {
     @Autowired
     AdminServicio administradorServicio;
 
+    @Autowired
+    private CustomUserDetailService customUserDetailService;
+
+    @Autowired
+    RepositorioUserEntity userRepository;
+
     // POST
     // URL: http://localhost:8090/admin/add
     @PostMapping("/add")
     @Operation(summary = "Agrega un nuevo Administrador pasado por el body.")
-    public void agregarAdministrador(@RequestBody Administrador administrador) {
+    public ResponseEntity<Administrador> agregarAdministrador(@RequestBody Administrador administrador) {
+
+
+        //Revisamos que nombre de usuario no exista
+        if(userRepository.existsByUsername(administrador.getUsername())) {
+            return new ResponseEntity<Administrador>(administrador, HttpStatus.BAD_REQUEST);
+        }
+
+        UserEntity userEntity = customUserDetailService.AdminToUser(administrador);
+        administrador.setUser(userEntity);
         administrador.setId(null);
-        administradorServicio.addAdministrador(administrador);
+        return new ResponseEntity<>(administradorServicio.addAdministrador(administrador),HttpStatus.CREATED); 
     }
 
     // GET

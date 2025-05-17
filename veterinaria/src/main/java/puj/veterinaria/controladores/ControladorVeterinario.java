@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
+import puj.veterinaria.entidades.UserEntity;
 import puj.veterinaria.entidades.Veterinario;
+import puj.veterinaria.repositorios.RepositorioUserEntity;
+import puj.veterinaria.seguridad.CustomUserDetailService;
 import puj.veterinaria.servicios.veterinario.IVeterinarioServicio;
 
 @RestController
@@ -28,6 +31,12 @@ public class ControladorVeterinario {
   @Autowired
   IVeterinarioServicio veterinarioServicio;
 
+  @Autowired
+  private CustomUserDetailService customUserDetailService;
+
+  @Autowired
+  private RepositorioUserEntity userRepository;
+
 
 // Metodos PostMapping
 
@@ -36,8 +45,15 @@ public class ControladorVeterinario {
   @PostMapping("/add")
   @Operation(summary = "Agrega un nuevo Veterinario a la db, el cual es pasado por el cuerpo de la peticion.")
   public ResponseEntity<Veterinario> agregarVeterinario(@RequestBody Veterinario veterinario) {
+    if(userRepository.existsByUsername(veterinario.getCedula())){
+      return new ResponseEntity<Veterinario>(veterinario, HttpStatus.BAD_REQUEST);
+    }
+
+    UserEntity user = customUserDetailService.veterinarioToUser(veterinario);
+    veterinario.setUser(user);
     veterinario.setId(null);
     return new ResponseEntity<>(veterinarioServicio.addVeterinario(veterinario),HttpStatus.CREATED);
+
   }
 
 // Metodos GetMapping

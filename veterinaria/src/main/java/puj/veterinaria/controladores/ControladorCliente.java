@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
 import puj.veterinaria.entidades.Cliente;
+import puj.veterinaria.entidades.UserEntity;
+import puj.veterinaria.repositorios.RepositorioUserEntity;
+import puj.veterinaria.seguridad.CustomUserDetailService;
 import puj.veterinaria.servicios.cliente.ClienteServicio;
 
 
@@ -29,15 +32,30 @@ public class ControladorCliente {
   @Autowired
   ClienteServicio clienteServicio;
 
+  @Autowired
+  RepositorioUserEntity userRepository;
+
+  @Autowired
+  private CustomUserDetailService customUserDetailService;
+
 // Metodos PostMapping
 
   // URL: http://localhost:8090/cliente/add
   @PostMapping("/add")
   @Operation(summary = "Agrega un nuevo Cliente, pasado por el body.")
   public ResponseEntity<Cliente> agregarCliente(@RequestBody Cliente cliente) {
+    //
+
+    //Revisamos que nombre de usuario no exista
+    if(userRepository.existsByUsername(cliente.getCorreo())) {
+      return new ResponseEntity<Cliente>(cliente, HttpStatus.BAD_REQUEST);
+    }
+
+    UserEntity userEntity = customUserDetailService.clienteToUser(cliente);
+    cliente.setUser(userEntity);
     cliente.setId(null);
-    return new ResponseEntity<>(clienteServicio.addCliente(cliente),HttpStatus.CREATED);
-  }
+    return new ResponseEntity<>(clienteServicio.addCliente(cliente),HttpStatus.CREATED); 
+   }
 
 // Metodos GetMapping
 
