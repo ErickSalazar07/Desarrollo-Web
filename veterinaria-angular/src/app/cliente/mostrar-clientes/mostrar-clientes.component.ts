@@ -31,7 +31,7 @@ export class MostrarClientesComponent implements OnInit {
   
 
   mostrarCliente(cliente: Cliente) {
-    this.router.navigate(['/cliente/mostrar-cliente', cliente.id]);
+    this.router.navigate(['/cliente/mostrar-cliente', cliente.cedula]);
   }
 
   eliminarCliente(cliente: Cliente) {
