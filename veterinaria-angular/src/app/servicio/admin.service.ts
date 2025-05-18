@@ -43,6 +43,13 @@ export class AdminService {
     return this.http.delete<void>(`${this.URL_ROOT}/delete/${id}`);
   }
 
+  login(userEntity: UserEntity): Observable<String>{
+    return this.http.post(this.URL_ROOT + `/login`, userEntity,
+      {
+      responseType: 'text'
+    });
+  }
+
   encontrarRol(user:UserEntity): Observable<String>{
     return this.http.post<String>(`${this.URL_ROOT}/encontrar-rol`, user);
   }

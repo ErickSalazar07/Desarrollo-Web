@@ -22,6 +22,9 @@ export class MostrarClienteComponent implements OnInit{
     private servicioMascota: MascotaService) { }
 
     ngOnInit(): void {
+
+
+      
     this.servicioCliente.clienteActual().subscribe({
       next: (cliente) => {
         this.cliente = cliente;

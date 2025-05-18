@@ -67,9 +67,9 @@ public class ControladorAdmin {
   // URL: http://localhost:8090/admin/login
    @PostMapping("/login")
   @Operation(summary = "Permite loguear un Admin, pasado por el body.")
-   public ResponseEntity login(@RequestBody Administrador admin) {
+   public ResponseEntity login(@RequestBody UserEntity admin) {
     Authentication authentication = authenticationManager.authenticate(
-      new UsernamePasswordAuthenticationToken(admin.getUsername(), admin.getCelular())
+      new UsernamePasswordAuthenticationToken(admin.getUsername(), admin.getPassword())
     );
 
     SecurityContextHolder.getContext().setAuthentication(authentication);

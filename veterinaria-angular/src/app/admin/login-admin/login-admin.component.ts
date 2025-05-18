@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Admin } from 'src/app/modelo/admin';
+import { UserEntity } from 'src/app/modelo/UserEntity';
 import { AdminService} from 'src/app/servicio/admin.service';
 
 @Component({
@@ -18,6 +19,12 @@ export class LoginAdminComponent {
     correo: "",
   }
 
+    user:UserEntity = {
+      id: -1,
+      username: "",
+      password: ""
+    };
+
   msgError:string = "";
 
   constructor(
@@ -32,8 +39,21 @@ export class LoginAdminComponent {
         this.msgError = "Datos incorrectos";
         return;
       }
-      this.router.navigate([`/admin/dashboard/veterinarios/mostrar-veterinarios`]);
+      else {
+        this.user.username = c.username;
+        this.user.password = this.admin.celular;
+        this.servicioAdmin.login(this.user).subscribe({
+        next: (data) => {
+          localStorage.setItem('token', String(data)); // Guardar el token
+          this.router.navigate(['/admin/dashboard/veterinarios/mostrar-veterinarios']); // Navegar al dashboard
+        },
+        error: (error) => {
+          this.msgError = 'Error al iniciar sesión';
+      }
     });
   }
+    });
+  }
+
     
 }
