@@ -18,6 +18,7 @@ import puj.veterinaria.entidades.Cliente;
 import puj.veterinaria.entidades.UserEntity;
 import puj.veterinaria.repositorios.RepositorioUserEntity;
 import puj.veterinaria.seguridad.CustomUserDetailService;
+import puj.veterinaria.seguridad.JWTGenerator;
 import puj.veterinaria.servicios.administrador.AdminServicio;
 
 @RestController
@@ -36,6 +37,9 @@ public class ControladorAdmin {
 
     @Autowired
      AuthenticationManager authenticationManager;
+
+    @Autowired
+    JWTGenerator jwtGenerator;
 
     // POST
     // URL: http://localhost:8090/admin/add
@@ -64,8 +68,8 @@ public class ControladorAdmin {
     );
 
     SecurityContextHolder.getContext().setAuthentication(authentication);
-
-    return new ResponseEntity<String>("Admin ingresa con éxito", HttpStatus.OK);
+    String token = jwtGenerator.generateToken(authentication);
+    return new ResponseEntity<String>(token, HttpStatus.OK);
    }
 
 

@@ -25,6 +25,7 @@ import puj.veterinaria.entidades.Cliente;
 import puj.veterinaria.entidades.UserEntity;
 import puj.veterinaria.repositorios.RepositorioUserEntity;
 import puj.veterinaria.seguridad.CustomUserDetailService;
+import puj.veterinaria.seguridad.JWTGenerator;
 import puj.veterinaria.servicios.cliente.ClienteServicio;
 
 
@@ -44,6 +45,9 @@ public class ControladorCliente {
 
   @Autowired
   AuthenticationManager authenticationManager;
+
+  @Autowired
+   JWTGenerator jwtGenerator;
 
 // Metodos PostMapping
 
@@ -72,8 +76,8 @@ public class ControladorCliente {
     );
 
     SecurityContextHolder.getContext().setAuthentication(authentication);
-
-    return new ResponseEntity<String>("Usuario ingresa con éxito", HttpStatus.OK);
+    String token = jwtGenerator.generateToken(authentication);
+    return new ResponseEntity<String>(token, HttpStatus.OK);
    }
 
 // Metodos GetMapping
