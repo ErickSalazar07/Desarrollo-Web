@@ -15,6 +15,7 @@ public interface IAdminServicio {
   public Administrador updateAdministrador(Administrador admin);
   public void deleteById(Long id);
   public Long numeroAdministradores();
+  // public String encontrarRol(String username, String passwEnc);
 
 
 }

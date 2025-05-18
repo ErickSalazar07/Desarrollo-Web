@@ -2,6 +2,7 @@ package puj.veterinaria.controladores;
 
 import java.util.List;
 
+import org.h2.engine.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Admin;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -41,6 +43,9 @@ public class ControladorAdmin {
     @Autowired
     JWTGenerator jwtGenerator;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     // POST
     // URL: http://localhost:8090/admin/add
     @PostMapping("/add")
@@ -71,6 +76,15 @@ public class ControladorAdmin {
     String token = jwtGenerator.generateToken(authentication);
     return new ResponseEntity<String>(token, HttpStatus.OK);
    }
+
+//    @PostMapping("/encontrar-rol")
+//    public ResponseEntity<String> encontrarRol(@RequestBody UserEntity user) {
+//         String username = user.getUsername();
+//         String passwEnc = passwordEncoder.encode(user.getPassword());
+//         String rol = administradorServicio.encontrarRol(username, passwEnc);
+//        return new ResponseEntity<String>(rol, HttpStatus.OK);
+       
+//    }
 
 
     // GET

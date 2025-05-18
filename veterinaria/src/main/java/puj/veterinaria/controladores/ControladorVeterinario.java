@@ -3,6 +3,7 @@ package puj.veterinaria.controladores;
 import java.util.List;
 import java.util.Map;
 
+import org.h2.engine.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -71,15 +72,21 @@ public class ControladorVeterinario {
   // URL: http://localhost:8090/veterinario/login
    @PostMapping("/login")
   @Operation(summary = "Permite loguear un Veterinario, pasado por el body.")
-   public ResponseEntity login(@RequestBody Veterinario vet) {
+   public ResponseEntity login(@RequestBody UserEntity vet) {
     Authentication authentication = authenticationManager.authenticate(
-      new UsernamePasswordAuthenticationToken(vet.getCedula(), vet.getContrasena())
+      new UsernamePasswordAuthenticationToken(vet.getUsername(), vet.getPassword())
     );
 
     SecurityContextHolder.getContext().setAuthentication(authentication);
     String token = jwtGenerator.generateToken(authentication);
     return new ResponseEntity<String>(token, HttpStatus.OK);
    }
+  @GetMapping("/veterinario_autenticado")
+  public ResponseEntity<Veterinario> buscarVeterinarioAutenticado() {
+   return new ResponseEntity<Veterinario>(veterinarioServicio.findByCedula(
+    SecurityContextHolder.getContext().getAuthentication().getName()
+   ), HttpStatus.OK);
+  }
 
 // Metodos GetMapping
 

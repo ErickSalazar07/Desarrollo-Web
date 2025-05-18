@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
+import puj.veterinaria.entidades.Cliente;
 import puj.veterinaria.entidades.Mascota;
 import puj.veterinaria.entidades.DTO.MascotaDTO;
 import puj.veterinaria.servicios.cliente.IClienteServicio;
@@ -60,11 +62,26 @@ public class ControladorMascota {
   }
 
   // URL: http://localhost:8090/mascota/mascotas-cliente/1 
-  @GetMapping("/mascotas-cliente/{cedula}")
+  @GetMapping("/mascotas-clienteNoAut/{cedula}")
   @Operation(summary = "Retorna todas las Mascotas de un Cliente, por la cedula del Cliente.")
   public ResponseEntity<List<Mascota>> obtenerMascotasCliente(@PathVariable(value = "cedula") String cedula) {
     return new ResponseEntity<>(mascotaServicio.findByClienteCedula(cedula),HttpStatus.OK);
   }
+//-------------------TOKEN--------------------------------
+@GetMapping("/mascotas-cliente")
+@Operation(summary = "Retorna todas las Mascotas del Cliente autenticado.")
+public ResponseEntity<List<Mascota>> obtenerMascotasClienteAutenticado() {
+  // Obtener el correo desde el JWT
+  String correo = SecurityContextHolder.getContext().getAuthentication().getName();
+  Cliente cliente = clienteServicio.findByCorreo(correo);
+
+  if (cliente == null) {
+    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+  }
+  List<Mascota> mascotas = mascotaServicio.findByClienteCedula(cliente.getCedula());
+  return new ResponseEntity<>(mascotas, HttpStatus.OK);
+}
+
 
   @GetMapping("/get-num-mascotas-activas")
   @Operation(summary = "Retorna el numero de mascotas que estan activas.")

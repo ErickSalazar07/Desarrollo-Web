@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import puj.veterinaria.entidades.Droga;
 import puj.veterinaria.entidades.Mascota;
 import puj.veterinaria.entidades.Tratamiento;
+import puj.veterinaria.entidades.Veterinario;
 import puj.veterinaria.entidades.DTO.TratamientoDTO;
 import puj.veterinaria.servicios.droga.IDrogaServicio;
 import puj.veterinaria.servicios.mascota.IMascotaServicio;
@@ -87,10 +89,11 @@ public class ControladorTratamiento {
   public ResponseEntity<List<Tratamiento>> obtenerTratamientosMascota(@PathVariable(value = "id") Long idMascota) {
     return new ResponseEntity<>(tratamientoServicio.findByMascotaId(idMascota), HttpStatus.OK);
   }
-
-  @GetMapping("/tratamientos-veterinario/{cedula}")
+//-------------------TOKEN--------------------------------
+  @GetMapping("/tratamientos-veterinario")
   @Operation(summary = "Retorna todos los tratamientos de un Veterinario dada la cédula.")
-  public ResponseEntity<List<Tratamiento>> obtenerTratamientosVeterinario(@PathVariable(value = "cedula") String cedula) {
+  public ResponseEntity<List<Tratamiento>> obtenerTratamientosVeterinario() {
+    String cedula = SecurityContextHolder.getContext().getAuthentication().getName();
     return new ResponseEntity<>(tratamientoServicio.tratamientosVeterinario(cedula), HttpStatus.OK);
   }
 

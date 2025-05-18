@@ -71,9 +71,11 @@ public class ControladorCliente {
   // URL: http://localhost:8090/cliente/login
    @PostMapping("/login")
   @Operation(summary = "Permite loguear un Cliente, pasado por el body.")
-   public ResponseEntity login(@RequestBody Cliente cliente) {
+  //No recibí un tipo cliente
+   public ResponseEntity login(@RequestBody UserEntity cliente) {
     Authentication authentication = authenticationManager.authenticate(
-      new UsernamePasswordAuthenticationToken(cliente.getCorreo(), cliente.getCedula())
+      //new UsernamePasswordAuthenticationToken(cliente.getCorreo(), cliente.getCedula())
+      new UsernamePasswordAuthenticationToken(cliente.getUsername(), cliente.getPassword())
     );
 
     SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -102,6 +104,13 @@ public class ControladorCliente {
   @Operation(summary = "Retorna 1 Cliente, correspondiente a la cedula.")
   public ResponseEntity<Cliente> obtenerClientePorCedula(@PathVariable(value = "cedula") String cedula) {
     return new ResponseEntity<>(clienteServicio.findByCedula(cedula),HttpStatus.OK);
+  }
+
+  @GetMapping("/cliente_autenticado")
+  public ResponseEntity<Cliente> buscarClienteAutenticado() {
+   return new ResponseEntity<Cliente>(clienteServicio.findByCorreo(
+    SecurityContextHolder.getContext().getAuthentication().getName()
+   ), HttpStatus.OK);
   }
 
   @GetMapping("/details")

@@ -1,5 +1,4 @@
 package puj.veterinaria.seguridad;
-
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +26,9 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
      HttpServletResponse response,
      FilterChain filterChain)
             throws ServletException, IOException {
+
+                
+        String path = request.getServletPath();
         String token = getJWT(request);
         if (token != null && jwtGenerator.validateToken(token)) {
             String username = jwtGenerator.getUserFromJwt(token);

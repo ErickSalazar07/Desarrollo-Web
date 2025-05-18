@@ -68,5 +68,10 @@ public class AdminServicio implements IAdminServicio {
     public Long numeroAdministradores() {
         return repositorioAdministrador.count();
     }
+
+    // @Override
+    // public String encontrarRol(username, passwEnc) {
+    //     return repositorioAdministrador.encontrarRol(username, passwEnc);
+    // }
 }
 
