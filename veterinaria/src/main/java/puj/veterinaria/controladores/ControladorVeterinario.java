@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import puj.veterinaria.entidades.Administrador;
+import puj.veterinaria.entidades.Cliente;
 import puj.veterinaria.entidades.UserEntity;
 import puj.veterinaria.entidades.Veterinario;
 import puj.veterinaria.repositorios.RepositorioUserEntity;
@@ -114,7 +115,16 @@ public class ControladorVeterinario {
   public ResponseEntity<Long> obtenerNumVeterinariosInactivos() {
     return new ResponseEntity<>(veterinarioServicio.cantidadVeterinariosInactivos(),HttpStatus.OK);
   }
-
+  @GetMapping("/details")
+  public ResponseEntity<Veterinario> buscarVeterinario() {
+   Veterinario vet = veterinarioServicio.findByCedula(
+    SecurityContextHolder.getContext().getAuthentication().getName()
+   );
+   if(vet == null){
+    return new ResponseEntity<Veterinario>(vet, HttpStatus.NOT_FOUND);
+   }
+   return new ResponseEntity<Veterinario>(vet, HttpStatus.OK);
+  }
 // Metodos PutMapping
 
   // URL: http://localhost:8090/veterinario/update/1

@@ -27,6 +27,7 @@ public class SecurityConfig {
         .headers(headers -> headers.frameOptions(frame -> frame.disable()))
         .authorizeHttpRequests(requests -> requests
           .requestMatchers("/h2/**").permitAll()
+          //.requestMatchers("/cliente/clientes").hasAuthority("VETERINARIO")
           .anyRequest().permitAll()
         )
         .exceptionHandling(exception -> exception.authenticationEntryPoint(jwtAuthEntryPoint));

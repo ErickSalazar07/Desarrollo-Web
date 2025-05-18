@@ -102,6 +102,17 @@ public class ControladorAdmin {
         return administradorServicio.findByUsername(username);
     }
 
+    @GetMapping("/details")
+  public ResponseEntity<Administrador> buscarAdmin() {
+   Administrador admin = administradorServicio.findByUsername(
+    SecurityContextHolder.getContext().getAuthentication().getName()
+   );
+   if(admin == null){
+    return new ResponseEntity<Administrador>(admin, HttpStatus.NOT_FOUND);
+   }
+   return new ResponseEntity<Administrador>(admin, HttpStatus.OK);
+  }
+
     // PUT
     // URL: http://localhost:8090/admin/update/1
     @PutMapping("/update/{id}")

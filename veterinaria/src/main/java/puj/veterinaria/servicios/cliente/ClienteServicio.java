@@ -66,4 +66,8 @@ public class ClienteServicio implements IClienteServicio {
   public Long numeroClientes() {
     return repositorioCliente.count();
   }
+  @Override
+  public Cliente findByCorreo(String correo) {
+    return repositorioCliente.findByCorreo(correo);
+  }
 }

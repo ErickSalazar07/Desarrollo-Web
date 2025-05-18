@@ -6,6 +6,7 @@ import puj.veterinaria.entidades.Cliente;
 
 public interface IClienteServicio {
   public Cliente findById(Long id);
+  public Cliente findByCorreo (String correo);
   public List<Cliente> findAll();
   public Cliente findByCorreoAndCedula(String correo, String cedula);
   public Cliente findByCedula(String cedula);

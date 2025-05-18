@@ -12,6 +12,8 @@ public interface RepositorioCliente extends JpaRepository<Cliente, Long> {
 
   public Cliente findByCedula(String cedula);
 
+  public Cliente findByCorreo(String correo);
+
   public long count();
 
 }

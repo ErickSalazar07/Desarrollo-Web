@@ -3,6 +3,7 @@ package puj.veterinaria.controladores;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.compress.archivers.dump.DumpArchiveConstants.SEGMENT_TYPE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -103,6 +104,16 @@ public class ControladorCliente {
     return new ResponseEntity<>(clienteServicio.findByCedula(cedula),HttpStatus.OK);
   }
 
+  @GetMapping("/details")
+  public ResponseEntity<Cliente> buscarCliente() {
+   Cliente cliente = clienteServicio.findByCorreo(
+    SecurityContextHolder.getContext().getAuthentication().getName()
+   );
+   if(cliente == null){
+    return new ResponseEntity<Cliente>(cliente, HttpStatus.NOT_FOUND);
+   }
+   return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
+  }
 
 // Metodos PutMapping
 
