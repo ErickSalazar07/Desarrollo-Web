@@ -14,14 +14,13 @@ export class DashboardComponent {
   constructor(private http: HttpClient, private route: ActivatedRoute,
       private servicioVeterinario: VeterinarioService) { }
   ngOnInit(): void {
-    const idParam = this.route.snapshot.paramMap.get('id');
-    if (idParam !== null) {
-      const cedula = idParam;
-      this.servicioVeterinario.findByCedula(cedula).subscribe(veterinario => {
+    this.servicioVeterinario.veterinarioActual().subscribe({
+      next: (veterinario) => {
         this.veterinario = veterinario;
-      });
-    } else {
-      console.error('ID no encontrado en la ruta');
-    }
+      },
+      error: (err) => {
+        console.error('Error al obtener el veterinario:', err);
+      }
+    });
   }
 }

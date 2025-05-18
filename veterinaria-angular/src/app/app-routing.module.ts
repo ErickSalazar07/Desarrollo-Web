@@ -30,7 +30,7 @@ import { TratamientosVeterinarioComponent } from './tratamiento/tratamientos-vet
 
 const routes: Routes = [
 
-  {path: 'veterinario/dashboard/:id', component: DashboardComponent, // <- Este tiene el router-outlet
+  {path: 'veterinario/dashboard', component: DashboardComponent, // <- Este tiene el router-outlet
   children:
   [
     {path: 'mascota/mascotas', component: MostrarMascotasComponent},
@@ -40,14 +40,14 @@ const routes: Routes = [
     {path: 'tratamiento/tratamientos', component: MostrarTratamientosComponent},
     {path: 'tratamiento/asignar-tratamiento', component: AsignarTratamientoComponent},
     {path: 'droga/drogas', component: MostrarDrogasComponent},
-    {path: 'tratamientos-veterinario/:cedula', component: TratamientosVeterinarioComponent}
+    {path: 'tratamientos-veterinario', component: TratamientosVeterinarioComponent}
   ]
   },
 
-  {path: 'cliente/dashboard/:id', component: DashboardClienteComponent ,
+  {path: 'cliente/dashboard', component: DashboardClienteComponent ,
   children:
   [
-    {path: 'mostrar-cliente/:id', component: MostrarClienteComponent},
+    {path: 'mostrar-cliente', component: MostrarClienteComponent},
   ]
   },
   
@@ -76,7 +76,7 @@ const routes: Routes = [
   {path: 'veterinario/login', component: LoginVeterinarioComponent},
   {path: 'veterinario/add', component: CrearVeterinarioComponent},
   {path: 'veterinario/update/:id', component: ActualizarVeterinarioComponent},
-  {path: 'tratamiento/asignar-tratamiento/:cedulaVeterinario', component: AsignarTratamientoComponent},
+  {path: 'tratamiento/asignar-tratamiento', component: AsignarTratamientoComponent},
   {path: 'mostrar-num-items/:nombre-item/:cantidad', component: MostrarNumItemsComponent},
   {path: 'mostrar-valor-dinero/:txt-msg/:dinero', component: MostrarValorDineroComponent},
   {path: 'mostrar-lista-items/:tipo/:mensaje', component: MostrarListaItemsComponent},

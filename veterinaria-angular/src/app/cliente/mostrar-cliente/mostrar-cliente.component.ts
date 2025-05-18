@@ -21,18 +21,17 @@ export class MostrarClienteComponent implements OnInit{
     private servicioCliente: ClienteService,
     private servicioMascota: MascotaService) { }
 
-  ngOnInit(): void {
-    const idParam = this.route.snapshot.paramMap.get('id');
-    if (idParam !== null) {
-      const id = Number(idParam);
-      this.servicioCliente.findById(id).subscribe(cliente => {
+    ngOnInit(): void {
+    this.servicioCliente.clienteActual().subscribe({
+      next: (cliente) => {
         this.cliente = cliente;
-        this.servicioMascota.findMascotasByClienteCedula(this.cliente.cedula).
+        this.servicioMascota.findMascotasByClienteAut().
         subscribe(mascotas => this.mascotas = mascotas);
-      });
-    } else {
-      console.error('ID no encontrado en la ruta');
-    }
+      },
+      error: (err) => {
+        console.error('Error al obtener el cliente:', err);
+      }
+    });
   }
 
 }

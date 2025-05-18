@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserEntity } from 'src/app/modelo/UserEntity';
 import { Veterinario } from 'src/app/modelo/veterinario';
 import { VeterinarioService } from 'src/app/servicio/veterinario.service';
 
@@ -23,7 +24,14 @@ export class LoginVeterinarioComponent {
       username: "",
       password: ""
     }
-  };
+  }
+
+    user: UserEntity = {
+      id:-1,
+      username: "",
+      password: ""
+    }
+  
 
   msgError:string = "";
 
@@ -33,16 +41,24 @@ export class LoginVeterinarioComponent {
   ) {}
 
   logearVeterinario() {
-    this.servicioVeterinario.findByCedula(this.veterinario.user.username).subscribe(c => {
-      /*if(c == null || this.veterinario.contrasena !== c.contrasena)  {
-        this.msgError = "Datos incorrectos";
-        return;
-      }*/
+    this.user.username = this.veterinario.user.username;
+    this.user.password = this.veterinario.user.password;
+    this.servicioVeterinario.findByCedula(this.user.username).subscribe(c => {
       if(!c) { 
         this.msgError = "Datos incorrectos";
         return;
       }
-      this.router.navigate([`/veterinario/dashboard/${c.user.username}/mascota/mascotas`]);
+      else {
+        this.servicioVeterinario.login(this.user).subscribe({
+        next: (data) => {
+          localStorage.setItem('token', String(data)); // Guardar el token
+          this.router.navigate(['/veterinario/dashboard/mascota/mascotas']); // Navegar al dashboard
+        },
+        error: (error) => {
+          this.msgError = 'Error al iniciar sesión';
+      }
+    });
+  }
     });
   }
 }

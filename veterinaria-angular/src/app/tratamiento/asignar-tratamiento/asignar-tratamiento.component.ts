@@ -8,6 +8,7 @@ import { Veterinario } from 'src/app/modelo/veterinario';
 import { TratamientoDTO } from 'src/app/modelo/tratamientoDTO';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { VeterinarioService } from 'src/app/servicio/veterinario.service';
 
 @Component({
   selector: 'app-asignar-tratamiento',
@@ -25,6 +26,8 @@ export class AsignarTratamientoComponent implements OnInit {
     veterinaroCedula: ''
   };
 
+  veterinario!:Veterinario;
+
   mascotas: Mascota[] = [];
   drogas: Droga[] = [];
   veterinarios: Veterinario[] = [];
@@ -33,6 +36,7 @@ export class AsignarTratamientoComponent implements OnInit {
 
   constructor(
     private tratamientoService: TratamientoService,
+    private veterinarioService: VeterinarioService,
     private mascotaService: MascotaService,
     private drogaService: DrogaService,
     private location:Location,
@@ -40,11 +44,17 @@ export class AsignarTratamientoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.veterinarioService.veterinarioActual().subscribe({
+      next: (veterinario) => {
+        this.veterinario = veterinario;
+        console.log(this.veterinario.cedula);
+      },
+      error: (err) => {
+        console.error('Error al obtener el veterinario:', err);
+      }
+    });
     this.mascotaService.findAll().subscribe((mascotas) => this.mascotas = mascotas);
     this.drogaService.findAll().subscribe((drogas) => this.drogas = drogas.filter(d => d.unidadDisponible > 0));
-    const cedulaVet = this.route.snapshot.paramMap.get('cedulaVeterinario');
-    if(cedulaVet)
-      this.tratamientoDTO.veterinaroCedula = cedulaVet;
   }
 
   onSubmit(): void {
@@ -53,6 +63,8 @@ export class AsignarTratamientoComponent implements OnInit {
     this.tratamientoDTO.drogaAsignadaID = Number(this.tratamientoDTO.drogaAsignadaID) 
     const mascotaExiste = this.mascotas.find(m => m.id === this.tratamientoDTO.mascotaID);
     const drogaExiste = this.drogas.find(d => d.id === this.tratamientoDTO.drogaAsignadaID);
+    this.tratamientoDTO.veterinaroCedula = this.veterinario.cedula.toString();
+
     console.log(this.tratamientoDTO)
     if (!mascotaExiste || !drogaExiste) {
       let errores = [];

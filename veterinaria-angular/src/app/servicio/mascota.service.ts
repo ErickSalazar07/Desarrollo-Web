@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Mascota } from '../modelo/mascota';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UserEntity } from '../modelo/UserEntity';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,11 @@ export class MascotaService {
   }
 
   findMascotasByClienteCedula(cedula:string): Observable<Mascota[]> {
-    return this.http.get<Mascota[]>(this.URL_ROOT + `/mascotas-cliente/${cedula}`);
+    return this.http.get<Mascota[]>(this.URL_ROOT + `/mascotas-clienteNoAut/${cedula}`);
+  }
+
+  findMascotasByClienteAut(): Observable<Mascota[]> {
+    return this.http.get<Mascota[]>(this.URL_ROOT + `/mascotas-cliente`);
   }
 
   updateMascota(mascota: Mascota): Observable<any> {

@@ -2,6 +2,7 @@ import { Route, Router } from '@angular/router';
 import { Component, Output } from '@angular/core';
 import { Cliente } from 'src/app/modelo/cliente';
 import { ClienteService } from 'src/app/servicio/cliente.service';
+import { UserEntity } from 'src/app/modelo/UserEntity';
 
 @Component({
   selector: 'app-login-cliente',
@@ -18,6 +19,12 @@ export class LoginClienteComponent {
     correo: "",
   };
 
+  user:UserEntity = {
+    id: -1,
+    username: "",
+    password: ""
+  };
+
   msgError:string = "";
 
   constructor(
@@ -32,7 +39,19 @@ export class LoginClienteComponent {
         this.msgError = "Datos incorrectos";
         return;
       }
-      this.router.navigate([`/cliente/dashboard/${c.id}/mostrar-cliente/${c.id}`]);
+      else {
+        this.user.username = c.correo;
+        this.user.password = this.cliente.cedula;
+        this.servicioCliente.login(this.user).subscribe({
+        next: (data) => {
+          localStorage.setItem('token', String(data)); // Guardar el token
+          this.router.navigate(['/cliente/dashboard/mostrar-cliente']); // Navegar al dashboard
+        },
+        error: (error) => {
+          this.msgError = 'Error al iniciar sesión';
+      }
+    });
+  }
     });
   }
 }

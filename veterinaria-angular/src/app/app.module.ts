@@ -15,7 +15,7 @@ import { MostrarMascotaComponent } from './mascota/mostrar-mascota/mostrar-masco
 import { MostrarMascotasComponent } from './mascota/mostrar-mascotas/mostrar-mascotas.component';
 import { CrearMascotaComponent } from './mascota/crear-mascota/crear-mascota.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.component';
 import { DashboardComponent } from './veterinario/dashboard/dashboard.component';
 import { LoginClienteComponent } from './cliente/login-cliente/login-cliente.component';
@@ -37,6 +37,7 @@ import { MostrarValorDineroComponent } from './utils/mostrar-valor-dinero/mostra
 import { MostrarListaItemsComponent } from './utils/mostrar-lista-items/mostrar-lista-items.component';
 import { MostrarDrogasComponent } from './droga/mostrar-drogas/mostrar-drogas.component';
 import { TratamientosVeterinarioComponent } from './tratamiento/tratamientos-veterinario/tratamientos-veterinario.component';
+import { AuthInterceptor } from './helpers/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { TratamientosVeterinarioComponent } from './tratamiento/tratamientos-vet
     MostrarValorDineroComponent,
     MostrarListaItemsComponent,
     MostrarDrogasComponent,
-    TratamientosVeterinarioComponent
+    TratamientosVeterinarioComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -82,7 +84,11 @@ import { TratamientosVeterinarioComponent } from './tratamiento/tratamientos-vet
     
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

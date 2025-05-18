@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Admin } from '../modelo/admin';
 import { Observable } from 'rxjs';
+import { UserEntity } from '../modelo/UserEntity';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,10 @@ export class AdminService {
 
   deleteAdministrador(id: number): Observable<void> {
     return this.http.delete<void>(`${this.URL_ROOT}/delete/${id}`);
+  }
+
+  encontrarRol(user:UserEntity): Observable<String>{
+    return this.http.post<String>(`${this.URL_ROOT}/encontrar-rol`, user);
   }
 }
 

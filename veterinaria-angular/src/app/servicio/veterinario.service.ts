@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Veterinario } from '../modelo/veterinario';
 import { Observable } from 'rxjs';
+import { UserEntity } from '../modelo/UserEntity';
 
 @Injectable({
   providedIn: 'root'
@@ -51,4 +52,16 @@ export class VeterinarioService {
   obtenerNumVeterinariosInactivos(): Observable<number> {
     return this.http.get<number>(this.URL_ROOT + `/get-num-veterinarios-inactivos`);
   }
+
+  veterinarioActual():Observable<Veterinario>{
+      return this.http.get<Veterinario>(this.URL_ROOT + `/veterinario_autenticado`);
+    }
+  
+
+  login(userEntity: UserEntity): Observable<String>{
+      return this.http.post(this.URL_ROOT + `/login`, userEntity,
+        {
+        responseType: 'text'
+      });
+    }
 }

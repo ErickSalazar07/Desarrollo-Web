@@ -14,20 +14,19 @@ export class TratamientosVeterinarioComponent {
   tratamientos: Tratamiento[] = [];
   terminoBusqueda: string = '';
   filtroSeleccionado: string = 'nombreTratamiento';
-  veterinarioCedula:string | null = null;
 
   constructor(private http: HttpClient, private service: TratamientoService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
-    this.veterinarioCedula = this.route.snapshot.paramMap.get('cedula');
-    if (this.veterinarioCedula !== null) {
-      this.service.obtenerTratamientosVeterinario(this.veterinarioCedula).subscribe(tratamientos => {
-        this.tratamientos = tratamientos;
-      });
-    } else {
-      console.error('ID no encontrado en la ruta');
-    }
-  }
+      this.service.obtenerTratamientosVeterinario().subscribe({
+        next:(tratamientos) => {
+          this.tratamientos = tratamientos;
+        },
+        error: (err) => {
+          console.error('Error al obtener los tratamientos:', err);
+        }
+      });      
+}
 
   get tratamientosFiltrados() {
     if (!this.terminoBusqueda) return this.tratamientos;

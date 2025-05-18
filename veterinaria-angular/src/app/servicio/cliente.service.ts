@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Cliente } from '../modelo/cliente';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UserEntity } from '../modelo/UserEntity';
 
 @Injectable({
   providedIn: 'root'
@@ -36,4 +37,16 @@ export class ClienteService {
   deleteById(id: number): Observable<any> {
     return this.http.delete(this.URL_ROOT + `/delete/${id}`);
   }
+
+  clienteActual():Observable<Cliente>{
+    return this.http.get<Cliente>(this.URL_ROOT + `/cliente_autenticado`);
+  }
+
+  login(userEntity: UserEntity): Observable<String>{
+    return this.http.post(this.URL_ROOT + `/login`, userEntity,
+      {
+      responseType: 'text'
+    });
+  }
+
 }
