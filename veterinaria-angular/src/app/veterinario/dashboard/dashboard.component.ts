@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Veterinario } from 'src/app/modelo/veterinario';
 import { VeterinarioService } from 'src/app/servicio/veterinario.service';
 
@@ -12,7 +12,8 @@ import { VeterinarioService } from 'src/app/servicio/veterinario.service';
 export class DashboardComponent {
   veterinario!: Veterinario;
   constructor(private http: HttpClient, private route: ActivatedRoute,
-      private servicioVeterinario: VeterinarioService) { }
+      private servicioVeterinario: VeterinarioService,
+    private router:Router) { }
   ngOnInit(): void {
     this.servicioVeterinario.veterinarioActual().subscribe({
       next: (veterinario) => {
@@ -22,5 +23,10 @@ export class DashboardComponent {
         console.error('Error al obtener el veterinario:', err);
       }
     });
+  }
+
+  cerrarSesion(){
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
   }
 }

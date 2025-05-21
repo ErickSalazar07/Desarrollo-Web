@@ -19,7 +19,7 @@
         <i class="bx bx-bar-chart-alt-2"></i><div id="nombre-seccion"> KPIs</div>
       </div>
 
-      <div class="sidebar-icon" data-tooltip="Cerrar Sesión" [routerLink]="['/']" id="logout">
+      <div class="sidebar-icon" data-tooltip="Cerrar Sesión" (click)="cerrarSesion()" id="logout">
         <i class="bx bx-log-in-circle"></i><div id="nombre-seccion">Cerrar Sesión</div>
       </div>
     </div>
