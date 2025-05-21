@@ -40,8 +40,9 @@ public class SecurityConfig {
                         .requestMatchers("/h2/**").permitAll()
                         .requestMatchers("/cliente/login").permitAll()
                         .requestMatchers("/veterinario/login").permitAll()
-
+                        .requestMatchers("/veterinario/dashboard/**").hasAuthority("VETERINARIO")
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        //.anyRequest().authenticated()  // <- Protege todo lo demás
                         .anyRequest().permitAll()
                 )
                 .exceptionHandling( exception -> exception.authenticationEntryPoint(jwtAuthEntryPoint));

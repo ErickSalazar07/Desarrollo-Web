@@ -1,4 +1,5 @@
 package puj.veterinaria.seguridad;
+import java.io.Console;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
             );
             authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+            System.out.println(authenticationToken);
         } 
         filterChain.doFilter(request, response);
     }

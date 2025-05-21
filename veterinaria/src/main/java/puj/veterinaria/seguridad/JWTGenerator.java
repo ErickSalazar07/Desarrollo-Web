@@ -2,8 +2,11 @@ package puj.veterinaria.seguridad;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Jwts;
@@ -24,13 +27,20 @@ public class JWTGenerator {
         Date currentDate = new Date();
         Date expireDate = new Date(currentDate.getTime() + EXPIRATION_TIME);
 
-        /*Crear el JWT */
-        String token = Jwts.builder().setSubject(username)
+        List<String> roles = authentication.getAuthorities().stream()
+        .map(GrantedAuthority::getAuthority)
+        .collect(Collectors.toList());
+
+        String token = Jwts.builder()
+        .setSubject(username)
         .setIssuedAt(currentDate)
         .setExpiration(expireDate)
+        .claim("roles", roles)
         .signWith(key, SignatureAlgorithm.HS512)
         .compact();
+
         return token;
+
     }
 
     /*Metodo para obtener el usuario a partir del JWT */
