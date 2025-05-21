@@ -27,6 +27,7 @@ import { MostrarValorDineroComponent } from './utils/mostrar-valor-dinero/mostra
 import { MostrarListaItemsComponent } from './utils/mostrar-lista-items/mostrar-lista-items.component';
 import { MostrarDrogasComponent } from './droga/mostrar-drogas/mostrar-drogas.component';
 import { TratamientosVeterinarioComponent } from './tratamiento/tratamientos-veterinario/tratamientos-veterinario.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
 
@@ -40,7 +41,8 @@ const routes: Routes = [
     {path: 'tratamiento/tratamientos', component: MostrarTratamientosComponent},
     {path: 'tratamiento/asignar-tratamiento', component: AsignarTratamientoComponent},
     {path: 'droga/drogas', component: MostrarDrogasComponent},
-    {path: 'tratamientos-veterinario', component: TratamientosVeterinarioComponent}
+    {path: 'tratamientos-veterinario', component: TratamientosVeterinarioComponent},
+    {path: '**', pathMatch: 'full', redirectTo: '/veterinario/dashboard/mascota/mascotas'}
   ]
   },
 
@@ -48,6 +50,7 @@ const routes: Routes = [
   children:
   [
     {path: 'mostrar-cliente', component: MostrarClienteComponent},
+    {path: '**', pathMatch: 'full', redirectTo: "/cliente/dashboard/mostrar-cliente"}
   ]
   },
   
@@ -59,23 +62,25 @@ const routes: Routes = [
       {path: 'cliente/mostrar-cliente/:id', component: MostrarClienteComponent},
       {path: 'veterinarios/mostrar-veterinarios', component: MostrarVeterinariosComponent},
       {path: 'mostrar-kpis', component: MostrarKpisComponent},
-      {path: 'droga/drogas', component: MostrarDrogasComponent}
+      {path: 'droga/drogas', component: MostrarDrogasComponent},
+      {path: '**', pathMatch: 'full', redirectTo: '/admin/dashboard/mostrar-kpis'}
     ]
   },
   {path: 'admin/login', component: LoginAdminComponent},
   {path: 'home', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'cliente/login', component: LoginClienteComponent},
   {path: 'cliente/add', component: CrearClienteComponent},
   {path: 'cliente/clientes', component: MostrarClientesComponent},
   {path: 'cliente/mostrar-cliente/:id', component: MostrarClienteComponent},
-  {path: 'cliente/update/:id', component: ActualizarClienteComponent},
+  {path: 'cliente/update', component: ActualizarClienteComponent},
   {path: 'mascota/mascotas', component: MostrarMascotasComponent},
   {path: 'mascota/mostrar-mascota/:id', component: MostrarMascotaComponent},
   {path: 'mascota/add', component: CrearMascotaComponent},
   {path: 'mascota/update/:id', component: ActualizarMascotaComponent},
   {path: 'veterinario/login', component: LoginVeterinarioComponent},
   {path: 'veterinario/add', component: CrearVeterinarioComponent},
-  {path: 'veterinario/update/:id', component: ActualizarVeterinarioComponent},
+  {path: 'veterinario/update', component: ActualizarVeterinarioComponent},
   {path: 'tratamiento/asignar-tratamiento', component: AsignarTratamientoComponent},
   {path: 'mostrar-num-items/:nombre-item/:cantidad', component: MostrarNumItemsComponent},
   {path: 'mostrar-valor-dinero/:txt-msg/:dinero', component: MostrarValorDineroComponent},

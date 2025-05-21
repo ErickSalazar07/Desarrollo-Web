@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import io.swagger.v3.oas.annotations.Operation;
 import puj.veterinaria.entidades.UserEntity;
+import puj.veterinaria.repositorios.RepositorioUserEntity;
 import puj.veterinaria.seguridad.JWTGenerator;
 
 @Controller
@@ -24,6 +25,8 @@ public class ControladorPrincipal {
   @Autowired
   AuthenticationManager authenticationManager;
 
+  @Autowired
+  RepositorioUserEntity repositorioUserEntity;
   
   @Autowired
    JWTGenerator jwtGenerator;
@@ -43,7 +46,7 @@ public class ControladorPrincipal {
   @PostMapping("/login")
   @Operation(summary = "Permite loguear un usuario, pasado por el body.")
   //No recibí un tipo cliente
-   public ResponseEntity login(@RequestBody UserEntity user) {
+   public ResponseEntity<String> login(@RequestBody UserEntity user) {
     Authentication authentication = authenticationManager.authenticate(
       //new UsernamePasswordAuthenticationToken(cliente.getCorreo(), cliente.getCedula())
       new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
@@ -52,6 +55,14 @@ public class ControladorPrincipal {
     SecurityContextHolder.getContext().setAuthentication(authentication);
     String token = jwtGenerator.generateToken(authentication);
     return new ResponseEntity<String>(token, HttpStatus.OK);
-   }
+  }
+
+  @GetMapping("/get-user-active")
+  @Operation(summary = "Devuelve el usuario que se logeo y se encuentra activo, ya sea Veterinario, Cliente, o Administrador.")
+  public ResponseEntity<UserEntity> obtenerUserEntityActivo() {
+    UserEntity usuario = repositorioUserEntity
+      .findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+    return new ResponseEntity<>(usuario,usuario != null ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
+  }
 
 }

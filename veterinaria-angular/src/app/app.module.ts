@@ -29,6 +29,7 @@ import { CrearVeterinarioComponent } from './veterinario/crear-veterinario/crear
 import { ActualizarVeterinarioComponent } from './veterinario/actualizar-veterinario/actualizar-veterinario.component';
 import { CrearTratamientoComponent } from './tratamiento/crear-tratamiento/crear-tratamiento.component';
 import { ActualizarTratamientoComponent } from './tratamiento/actualizar-tratamiento/actualizar-tratamiento.component';
+import { LoginComponent } from './login/login.component';
 import { AsignarTratamientoComponent } from './tratamiento/asignar-tratamiento/asignar-tratamiento.component';
 import { MostrarTratamientosComponent } from './tratamiento/mostrar-tratamientos/mostrar-tratamientos.component';
 import { MostrarKpisComponent } from './admin/mostrar-kpis/mostrar-kpis.component';
@@ -74,7 +75,7 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
     MostrarListaItemsComponent,
     MostrarDrogasComponent,
     TratamientosVeterinarioComponent,
-    
+    LoginComponent
   ],
   imports: [
     BrowserModule,

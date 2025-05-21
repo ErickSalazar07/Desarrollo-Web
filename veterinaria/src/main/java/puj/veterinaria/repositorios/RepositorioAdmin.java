@@ -1,7 +1,6 @@
 package puj.veterinaria.repositorios;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import puj.veterinaria.entidades.Administrador;
 

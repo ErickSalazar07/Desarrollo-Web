@@ -3,7 +3,6 @@ package puj.veterinaria.entidades;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +34,4 @@ public class UserEntity {
     joinColumns =  @JoinColumn(name = "usuario_id", referencedColumnName = "id"),
     inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id"))
   private List<Role> roles = new ArrayList<>();
-
-
 }

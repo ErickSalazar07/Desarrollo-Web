@@ -22,14 +22,16 @@ export class LoginVeterinarioComponent {
     user: {
       id: -1,
       username: "",
-      password: ""
+      password: "",
+      roles: []
     }
   }
 
     user: UserEntity = {
       id:-1,
       username: "",
-      password: ""
+      password: "",
+      roles: []
     }
   
 

@@ -64,4 +64,8 @@ export class VeterinarioService {
         responseType: 'text'
       });
     }
+
+  veterinarioHome(): Observable<Veterinario> {
+    return this.http.get<Veterinario>(this.URL_ROOT + `/details`);
+  }
 }

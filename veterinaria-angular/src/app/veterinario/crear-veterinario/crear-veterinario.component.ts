@@ -19,7 +19,8 @@ export class CrearVeterinarioComponent {
     user: {
       id: -1,
       username: "",
-      password: ""
+      password: "",
+      roles: []
     }
   }
 

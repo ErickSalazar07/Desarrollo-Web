@@ -3,7 +3,6 @@ package puj.veterinaria.controladores;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.compress.archivers.dump.DumpArchiveConstants.SEGMENT_TYPE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -72,7 +71,7 @@ public class ControladorCliente {
    @PostMapping("/login")
   @Operation(summary = "Permite loguear un Cliente, pasado por el body.")
   //No recibí un tipo cliente
-   public ResponseEntity login(@RequestBody UserEntity cliente) {
+   public ResponseEntity<String> login(@RequestBody UserEntity cliente) {
     Authentication authentication = authenticationManager.authenticate(
       //new UsernamePasswordAuthenticationToken(cliente.getCorreo(), cliente.getCedula())
       new UsernamePasswordAuthenticationToken(cliente.getUsername(), cliente.getPassword())

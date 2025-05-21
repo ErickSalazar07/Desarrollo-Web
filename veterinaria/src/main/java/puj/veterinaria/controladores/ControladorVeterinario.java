@@ -3,7 +3,6 @@ package puj.veterinaria.controladores;
 import java.util.List;
 import java.util.Map;
 
-import org.h2.engine.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +20,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
-import puj.veterinaria.entidades.Administrador;
-import puj.veterinaria.entidades.Cliente;
 import puj.veterinaria.entidades.UserEntity;
 import puj.veterinaria.entidades.Veterinario;
 import puj.veterinaria.repositorios.RepositorioUserEntity;
@@ -72,7 +69,7 @@ public class ControladorVeterinario {
   // URL: http://localhost:8090/veterinario/login
    @PostMapping("/login")
   @Operation(summary = "Permite loguear un Veterinario, pasado por el body.")
-   public ResponseEntity login(@RequestBody UserEntity vet) {
+   public ResponseEntity<String> login(@RequestBody UserEntity vet) {
     Authentication authentication = authenticationManager.authenticate(
       new UsernamePasswordAuthenticationToken(vet.getUsername(), vet.getPassword())
     );

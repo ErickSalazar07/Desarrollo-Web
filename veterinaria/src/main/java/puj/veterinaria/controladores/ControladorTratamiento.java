@@ -21,7 +21,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import puj.veterinaria.entidades.Droga;
 import puj.veterinaria.entidades.Mascota;
 import puj.veterinaria.entidades.Tratamiento;
-import puj.veterinaria.entidades.Veterinario;
 import puj.veterinaria.entidades.DTO.TratamientoDTO;
 import puj.veterinaria.servicios.droga.IDrogaServicio;
 import puj.veterinaria.servicios.mascota.IMascotaServicio;

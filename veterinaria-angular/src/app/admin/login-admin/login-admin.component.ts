@@ -22,7 +22,8 @@ export class LoginAdminComponent {
     user:UserEntity = {
       id: -1,
       username: "",
-      password: ""
+      password: "",
+      roles: []
     };
 
   msgError:string = "";

@@ -53,5 +53,8 @@ export class AdminService {
   encontrarRol(user:UserEntity): Observable<String>{
     return this.http.post<String>(`${this.URL_ROOT}/encontrar-rol`, user);
   }
+  administradorHome(): Observable<Admin> {
+    return this.http.get<Admin>(this.URL_ROOT + `/details`);
+  }
 }
 

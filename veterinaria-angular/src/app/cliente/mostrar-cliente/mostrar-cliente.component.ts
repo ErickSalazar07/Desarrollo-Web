@@ -21,34 +21,34 @@ export class MostrarClienteComponent implements OnInit{
     private servicioCliente: ClienteService,
     private servicioMascota: MascotaService) { }
 
-    ngOnInit(): void {
-  const idCliente = this.route.snapshot.paramMap.get('id');
+  ngOnInit(): void {
+    const idCliente = this.route.snapshot.paramMap.get('id');
 
-  if (idCliente) {
-    // Si viene un id por la ruta, se está accediendo desde el rol veterinario (u otro admin)
-    this.servicioCliente.findByCedula(idCliente).subscribe({
-      next: (cliente) => {
-        this.cliente = cliente;
-        this.servicioMascota.findMascotasByClienteCedula(cliente.cedula)
-          .subscribe(mascotas => this.mascotas = mascotas);
-      },
-      error: (err) => {
-        console.error('Error al obtener el cliente por ID:', err);
-      }
-    });
-  } else {
-    // Si no viene un id, se trata del cliente autenticado
-    this.servicioCliente.clienteActual().subscribe({
-      next: (cliente) => {
-        this.cliente = cliente;
-        this.servicioMascota.findMascotasByClienteAut()
-          .subscribe(mascotas => this.mascotas = mascotas);
-      },
-      error: (err) => {
-        console.error('Error al obtener el cliente autenticado:', err);
-      }
-    });
+    if (idCliente) {
+      // Si viene un id por la ruta, se está accediendo desde el rol veterinario (u otro admin)
+      this.servicioCliente.findByCedula(idCliente).subscribe({
+        next: (cliente) => {
+          this.cliente = cliente;
+          this.servicioMascota.findMascotasByClienteCedula(cliente.cedula)
+            .subscribe(mascotas => this.mascotas = mascotas);
+        },
+        error: (err) => {
+          console.error('Error al obtener el cliente por ID:', err);
+        }
+      });
+    } else {
+      // Si no viene un id, se trata del cliente autenticado
+      this.servicioCliente.clienteActual().subscribe({
+        next: (cliente) => {
+          this.cliente = cliente;
+          this.servicioMascota.findMascotasByClienteAut()
+            .subscribe(mascotas => this.mascotas = mascotas);
+        },
+        error: (err) => {
+          console.error('Error al obtener el cliente autenticado:', err);
+        }
+      });
+    }
   }
-}
 
 }

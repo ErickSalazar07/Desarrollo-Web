@@ -49,4 +49,8 @@ export class ClienteService {
     });
   }
 
+  clienteHome(): Observable<Cliente> {
+    return this.http.get<Cliente>(this.URL_ROOT + `/details`);
+  }
+
 }
