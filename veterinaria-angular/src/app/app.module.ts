@@ -39,6 +39,7 @@ import { MostrarListaItemsComponent } from './utils/mostrar-lista-items/mostrar-
 import { MostrarDrogasComponent } from './droga/mostrar-drogas/mostrar-drogas.component';
 import { TratamientosVeterinarioComponent } from './tratamiento/tratamientos-veterinario/tratamientos-veterinario.component';
 import { AuthInterceptor } from './helpers/auth.interceptor';
+import { ChatbotComponent } from './chatbot/chatbot.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
     MostrarListaItemsComponent,
     MostrarDrogasComponent,
     TratamientosVeterinarioComponent,
-    LoginComponent
+    LoginComponent,
+    ChatbotComponent
   ],
   imports: [
     BrowserModule,

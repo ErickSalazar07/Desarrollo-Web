@@ -1,0 +1,79 @@
+<!-- chatbot.component.html -->
+<div class="chatbot-container">
+  <!-- Botón para abrir/cerrar chat -->
+  <button 
+    class="chat-toggle-btn" 
+    (click)="toggleChat()"
+    [class.active]="chatOpen">
+    💬
+  </button>
+
+  <!-- Ventana de chat -->
+  <div class="chat-window" [class.open]="chatOpen">
+    <!-- Header del chat -->
+    <div class="chat-header">
+      <h3>🤖 Asistente AI</h3>
+      <div class="chat-controls">
+        <button 
+          class="btn-clear" 
+          (click)="clearChat()" 
+          title="Limpiar chat">
+          🗑️
+        </button>
+        <button 
+          class="btn-close" 
+          (click)="toggleChat()" 
+          title="Cerrar chat">
+          ✕
+        </button>
+      </div>
+    </div>
+
+    <!-- Cuerpo del chat -->
+    <div class="chat-body" #chatBody>
+      <div *ngIf="messages.length === 0" class="welcome-message">
+        👋 ¡Hola! Soy tu asistente AI. ¿En qué puedo ayudarte?
+      </div>
+      
+      <div 
+        *ngFor="let message of messages; trackBy: trackByIndex" 
+        class="message" 
+        [class.user]="message.role === 'user'"
+        [class.assistant]="message.role === 'assistant'">
+        
+        <div class="message-content">
+          <span *ngIf="message.content === '...'" class="typing-indicator">
+            <span></span><span></span><span></span>
+          </span>
+          <span *ngIf="message.content !== '...'">{{ message.content }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer del chat -->
+    <div class="chat-footer">
+      <div class="input-group">
+        <textarea 
+          [(ngModel)]="userInput"
+          (keydown)="onKeyPress($event)"
+          placeholder="Escribe tu mensaje..."
+          class="chat-input"
+          rows="1"
+          [disabled]="isLoading"></textarea>
+        
+        <button 
+          (click)="sendMessage()" 
+          class="send-btn"
+          [disabled]="!userInput.trim() || isLoading"
+          title="Enviar mensaje">
+          <span *ngIf="!isLoading">📤</span>
+          <span *ngIf="isLoading" class="spinner">⏳</span>
+        </button>
+      </div>
+      
+      <div class="chat-info" *ngIf="isLoading">
+        🤖 Pensando...
+      </div>
+    </div>
+  </div>
+</div>
