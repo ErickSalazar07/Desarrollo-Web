@@ -12,7 +12,7 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #0b4e11;
   border: none;
   color: white;
   font-size: 24px;
@@ -30,7 +30,7 @@
 }
 
 .chat-toggle-btn.active {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: #6c757d;
 }
 
 /* Ventana de chat */
@@ -66,7 +66,7 @@
 
 /* Header */
 .chat-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #28686d;/*linear-gradient(135deg, #574e5a 0%, #10641e 100%);*/
   color: white;
   padding: 15px 20px;
   display: flex;
@@ -138,7 +138,7 @@
 }
 
 .message.user .message-content {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #28686d;
   color: white;
 }
 
