@@ -18,7 +18,10 @@ export class ActualizarClienteComponent {
   ) {}
 
   ngOnInit(): void {
-    this.servicioCliente.clienteHome()
-      .subscribe(c => this.actualizarCliente = c);
+    this.route.paramMap.subscribe(param => {
+      this.servicioCliente.findById(Number(param.get("id"))).subscribe(c => {
+        this.actualizarCliente = c;
+      });
+    });
   }
 }

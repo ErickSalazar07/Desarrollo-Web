@@ -22,9 +22,6 @@ import { ActualizarVeterinarioComponent } from './veterinario/actualizar-veterin
 import { MostrarTratamientosComponent } from './tratamiento/mostrar-tratamientos/mostrar-tratamientos.component';
 import { AsignarTratamientoComponent } from './tratamiento/asignar-tratamiento/asignar-tratamiento.component';
 import { MostrarKpisComponent } from './admin/mostrar-kpis/mostrar-kpis.component';
-import { MostrarNumItemsComponent } from './utils/mostrar-num-items/mostrar-num-items.component';
-import { MostrarValorDineroComponent } from './utils/mostrar-valor-dinero/mostrar-valor-dinero.component';
-import { MostrarListaItemsComponent } from './utils/mostrar-lista-items/mostrar-lista-items.component';
 import { MostrarDrogasComponent } from './droga/mostrar-drogas/mostrar-drogas.component';
 import { TratamientosVeterinarioComponent } from './tratamiento/tratamientos-veterinario/tratamientos-veterinario.component';
 import { LoginComponent } from './login/login.component';
@@ -71,20 +68,15 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'cliente/login', component: LoginClienteComponent},
   {path: 'cliente/add', component: CrearClienteComponent},
-  {path: 'cliente/clientes', component: MostrarClientesComponent},
   {path: 'cliente/mostrar-cliente/:id', component: MostrarClienteComponent},
-  {path: 'cliente/update', component: ActualizarClienteComponent},
-  {path: 'mascota/mascotas', component: MostrarMascotasComponent},
+  {path: 'cliente/update/:id', component: ActualizarClienteComponent},
   {path: 'mascota/mostrar-mascota/:id', component: MostrarMascotaComponent},
   {path: 'mascota/add', component: CrearMascotaComponent},
   {path: 'mascota/update/:id', component: ActualizarMascotaComponent},
   {path: 'veterinario/login', component: LoginVeterinarioComponent},
   {path: 'veterinario/add', component: CrearVeterinarioComponent},
-  {path: 'veterinario/update', component: ActualizarVeterinarioComponent},
+  {path: 'veterinario/update/:id', component: ActualizarVeterinarioComponent},
   {path: 'tratamiento/asignar-tratamiento', component: AsignarTratamientoComponent},
-  {path: 'mostrar-num-items/:nombre-item/:cantidad', component: MostrarNumItemsComponent},
-  {path: 'mostrar-valor-dinero/:txt-msg/:dinero', component: MostrarValorDineroComponent},
-  {path: 'mostrar-lista-items/:tipo/:mensaje', component: MostrarListaItemsComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: PagNoEncontradaComponent},
 ];

@@ -47,13 +47,18 @@ public class ControladorPrincipal {
   @Operation(summary = "Permite loguear un usuario, pasado por el body.")
   //No recibí un tipo cliente
    public ResponseEntity<String> login(@RequestBody UserEntity user) {
-    Authentication authentication = authenticationManager.authenticate(
-      //new UsernamePasswordAuthenticationToken(cliente.getCorreo(), cliente.getCedula())
-      new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
-    );
+    String token = "";
 
-    SecurityContextHolder.getContext().setAuthentication(authentication);
-    String token = jwtGenerator.generateToken(authentication);
+    try {
+      Authentication authentication = authenticationManager.authenticate(
+        new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+  
+      SecurityContextHolder.getContext().setAuthentication(authentication);
+      token = jwtGenerator.generateToken(authentication);
+      
+    } catch(Exception e) {
+      return new ResponseEntity<String>("invalid",HttpStatus.BAD_REQUEST);
+    }
     return new ResponseEntity<String>(token, HttpStatus.OK);
   }
 
@@ -64,5 +69,4 @@ public class ControladorPrincipal {
       .findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
     return new ResponseEntity<>(usuario,usuario != null ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
   }
-
 }

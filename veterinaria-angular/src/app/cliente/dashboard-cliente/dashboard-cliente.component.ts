@@ -26,6 +26,7 @@ export class DashboardClienteComponent {
 
   cerrarSesion() {
     localStorage.removeItem('token');
+    localStorage.removeItem("rolActivo");
     this.router.navigate(['/']);
   }
 }

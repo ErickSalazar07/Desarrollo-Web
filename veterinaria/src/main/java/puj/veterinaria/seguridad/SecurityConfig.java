@@ -37,12 +37,47 @@ public class SecurityConfig {
       .sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
       .authorizeHttpRequests(requests -> requests
         /* H2 */
+//-------------------------------------- SECCION .permitAll() -------------------------------------------
         .requestMatchers("/h2/**").permitAll()
         .requestMatchers("/cliente/login").permitAll()
         .requestMatchers("/veterinario/login").permitAll()
-        .requestMatchers("/veterinario/dashboard/**").hasAuthority("VETERINARIO")
+        .requestMatchers("/admin/login").permitAll()
+//-------------------------------------- END SECCION .permitAll() ---------------------------------------
+//-------------------------------------- SECCION .hasAutority() -------------------------------------------
+        .requestMatchers("/admin/**").hasAuthority("ADMINISTRADOR")
+        .requestMatchers("/veterinario/get-veterinario**").hasAuthority("VETERINARIO")
+        .requestMatchers("/veterinario/veterinario_autenticado").hasAuthority("VETERINARIO")
+        .requestMatchers("/veterinario/details").hasAuthority("VETERINARIO")
+        .requestMatchers("/veterinario/add").hasAuthority("ADMINISTRADOR")
+        .requestMatchers("/veterinario/veterinarios").hasAuthority("ADMINISTRADOR")
+        .requestMatchers("/veterinario/get-num-veterinarios-activos").hasAuthority("ADMINISTRADOR")
+        .requestMatchers("/veterinario/get-num-veterinarios-inactivos").hasAuthority("ADMINISTRADOR")
+        .requestMatchers("/veterinario/update**").hasAuthority("ADMINISTRADOR")
+        .requestMatchers("/veterinario/delete/**").hasAuthority("ADMINISTRADOR")
+        .requestMatchers("/droga/drogas").hasAnyAuthority("VETERINARIO","ADMINISTRADOR")
+        .requestMatchers("/droga/get-droga/**").hasAuthority("VETERINARIO")
+        .requestMatchers("/droga/get-total**").hasAuthority("ADMINISTRADOR")
+        .requestMatchers("/mascota/get-num-mascotas**").hasAuthority("ADMINISTRADOR")
+        .requestMatchers("/mascota/add").hasAuthority("VETERINARIO")
+        .requestMatchers("/mascota/mascotas").hasAuthority("VETERINARIO")
+        .requestMatchers("/mascota/cambiar-estado/**").hasAuthority("VETERINARIO")
+        .requestMatchers("/mascota/update/**").hasAuthority("VETERINARIO")
+        .requestMatchers("/mascota/delete/**").hasAuthority("VETERINARIO")
+        .requestMatchers("/tratamiento/get-num-tratamientos-ultimo-mes").hasAuthority("ADMINISTRADOR")
+        .requestMatchers("/tratamiento/get-num-tratamientos-mas-unidad-vendida").hasAuthority("ADMINISTRADOR")
+        .requestMatchers("/tratamiento/get-top3-tratamientos-mas-unidad-vendida").hasAuthority("ADMINISTRADOR")
+        .requestMatchers("/tratamiento/add").hasAuthority("VETERINARIO")
+        .requestMatchers("/cliente/get-cliente**").hasAuthority("CLIENTE")
+        .requestMatchers("/cliente/details").hasAuthority("CLIENTE")
+        .requestMatchers("/cliente/cliente_autenticado").hasAuthority("CLIENTE")
+        .requestMatchers("/cliente/add").hasAuthority("VETERINARIO")
+        .requestMatchers("/cliente/update/**").hasAuthority("VETERINARIO")
+        .requestMatchers("/cliente/delete/**").hasAuthority("VETERINARIO")
+        .requestMatchers("/cliente/clientes").hasAuthority("VETERINARIO")
+        .requestMatchers("/cliente/clientes").hasAuthority("ADMINISTRADOR")
+        .requestMatchers("/admin/**").hasAuthority("ADMINISTRADOR")
+//-------------------------------------- END SECCION .hasAutority() ---------------------------------------
         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-        // .anyRequest().authenticated() // <- Protege todo lo demás
         .anyRequest().permitAll())
       .exceptionHandling(exception -> exception.authenticationEntryPoint(jwtAuthEntryPoint));
 

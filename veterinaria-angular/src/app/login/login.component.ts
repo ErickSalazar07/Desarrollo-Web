@@ -26,15 +26,20 @@ export class LoginComponent {
   ) {}
 
   login() {
-    this.servicioPrincipal.login(this.usuario).subscribe(
-      (data) => {
+    this.servicioPrincipal.login(this.usuario).subscribe({
+      next: (data) => {
         localStorage.setItem("token",String(data));
         this.servicioPrincipal.obtenerUserEntityActivo().subscribe({
-          next: (usrEntity) => this.redirigirPorRol(usrEntity.roles.at(0)?.name),
+          next: (usrEntity) => {
+            let rol = usrEntity.roles.at(0)?.name;
+            localStorage.setItem("rolActivo",String(rol));
+            this.redirigirPorRol(rol);
+          },
           error: (err) => this.msgError = "Error: Usuario no valido."
         });
-      }
-    );
+      },
+      error: (err) => this.msgError = "Error: Usuario no valido."
+    });
   }
 
   redirigirPorRol(rol?:string) {
@@ -43,37 +48,12 @@ export class LoginComponent {
         this.router.navigate(["/veterinario/dashboard"]);
       break;
       case "ADMINISTRADOR":
-        console.log("ADMINISTRADOR")
         this.router.navigate(["/admin/dashboard"]);
       break;
       case "CLIENTE":
-        console.log("CLIENTE")
         this.router.navigate(["/cliente/dashboard"]);
       break;
-      default: this.msgError = "Error: Usuario no valido."
+      default: this.msgError = "Error: Usuario no valido.";
     }
   }
-
-  // logear() {
-  //   this.servicioCliente.findByCedula(this.cliente.cedula).
-  //   subscribe(c => {
-  //     if(c == null || this.cliente.correo !== c.correo)  {
-  //       this.msgError = "Datos incorrectos";
-  //       return;
-  //     }
-  //     else {
-  //       this.user.username = c.correo;
-  //       this.user.password = this.cliente.cedula;
-  //       this.servicioCliente.login(this.user).subscribe({
-  //       next: (data) => {
-  //         localStorage.setItem('token', String(data)); // Guardar el token
-  //         this.router.navigate(['/cliente/dashboard/mostrar-cliente']); // Navegar al dashboard
-  //       },
-  //       error: (error) => {
-  //         this.msgError = 'Error al iniciar sesión';
-  //     }
-  //   });
-  // }
-  //   });
-  // }
 }
