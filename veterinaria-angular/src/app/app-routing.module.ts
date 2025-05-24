@@ -80,7 +80,7 @@ const routes: Routes = [
   {path: 'mascota/update/:id', component: ActualizarMascotaComponent},
   {path: 'veterinario/login', component: LoginVeterinarioComponent},
   {path: 'veterinario/add', component: CrearVeterinarioComponent},
-  {path: 'veterinario/update', component: ActualizarVeterinarioComponent},
+  {path: 'veterinario/update/:id', component: ActualizarVeterinarioComponent},
   {path: 'tratamiento/asignar-tratamiento', component: AsignarTratamientoComponent},
   {path: 'mostrar-num-items/:nombre-item/:cantidad', component: MostrarNumItemsComponent},
   {path: 'mostrar-valor-dinero/:txt-msg/:dinero', component: MostrarValorDineroComponent},
