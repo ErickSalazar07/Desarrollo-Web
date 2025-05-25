@@ -28,6 +28,7 @@ import { MostrarListaItemsComponent } from './utils/mostrar-lista-items/mostrar-
 import { MostrarDrogasComponent } from './droga/mostrar-drogas/mostrar-drogas.component';
 import { TratamientosVeterinarioComponent } from './tratamiento/tratamientos-veterinario/tratamientos-veterinario.component';
 import { LoginComponent } from './login/login.component';
+import { MapaComponent } from './mapa/mapa.component'; 
 
 const routes: Routes = [
 
@@ -41,7 +42,8 @@ const routes: Routes = [
     {path: 'tratamiento/tratamientos', component: MostrarTratamientosComponent},
     {path: 'tratamiento/asignar-tratamiento', component: AsignarTratamientoComponent},
     {path: 'droga/drogas', component: MostrarDrogasComponent},
-    {path: 'tratamientos-veterinario', component: TratamientosVeterinarioComponent},
+    {path: 'tratamientos-veterinario', component: TratamientosVeterinarioComponent}, 
+    
     {path: '**', pathMatch: 'full', redirectTo: '/veterinario/dashboard/mascota/mascotas'}
   ]
   },
@@ -85,6 +87,7 @@ const routes: Routes = [
   {path: 'mostrar-num-items/:nombre-item/:cantidad', component: MostrarNumItemsComponent},
   {path: 'mostrar-valor-dinero/:txt-msg/:dinero', component: MostrarValorDineroComponent},
   {path: 'mostrar-lista-items/:tipo/:mensaje', component: MostrarListaItemsComponent},
+  { path: 'mapa', component: MapaComponent },
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: PagNoEncontradaComponent},
 ];

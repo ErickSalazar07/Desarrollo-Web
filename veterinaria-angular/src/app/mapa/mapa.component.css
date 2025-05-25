@@ -1,0 +1,38 @@
+.contenedor-mapa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.titulo-mapa {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: black;
+}
+
+#map {
+  width: 100%;
+  max-width: 800px;
+  height: 500px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.boton-volver {
+  margin-top: 25px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #054f31;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+
