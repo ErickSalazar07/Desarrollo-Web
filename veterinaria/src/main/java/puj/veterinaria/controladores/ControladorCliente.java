@@ -55,7 +55,6 @@ public class ControladorCliente {
   @PostMapping("/add")
   @Operation(summary = "Agrega un nuevo Cliente, pasado por el body.")
   public ResponseEntity<Cliente> agregarCliente(@RequestBody Cliente cliente) {
-    //
 
     //Revisamos que nombre de usuario no exista
     if(userRepository.existsByUsername(cliente.getCorreo())) {
@@ -67,6 +66,7 @@ public class ControladorCliente {
     cliente.setId(null);
     return new ResponseEntity<>(clienteServicio.addCliente(cliente),HttpStatus.CREATED); 
    }
+
   // URL: http://localhost:8090/cliente/login
    @PostMapping("/login")
   @Operation(summary = "Permite loguear un Cliente, pasado por el body.")

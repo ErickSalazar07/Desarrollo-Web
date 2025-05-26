@@ -349,7 +349,7 @@ public class DatabaseInit implements ApplicationRunner {
         Administrador admin = Administrador.builder()
           .username("admin")
           .nombre("Administrador General")
-          .correo("admin@veterinaria")
+          .correo("health.animals.eed@gmail.com")
           .celular("123")
           .build();
 

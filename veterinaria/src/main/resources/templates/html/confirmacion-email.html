@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      color: #222222;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #f9f9f9;
+      border-radius: 12px;
+      padding: 30px;
+      border: 1px solid #e0e0e0;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header img {
+      max-width: 150px;
+    }
+
+    h1 {
+      color: #004d26;
+      /* Verde oscuro */
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333333;
+    }
+
+    .icon {
+      font-size: 20px;
+      margin-right: 8px;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #004d26;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 25px;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: #888888;
+      margin-top: 40px;
+    }
+
+    a:hover {
+      background-color: #2e5b47 !important; /* Un verde más claro para el hover */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="cid:logo.png" alt="Health Animals Logo" />
+    </div>
+    <h1>🐾 ¡Bienvenido a Health Animals!</h1>
+    <p><span class="icon">🎉</span> Hola <strong>${cliente.getNombre()}</strong>.</p>
+    <p>
+      Gracias por registrarte en <strong>Health Animals</strong>, tu centro de confianza para el cuidado y bienestar de
+      tus mascotas.
+    </p>
+    <p>
+      Nos alegra tenerte como parte de nuestra familia. A partir de ahora, podrás acceder a todos nuestros servicios,
+      agendar citas, recibir recordatorios y estar al tanto del cuidado de tus compañeros peludos.
+    </p>
+    <p>
+      Si tienes alguna duda o necesitas ayuda, no dudes en contactarnos. Estamos aquí para ayudarte 🐶🐱🐾
+    </p>
+
+    <div style="text-align: center; margin-top: 30px;">
+      <a href="http://localhost:4200/cliente/login" style="background-color: #1a3d2f; /* Verde oscuro */
+            color: #ffffff;
+            padding: 14px 28px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 8px;
+            display: inline-block;
+            transition: background-color 0.3s ease;">
+        🔍 Ver tu perfil ahora
+      </a>
+    </div>
+
+    <div class="footer">
+      © 2025 Health Animals. Todos los derechos reservados.
+    </div>
+  </div>
+</body>
+
+</html>
