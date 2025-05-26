@@ -15,7 +15,10 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let token = localStorage.getItem('token');
-
+    
+    if (request.url.includes('generativelanguage.googleapis.com')) {
+    return next.handle(request);
+  }
     if (token) {
       const cloned = request.clone({
         headers: request.headers.set('Authorization', 'Bearer ' + token)

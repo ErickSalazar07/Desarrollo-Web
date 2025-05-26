@@ -1,12 +1,13 @@
  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
  <body>
-    <h1>Datos de la Mascota</h1>
 
     <main>
       <ng-container *ngIf="!mascota"><h1>Esta mascota no existe</h1></ng-container>
       <div class="informacion-container" *ngIf="mascota">
         <img [src]="mascota.foto" [alt]="'Foto Mascota ' + mascota.nombre">
         <div class="campos">
+          <h1>Datos de la Mascota</h1>
+
           <p id="negrilla">Nombre:</p>
           <p>{{ mascota.nombre }}</p>
           <p id="negrilla">Raza:</p>

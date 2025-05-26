@@ -527,3 +527,47 @@ footer {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+
+#ver-ubicaciones {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #f8f9fa; /* Fondo claro suave */
+}
+
+#ver-ubicaciones h2 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  color: #2d2d2d;
+}
+
+#ver-ubicaciones h2 span {
+  color: #a9e0db; /* Color destacado */
+}
+
+#ver-ubicaciones p {
+  font-size: 1.1rem;
+  color: black;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.boton-ubicaciones {
+  padding: 12px 28px;
+  font-size: 1rem;
+  background-color: #054f31;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+
+
+
+
+

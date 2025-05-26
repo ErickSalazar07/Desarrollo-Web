@@ -25,6 +25,7 @@ import { MostrarKpisComponent } from './admin/mostrar-kpis/mostrar-kpis.componen
 import { MostrarDrogasComponent } from './droga/mostrar-drogas/mostrar-drogas.component';
 import { TratamientosVeterinarioComponent } from './tratamiento/tratamientos-veterinario/tratamientos-veterinario.component';
 import { LoginComponent } from './login/login.component';
+import { MapaComponent } from './mapa/mapa.component'; 
 
 const routes: Routes = [
 
@@ -38,7 +39,8 @@ const routes: Routes = [
     {path: 'tratamiento/tratamientos', component: MostrarTratamientosComponent},
     {path: 'tratamiento/asignar-tratamiento', component: AsignarTratamientoComponent},
     {path: 'droga/drogas', component: MostrarDrogasComponent},
-    {path: 'tratamientos-veterinario', component: TratamientosVeterinarioComponent},
+    {path: 'tratamientos-veterinario', component: TratamientosVeterinarioComponent}, 
+    
     {path: '**', pathMatch: 'full', redirectTo: '/veterinario/dashboard/mascota/mascotas'}
   ]
   },
@@ -75,6 +77,7 @@ const routes: Routes = [
   {path: 'mascota/update/:id', component: ActualizarMascotaComponent},
   {path: 'veterinario/login', component: LoginVeterinarioComponent},
   {path: 'veterinario/add', component: CrearVeterinarioComponent},
+  {path: 'veterinario/update/:id', component: ActualizarVeterinarioComponent},
   {path: 'veterinario/update/:id', component: ActualizarVeterinarioComponent},
   {path: 'tratamiento/asignar-tratamiento', component: AsignarTratamientoComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
