@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Veterinario } from 'src/app/modelo/veterinario';
 import { Router } from '@angular/router';
 import { VeterinarioService } from 'src/app/servicio/veterinario.service';
+import { AdminService } from 'src/app/servicio/admin.service';
 
 @Component({
   selector: 'app-mostrar-veterinarios',
@@ -11,14 +12,21 @@ import { VeterinarioService } from 'src/app/servicio/veterinario.service';
 })
 export class MostrarVeterinariosComponent implements OnInit {
   veterinarios: Veterinario[] = [];
+  rolActivo: string | null = null;
   terminoBusqueda: string = '';
   filtroSeleccionado: string = 'nombre';
 
-  constructor(private http: HttpClient, private router: Router, private service: VeterinarioService) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private service: VeterinarioService,
+    private adminServicio: AdminService
+  ) {}
 
   ngOnInit(): void {
     this.service.findAll().subscribe(veterinarios => {
       this.veterinarios = veterinarios;
+      this.rolActivo = localStorage.getItem("rolActivo");
     });
   }
 
@@ -49,4 +57,11 @@ export class MostrarVeterinariosComponent implements OnInit {
         });
       });
     }
+
+  obtenerExcelVeterinarios() {
+    this.adminServicio.obtenerExcelTablaVeterinario().subscribe(diccionarioStatus => {
+      if(diccionarioStatus["status"] !== "ok") alert("Hubo un error enviando el excel, lo sentimos.");
+      else alert("Verifique su correo, el excel ya fue enviado.")
+    });
+  }
 }

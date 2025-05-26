@@ -12,6 +12,10 @@
           <option value="cedula">Cédula</option>
         </select>
       </section>
+
+      <div class="excel-btn-container" *ngIf="rolActivo !== null && rolActivo === 'ADMINISTRADOR'">
+        <button (click)="obtenerExcelVeterinarios()">📊 Obtener Excel Veterinarios</button>
+      </div>
     </div>
   
     <main>
