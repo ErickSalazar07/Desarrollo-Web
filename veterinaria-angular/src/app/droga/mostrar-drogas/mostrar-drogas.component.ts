@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Droga } from 'src/app/modelo/droga';
+import { AdminService } from 'src/app/servicio/admin.service';
 import { DrogaService } from 'src/app/servicio/droga.service';
 
 @Component({
@@ -11,15 +12,22 @@ import { DrogaService } from 'src/app/servicio/droga.service';
 })
 export class MostrarDrogasComponent implements OnInit {
   drogas: Droga[] = [];
+  rolActivo:string | null = null;
   terminoBusqueda: string = '';
   filtroSeleccionado: string = 'nombre';
   
-  constructor(private http: HttpClient, private router: Router, private service: DrogaService) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private service: DrogaService,
+    private adminServicio: AdminService
+  ) {}
 
 
   ngOnInit(): void {
     this.service.findAll().subscribe(drogas => {
       this.drogas = drogas;
+      this.rolActivo = localStorage.getItem("rolActivo");
     });
   }
   
@@ -56,4 +64,10 @@ export class MostrarDrogasComponent implements OnInit {
     });
   }
   
+  obtenerExcelDrogas() {
+    this.adminServicio.obtenerExcelTablaDroga().subscribe(diccionarioStatus => {
+      if(diccionarioStatus["status"] !== "ok") alert("Hubo un error enviando el excel, lo sentimos.");
+      else alert("Verifique su correo, el excel ya fue enviado.")
+    });
+  }
 }  

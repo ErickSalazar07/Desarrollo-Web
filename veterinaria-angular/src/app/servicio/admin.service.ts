@@ -31,6 +31,14 @@ export class AdminService {
     return this.http.get<Admin[]>(`${this.URL_ROOT}/admins`);
   }
 
+  obtenerExcelTablaDroga(): Observable<any> {
+    return this.http.get<String>(`${this.URL_ROOT}/get-excel-drogas`);
+  }
+
+  obtenerExcelTablaVeterinario(): Observable<any> {
+    return this.http.get<String>(`${this.URL_ROOT}/get-excel-veterinarios`);
+  }
+
   addAdministrador(admin: Admin): Observable<void> {
     return this.http.post<void>(`${this.URL_ROOT}/add`, admin);
   }

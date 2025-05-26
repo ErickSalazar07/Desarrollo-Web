@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffffff;
+      color: #222222;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #f9f9f9;
+      border-radius: 12px;
+      padding: 30px;
+      border: 1px solid #e0e0e0;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header img {
+      max-width: 150px;
+    }
+
+    h1 {
+      color: #004d26;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333333;
+    }
+
+    .icon {
+      font-size: 20px;
+      margin-right: 8px;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #004d26;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 25px;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: #888888;
+      margin-top: 40px;
+    }
+
+    a:hover {
+      background-color: #2e5b47 !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="cid:logo.png" alt="Health Animals Logo" />
+    </div>
+    <h1>💊 Excel de Drogas</h1>
+    <p><span class="icon">📦</span> Hola <strong>${nombreDestinatario}</strong>.</p>
+    <p>
+      Te compartimos la base de datos actualizada con toda la información relacionada a los medicamentos y drogas
+      registradas en nuestro sistema.
+    </p>
+    <p>
+      Este archivo contiene los detalles clave como precios, unidades disponibles, unidades vendidas y más.
+    </p>
+    <p>
+      Puedes utilizar esta información para análisis, inventario o reportes internos. Si necesitas una versión más
+      reciente en el futuro, no dudes en solicitarla.
+    </p>
+
+    <div style="text-align: center; margin-top: 30px;">
+      <a href="http://localhost:4200/admin/login" style="background-color: #1a3d2f; /* Verde oscuro */
+            color: #ffffff;
+            padding: 14px 28px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 8px;
+            display: inline-block;
+            transition: background-color 0.3s ease;">
+        📁 Ir al panel de administración
+      </a>
+    </div>
+
+    <div class="footer">
+      © 2025 Health Animals. Todos los derechos reservados.
+    </div>
+  </div>
+</body>
+
+</html>
