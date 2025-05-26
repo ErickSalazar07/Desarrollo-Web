@@ -80,7 +80,7 @@ const routes: Routes = [
   {path: 'veterinario/update/:id', component: ActualizarVeterinarioComponent},
   {path: 'veterinario/update/:id', component: ActualizarVeterinarioComponent},
   {path: 'tratamiento/asignar-tratamiento', component: AsignarTratamientoComponent},
-  {path: 'mapa', component: MapaComponent}
+  {path: 'mapa', component: MapaComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: '**', component: PagNoEncontradaComponent},
 ];
