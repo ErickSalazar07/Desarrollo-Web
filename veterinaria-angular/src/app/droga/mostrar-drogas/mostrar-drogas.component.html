@@ -1,3 +1,4 @@
+<link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
 <body>
   <h1>Medicamentos</h1>
   <div id="seccion_busqueda_crear">
@@ -10,11 +11,13 @@
         <option value="pVentaMenor">Precio Venta menor a</option>
       </select>
     </section>
+
     <div *ngIf="rolActivo !== null && rolActivo === 'ADMINISTRADOR'" class="descarga-excel">
       <button class="btn-excel" (click)="obtenerExcelDrogas()">
-        📊 Obtener Excel de Drogas
+       📊 Obtener Excel de Drogas
       </button>
     </div>
+
   </div>
 
   <main>

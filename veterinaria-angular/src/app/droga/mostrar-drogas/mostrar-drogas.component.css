@@ -207,7 +207,6 @@ input:checked+.slider:before {
 
 .busqueda {
   display: flex;
-  /* <-- esto es clave */
   align-items: center;
   background-color: #f5f7fa;
   border-radius: 10px;
@@ -279,34 +278,40 @@ input:checked+.slider:before {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  gap: 15px;
+  gap: 30px;
   align-items: center;
   padding: 10px;
+  margin-left: 20px;
+
 }
 
-.descarga-excel {
-  margin-top: 15px;
-  margin-left: 20px;
-}
+
 
 .btn-excel {
-  background-color: #054f31;
-  color: white;
-  font-size: 15px;
-  font-weight: 400; /* Menos gorda que 500+ */
+  display: flex; /* Hace que los elementos se alineen horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  gap: 2px; /* Espacio entre ícono y texto */
+            
+  background-color: white;
+  color: #054f31;
+  font-size: 14px;
   padding: 10px 20px;
-  border: none;
+  border: 2px solid #054f31;
   border-radius: 8px;
   cursor: pointer;
   margin-left: 20px;
   transition: background-color 0.3s ease, color 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+i {
+  font-size: 24px;
+  color: #054f31;
 }
 
 .btn-excel:hover {
-  background-color: white;
-  color: #054f31;
-  border: 1px solid #054f31;
+  background-color: #054f31;
+  color: white;
+  border: 2px solid #054f31;
 }
 
 .btn-excel:active {

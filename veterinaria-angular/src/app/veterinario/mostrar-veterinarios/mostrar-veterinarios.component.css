@@ -21,8 +21,6 @@ h1 {
 
 #btn-inicial {
   margin-left: 20px;
-  margin-bottom: 7px;
-  align-self: flex-start;
 }
 
 main {
@@ -106,7 +104,6 @@ header button {
   border-radius: 50px;
   font-size: 1.2rem;
   text-decoration: none;
-  padding: 5px;
   color: black;
   font-weight: 450;
 }
@@ -151,6 +148,8 @@ header button {
   font-size: 20px;
   transition: transform 0.3s ease-in-out;
   display: inline-block;
+  align-self: center;
+  text-align: center;
   /* Mantiene su espacio fijo */
 }
 
@@ -219,7 +218,7 @@ input:checked+.slider:before {
 /* Estilos para el input de búsqueda */
 .busqueda input[type="text"] {
   flex: 1;
-  padding: 10px 15px;
+  padding: 10px 10px;
   border: 1px solid #dde1e7;
   border-radius: 8px;
   font-size: 14px;
@@ -294,24 +293,21 @@ main img {
 .excel-btn-container {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
 }
 
 .excel-btn-container button {
-  padding: 12px 24px;
-  background-color: #054f31;
-  color: white;
-  font-size: 16px;
-  font-weight: 500;
-  border: none;
+  padding: 10px 10px;
+  background-color: white;
+  color: #054f31;
+  font-size: 14px;
+  border: 2px solid #054f31;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .excel-btn-container button:hover {
-  background-color: white;
-  color: #054f31;
+  background-color: #054f31;
+  color: white;
   border: 2px solid #054f31;
 }
